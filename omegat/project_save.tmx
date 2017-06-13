@@ -22,6 +22,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>In order to see AWS Budget metrics, the requirement for this integration is the permission .</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T102923Z" creationid="papago" creationdate="20170613T102923Z">
+        <seg>AWS Budgetメトリックを表示するには、この統合の要件が許可です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Installation</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102434Z" creationid="papago" creationdate="20170613T102434Z">
