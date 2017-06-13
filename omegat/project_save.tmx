@@ -4,6 +4,22 @@
   <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.1.1_0_9688" segtype="sentence" srclang="EN-US"/>
   <body>
 <!-- Default translations -->
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T102340Z" creationid="papago" creationdate="20170613T102340Z">
+        <seg>Amazon Billingでは、AWSインフラストラクチャの請求予測と費用を追跡できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Overview</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T101723Z" creationid="papago" creationdate="20170613T101723Z">
+        <seg>概要</seg>
+      </tuv>
+    </tu>
 <!-- Alternative translations -->
   </body>
 </tmx>
