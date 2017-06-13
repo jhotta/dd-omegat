@@ -6,10 +6,58 @@
 <!-- Default translations -->
     <tu>
       <tuv lang="EN-US">
+        <seg># Configuration</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104614Z" creationid="papago" creationdate="20170613T104614Z">
+        <seg>[fuzzy]{0} の構成</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg># Installation</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104559Z" creationid="papago" creationdate="20170613T104559Z">
+        <seg>[fuzzy]インストール</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg># Metrics</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104607Z" creationid="papago" creationdate="20170613T104607Z">
+        <seg>[fuzzy]メトリックス</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg># Overview</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104616Z" creationid="papago" creationdate="20170613T104616Z">
+        <seg>[fuzzy]概要</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg># Validation</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104609Z" creationid="papago" creationdate="20170613T104609Z">
+        <seg>[fuzzy]妥当性検査</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102340Z" creationid="papago" creationdate="20170613T102340Z">
         <seg>Amazon Billingでは、AWSインフラストラクチャの請求予測と費用を追跡できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Checks</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104609Z" creationid="papago" creationdate="20170613T104609Z">
+        <seg>[fuzzy]{0} を検査中...</seg>
       </tuv>
     </tu>
     <tu>
@@ -74,6 +122,22 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103210Z" creationid="papago" creationdate="20170613T103032Z">
         <seg>[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックスを有効にする必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>instances:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104613Z" creationid="papago" creationdate="20170613T104613Z">
+        <seg>[fuzzy]{0} 個のインスタンス毎</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>tags:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T104612Z" creationid="papago" creationdate="20170613T104612Z">
+        <seg>[fuzzy]タグ(T):</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
