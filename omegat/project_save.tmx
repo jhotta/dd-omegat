@@ -46,6 +46,30 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>#authentication</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114307Z" creationid="papago" creationdate="20170613T114307Z">
+        <seg>認証</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>#errors</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114330Z" creationid="papago" creationdate="20170613T114330Z">
+        <seg>[fuzzy]エラー</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>#metrics</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114415Z" creationid="papago" creationdate="20170613T114415Z">
+        <seg>[fuzzy][fuzzy]メトリックス</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>A particular query to a service.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113547Z" creationid="papago" creationdate="20170613T113547Z">
