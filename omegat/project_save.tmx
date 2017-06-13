@@ -56,8 +56,8 @@
       <tuv lang="EN-US">
         <seg>You must also enable billing metrics within the [AWS Console](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T103032Z" creationid="papago" creationdate="20170613T103032Z">
-        <seg>[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックを有効にする必要があります。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103210Z" creationid="papago" creationdate="20170613T103032Z">
+        <seg>[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックスを有効にする必要があります。</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
