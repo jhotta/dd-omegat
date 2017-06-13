@@ -230,6 +230,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Here is an example of nginx.net.connections with the day_before value shown as a lighter, thinner line.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114722Z" creationid="papago" creationdate="20170613T114722Z">
+        <seg>次に、nginx.net.connectionsのday_before値を軽く細い線として表示した例を示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>In order to get the most from tracing, it's important to understand the terms used, the data they represent and how they work together.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112944Z" creationid="papago" creationdate="20170613T112944Z">
@@ -242,6 +250,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103228Z" creationid="papago" creationdate="20170613T102923Z">
         <seg>AWS Budgetメトリックスを表示するには、この統合の要件が許可です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In this example, you can see a week's worth of data which makes the day_before data easy to identify.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114735Z" creationid="papago" creationdate="20170613T114735Z">
+        <seg>この例では、day_beforeデータを簡単に識別できる1週間分のデータが表示されます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -298,6 +314,22 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103157Z" creationid="papago" creationdate="20170613T103157Z">
         <seg>注:  AWS Budgetメトリックスは、AWS のマスター アカウントからのみ収集できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>On the [Graphing Primer](http://docs.datadoghq.com/graphing/) page you will find a list of functions you can apply to a graph.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114546Z" creationid="papago" creationdate="20170613T114546Z">
+        <seg>[Graphing Primer]（http://docs.datadoghq.com/graphing/）ページには、グラフに適用できる関数のリストがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>On their own, they may not be of high value, but together with the current values they may provide useful insight into the performance of your application.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114704Z" creationid="papago" creationdate="20170613T114704Z">
+        <seg>それ自体では、価値が高いわけではないかもしれませんが、現在の価値と合わせて、アプリケーションのパフォーマンスに有用な情報を提供するかもしれません。</seg>
       </tuv>
     </tu>
     <tu>
@@ -394,6 +426,22 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113448Z" creationid="papago" creationdate="20170613T113448Z">
         <seg>同じジョブを実行する一連のプロセスの名前。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There is a set of functions there of the pattern &amp;lt;timeperiod&amp;gt;_before().</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114618Z" creationid="papago" creationdate="20170613T114618Z">
+        <seg>そこには、パターン&lt;timeperiod&gt; _before（）の1組の関数が存在する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These functions will display the values from the corresponding time period on the graph.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114633Z" creationid="papago" creationdate="20170613T114633Z">
+        <seg>これらの関数は、対応する期間の値をグラフに表示します。</seg>
       </tuv>
     </tu>
     <tu>
