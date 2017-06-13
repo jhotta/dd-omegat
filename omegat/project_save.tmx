@@ -96,8 +96,8 @@
       <tuv lang="EN-US">
         <seg>For more examples, see the [Getting Started section of library documentation](http://pypi.datadoghq.com/trace/docs/#get-started).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T111443Z" creationid="papago" creationdate="20170613T111443Z">
-        <seg>その他の例については、ライブラリに関するのドキュメントの[Getting Startedセクション]（http://pypi.datadoghq.com/trace/docs/#get-started）を参照してください。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111525Z" creationid="papago" creationdate="20170613T111443Z">
+        <seg>その他の例については、ライブラリに関するのドキュメントの[Getting Startedのセクション](http://pypi.datadoghq.com/trace/docs/#get-started)を参照してください。</seg>
       </tuv>
     </tu>
     <tu>
