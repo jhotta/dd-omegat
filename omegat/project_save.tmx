@@ -38,10 +38,26 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Note: AWS Budget metrics can only be collected from the AWS master account.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103157Z" creationid="papago" creationdate="20170613T103157Z">
+        <seg>注:  AWS Budgetメトリックスは、AWS のマスター アカウントからのみ収集できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Overview</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T101723Z" creationid="papago" creationdate="20170613T101723Z">
         <seg>概要</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must also enable billing metrics within the [AWS Console](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103032Z" creationid="papago" creationdate="20170613T103032Z">
+        <seg>[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックを有効にする必要があります。</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
