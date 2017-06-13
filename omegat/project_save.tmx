@@ -86,6 +86,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Each span consists of a start time, a duration, and optional tags.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113336Z" creationid="papago" creationdate="20170613T113336Z">
+        <seg>各スパンは、開始時間、継続時間、およびオプションのタグで構成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Each trace consists of one or more spans.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113302Z" creationid="papago" creationdate="20170613T113302Z">
+        <seg>各トレースは、1つまたは複数のスパンから構成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Enable this integration to see in Datadog all your Billing metrics.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103242Z" creationid="papago" creationdate="20170613T102418Z">
@@ -118,6 +134,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For example, a span can describe the time spent on a distributed call on a separate machine, or the time spent in a small component within a larger operation.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113418Z" creationid="papago" creationdate="20170613T113418Z">
+        <seg>たとえば、あるスパンでは、別のマシンで分散呼び出しに費やされた時間、または大きな操作の中の小さなコンポーネントで費やされた時間を表すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For example, a trace can be used to track the entire time spent processing a complicated web request.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113135Z" creationid="papago" creationdate="20170613T113135Z">
@@ -130,6 +154,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112701Z" creationid="papago" creationdate="20170613T112701Z">
         <seg>これらのライブラリのトレースについては、[The RubyDoc documentation]（http://www.rubydoc.info/gems/ddtrace#Other_libraries）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For instance, a simple web application may consist of two services: a single  service and a single  service, while a more complex environment may break it out into 6 services: 3 separate , , and  services, along with a , a , and a  external service.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113519Z" creationid="papago" creationdate="20170613T113519Z">
+        <seg>たとえば、単純なWebアプリケーションは、単一のサービスと単一のサービスの2つのサービスで構成されますが、より複雑な環境では、3つのサービス、a、a、および外部サービス。</seg>
       </tuv>
     </tu>
     <tu>
@@ -230,6 +262,38 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Represents a logical unit of work in the system.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113243Z" creationid="papago" creationdate="20170613T113243Z">
+        <seg>システム内の論理作業単位を表します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113433Z" creationid="papago" creationdate="20170613T113433Z">
+        <seg>サービス</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Span</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113221Z" creationid="papago" creationdate="20170613T113221Z">
+        <seg>スパン</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Spans are associated with a service and optionally a resource.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113316Z" creationid="papago" creationdate="20170613T113316Z">
+        <seg>スパンはサービスおよびオプションでリソースに関連付けられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The Python library [source code can be found on Github](https://github.com/DataDog/dd-trace-py).</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112106Z" creationid="papago" creationdate="20170613T112106Z">
@@ -258,6 +322,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112539Z" creationid="papago" creationdate="20170613T112522Z">
         <seg>ddtraceのライブラリには、[Ruby on Rails]（http://rubyonrails.org/）と[Sinatra]（http://www.sinatrarb.com/）のWebフレームワークのサポートが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The name of a set of processes that do the same job.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113448Z" creationid="papago" creationdate="20170613T113448Z">
+        <seg>同じジョブを実行する一連のプロセスの名前。</seg>
       </tuv>
     </tu>
     <tu>
