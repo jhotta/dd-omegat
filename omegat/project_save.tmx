@@ -46,6 +46,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Additional Information</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112028Z" creationid="papago" creationdate="20170613T112028Z">
+        <seg>追加情報</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102340Z" creationid="papago" creationdate="20170613T102340Z">
@@ -126,6 +134,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>It also includes support for the following data stores and libraries:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111930Z" creationid="papago" creationdate="20170613T111930Z">
+        <seg>また、次のデータストアとライブラリのサポートも含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Metrics</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103322Z" creationid="papago" creationdate="20170613T103322Z">
@@ -158,6 +174,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The Python library [source code can be found on Github](https://github.com/DataDog/dd-trace-py).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112106Z" creationid="papago" creationdate="20170613T112106Z">
+        <seg>Python用のライブラリの[ソースコードはGithubにあります]（https://github.com/DataDog/dd-trace-py）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The ddtrace library includes support for a number of web frameworks, including:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111703Z" creationid="papago" creationdate="20170613T111703Z">
@@ -174,10 +198,26 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>To instrument these libraries, please see [the library documentation](http://pypi.datadoghq.com/trace/docs/#other-libraries)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
+        <seg>これらのライブラリを設定するには、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#other-libraries）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>To learn how to instrument these frameworks, please reference [the library documentation](http://pypi.datadoghq.com/trace/docs/#web-frameworks)</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111907Z" creationid="papago" creationdate="20170613T111907Z">
         <seg>これらのフレームワークからデータを収集する方法については、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#web-frameworks）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can find additional documentation on [the library documentation page](http://pypi.datadoghq.com/trace/docs/).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112154Z" creationid="papago" creationdate="20170613T112154Z">
+        <seg>[traceのライブラリのドキュメントページ]（http://pypi.datadoghq.com/trace/docs/）には、追加のドキュメントがあります。</seg>
       </tuv>
     </tu>
     <tu>
