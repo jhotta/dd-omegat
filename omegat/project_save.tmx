@@ -14,18 +14,26 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Each of the metrics retrieved from AWS will be assigned the same tags that appear in the AWS console, including but not limited to host name, security-groups, and more.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103702Z" creationid="papago" creationdate="20170613T103500Z">
+        <seg>AWSから取得した各メトリックスには、AWSコンソールに表示されるタグと同じものが割り当てられます（ホスト名、セキュリティグループなどです）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Enable this integration to see in Datadog all your Billing metrics.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T102418Z" creationid="papago" creationdate="20170613T102418Z">
-        <seg>この統合を有効にすると、Datadogですべての課金指標が表示されます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103242Z" creationid="papago" creationdate="20170613T102418Z">
+        <seg>このインテグレーションを有効にすると、Datadogですべての課金指標が表示されます。</seg>
       </tuv>
     </tu>
     <tu>
       <tuv lang="EN-US">
         <seg>In order to see AWS Budget metrics, the requirement for this integration is the permission .</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T102923Z" creationid="papago" creationdate="20170613T102923Z">
-        <seg>AWS Budgetメトリックを表示するには、この統合の要件が許可です。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103228Z" creationid="papago" creationdate="20170613T102923Z">
+        <seg>AWS Budgetメトリックスを表示するには、この統合の要件が許可です。</seg>
       </tuv>
     </tu>
     <tu>
@@ -34,6 +42,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102434Z" creationid="papago" creationdate="20170613T102434Z">
         <seg>インストール</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Metrics</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T103322Z" creationid="papago" creationdate="20170613T103322Z">
+        <seg>メトリックス</seg>
       </tuv>
     </tu>
     <tu>
