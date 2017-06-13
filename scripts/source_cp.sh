@@ -1,6 +1,8 @@
 #! /bin/sh
 
-cp -r $HOME/DD-support/documentation/content $HOME/SandBoxs/dd-omegat/source/dd-docs/
+cd $HOME/SandBoxs/documentation && git co master && git pull
+
+cp -r $HOME/SandBoxs/documentation/content $HOME/SandBoxs/dd-omegat/source/dd-docs/
 
 rm -rf $HOME/SandBoxs/dd-omegat/source/dd-docs/content/ja
 rm -rf $HOME/SandBoxs/dd-omegat/source/dd-docs/content/tipuesearch
