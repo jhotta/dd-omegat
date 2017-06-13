@@ -78,6 +78,30 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Example</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111322Z" creationid="papago" creationdate="20170613T111254Z">
+        <seg>サンプル</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Finally, import the tracer and instrument your code!</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111316Z" creationid="papago" creationdate="20170613T111316Z">
+        <seg>最後に、トレーサをインポートしてコードを設定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For more examples, see the [Getting Started section of library documentation](http://pypi.datadoghq.com/trace/docs/#get-started).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111443Z" creationid="papago" creationdate="20170613T111443Z">
+        <seg>その他の例については、ライブラリに関するのドキュメントの[Getting Startedセクション]（http://pypi.datadoghq.com/trace/docs/#get-started）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>In order to see AWS Budget metrics, the requirement for this integration is the permission .</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103228Z" creationid="papago" creationdate="20170613T102923Z">
@@ -98,6 +122,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103322Z" creationid="papago" creationdate="20170613T103322Z">
         <seg>メトリックス</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Next, install the Datadog Tracing library using pip:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T111226Z" creationid="papago" creationdate="20170613T111226Z">
+        <seg>次に、pipを使用してDatadogトレースライブラリをインストールします。</seg>
       </tuv>
     </tu>
     <tu>
