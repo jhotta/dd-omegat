@@ -110,6 +110,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For information on tracing these libraries, see [the RubyDoc documentation](http://www.rubydoc.info/gems/ddtrace#Other_libraries)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112701Z" creationid="papago" creationdate="20170613T112701Z">
+        <seg>これらのライブラリのトレースについては、[The RubyDoc documentation]（http://www.rubydoc.info/gems/ddtrace#Other_libraries）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For more examples, see the [Getting Started section of library documentation](http://pypi.datadoghq.com/trace/docs/#get-started).</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111525Z" creationid="papago" creationdate="20170613T111443Z">
@@ -146,6 +154,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111930Z" creationid="papago" creationdate="20170613T111930Z">
         <seg>また、次のデータストアとライブラリのサポートも含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It also includes support for the following libraries:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112637Z" creationid="papago" creationdate="20170613T112637Z">
+        <seg>また、次のライブラリのサポートも含まれています。</seg>
       </tuv>
     </tu>
     <tu>
@@ -198,6 +214,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The Ruby integration [source code can be found on Github](https://github.com/DataDog/dd-trace-rb).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112820Z" creationid="papago" creationdate="20170613T112727Z">
+        <seg>Rubyのインテグレーションの[ソースコードは、Githubで読むことができます]（https://github.com/DataDog/dd-trace-rb）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The ddtrace library includes support for a number of web frameworks, including:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111703Z" creationid="papago" creationdate="20170613T111703Z">
@@ -208,8 +232,8 @@
       <tuv lang="EN-US">
         <seg>The ddtrace library includes support for the [Ruby on Rails](http://rubyonrails.org/) and [Sinatra](http://www.sinatrarb.com/) web frameworks.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T112522Z" creationid="papago" creationdate="20170613T112522Z">
-        <seg>ddtracenoライブラリには、[Ruby on Rails]（http://rubyonrails.org/）と[Sinatra]（http://www.sinatrarb.com/）のWebフレームワークのサポートが含まれています。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112539Z" creationid="papago" creationdate="20170613T112522Z">
+        <seg>ddtraceのライブラリには、[Ruby on Rails]（http://rubyonrails.org/）と[Sinatra]（http://www.sinatrarb.com/）のWebフレームワークのサポートが含まれています。</seg>
       </tuv>
     </tu>
     <tu>
@@ -234,6 +258,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
         <seg>これらのライブラリを設定するには、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#other-libraries）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To learn how to instrument these frameworks, please reference [the RubyDoc documentation](http://www.rubydoc.info/gems/ddtrace#Web_Frameworks)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112632Z" creationid="papago" creationdate="20170613T112632Z">
+        <seg>これらのフレームワークからデータを集取する方法については、[The RubyDoc documentation]（http://www.rubydoc.info/gems/ddtrace#Web_Frameworks）を参照してください。</seg>
       </tuv>
     </tu>
     <tu>
