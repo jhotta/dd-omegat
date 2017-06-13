@@ -2,22 +2,22 @@
 git_integration_title: amazon_billing
 ---
 
-# Overview
+# 概要
 
-Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.
+Amazon Billingでは、AWSインフラストラクチャの請求予測と費用を追跡できます。
 
-Enable this integration to see in Datadog all your Billing metrics.
+このインテグレーションを有効にすると、Datadogですべての課金指標が表示されます。
 
-# Installation
+# インストール
 
-`budgets:ViewBudget`In order to see AWS Budget metrics, the requirement for this integration is the permission .
+`budgets:ViewBudget`AWS Budgetメトリックスを表示するには、この統合の要件が許可です。
 
-You must also enable billing metrics within the [AWS Console](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics).
+[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックスを有効にする必要があります。
 
-Note: AWS Budget metrics can only be collected from the AWS master account.
+注:  AWS Budgetメトリックスは、AWS のマスター アカウントからのみ収集できます。
 
-# Metrics
+# メトリックス
 
 <%= get_metrics_from_git() %>
 
-Each of the metrics retrieved from AWS will be assigned the same tags that appear in the AWS console, including but not limited to host name, security-groups, and more.
+AWSから取得した各メトリックスには、AWSコンソールに表示されるタグと同じものが割り当てられます（ホスト名、セキュリティグループなどです）。
