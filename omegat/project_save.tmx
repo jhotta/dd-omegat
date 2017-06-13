@@ -46,6 +46,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>A particular query to a service.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113547Z" creationid="papago" creationdate="20170613T113547Z">
+        <seg>サービスへの特定なクエリ。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Additional Information</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112028Z" creationid="papago" creationdate="20170613T112028Z">
@@ -130,6 +138,22 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111316Z" creationid="papago" creationdate="20170613T111316Z">
         <seg>最後に、トレーサをインポートしてコードを設定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For a sql database, a resource would be the sql of the query itself like .</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113706Z" creationid="papago" creationdate="20170613T113706Z">
+        <seg>SQLデータベースの場合、リソースはクエリ自体のSQLと同じです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For a web application, some examples might be a canonical URL like  or a handler function like  (often referred to as "routes" in MVC frameworks).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113652Z" creationid="papago" creationdate="20170613T113652Z">
+        <seg>Webアプリケーションの場合、標準的なURLやハンドラ関数（MVCフレームワークでは「ルート」と呼ばれることが多い）の例があります。</seg>
       </tuv>
     </tu>
     <tu>
@@ -270,6 +294,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Resource</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113527Z" creationid="papago" creationdate="20170613T113527Z">
+        <seg>リソース</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Service</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113433Z" creationid="papago" creationdate="20170613T113433Z">
@@ -306,6 +338,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112820Z" creationid="papago" creationdate="20170613T112727Z">
         <seg>Rubyのインテグレーションの[ソースコードは、Githubで読むことができます]（https://github.com/DataDog/dd-trace-rb）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Tracing backend can track thousands (not millions or billions) of unique resources per service, so resources should be grouped together under a canonical name, like  rather than have  and  as separate resources.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114227Z" creationid="papago" creationdate="20170613T114227Z">
+        <seg>Tracingバックエンドは、サービスごとに数千（百万〜十億ではありません）の個別のリソースを追跡することができます。したがって、リソースは、正規の名前でグループ化する必要があります。</seg>
       </tuv>
     </tu>
     <tu>
