@@ -6,6 +6,23 @@
 <!-- Default translations -->
     <tu>
       <tuv lang="EN-US">
+        <seg>"events": []
+}</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114817Z" creationid="papago" creationdate="20170613T114817Z">
+        <seg>[fuzzy]イベント</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>"requests": [</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114756Z" creationid="papago" creationdate="20170613T114756Z">
+        <seg>[fuzzy]要求(R)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg># Configuration</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T104614Z" creationid="papago" creationdate="20170613T104614Z">
@@ -230,10 +247,34 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For now, using functions like day_before is out of scope for the graphical editor so you have to use the JSON editor.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114743Z" creationid="papago" creationdate="20170613T114743Z">
+        <seg>今のところ、day_beforeのような関数を使うのは、グラフィカルエディタの対象外ですので、JSONエディタを使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For now, using functions like hour_before is out of scope for the graphical editor so you have to use the JSON editor.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114806Z" creationid="papago" creationdate="20170613T114806Z">
+        <seg>[fuzzy]今のところ、day_beforeのような関数を使うのは、グラフィカルエディタの対象外ですので、JSONエディタを使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Here is an example of nginx.net.connections with the day_before value shown as a lighter, thinner line.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114722Z" creationid="papago" creationdate="20170613T114722Z">
         <seg>次に、nginx.net.connectionsのday_before値を軽く細い線として表示した例を示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here is the JSON for this graph:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T114750Z" creationid="papago" creationdate="20170613T114750Z">
+        <seg>このグラフのJSONは次のとおりです。</seg>
       </tuv>
     </tu>
     <tu>
