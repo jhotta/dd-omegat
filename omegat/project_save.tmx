@@ -94,6 +94,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Even though the request may require multiple resources and machines to handle the request, all of these function calls and sub-requests would be encapsulated within a single trace.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113207Z" creationid="papago" creationdate="20170613T113207Z">
+        <seg>要求が複数のリソースとマシンで要求を処理する必要がある場合でも、これらの関数呼び出しとサブ要求はすべて単一のトレース内にカプセル化されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Example</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111322Z" creationid="papago" creationdate="20170613T111254Z">
@@ -106,6 +114,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111316Z" creationid="papago" creationdate="20170613T111316Z">
         <seg>最後に、トレーサをインポートしてコードを設定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, a trace can be used to track the entire time spent processing a complicated web request.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113135Z" creationid="papago" creationdate="20170613T113135Z">
+        <seg>たとえば、複雑なWeb要求を処理するために費やされる時間全体を追跡するためにトレースを使用できます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -130,6 +146,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112341Z" creationid="papago" creationdate="20170613T112341Z">
         <seg>その他の例については、[RubyDoc Gem documentation]（http://www.rubydoc.info/gems/ddtrace/#Advanced_usage）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In order to get the most from tracing, it's important to understand the terms used, the data they represent and how they work together.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112944Z" creationid="papago" creationdate="20170613T112944Z">
+        <seg>トレースを最大限に活用するには、使用される用語、それらが表すデータ、およびそれらがどのように連携するかを理解することが重要です。</seg>
       </tuv>
     </tu>
     <tu>
@@ -274,6 +298,30 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111907Z" creationid="papago" creationdate="20170613T111907Z">
         <seg>これらのフレームワークからデータを収集する方法については、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#web-frameworks）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Trace</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112949Z" creationid="papago" creationdate="20170613T112949Z">
+        <seg>トレース</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Used to track the time spent by an application processing a single operation.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T113127Z" creationid="papago" creationdate="20170613T113127Z">
+        <seg>単一オペレースオプションを処理するためにアプリケーションが費やした時間を追跡するために使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can find additional documentation on [the RubyDoc Gem page](http://www.rubydoc.info/gems/ddtrace/).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112851Z" creationid="papago" creationdate="20170613T112851Z">
+        <seg>[The RubyDoc Gem page]（http://www.rubydoc.info/gems/ddtrace/）に関する追加のドキュメントがあります。</seg>
       </tuv>
     </tu>
     <tu>
