@@ -1,1 +1,3 @@
 Integration	インテグレーション
+traceing	トレース
+trace	トレース
