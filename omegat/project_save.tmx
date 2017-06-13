@@ -14,6 +14,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Enable this integration to see in Datadog all your Billing metrics.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T102418Z" creationid="papago" creationdate="20170613T102418Z">
+        <seg>この統合を有効にすると、Datadogですべての課金指標が表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Installation</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T102434Z" creationid="papago" creationdate="20170613T102434Z">
+        <seg>インストール</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Overview</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T101723Z" creationid="papago" creationdate="20170613T101723Z">
