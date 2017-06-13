@@ -118,6 +118,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For more examples, see the [RubyDoc Gem documentation](http://www.rubydoc.info/gems/ddtrace/#Advanced_usage).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112341Z" creationid="papago" creationdate="20170613T112341Z">
+        <seg>その他の例については、[RubyDoc Gem documentation]（http://www.rubydoc.info/gems/ddtrace/#Advanced_usage）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>In order to see AWS Budget metrics, the requirement for this integration is the permission .</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103228Z" creationid="papago" creationdate="20170613T102923Z">
@@ -158,6 +166,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Next, install the ddtrace gem:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112255Z" creationid="papago" creationdate="20170613T112255Z">
+        <seg>次に、ddtrace gemをインストールします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Note: AWS Budget metrics can only be collected from the AWS master account.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103157Z" creationid="papago" creationdate="20170613T103157Z">
@@ -190,10 +206,26 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The ddtrace library includes support for the [Ruby on Rails](http://rubyonrails.org/) and [Sinatra](http://www.sinatrarb.com/) web frameworks.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112522Z" creationid="papago" creationdate="20170613T112522Z">
+        <seg>ddtracenoライブラリには、[Ruby on Rails]（http://rubyonrails.org/）と[Sinatra]（http://www.sinatrarb.com/）のWebフレームワークのサポートが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>To begin tracing applications written in Python, first [install and configure the Datadog Agent](/tracing#installing-the-agent).</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111217Z" creationid="papago" creationdate="20170613T111217Z">
         <seg>Pythonで書かれたアプリケーションのトレースを開始するには、最初に[Datadog Agentのインストールと設定]（/ tracing＃installing-the-agent）を実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To begin tracing applications written in Ruby, first [install and configure the Datadog Agent](/tracing#installing-the-agent).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170613T112244Z" creationid="papago" creationdate="20170613T112244Z">
+        <seg>Rubyで書かれたアプリケーションのトレースを開始するには、最初に[Datadog Agentのインストールと設定]（/ tracing＃installing-the-agent）を実行します。</seg>
       </tuv>
     </tu>
     <tu>
