@@ -1,0 +1,4189 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-Varnish Integration</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class="nav-header hidden-xs">Documentation Search</li>
+            <li class="hidden-xs">
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#overview' onclick="$('#').collapse('show')">
+Overview</a></li><li><a style='' href='#installation' onclick="$('#').collapse('show')">
+Installation</a></li><li><a style='' href='#configuration' onclick="$('#').collapse('show')">
+Configuration</a></li><li><a style='' href='#validation' onclick="$('#').collapse('show')">
+Validation</a></li><li><a style='' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#varnish-3x' onclick="$('#').collapse('show')">
+Varnish 3.x</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#varnish-4x' onclick="$('#').collapse('show')">
+Varnish 4.x</a></li>
+
+            <li class="nav-header auto">Other Integrations <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/integrations/">Back to Overview</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/airbrake/">Airbrake *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ansible/">Ansible *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awsbilling/">AWS Billing *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsdynamo/">AWS DynamoDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsec2/">AWS EC2</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselasticache/">AWS ElastiCache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awslambda/">AWS Lambda</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsrds/">AWS RDS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsredshift/">AWS Redshift</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsroute53/">AWS Route 53</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awss3/">AWS S3 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssns/">AWS SNS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssqs/">AWS SQS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/bitbucket/">Bitbucket</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/bugsnag/">Bugsnag *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/cacti/">Cacti *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/capistrano/">Capistrano *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/cassandra/">Cassandra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/catchpoint/">Catchpoint *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/chatwork/">Chatwork *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/chef/">Chef</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dnscheck/">DNS Service Check *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/flowdock/">Flowdock *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/git/">Git *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_app_engine/">Google App Engine</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_big_query/">Google BigQuery *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_functions/">Google Cloud Functions *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloudsql/">Google CloudSQL *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_compute_engine/">Google Compute Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_container_engine/">Google Container Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_datastore/">Google Datastore *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_firebase/">Google Firebase *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_ml/">Google Machine Learning *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_pubsub/">Google Pub/Sub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_spanner/">Google Spanner *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_stackdriver_logging/">Google Stackdriver Logging *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_storage/">Google Storage *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_vpn/">Google VPN *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hdfs/">Hadoop HDFS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hipchat/">HipChat</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/honeybadger/">Honeybadger *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/immunio/">Immunio *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/java/">Java/JMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/jira/">Jira *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kong/">Kong *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/marathon/">Marathon</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/memcached/">Memcached</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_app_services/">Microsoft Azure App Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_batch/">Microsoft Azure Batch Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_event_hub/">Microsoft Azure Event Hub Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_iot_hub/">Microsoft Azure IOT Hub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_logic_app/">Microsoft Azure Logic App *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_redis_cache/">Microsoft Azure Redis Cache *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_database/">Microsoft Azure SQL Database *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm/">Microsoft Azure VM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mongodb/">MongoDB</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/moxtra/">Moxtra *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mysql/">MySQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nagios/">Nagios *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/opsgenie/">OpsGenie</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/opsmatic/">Opsmatic *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/papertrail/">PaperTrail *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/phpfpm/">PHP-FPM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pivotal/">Pivotal Tracker *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/powerdns/">PowerDNS Recursor *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/process/">Process Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/puppet/">Puppet</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/python/">Python</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/rabbitmq/">RabbitMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/redis/">Redis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rollbar/">Rollbar *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ruby/">Ruby</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/snmp/">SNMP</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/solr/">Solr</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/spark/">Spark *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/splunk/">Splunk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/statuspage/">StatusPageIO *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/sumologic/">Sumo Logic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/system/">System Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/teamcity/">TeamCity</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tokumx/">TokuMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tomcat/">Tomcat</a></li>
+                
+              
+                
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> Varnish</a>
+                  </li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/vmware/">VMware</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/webhooks/">Webhooks</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/wmi/">WMI</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/zendesk/">Zendesk *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/zookeeper/">Zookeeper</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-Varnish Integration </h1>
+          
+          <div id="pagecontent">
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h1>
+
+<p>Connect Varnish to Datadog in order to:</p>
+
+<ul>
+  <li>Visualize your cache performance in real-time.</li>
+  <li>Correlate the performance of Varnish with the rest of your applications.</li>
+</ul>
+
+<p><img src="/static/images/varnish.png" alt="Varnish default dashboard"></p>
+
+<p>Learn more about how to monitor Varnish performance metrics thanks to <a href="https://www.datadoghq.com/blog/top-varnish-performance-metrics/">our series of posts</a>. We detail the key performance metrics, how to collect them, and how to use Datadog to monitor Varnish.</p>
+
+<h1 id="installation" class="linked-header">
+<a class="header-link" href="#installation"><i class="fa fa-link"></i></a>Installation</h1>
+
+<p>If you’re running Varnish 4.1+, you must add the dd-agent user to the varnish group:
+<code>$ sudo usermod -G varnish -a dd-agent</code></p>
+
+<h1 id="configuration" class="linked-header">
+<a class="header-link" href="#configuration"><i class="fa fa-link"></i></a>Configuration</h1>
+
+<p>For more details about configuring this integration refer to the following file(s) on GitHub:</p>
+<ul>
+<li><a href="https://github.com/Datadog/integrations-core/blob/master/varnish/conf.yaml.example">Varnish YAML example</a></li>
+<li><a href="https://github.com/Datadog/integrations-core/blob/master/varnish/check.py">Varnish checks.d</a></li>
+</ul>
+
+<h1 id="validation" class="linked-header">
+<a class="header-link" href="#validation"><i class="fa fa-link"></i></a>Validation</h1>
+
+<p>To ensure the integration is installed correctly, run the agent <a href='/guides/basic_agent_usage/ubuntu/'>info command</a>.</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent info
+</code></pre>
+
+<p>You should see something similar to the following if everything is working correctly:</p>
+
+<pre><code>Checks
+======
+
+  [...]
+
+  varnish
+  ------
+      - instance #0 [OK]
+      - Collected 20 metrics &amp; 0 events
+</code></pre>
+
+<h1 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h1>
+
+<p>The following metrics are collected by default with the Varnish integration.</p>
+
+<table class="table">
+<tr>
+<td>
+<strong>varnish.accept_fail</strong><br>(gauge)</td>
+<td>Accept failures.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_busy</strong><br>(gauge)</td>
+<td>Maximum number of connections to a backend was reached.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_conn</strong><br>(gauge)</td>
+<td>Successful connections to a backen.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_fail</strong><br>(gauge)</td>
+<td>Backend connection failures.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_recycle</strong><br>(gauge)</td>
+<td>Backend connections with keep-alive that are returned to the pool of connections.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_req</strong><br>(gauge)</td>
+<td>Backend requests.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_retry</strong><br>(gauge)</td>
+<td>Backend connection retries.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_reuse</strong><br>(gauge)</td>
+<td>Recycled connections that has were reused.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_toolate</strong><br>(gauge)</td>
+<td>Backend connections closed because they were idle too long.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.backend_unhealthy</strong><br>(gauge)</td>
+<td>Backend connections not tried because the backend was unhealthy.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans</strong><br>(gauge)</td>
+<td>Bans in system, including bans superseded by newer bans and bans already checked by the ban-lurker.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_added</strong><br>(gauge)</td>
+<td>Bans added to ban list.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_completed</strong><br>(gauge)</td>
+<td>Bans which are no longer active, either because they got checked by the ban-lurker or superseded by newer identical bans.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_deleted</strong><br>(gauge)</td>
+<td>Bans deleted from ban list.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_dups</strong><br>(gauge)</td>
+<td>Bans replaced by later identical bans.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_lurker_contention</strong><br>(gauge)</td>
+<td>Times the ban-lurker waited for lookups.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_lurker_obj_killed</strong><br>(gauge)</td>
+<td>Objects killed by ban-lurker.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_lurker_tested</strong><br>(gauge)</td>
+<td>Bans and objects tested against each other by the ban-lurker.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_lurker_tests_tested</strong><br>(gauge)</td>
+<td>Tests and objects tested against each other by the ban-lurker. 'ban req.url == foo &amp;&amp; req.http.host == bar' counts as one in 'bans_tested' and as two in 'bans_tests_tested'.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_obj</strong><br>(gauge)</td>
+<td>Bans which use obj.* variables. These bans can possibly be washed by the ban-lurker.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_obj_killed</strong><br>(gauge)</td>
+<td>Objects killed by bans during object lookup.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_persisted_bytes</strong><br>(gauge)</td>
+<td>Bytes used by the persisted ban lists.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_persisted_fragmentation</strong><br>(gauge)</td>
+<td>Extra bytes accumulated through dropped and completed bans in the persistent ban lists.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_req</strong><br>(gauge)</td>
+<td>Bans which use req.* variables. These bans can not be washed by the ban-lurker.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_tested</strong><br>(gauge)</td>
+<td>Bans and objects tested against each other during hash lookup.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.bans_tests_tested</strong><br>(gauge)</td>
+<td>Tests and objects tested against each other during lookup. 'ban req.url == foo &amp;&amp; req.http.host == bar' counts as one in 'bans_tested' and as two in 'bans_tests_tested'.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.busy_sleep</strong><br>(gauge)</td>
+<td>Requests sent to sleep without a worker thread because they found a busy object.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.busy_wakeup</strong><br>(gauge)</td>
+<td>Requests taken off the busy object sleep list and and rescheduled.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.cache_hit</strong><br>(gauge)</td>
+<td>Requests served from the cache.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.cache_hitpass</strong><br>(gauge)</td>
+<td>Requests passed to a backend where the decision to pass them found in the cache.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.cache_miss</strong><br>(gauge)</td>
+<td>Requests fetched from a backend server.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_conn</strong><br>(gauge)</td>
+<td>Client connections accepted.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_drop</strong><br>(gauge)</td>
+<td>Client connection dropped, no session.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_drop_late</strong><br>(gauge)</td>
+<td>Client connection dropped late.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_req</strong><br>(gauge)</td>
+<td>Parseable client requests seen.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_req_400</strong><br>(gauge)</td>
+<td>Requests that were malformed in some drastic way.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_req_411</strong><br>(gauge)</td>
+<td>Requests that were missing a Content-Length: header.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_req_413</strong><br>(gauge)</td>
+<td>Requests that were too big.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.client_req_417</strong><br>(gauge)</td>
+<td>Requests with a bad Expect: header.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.dir_dns_cache_full</strong><br>(gauge)</td>
+<td>DNS director full DNS cache.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.dir_dns_failed</strong><br>(gauge)</td>
+<td>DNS director failed lookup.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.dir_dns_hit</strong><br>(gauge)</td>
+<td>DNS director cached lookup hit.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.dir_dns_lookups</strong><br>(gauge)</td>
+<td>DNS director lookups.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.esi_errors</strong><br>(gauge)</td>
+<td>Edge Side Includes (ESI) parse errors.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.esi_warnings</strong><br>(gauge)</td>
+<td>Edge Side Includes (ESI) parse warnings.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.exp_mailed</strong><br>(gauge)</td>
+<td>Objects mailed to expiry thread for handling.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.exp_received</strong><br>(gauge)</td>
+<td>Objects received by expiry thread for handling.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_1xx</strong><br>(gauge)</td>
+<td>Back end response with no body because of 1XX response (Informational).<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_204</strong><br>(gauge)</td>
+<td>Back end response with no body because of 204 response (No Content).<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_304</strong><br>(gauge)</td>
+<td>Back end response with no body because of 304 response (Not Modified).<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_bad</strong><br>(gauge)</td>
+<td>Back end response's body length could not be determined and/or had bad headers.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_chunked</strong><br>(gauge)</td>
+<td>Back end response bodies that were chunked.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_close</strong><br>(gauge)</td>
+<td>Fetch wanted close.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_eof</strong><br>(gauge)</td>
+<td>Back end response bodies with EOF.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_failed</strong><br>(gauge)</td>
+<td>Back end response fetches that failed.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_head</strong><br>(gauge)</td>
+<td>Back end HEAD requests.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_length</strong><br>(gauge)</td>
+<td>Back end response bodies with Content-Length.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_no_thread</strong><br>(gauge)</td>
+<td>Back end fetches that failed because no thread was available.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_oldhttp</strong><br>(gauge)</td>
+<td>Number of responses served by backends with http &lt; 1.1<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.fetch_zero</strong><br>(gauge)</td>
+<td>Number of responses that have zero length.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.hcb_insert</strong><br>(gauge)</td>
+<td>HCB inserts.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.hcb_lock</strong><br>(gauge)</td>
+<td>HCB lookups with lock.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.hcb_nolock</strong><br>(gauge)</td>
+<td>HCB lookups without lock.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.backend.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.backend.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.backend.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.backend.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.ban.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.ban.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.ban.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.ban.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.busyobj.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.busyobj.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.busyobj.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.cli.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.cli.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.cli.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.cli.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.exp.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.exp.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.exp.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.exp.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcb.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcb.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcb.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcb.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcl.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcl.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcl.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hcl.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.herder.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.herder.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.herder.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.herder.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hsl.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hsl.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hsl.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.hsl.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.lru.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.lru.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.lru.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.lru.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.mempool.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.mempool.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.mempool.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.nbusyobj.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.nbusyobj.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.nbusyobj.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.objhdr.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.objhdr.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.objhdr.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.objhdr.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.pipestat.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.pipestat.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.pipestat.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sess.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sess.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sess.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sessmem.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sessmem.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sessmem.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sessmem.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sma.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sma.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sma.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sma.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smf.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smf.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smf.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smf.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smp.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smp.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smp.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.smp.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sms.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sms.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sms.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.sms.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.stat.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.stat.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.stat.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.stat.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbe.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbe.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbe.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbe.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbp.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbp.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbp.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vbp.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcapace.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcapace.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcapace.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcl.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcl.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcl.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vcl.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vxid.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vxid.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.vxid.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wq.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wq.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wq.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wq.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wstat.colls</strong><br>(gauge)</td>
+<td>Collisions.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wstat.creat</strong><br>(gauge)</td>
+<td>Created locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wstat.destroy</strong><br>(gauge)</td>
+<td>Destroyed locks.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.LCK.wstat.locks</strong><br>(gauge)</td>
+<td>Lock operations.<br><em>shown as lock/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.losthdr</strong><br>(gauge)</td>
+<td>HTTP header overflows.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.busyobj.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req0.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.req1.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess0.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.sess1.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.allocs</strong><br>(gauge)</td>
+<td>Allocations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.frees</strong><br>(gauge)</td>
+<td>Frees.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.live</strong><br>(gauge)</td>
+<td>In use.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.pool</strong><br>(gauge)</td>
+<td>In pool.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.randry</strong><br>(gauge)</td>
+<td>Pool ran dry.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.recycle</strong><br>(gauge)</td>
+<td>Recycled from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.surplus</strong><br>(gauge)</td>
+<td>Too many for pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.sz_needed</strong><br>(gauge)</td>
+<td>Size allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.sz_wanted</strong><br>(gauge)</td>
+<td>Size requested.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.timeout</strong><br>(gauge)</td>
+<td>Timed out from pool.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MEMPOOL.vbc.toosmall</strong><br>(gauge)</td>
+<td>Too small to recycle.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_died</strong><br>(gauge)</td>
+<td>Child processes that died due to signals.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_dump</strong><br>(gauge)</td>
+<td>Child processes that produced core dumps.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_exit</strong><br>(gauge)</td>
+<td>Child processes the were cleanly stopped.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_panic</strong><br>(gauge)</td>
+<td>Child processes that panicked.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_start</strong><br>(gauge)</td>
+<td>Child processes that started.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.child_stop</strong><br>(gauge)</td>
+<td>Child processes that exited with an unexpected return code.<br><em>shown as process/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.MGT.uptime</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_backend</strong><br>(gauge)</td>
+<td>Number of backends.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban</strong><br>(gauge)</td>
+<td>Active bans.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban_add</strong><br>(gauge)</td>
+<td>New bans added.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban_dups</strong><br>(gauge)</td>
+<td>Duplicate bans removed.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban_obj_test</strong><br>(gauge)</td>
+<td>Objects tested.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban_re_test</strong><br>(gauge)</td>
+<td>Regexps tested against.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_ban_retire</strong><br>(gauge)</td>
+<td>Old bans deleted.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_expired</strong><br>(gauge)</td>
+<td>Objects that expired from cache because of TTL.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_gunzip</strong><br>(gauge)</td>
+<td>Gunzip operations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_gzip</strong><br>(gauge)</td>
+<td>Gzip operations.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_lru_moved</strong><br>(gauge)</td>
+<td>Move operations done on the LRU list.<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_lru_nuked</strong><br>(gauge)</td>
+<td>Objects forcefully evicted from storage to make room for new objects.<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_obj_purged</strong><br>(gauge)</td>
+<td>Purged objects.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_object</strong><br>(gauge)</td>
+<td>object structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_objectcore</strong><br>(gauge)</td>
+<td>objectcore structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_objecthead</strong><br>(gauge)</td>
+<td>objecthead structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_objoverflow</strong><br>(gauge)</td>
+<td>Objects overflowing workspace.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_objsendfile</strong><br>(gauge)</td>
+<td>Objects sent with sendfile.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_objwrite</strong><br>(gauge)</td>
+<td>Objects sent with write.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_purges</strong><br>(gauge)</td>
+<td>Purges executed.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_sess</strong><br>(gauge)</td>
+<td>sess structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_sess_mem</strong><br>(gauge)</td>
+<td>sess_mem structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_vampireobject</strong><br>(gauge)</td>
+<td>Unresurrected objects.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_vbc</strong><br>(gauge)</td>
+<td>vbc structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_vcl</strong><br>(gauge)</td>
+<td>Total VCLs loaded.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_vcl_avail</strong><br>(gauge)</td>
+<td>Available VCLs.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_vcl_discard</strong><br>(gauge)</td>
+<td>Discarded VCLs.<br><em>shown as object/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_waitinglist</strong><br>(gauge)</td>
+<td>waitinglist structs made.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk</strong><br>(gauge)</td>
+<td>Worker threads.<br><em>shown as thread</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_create</strong><br>(gauge)</td>
+<td>Worker threads created.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_drop</strong><br>(gauge)</td>
+<td>Dropped work requests.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_failed</strong><br>(gauge)</td>
+<td>Worker threads not created.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_lqueue</strong><br>(gauge)</td>
+<td>Work request queue length.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_max</strong><br>(gauge)</td>
+<td>Worker threads limited.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.n_wrk_queued</strong><br>(gauge)</td>
+<td>Queued work requests.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.pools</strong><br>(gauge)</td>
+<td>Thread pools.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_bodybytes</strong><br>(gauge)</td>
+<td>Total body size.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_fetch</strong><br>(gauge)</td>
+<td>Backend fetches.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_hdrbytes</strong><br>(gauge)</td>
+<td>Total header size.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_pass</strong><br>(gauge)</td>
+<td>Passed requests.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_pipe</strong><br>(gauge)</td>
+<td>Pipe sessions seen.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_pipe_hdrbytes</strong><br>(gauge)</td>
+<td>Total request bytes received for piped sessions.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_pipe_in</strong><br>(gauge)</td>
+<td>Total number of bytes forwarded from clients in pipe sessions.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_pipe_out</strong><br>(gauge)</td>
+<td>Total number of bytes forwarded to clients in pipe sessions.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_req</strong><br>(gauge)</td>
+<td>Requests.<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_req_bodybytes</strong><br>(gauge)</td>
+<td>Total request body bytes received.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_req_hdrbytes</strong><br>(gauge)</td>
+<td>Total request header bytes received.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_resp_bodybytes</strong><br>(gauge)</td>
+<td>Total response body bytes transmitted.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_resp_hdrbytes</strong><br>(gauge)</td>
+<td>Total response header bytes transmitted.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_sess</strong><br>(gauge)</td>
+<td>Client connections.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.s_synth</strong><br>(gauge)</td>
+<td>Synthetic responses made.<br><em>shown as response/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_closed</strong><br>(gauge)</td>
+<td>Client connections closed.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_conn</strong><br>(gauge)</td>
+<td>Client connections accepted.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_drop</strong><br>(gauge)</td>
+<td>Client connections dropped due to lack of worker thread.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_dropped</strong><br>(gauge)</td>
+<td>Client connections dropped due to a full queue.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_fail</strong><br>(gauge)</td>
+<td>Failures to accept a TCP connection. Either the client changed its mind, or the kernel ran out of some resource like file descriptors.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_herd</strong><br>(gauge)</td>
+<td>
+<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_linger</strong><br>(gauge)</td>
+<td>
+<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_pipe_overflow</strong><br>(gauge)</td>
+<td>
+<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_pipeline</strong><br>(gauge)</td>
+<td>
+<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_queued</strong><br>(gauge)</td>
+<td>Client connections queued to wait for a thread.<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sess_readahead</strong><br>(gauge)</td>
+<td>
+<br><em>shown as connection/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.shm_cont</strong><br>(gauge)</td>
+<td>SHM MTX contention.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.shm_cycles</strong><br>(gauge)</td>
+<td>SHM cycles through buffer.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.shm_flushes</strong><br>(gauge)</td>
+<td>SHM flushes due to overflow.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.shm_records</strong><br>(gauge)</td>
+<td>SHM records.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.shm_writes</strong><br>(gauge)</td>
+<td>SHM writes.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.c_bytes</strong><br>(gauge)</td>
+<td>Total space allocated by this storage.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.c_fail</strong><br>(gauge)</td>
+<td>Times the storage has failed to provide a storage segment.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.c_freed</strong><br>(gauge)</td>
+<td>Total space returned to this storage.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.c_req</strong><br>(gauge)</td>
+<td>Times the storage has been asked to provide a storage segment.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.g_alloc</strong><br>(gauge)</td>
+<td>Storage allocations outstanding.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.g_bytes</strong><br>(gauge)</td>
+<td>Space allocated from the storage.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.s0.g_space</strong><br>(gauge)</td>
+<td>Space left in the storage.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.c_bytes</strong><br>(gauge)</td>
+<td>Total space allocated by this storage.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.c_fail</strong><br>(gauge)</td>
+<td>Times the storage has failed to provide a storage segment.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.c_freed</strong><br>(gauge)</td>
+<td>Total space returned to this storage.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.c_req</strong><br>(gauge)</td>
+<td>Times the storage has been asked to provide a storage segment.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.g_alloc</strong><br>(gauge)</td>
+<td>Storage allocations outstanding.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.g_bytes</strong><br>(gauge)</td>
+<td>Space allocated from the storage.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.SMA.Transient.g_space</strong><br>(gauge)</td>
+<td>Space left in the storage.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sms_balloc</strong><br>(gauge)</td>
+<td>SMS space allocated.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sms_bfree</strong><br>(gauge)</td>
+<td>SMS space freed.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sms_nbytes</strong><br>(gauge)</td>
+<td>SMS outstanding space.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sms_nobj</strong><br>(gauge)</td>
+<td>SMS outstanding allocations.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.sms_nreq</strong><br>(gauge)</td>
+<td>SMS allocator requests.<br><em>shown as event/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.thread_queue_len</strong><br>(gauge)</td>
+<td>Length of session queue waiting for threads.<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.threads</strong><br>(gauge)</td>
+<td>Number of threads.<br><em>shown as thread</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.threads_created</strong><br>(gauge)</td>
+<td>Threads created.<br><em>shown as thread/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.threads_destroyed</strong><br>(gauge)</td>
+<td>Threads destroyed.<br><em>shown as thread/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.threads_failed</strong><br>(gauge)</td>
+<td>Threads that failed to get created.<br><em>shown as thread/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.threads_limited</strong><br>(gauge)</td>
+<td>Threads that were needed but couldn't be created because of a thread pool limit.<br><em>shown as thread/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.uptime</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vmods</strong><br>(gauge)</td>
+<td>Loaded VMODs.<br><em>shown as object</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vsm_cooling</strong><br>(gauge)</td>
+<td>Space which will soon (max 1 minute) be freed in the shared memory used to communicate with tools like varnishstat, varnishlog etc.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vsm_free</strong><br>(gauge)</td>
+<td>Free space in the shared memory used to communicate with tools like varnishstat, varnishlog etc.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vsm_overflow</strong><br>(gauge)</td>
+<td>Data which does not fit in the shared memory used to communicate with tools like varnishstat, varnishlog etc.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vsm_overflowed</strong><br>(gauge)</td>
+<td>Total data which did not fit in the shared memory used to communicate with tools like varnishstat, varnishlog etc.<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>varnish.vsm_used</strong><br>(gauge)</td>
+<td>Used space in the shared memory used to communicate with tools like varnishstat, varnishlog etc.<br><em>shown as byte</em>
+</td>
+</tr>
+</table>
+
+<p>While the above list contains all possible metrics from our Varnish integration, your environment
+may show only a subset of these metrics depending on which version of Varnish you have installed.</p>
+
+<p>A breakdown by Varnish version is available below.</p>
+
+<h3 id="varnish-3x" class="linked-header">
+<a class="header-link" href="#varnish-3x"><i class="fa fa-link"></i></a>Varnish 3.x</h3>
+
+<pre><code>varnish.accept_fail
+varnish.backend_busy
+varnish.backend_conn
+varnish.backend_fail
+varnish.backend_recycle
+varnish.backend_req
+varnish.backend_retry
+varnish.backend_reuse
+varnish.backend_toolate
+varnish.backend_unhealthy
+varnish.backend_unused
+varnish.cache_hit
+varnish.cache_hitpass
+varnish.cache_miss
+varnish.client_conn
+varnish.client_drop
+varnish.client_drop_late
+varnish.client_req
+varnish.dir_dns_cache_full
+varnish.dir_dns_failed
+varnish.dir_dns_hit
+varnish.dir_dns_lookups
+varnish.esi_errors
+varnish.esi_parse
+varnish.esi_warnings
+varnish.fetch_1xx
+varnish.fetch_204
+varnish.fetch_304
+varnish.fetch_bad
+varnish.fetch_chunked
+varnish.fetch_close
+varnish.fetch_eof
+varnish.fetch_failed
+varnish.fetch_head
+varnish.fetch_length
+varnish.fetch_oldhttp
+varnish.fetch_zero
+varnish.hcb_insert
+varnish.hcb_lock
+varnish.hcb_nolock
+varnish.LCK.backend.colls
+varnish.LCK.backend.creat
+varnish.LCK.backend.destroy
+varnish.LCK.backend.locks
+varnish.LCK.ban.colls
+varnish.LCK.ban.creat
+varnish.LCK.ban.destroy
+varnish.LCK.ban.locks
+varnish.LCK.cli.colls
+varnish.LCK.cli.creat
+varnish.LCK.cli.destroy
+varnish.LCK.cli.locks
+varnish.LCK.exp.colls
+varnish.LCK.exp.creat
+varnish.LCK.exp.destroy
+varnish.LCK.exp.locks
+varnish.LCK.hcb.colls
+varnish.LCK.hcb.creat
+varnish.LCK.hcb.destroy
+varnish.LCK.hcb.locks
+varnish.LCK.hcl.colls
+varnish.LCK.hcl.creat
+varnish.LCK.hcl.destroy
+varnish.LCK.hcl.locks
+varnish.LCK.herder.colls
+varnish.LCK.herder.creat
+varnish.LCK.herder.destroy
+varnish.LCK.herder.locks
+varnish.LCK.hsl.colls
+varnish.LCK.hsl.creat
+varnish.LCK.hsl.destroy
+varnish.LCK.hsl.locks
+varnish.LCK.lru.colls
+varnish.LCK.lru.creat
+varnish.LCK.lru.destroy
+varnish.LCK.lru.locks
+varnish.LCK.objhdr.colls
+varnish.LCK.objhdr.creat
+varnish.LCK.objhdr.destroy
+varnish.LCK.objhdr.locks
+varnish.LCK.sessmem.colls
+varnish.LCK.sessmem.creat
+varnish.LCK.sessmem.destroy
+varnish.LCK.sessmem.locks
+varnish.LCK.sma.colls
+varnish.LCK.sma.creat
+varnish.LCK.sma.destroy
+varnish.LCK.sma.locks
+varnish.LCK.smf.colls
+varnish.LCK.smf.creat
+varnish.LCK.smf.destroy
+varnish.LCK.smf.locks
+varnish.LCK.smp.colls
+varnish.LCK.smp.creat
+varnish.LCK.smp.destroy
+varnish.LCK.smp.locks
+varnish.LCK.sms.colls
+varnish.LCK.sms.creat
+varnish.LCK.sms.destroy
+varnish.LCK.sms.locks
+varnish.LCK.stat.colls
+varnish.LCK.stat.creat
+varnish.LCK.stat.destroy
+varnish.LCK.stat.locks
+varnish.LCK.vbe.colls
+varnish.LCK.vbe.creat
+varnish.LCK.vbe.destroy
+varnish.LCK.vbe.locks
+varnish.LCK.vbp.colls
+varnish.LCK.vbp.creat
+varnish.LCK.vbp.destroy
+varnish.LCK.vbp.locks
+varnish.LCK.vcl.colls
+varnish.LCK.vcl.creat
+varnish.LCK.vcl.destroy
+varnish.LCK.vcl.locks
+varnish.LCK.wq.colls
+varnish.LCK.wq.creat
+varnish.LCK.wq.destroy
+varnish.LCK.wq.locks
+varnish.LCK.wstat.colls
+varnish.LCK.wstat.creat
+varnish.LCK.wstat.destroy
+varnish.LCK.wstat.locks
+varnish.losthdr
+varnish.n_backend
+varnish.n_deathrow
+varnish.n_ban
+varnish.n_ban_add
+varnish.n_ban_dups
+varnish.n_ban_obj_test
+varnish.n_ban_re_test
+varnish.n_ban_retire
+varnish.n_expired
+varnish.n_gunzip
+varnish.n_gzip
+varnish.n_lru_moved
+varnish.n_lru_nuked
+varnish.n_lru_saved
+varnish.n_object
+varnish.n_objectcore
+varnish.n_objecthead
+varnish.n_objoverflow
+varnish.n_objsendfile
+varnish.n_objwrite
+varnish.n_purge
+varnish.n_purge_add
+varnish.n_purge_dups
+varnish.n_purge_obj_test
+varnish.n_purge_re_test
+varnish.n_purge_retire
+varnish.n_sess
+varnish.n_sess_mem
+varnish.n_smf
+varnish.n_smf_frag
+varnish.n_smf_large
+varnish.n_vampireobject
+varnish.n_vbe_conn
+varnish.n_vbc
+varnish.n_vcl
+varnish.n_vcl_avail
+varnish.n_vcl_discard
+varnish.n_waitinglist
+varnish.n_wrk
+varnish.n_wrk_create
+varnish.n_wrk_drop
+varnish.n_wrk_failed
+varnish.n_wrk_lqueue
+varnish.n_wrk_max
+varnish.n_wrk_overflow
+varnish.n_wrk_queue
+varnish.n_wrk_queued
+varnish.s_bodybytes
+varnish.s_fetch
+varnish.s_hdrbytes
+varnish.s_pass
+varnish.s_pipe
+varnish.s_req
+varnish.s_sess
+varnish.sess_closed
+varnish.sess_herd
+varnish.sess_linger
+varnish.sess_pipeline
+varnish.sess_readahead
+varnish.shm_cont
+varnish.shm_cycles
+varnish.shm_flushes
+varnish.shm_records
+varnish.shm_writes
+varnish.sm_balloc
+varnish.sm_bfree
+varnish.sm_nobj
+varnish.sm_nreq
+varnish.sma_balloc
+varnish.sma_bfree
+varnish.sma_nbytes
+varnish.sma_nobj
+varnish.sma_nreq
+varnish.SMA.s0.c_bytes
+varnish.SMA.s0.c_fail
+varnish.SMA.s0.c_freed
+varnish.SMA.s0.c_req
+varnish.SMA.s0.g_alloc
+varnish.SMA.s0.g_bytes
+varnish.SMA.s0.g_space
+varnish.SMA.Transient.c_bytes
+varnish.SMA.Transient.c_fail
+varnish.SMA.Transient.c_freed
+varnish.SMA.Transient.c_req
+varnish.SMA.Transient.g_alloc
+varnish.SMA.Transient.g_bytes
+varnish.SMA.Transient.g_space
+varnish.sms_balloc
+varnish.sms_bfree
+varnish.sms_nbytes
+varnish.sms_nobj
+varnish.sms_nreq
+varnish.uptime
+</code></pre>
+
+<h3 id="varnish-4x" class="linked-header">
+<a class="header-link" href="#varnish-4x"><i class="fa fa-link"></i></a>Varnish 4.x</h3>
+
+<pre><code>varnish.backend_busy
+varnish.backend_conn
+varnish.backend_fail
+varnish.backend_recycle
+varnish.backend_req
+varnish.backend_retry
+varnish.backend_reuse
+varnish.backend_toolate
+varnish.backend_unhealthy
+varnish.bans
+varnish.bans_added
+varnish.bans_completed
+varnish.bans_deleted
+varnish.bans_dups
+varnish.bans_lurker_contention
+varnish.bans_lurker_obj_killed
+varnish.bans_lurker_tested
+varnish.bans_lurker_tests_tested
+varnish.bans_obj
+varnish.bans_obj_killed
+varnish.bans_persisted_bytes
+varnish.bans_persisted_fragmentation
+varnish.bans_req
+varnish.bans_tested
+varnish.bans_tests_tested
+varnish.busy_sleep
+varnish.busy_wakeup
+varnish.cache_hit
+varnish.cache_hitpass
+varnish.cache_miss
+varnish.client_req
+varnish.client_req_400
+varnish.client_req_411
+varnish.client_req_413
+varnish.client_req_417
+varnish.esi_errors
+varnish.esi_warnings
+varnish.exp_mailed
+varnish.exp_received
+varnish.fetch_1xx
+varnish.fetch_204
+varnish.fetch_304
+varnish.fetch_bad
+varnish.fetch_chunked
+varnish.fetch_close
+varnish.fetch_eof
+varnish.fetch_failed
+varnish.fetch_head
+varnish.fetch_length
+varnish.fetch_no_thread
+varnish.fetch_oldhttp
+varnish.fetch_zero
+varnish.hcb_insert
+varnish.hcb_lock
+varnish.hcb_nolock
+varnish.LCK.backend.creat
+varnish.LCK.backend.destroy
+varnish.LCK.backend.locks
+varnish.LCK.ban.creat
+varnish.LCK.ban.destroy
+varnish.LCK.ban.locks
+varnish.LCK.busyobj.creat
+varnish.LCK.busyobj.destroy
+varnish.LCK.busyobj.locks
+varnish.LCK.cli.creat
+varnish.LCK.cli.destroy
+varnish.LCK.cli.locks
+varnish.LCK.exp.creat
+varnish.LCK.exp.destroy
+varnish.LCK.exp.locks
+varnish.LCK.hcb.creat
+varnish.LCK.hcb.destroy
+varnish.LCK.hcb.locks
+varnish.LCK.hcl.creat
+varnish.LCK.hcl.destroy
+varnish.LCK.hcl.locks
+varnish.LCK.herder.creat
+varnish.LCK.herder.destroy
+varnish.LCK.herder.locks
+varnish.LCK.hsl.creat
+varnish.LCK.hsl.destroy
+varnish.LCK.hsl.locks
+varnish.LCK.lru.creat
+varnish.LCK.lru.destroy
+varnish.LCK.lru.locks
+varnish.LCK.mempool.creat
+varnish.LCK.mempool.destroy
+varnish.LCK.mempool.locks
+varnish.LCK.nbusyobj.creat
+varnish.LCK.nbusyobj.destroy
+varnish.LCK.nbusyobj.locks
+varnish.LCK.objhdr.creat
+varnish.LCK.objhdr.destroy
+varnish.LCK.objhdr.locks
+varnish.LCK.pipestat.creat
+varnish.LCK.pipestat.destroy
+varnish.LCK.pipestat.locks
+varnish.LCK.sess.creat
+varnish.LCK.sess.destroy
+varnish.LCK.sess.locks
+varnish.LCK.sessmem.creat
+varnish.LCK.sessmem.destroy
+varnish.LCK.sessmem.locks
+varnish.LCK.sma.creat
+varnish.LCK.sma.destroy
+varnish.LCK.sma.locks
+varnish.LCK.smf.creat
+varnish.LCK.smf.destroy
+varnish.LCK.smf.locks
+varnish.LCK.smp.creat
+varnish.LCK.smp.destroy
+varnish.LCK.smp.locks
+varnish.LCK.sms.creat
+varnish.LCK.sms.destroy
+varnish.LCK.sms.locks
+varnish.LCK.vbp.creat
+varnish.LCK.vbp.destroy
+varnish.LCK.vbp.locks
+varnish.LCK.vcapace.creat
+varnish.LCK.vcapace.destroy
+varnish.LCK.vcapace.locks
+varnish.LCK.vcl.creat
+varnish.LCK.vcl.destroy
+varnish.LCK.vcl.locks
+varnish.LCK.vxid.creat
+varnish.LCK.vxid.destroy
+varnish.LCK.vxid.locks
+varnish.LCK.wq.creat
+varnish.LCK.wq.destroy
+varnish.LCK.wq.locks
+varnish.LCK.wstat.creat
+varnish.LCK.wstat.destroy
+varnish.LCK.wstat.locks
+varnish.losthdr
+varnish.MEMPOOL.busyobj.allocs
+varnish.MEMPOOL.busyobj.frees
+varnish.MEMPOOL.busyobj.live
+varnish.MEMPOOL.busyobj.pool
+varnish.MEMPOOL.busyobj.randry
+varnish.MEMPOOL.busyobj.recycle
+varnish.MEMPOOL.busyobj.surplus
+varnish.MEMPOOL.busyobj.sz_needed
+varnish.MEMPOOL.busyobj.sz_wanted
+varnish.MEMPOOL.busyobj.timeout
+varnish.MEMPOOL.busyobj.toosmall
+varnish.MEMPOOL.req0.allocs
+varnish.MEMPOOL.req0.frees
+varnish.MEMPOOL.req0.live
+varnish.MEMPOOL.req0.pool
+varnish.MEMPOOL.req0.randry
+varnish.MEMPOOL.req0.recycle
+varnish.MEMPOOL.req0.surplus
+varnish.MEMPOOL.req0.sz_needed
+varnish.MEMPOOL.req0.sz_wanted
+varnish.MEMPOOL.req0.timeout
+varnish.MEMPOOL.req0.toosmall
+varnish.MEMPOOL.req1.allocs
+varnish.MEMPOOL.req1.frees
+varnish.MEMPOOL.req1.live
+varnish.MEMPOOL.req1.pool
+varnish.MEMPOOL.req1.randry
+varnish.MEMPOOL.req1.recycle
+varnish.MEMPOOL.req1.surplus
+varnish.MEMPOOL.req1.sz_needed
+varnish.MEMPOOL.req1.sz_wanted
+varnish.MEMPOOL.req1.timeout
+varnish.MEMPOOL.req1.toosmall
+varnish.MEMPOOL.sess0.allocs
+varnish.MEMPOOL.sess0.frees
+varnish.MEMPOOL.sess0.live
+varnish.MEMPOOL.sess0.pool
+varnish.MEMPOOL.sess0.randry
+varnish.MEMPOOL.sess0.recycle
+varnish.MEMPOOL.sess0.surplus
+varnish.MEMPOOL.sess0.sz_needed
+varnish.MEMPOOL.sess0.sz_wanted
+varnish.MEMPOOL.sess0.timeout
+varnish.MEMPOOL.sess0.toosmall
+varnish.MEMPOOL.sess1.allocs
+varnish.MEMPOOL.sess1.frees
+varnish.MEMPOOL.sess1.live
+varnish.MEMPOOL.sess1.pool
+varnish.MEMPOOL.sess1.randry
+varnish.MEMPOOL.sess1.recycle
+varnish.MEMPOOL.sess1.surplus
+varnish.MEMPOOL.sess1.sz_needed
+varnish.MEMPOOL.sess1.sz_wanted
+varnish.MEMPOOL.sess1.timeout
+varnish.MEMPOOL.sess1.toosmall
+varnish.MEMPOOL.vbc.allocs
+varnish.MEMPOOL.vbc.frees
+varnish.MEMPOOL.vbc.live
+varnish.MEMPOOL.vbc.pool
+varnish.MEMPOOL.vbc.randry
+varnish.MEMPOOL.vbc.recycle
+varnish.MEMPOOL.vbc.surplus
+varnish.MEMPOOL.vbc.sz_needed
+varnish.MEMPOOL.vbc.sz_wanted
+varnish.MEMPOOL.vbc.timeout
+varnish.MEMPOOL.vbc.toosmall
+varnish.MGT.child_died
+varnish.MGT.child_dump
+varnish.MGT.child_exit
+varnish.MGT.child_panic
+varnish.MGT.child_start
+varnish.MGT.child_stop
+varnish.MGT.uptime
+varnish.n_backend
+varnish.n_expired
+varnish.n_gunzip
+varnish.n_gzip
+varnish.n_lru_moved
+varnish.n_lru_nuked
+varnish.n_obj_purged
+varnish.n_object
+varnish.n_objectcore
+varnish.n_objecthead
+varnish.n_purges
+varnish.n_vampireobject
+varnish.n_vcl
+varnish.n_vcl_avail
+varnish.n_vcl_discard
+varnish.n_waitinglist
+varnish.pools
+varnish.s_fetch
+varnish.s_pass
+varnish.s_pipe
+varnish.s_pipe_hdrbytes
+varnish.s_pipe_in
+varnish.s_pipe_out
+varnish.s_req
+varnish.s_req_bodybytes
+varnish.s_req_hdrbytes
+varnish.s_resp_bodybytes
+varnish.s_resp_hdrbytes
+varnish.s_sess
+varnish.s_synth
+varnish.sess_closed
+varnish.sess_conn
+varnish.sess_drop
+varnish.sess_dropped
+varnish.sess_fail
+varnish.sess_herd
+varnish.sess_pipe_overflow
+varnish.sess_pipeline
+varnish.sess_queued
+varnish.sess_readahead
+varnish.shm_cont
+varnish.shm_cycles
+varnish.shm_flushes
+varnish.shm_records
+varnish.shm_writes
+varnish.SMA.s0.c_bytes
+varnish.SMA.s0.c_fail
+varnish.SMA.s0.c_freed
+varnish.SMA.s0.c_req
+varnish.SMA.s0.g_alloc
+varnish.SMA.s0.g_bytes
+varnish.SMA.s0.g_space
+varnish.SMA.Transient.c_bytes
+varnish.SMA.Transient.c_fail
+varnish.SMA.Transient.c_freed
+varnish.SMA.Transient.c_req
+varnish.SMA.Transient.g_alloc
+varnish.SMA.Transient.g_bytes
+varnish.SMA.Transient.g_space
+varnish.sms_balloc
+varnish.sms_bfree
+varnish.sms_nbytes
+varnish.sms_nobj
+varnish.sms_nreq
+varnish.thread_queue_len
+varnish.threads
+varnish.threads_created
+varnish.threads_destroyed
+varnish.threads_failed
+varnish.threads_limited
+varnish.uptime
+varnish.VBE.default_127.0.0.1_80.bereq_bodybytes
+varnish.VBE.default_127.0.0.1_80.bereq_hdrbytes
+varnish.VBE.default_127.0.0.1_80.beresp_bodybytes
+varnish.VBE.default_127.0.0.1_80.beresp_hdrbytes
+varnish.VBE.default_127.0.0.1_80.pipe_hdrbytes
+varnish.VBE.default_127.0.0.1_80.pipe_in
+varnish.VBE.default_127.0.0.1_80.pipe_out
+varnish.VBE.default_127.0.0.1_80.vcls
+varnish.vmods
+varnish.vsm_cooling
+varnish.vsm_free
+varnish.vsm_overflow
+varnish.vsm_overflowed
+varnish.vsm_used
+</code></pre>
+
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Guide to Composite Monitors</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#creating-composite-monitors' onclick="$('#').collapse('show')">
+Creating composite monitors</a></li><li><a style='padding: 5px 25px;' href='#choose-individual-monitors' onclick="$('#').collapse('show')">
+Choose individual monitors</a></li><li><a style='padding: 5px 25px;' href='#set-a-trigger-condition' onclick="$('#').collapse('show')">
+Set a trigger condition</a></li><li><a style='padding: 5px 25px;' href='#configure-behavior-for-no-data' onclick="$('#').collapse('show')">
+Configure behavior for No Data
+</a></li><li><a style='padding: 5px 25px;' href='#write-a-notification-message' onclick="$('#').collapse('show')">
+Write a notification message</a></li><li><a style='padding: 5px 25px;' href='#save-the-monitor' onclick="$('#').collapse('show')">
+Save the monitor</a></li><li><a style='' href='#how-composite-monitors-work' onclick="$('#').collapse('show')">
+How composite monitors work</a></li><li><a style='padding: 5px 25px;' href='#how-we-compute-trigger-conditions' onclick="$('#').collapse('show')">
+How we compute trigger conditions</a></li><li><a style='padding: 5px 25px;' href='#how-many-alerts-you-will-receive' onclick="$('#').collapse('show')">
+How many alerts you will receive</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#one-multi-alert-monitor' onclick="$('#').collapse('show')">
+One multi-alert monitor</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#many-multi-alert-monitors' onclick="$('#').collapse('show')">
+Many multi-alert monitors</a></li><li><a style='padding: 5px 25px;' href='#how-composite-monitors-select-common-reporting-sources' onclick="$('#').collapse('show')">
+How composite monitors select common reporting sources</a></li>
+            
+            
+              <li class="nav-header">Guides </li>
+              
+              
+                <li><a href="/guides/basic_agent_usage/">Getting Started with the Agent</a></li>
+              
+                <li><a href="/guides/overview/">Datadog Overview</a></li>
+              
+                <li><a href="/guides/hostmap/">Host Map Overview</a></li>
+              
+                <li><a href="/guides/integration_sdk/">Creating New Integrations</a></li>
+              
+                <li><a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a></li>
+              
+                <li><a href="/guides/eventcorrelation/">Correlating Events with Metrics</a></li>
+              
+                <li><a href="/guides/metrics/">Sending Metrics with DogStatsD</a></li>
+              
+                <li><a href="/guides/logs/">Log Parsing in the Agent</a></li>
+              
+                <li><a href="/guides/testing/">Testing Integrations</a></li>
+              
+                <li><a href="/guides/agent_checks/">Writing an Agent Check</a></li>
+              
+                <li><a href="/guides/chef/">Deploying the Agent with Chef</a></li>
+              
+                <li><a href="/guides/azure/">Deploying the Datadog Agent to Azure</a></li>
+              
+                <li><a href="/guides/monitors/">Guide to Monitors</a></li>
+              
+                <li><a href="/guides/composite_monitors/">Guide to Composite Monitors</a></li>
+              
+                <li><a href="/guides/markdown/">Using Markdown in Datadog events</a></li>
+              
+                <li><a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a></li>
+              
+                <li><a href="/guides/tagging/">Guide to Tagging</a></li>
+              
+                <li><a href="/guides/templating/">Guide to Dashboard Templating</a></li>
+              
+                <li><a href="/guides/saml/">Single Sign On With SAML</a></li>
+              
+                <li><a href="/guides/eventsemail/">Events via Email</a></li>
+              
+                <li><a href="/guides/new_integration/">Officially Integrating with Datadog</a></li>
+              
+                <li><a href="/guides/anomalies/">Anomaly Detection</a></li>
+              
+                <li><a href="/guides/outliers/">Outlier Detection</a></li>
+              
+                <li><a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Guide to Composite Monitors </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p><strong><em>If you’re unfamiliar with the basics of Datadog Monitors, first read the <a href="/guides/monitors">Guide to Monitors</a></em></strong></p>
+
+<hr>
+
+<p>Composite monitors let you combine many individual monitors into one so that you can define more specific alert conditions. You can choose up to 10 existing monitors - monitor A and monitor B, say - and then set a trigger condition using boolean operators (e.g. “A &amp;&amp; B”). The composite monitor will trigger when its individual monitors’ statuses simultaneously have values that cause the composite’s trigger condition to be true.</p>
+
+<p>With regard to configuration, a composite monitor is independent of its constituent monitors. You can modify the notification policy of a composite monitor without affecting the policies of its constituent monitors, and vice versa. Furthermore, deleting a composite monitor will not delete its constituent monitors; a composite monitor does not own other monitors, it only uses their results. Also, many composite monitors may reference the same individual monitor.</p>
+
+<p><em>Note: this guide refers variously to ‘individual monitors’, ‘constituent monitors’, and ‘non-composite monitors’. They all mean the same thing: the monitors that a composite monitor uses to calculate its status.</em></p>
+
+<h2 id="creating-composite-monitors" class="linked-header">
+<a class="header-link" href="#creating-composite-monitors"><i class="fa fa-link"></i></a>Creating composite monitors</h2>
+
+<p>In Datadog, go to the <a href="https://app.datadoghq.com/monitors#create">New Monitor</a> page and select ‘Composite’ from the list of monitor types:</p>
+
+<p><img src="/static/images/composite_monitors/select-monitor-type.png" alt="choose-composite-type"></p>
+
+<h3 id="choose-individual-monitors" class="linked-header">
+<a class="header-link" href="#choose-individual-monitors"><i class="fa fa-link"></i></a>Choose individual monitors</h3>
+
+<p>Choose up to 10 individual monitors to use in the new composite monitor. You can mix and match monitors of different alert types; they can all be simple alerts, all multi-alerts, or a combination of the two. No individual monitor may itself be a composite monitor.</p>
+
+<p>After you choose your first monitor, the UI will show its alert type and current status:</p>
+
+<p><img src="/static/images/composite_monitors/create-composite-2.png" alt="create-composite-2"></p>
+
+<p>If you choose a multi-alert monitor, the UI will show its group-by clause (e.g. <code>host</code>) and how many unique sources (i.e. how many hosts) are currently reporting. When you want to combine many multi-alert monitors, this information can help you choose monitors that pair naturally together: you should almost always choose monitors that have the same group-by. If you don’t, the UI will warn you that such a composite monitor may never trigger:</p>
+
+<p><img src="/static/images/composite_monitors/create-composite-4.png" alt="create-composite-4"></p>
+
+<p>Even if you choose multi-alert monitors with the same group-by, the UI may still warn you about the selection. In the following screenshot, both monitors are grouped by <code>host</code>:</p>
+
+<p><img src="/static/images/composite_monitors/create-composite-5.png" alt="create-composite-5"></p>
+
+<p>Since there’s still a ‘Group Matching Error’ despite matching group-bys, we can assume that these monitors currently have no reporting sources in common. As long as there are no common reporting sources, Datadog cannot compute a status for the composite monitor, and it will never trigger. However, you <em>can</em> ignore the warning and create the monitor anyway. To understand why, <a href="#how-composite-monitors-select-common-reporting-sources">read more below</a>.</p>
+
+<p>When you select a second monitor that doesn’t cause a warning, the UI will populate the ‘Trigger when’ field with the default trigger condition <code>a &amp;&amp; b</code> and show the status of the proposed composite monitor:</p>
+
+<p><img src="/static/images/composite_monitors/create-composite-3.png" alt="create-composite-3"></p>
+
+<h3 id="set-a-trigger-condition" class="linked-header">
+<a class="header-link" href="#set-a-trigger-condition"><i class="fa fa-link"></i></a>Set a trigger condition</h3>
+
+<p>In the ‘Trigger when’ field, write your desired trigger condition using boolean operators, referring to individual monitors by their labels in the form (a, b, c, etc). You can use parentheses to control operator precedence and create more complex conditions. </p>
+
+<p>The following are all valid trigger conditions: </p>
+
+<pre><code>!(a &amp;&amp; b)
+a || b &amp;&amp; !c
+(a || b) &amp;&amp; (c || d)
+</code></pre>
+
+<p>Outside of a composite monitor’s New Monitor and Edit forms, its individual monitors are known by their numeric IDs:</p>
+
+<p><img src="/static/images/composite_monitors/composite-status.png" alt="composite-status"></p>
+
+<p>In the API, a composite monitor’s trigger condition is called its query. While a non-composite monitor’s query can encapsulate many things — a metric, tags, an aggregation function like <code>avg</code>, a group-by clause, etc — a composite monitor’s query is simply its trigger condition defined in terms of its constituent monitors.</p>
+
+<p>For two non-composite monitors with the following queries:</p>
+
+<pre><code>"avg(last_1m):avg:system.mem.free{role:database} &lt; 2147483648" # monitor ID: 1234
+"avg(last_1m):avg:system.cpu.system{role:database} &gt; 50" # monitor ID: 5678
+</code></pre>
+
+<p>a composite monitor’s query is simply <code>"1234 &amp;&amp; 5678"</code>, <code>"!1234 || 5678"</code>, etc.</p>
+
+<h3 id="configure-behavior-for-no-data" class="linked-header">
+<a class="header-link" href="#configure-behavior-for-no-data"><i class="fa fa-link"></i></a>Configure behavior for <code>No Data</code>
+</h3>
+
+<p>As with a non-composite monitor, you may configure whether or not a composite monitor triggers when it has the <code>No Data</code> status. Whatever you choose here will not affect the constituent monitors’ <code>notify_no_data</code> settings.</p>
+
+<h3 id="write-a-notification-message" class="linked-header">
+<a class="header-link" href="#write-a-notification-message"><i class="fa fa-link"></i></a>Write a notification message</h3>
+
+<p>Write a notification message as you would with any other monitor, using the @-syntax (e.g. @you@example.com) to notify individuals or teams:</p>
+
+<p><img src="/static/images/composite_monitors/writing-notification.png" alt="writing-notification"></p>
+
+<p>In addition to your own message, delivered notifications (e.g. emails) for the composite monitor will show the status of the individual monitors:</p>
+
+<pre><code>[Triggered] CPU + Memory composite monitor
+
+Database servers are high on CPU usage AND low on memory. @kent@datadoghq.com
+
+Query: 1896131 &amp;&amp; 1896130
+
+1 Alert | 4 OK
+
+* CPU monitor for database servers
+  ID: 1896131
+  5 host groups
+  1 Alert | 4 OK
+
+* Memory monitor for database servers
+  ID: 1896130
+  5 host groups
+  1 Alert | 4 OK
+
+The monitor was last triggered at Mon Apr 17 2017 11:31:47 EDT (28 secs ago)
+</code></pre>
+
+<h3 id="save-the-monitor" class="linked-header">
+<a class="header-link" href="#save-the-monitor"><i class="fa fa-link"></i></a>Save the monitor</h3>
+
+<p>After setting any other miscellaneous options, click ‘Save’. Remember: each option you select only affects the composite monitor, not its constituent monitors.</p>
+
+<h2 id="how-composite-monitors-work" class="linked-header">
+<a class="header-link" href="#how-composite-monitors-work"><i class="fa fa-link"></i></a>How composite monitors work</h2>
+
+<p>This section uses examples to show how we compute trigger conditions and how many alerts you may receive in different scenarios.</p>
+
+<h3 id="how-we-compute-trigger-conditions" class="linked-header">
+<a class="header-link" href="#how-we-compute-trigger-conditions"><i class="fa fa-link"></i></a>How we compute trigger conditions</h3>
+
+<p>Datadog doesn’t compute <code>A &amp;&amp; B &amp;&amp; C</code> any differently than you would expect, but which monitor statuses are considered true and which false?</p>
+
+<p>Recall the seven statuses a monitor may have (in order of increasing severity): <code>Ok</code>, <code>Skipped</code>, <code>Ignored</code>, <code>No Data</code>, <code>Unknown</code>, <code>Warn</code>, and <code>Alert</code>. Composite monitors consider <code>Unknown</code>, <code>Warn</code> and <code>Alert</code> to be alert-worthy (i.e. true). The rest — <code>Ok</code>, <code>Skipped</code>, <code>Ignored</code>, and <code>No Data</code> — are not alert-worthy (i.e. false). However, you can configure <code>No Data</code> to be alert-worthy by setting <code>notify_no_data</code> to true.</p>
+
+<p>When a composite monitor evaluates as alert-worthy, it inherits the most severe status among its individual monitors and triggers an alert. When a composite monitor does not evaluate as alert-worthy, it inherits the <em>least</em> severe status. The not (!) function causes a result — individual or composite — to be either <code>Alert</code> or <code>Ok</code>: if monitor A has any alert-worthy status, <code>!A</code> is <code>OK</code>; if monitor A has any alert-<strong>un</strong>worthy status, <code>!A</code> is <code>Alert</code>.</p>
+
+<p>Consider a composite monitor that uses three individual monitors — A, B, and C — and a trigger condition <code>A &amp;&amp; B &amp;&amp; C</code>. The following table shows the resulting status of the composite monitor given different statuses for its individual monitors (alert-worthiness is indicated with T or F):</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>monitor A</th>
+      <th>monitor B</th>
+      <th>monitor C</th>
+      <th>composite status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unknown (T)</td>
+      <td>Warn (T)</td>
+      <td>Unknown (T)</td>
+      <td>Warn (T) - triggered!</td>
+    </tr>
+    <tr>
+      <td>Skipped (F)</td>
+      <td>Ok (F)</td>
+      <td>Unknown (T)</td>
+      <td>Ok (F)</td>
+    </tr>
+    <tr>
+      <td>Alert (T)</td>
+      <td>Warn (T)</td>
+      <td>Unknown (T)</td>
+      <td>Alert (T) - triggered!</td>
+    </tr>
+    <tr>
+      <td>Skipped (F)</td>
+      <td>No Data (F)</td>
+      <td>Unknown (T)</td>
+      <td>Skipped (F)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Two of the four scenarios will trigger an alert, even though not all of the individual monitors have the most severe status, <code>Alert</code> (and in row 1, none do). But how <em>many</em> alerts might you potentially receive from the composite monitor? That depends on the individual monitors’ alert types.</p>
+
+<h3 id="how-many-alerts-you-will-receive" class="linked-header">
+<a class="header-link" href="#how-many-alerts-you-will-receive"><i class="fa fa-link"></i></a>How many alerts you will receive</h3>
+
+<p>If all individual monitors are simple alerts, the composite monitor will also have a simple alert type; the composite monitor will trigger a single alert when the queries for A, B, and C are all true at the same time.</p>
+
+<p>If even one individual monitor is multi-alert, then the composite monitor is also multi-alert. How <em>many</em> alerts it may send at a time depends on whether the composite monitor uses one or uses many multi-alert monitors.</p>
+
+<h4 id="one-multi-alert-monitor" class="linked-header">
+<a class="header-link" href="#one-multi-alert-monitor"><i class="fa fa-link"></i></a>One multi-alert monitor</h4>
+
+<p>Consider a scenario where monitor A is a multi-alert monitor grouped by <code>host</code>. If the monitor has four reporting sources — hosts web01 through web04 — you may receive up to four alerts each time Datadog evaluates the composite monitor. In other words: for a given evaluation cycle, Datadog has 4 cases to consider. For each case, monitor A’s status may vary across its sources, but the statuses of monitors B and C — which are simple alerts — are unchanging.</p>
+
+<p>The previous table showed the composite monitor status across four points in time, but in this example, the table shows the status of each multi-alert case, all at one point in time:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>source</th>
+      <th>monitor A</th>
+      <th>monitor B</th>
+      <th>monitor C</th>
+      <th>composite status (A &amp;&amp; B &amp;&amp; C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>web01</td>
+      <td>Alert</td>
+      <td>Warn</td>
+      <td>Alert</td>
+      <td>Alert - triggered!</td>
+    </tr>
+    <tr>
+      <td>web02</td>
+      <td>Ok</td>
+      <td>Warn</td>
+      <td>Alert</td>
+      <td>Ok</td>
+    </tr>
+    <tr>
+      <td>web03</td>
+      <td>Warn</td>
+      <td>Warn</td>
+      <td>Alert</td>
+      <td>Alert - triggered!</td>
+    </tr>
+    <tr>
+      <td>web04</td>
+      <td>Skipped</td>
+      <td>Warn</td>
+      <td>Alert</td>
+      <td>Skipped</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this cycle, you would receive two alerts.</p>
+
+<h4 id="many-multi-alert-monitors" class="linked-header">
+<a class="header-link" href="#many-multi-alert-monitors"><i class="fa fa-link"></i></a>Many multi-alert monitors</h4>
+
+<p>Now consider a scenario where monitor B is multi-alert, too, and is also grouped by host. The number of alerts per cycle will be, at most, the number of common reporting sources between monitors A and B. If web01 through web05 are reporting for monitor A, and web04 through web09 are reporting for monitor B, the composite monitor <em>only</em> considers the common sources: web04 and web05. You can only receive up to two alerts in an evaluation cycle. </p>
+
+<p>Here’s an example cycle:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>source</th>
+      <th>monitor A</th>
+      <th>monitor B</th>
+      <th>monitor C</th>
+      <th>composite status (A &amp;&amp; B &amp;&amp; C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>web04</td>
+      <td>Unknown</td>
+      <td>Warn</td>
+      <td>Alert</td>
+      <td>Alert - triggered!</td>
+    </tr>
+    <tr>
+      <td>web05</td>
+      <td>Ok</td>
+      <td>Ok</td>
+      <td>Alert</td>
+      <td>Ok</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this cycle, you would receive one alert.</p>
+
+<h3 id="how-composite-monitors-select-common-reporting-sources" class="linked-header">
+<a class="header-link" href="#how-composite-monitors-select-common-reporting-sources"><i class="fa fa-link"></i></a>How composite monitors select common reporting sources</h3>
+
+<p>As explained above, composite monitors that use many multi-alert monitors only consider the individual monitors’ <em>common reporting sources</em>. In the example, the common sources were <code>host:web04</code> and <code>host:web05</code>, but there’s a subtle caveat: in identifying common reporting sources, composite monitors only look at tag <em>values</em> (i.e. <code>web04</code>), not tag names (i.e. <code>host</code>). This technically makes it possible for a composite monitor to trigger on multi-alert monitors that group by different tags.</p>
+
+<p>If the example above had included a multi-alert monitor ‘D’ grouped by <code>environment</code>, and that monitor had a single reporting source, <code>environment:web04</code>, then the composite monitor would consider <code>web04</code> the single common reporting source between A, B, and D, and would compute its trigger condition.</p>
+
+<p>Often, two monitors grouped by different tags tend to have reporting sources whose tag values never overlap, e.g. <code>web04</code> and <code>web05</code> for monitor A, <code>dev</code> and <code>prod</code> for monitor D. But if and when they do overlap, a composite monitor that uses two such monitors becomes capable of triggering an alert.</p>
+
+<p>Furthermore, as with an individual multi-alert monitor, the number of common reporting sources for a composite monitor may change over time (e.g. when you provision or deprovision hosts). This is why it’s possible for composite monitors to use multi-alert monitors that group by the same tag, but which initially have no reporting sources in common; they <em>might</em> in the future.</p>
+
+<p>Use your best judgement to choose multi-alert monitors that makes sense together.</p>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

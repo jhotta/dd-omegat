@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Metric Types</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#how-do-submission-types-relate-to-datadog-in-app-types' onclick="$('#').collapse('show')">
+How do submission types relate to Datadog in-app types?</a></li><li><a style='' href='#whats-a-use-case-for-changing-a-metrics-type' onclick="$('#').collapse('show')">
+What’s a use case for changing a metric’s type?</a></li>
+            
+            
+              <li class="nav-header">ガイド </li>
+              
+              
+                <li><a href="/ja/overview/">Datadogが提供するサービスの概要</a></li>
+              
+                <li><a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a></li>
+              
+                <li><a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a></li>
+              
+                <li><a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a></li>
+              
+                <li><a href="/ja/guides/hostmap/">Host Map表示の入門</a></li>
+              
+                <li><a href="/ja/guides/agent_checks/">Agent Checkの書き方</a></li>
+              
+                <li><a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a></li>
+              
+                <li><a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a></li>
+              
+                <li><a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a></li>
+              
+                <li><a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Metric Types </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div class="alert alert-info">
+<strong>NOTICE:</strong> アクセスいただきありがとうございます。こちらのページは現在英語のみのご用意となっております。引き続き日本語化の範囲を広げてまいりますので、皆様のご理解のほどよろしくお願いいたします。</div>
+
+<p>A metric’s Datadog in-app type affects how its data is interpreted in query results and graph visualizations across the app. The metric type visible on the metric summary page is the Datadog in-app type. You should only change the type if you have started submitting this metric with a new type, and should be aware that changing the type may render historical data nonsensical.</p>
+
+<h2 id="how-do-submission-types-relate-to-datadog-in-app-types" class="linked-header">
+<a class="header-link" href="#how-do-submission-types-relate-to-datadog-in-app-types"><i class="fa fa-link"></i></a>How do submission types relate to Datadog in-app types?</h2>
+<p>Datadog accepts metrics submitted from a variety of sources, and as a result the submission type does not always map exactly to the Datadog in-app type:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Submission Source</th>
+      <th>Submission Method (python)</th>
+      <th>Submission Type</th>
+      <th>Datadog In-App Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/api/#metrics">API</a></td>
+      <td><code>api.Metric.send(...)</code></td>
+      <td>gauge</td>
+      <td>gauge</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/dogstatsd/">dogstatsd</a></td>
+      <td><code>dog.gauge(...)</code></td>
+      <td>gauge</td>
+      <td>gauge</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/dogstatsd/">dogstatsd</a></td>
+      <td><code>dog.increment(...)</code></td>
+      <td>counter</td>
+      <td>rate</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/dogstatsd/">dogstatsd</a></td>
+      <td><code>dog.histogram(...)</code></td>
+      <td>histogram</td>
+      <td>gauge, rate</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/dogstatsd/">dogstatsd</a></td>
+      <td><code>dog.set(...)</code></td>
+      <td>set</td>
+      <td>gauge</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.gauge(...)</code></td>
+      <td>gauge</td>
+      <td>gauge</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.increment(...)</code></td>
+      <td>counter</td>
+      <td>rate</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.rate(...)</code></td>
+      <td>rate</td>
+      <td>gauge</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.count(...)</code></td>
+      <td>count</td>
+      <td>count</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.monotonic_count(...)</code></td>
+      <td>monotonic_count</td>
+      <td>count</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.histogram(...)</code></td>
+      <td>histogram</td>
+      <td>gauge, rate</td>
+    </tr>
+    <tr>
+      <td><a href="http://docs.datadoghq.com/guides/agent_checks/#sending-metrics">agent check</a></td>
+      <td><code>self.set(...)</code></td>
+      <td>set</td>
+      <td>gauge</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="whats-a-use-case-for-changing-a-metrics-type" class="linked-header">
+<a class="header-link" href="#whats-a-use-case-for-changing-a-metrics-type"><i class="fa fa-link"></i></a>What’s a use case for changing a metric’s type?</h2>
+
+<ol>
+  <li>
+    <p>A user has a metric <code>app.requests.served</code> that counts requests served, she accidently submits it via dogstatsd as a <code>gauge</code>. The metric’s Datadog type is therefore <code>gauge</code>.</p>
+  </li>
+  <li>
+    <p>She realizes she should have submitted it as a dogstatsd <code>counter</code> metric, that way she can do time aggregation to answer questions like “How many total requests were served in the past day?” by querying <code>sum:app.requests.served{*}</code> (this would not make sense for a <code>gauge</code>-type  metric.)</p>
+  </li>
+  <li>
+    <p>She likes the name <code>app.requests.served</code> so rather than submitting a new metric name with the more appropriate <code>counter</code> type, she’ll change the type of <code>app.requests.served</code>.</p>
+
+    <p>a. She updates her submission code, calling <code>dogstatsd.increment('app.requests.served', N)</code> after N requests are served.</p>
+
+    <p>b. She updates the Datadog in-app type via the metric summary page to <code>rate</code>.</p>
+  </li>
+</ol>
+
+<p>This will cause data submitted before the type change for <code>app.requests.served</code> to behave incorrectly because it
+was stored in a format to be interpreted as an in-app <code>gauge</code> not a <code>rate</code>. Data submitted after steps 3a and 3b
+will be interpreted properly. If she was not willing to lose the historical data submitted as a <code>gauge</code> she would
+have created a new metric name with the new type, leaving the type of <code>app.requests.served</code> unchanged.</p>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

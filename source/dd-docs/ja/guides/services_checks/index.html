@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>サービスチェック機能の設定方法 (イベントの送信)</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class='nav-header'>Table of Contents</li><li><a href='#overview' onclick="$('#').collapse('show')">概要</a></li><li><a href='#setup' onclick="$('#').collapse('show')">セットアップ</a></li><li><a href='#config' onclick="$('#').collapse('show')">設定</a></li><li><a href='#http_config' onclick="$('#').collapse('show')">HTTP のチェックのための設定</a></li><li><a href='#tcp_config' onclick="$('#').collapse('show')">TCP のチェックのための設定</a></li>
+            
+            
+              <li class="nav-header">ガイド </li>
+              
+              
+                <li><a href="/ja/overview/">Datadogが提供するサービスの概要</a></li>
+              
+                <li><a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a></li>
+              
+                <li><a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a></li>
+              
+                <li><a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a></li>
+              
+                <li><a href="/ja/guides/hostmap/">Host Map表示の入門</a></li>
+              
+                <li><a href="/ja/guides/agent_checks/">Agent Checkの書き方</a></li>
+              
+                <li><a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a></li>
+              
+                <li><a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a></li>
+              
+                <li><a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a></li>
+              
+                <li><a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">サービスチェック機能の設定方法 (イベントの送信) </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div class="alert alert-block">
+サービスチェックを使うには、Datadog Agent 3.2.0 以降をインストールしている必要があります。
+それ以前のバージョンには、サービチェック機能は実装されていません。
+</div>
+
+<!--
+======================================================
+OVERVIEW
+======================================================
+-->
+
+<!-- <h3 id="overview">Overview</h3>
+
+In this guide, we will show you how you can setup some service checks
+to monitor your service and to be notified when one goes down.
+
+Service checks run in the Agent and are called in the main loop but will be
+processed in separate threads so they don't block the Agent.
+
+A service check can be marked as either <b>UP</b> or <b>DOWN</b>.
+
+Service checks will post an event on your stream when:
+
+- The status of the service has changed.
+- A service is DOWN on the first check. -->
+
+<!-- ### 概要 -->
+
+<h3 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>概要</h3>
+
+<p>このガイドでは、Datadogのサービスチェック機能を使って、サービスを監視し、障害が発生した際に通知が受けられるようにする方法を紹介します。</p>
+
+<p>サービスチェックは、Datadog Agent のメインループからコールされます。
+尚コールされたプロセスは、Datadog Agent の処理をブロックすることがないように別スレッドのプロセスで実行されます。</p>
+
+<p>サービスチェックは、<strong>UP</strong>または<strong>DOWN</strong>と記述して、起動したり停止することができます。</p>
+
+<p>サービスチェックは、次の状況が発生した際にイベントストリームへイベントを送信します:</p>
+
+<ul>
+  <li>サービスのステータスが変更されたとき</li>
+  <li>first check で、サービスが停止しているとき</li>
+</ul>
+
+<!--
+======================================================
+SETUP
+======================================================
+-->
+
+<!-- <h3 id="setup">Setup</h3>
+
+If you have not already setup the Agent, then you should check out the Agent
+setup instructions available at: <a href="http://app.datadoghq.com/account/settings#agent">http://app.datadoghq.com/account/settings#agent</a>.
+This page will guide you through installing the Agent for your particular OS.
+
+If you run into any issues during the setup, don't hesistate to pop by our
+chat room, <a href="irc://irc.freenode.net/datadog">#datadog on freenode</a>,
+where we'll be happy to answer any questions you might have. (There's a
+<a href="http://webchat.freenode.net/?randomnick=1&channels=datadog&prompt=1">
+web chat client, too</a>.) -->
+
+<!-- ### セットアップ  -->
+
+<h3 id="setup" class="linked-header">
+<a class="header-link" href="#setup"><i class="fa fa-link"></i></a>セットアップ</h3>
+
+<p>未だDatadog Agentをインストールしていない場合は、<a href="../basic_agent_usage/">Datadog Agent 入門</a>又は、ダッシュボード内タブの<a href="http://app.datadoghq.com/account/settings#agent">Installations -&gt; Agent</a>をクリックし、インストールドキュメントを参照してください。これらのドキュメントでは、特定のOS用のDatadog Agent をインストールする手順を解説しています。</p>
+
+<p>セットアップ中に問題が発生した場合は、<a href="irc://irc.freenode.net/datadog">freenode にあるDatadog</a>のチャットルームで気兼ねなく質問してください。 (<a href="http://webchat.freenode.net/?randomnick=1&amp;channels=datadog&amp;prompt=1">web チャットクライアント</a>)</p>
+
+<!--
+======================================================
+CONFIGURATION
+======================================================
+-->
+
+<!-- <h3 id="config">Configuration</h3>
+
+There are currently two types of service checks:
+
+- HTTP(S) checks
+- TCP checks
+
+As service checks are also Agent checks, they are configured <a href="http://docs.datadoghq.com/guides/agent_checks/#config">the same way</a>.
+
+Each check will have a configuration file that will be placed in the `conf.d`
+directory. Configuration is written using [YAML](http://www.yaml.org/).
+
+HTTP(S) Check configuration file must be named http_check.yaml
+TCP Check configuration file must be named tcp_check.yaml. -->
+
+<!--  ### 設定  -->
+
+<h3 id="config" class="linked-header">
+<a class="header-link" href="#config"><i class="fa fa-link"></i></a>設定</h3>
+
+<p>サービスチェックは、2種類あります:</p>
+
+<ul>
+  <li>HTTP(S) のチェック</li>
+  <li>TCP のチェック</li>
+</ul>
+
+<p>サービスチェックは、Agent Check機能の一部分です。従って、設定方法も<a href="/ja/guides/agent_checks/#config">Agent Check機能</a>で解説した内容と同じになります。</p>
+
+<p>それぞれのサービスチェックの設定ファイルは、<code>conf.d</code> ディレクトリ以下に設置します。設置する設定ファルは、<a href="http://www.yaml.org/">YAML</a>形式で記述していきことになります。</p>
+
+<p>HTTP(S) のサービスチェックのための設定ファイルには、<strong>http_check.yaml</strong>というファイル名で指定します。
+TCP のサービスチェックのための設定ファイルには、<strong>tcp_check.yaml</strong>というファイル名で指定します。</p>
+
+<p>両設定ファイルとも、他のファイル名を指定することはできません。</p>
+
+<!--
+======================================================
+HTTP CHECK CONFIGURATION
+======================================================
+-->
+
+<!-- <h3 id="http_config">HTTP Check Configuration</h3>
+
+
+
+The HTTP(S) Check configuration file has the following structure:
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+instances:
+#    -   name: My_first_service
+#        url: http://someurl
+#        username: user
+#        password: pass
+#        timeout: 1
+
+#    -   name: My_second_service
+#        url: https://otherurl
+</code></pre>
+
+<div class="alert alert-block">Note: Your YAML files must use spaces instead of tabs.</div>
+
+#### init_config
+
+The *notify* parameter (optional) in the *init_config* section allows you to
+chose which Datadog users will be notified when your service goes down
+or when your service recovers. If you have any additional integrations
+that support notifications (such as Pagerduty or Hipchat), you can notify
+them as well.
+
+#### instances
+
+The *instances* section is a list of instances that this check will be run
+against with the needed parameters.
+
+List of parameters:
+
+- name <b>(mandatory)</b>: A name that must be unique across all your HTTP checks
+- url <b>(mandatory)</b>: The url you want to monitor
+- username (optional): If you want to test pages protected by a basic authentication.
+- password (optional): If you want to test pages protected by a basic authentication.
+- timeout (optional): A timeout for the request, defaulting to 10 seconds.
+A service will be marked as down if the request times out
+- notify (optional): To override the global setting set in the *init_config* section.
+
+#### Custom notifying:
+
+You can also set-up your check to only trigger an error after a certain number of failures
+have happend within a certain timeframe. Using the `window` and `threshold` parameters,
+you can tell the alert to <em>only</em> trigger an alert if the check fails `x` times within
+the last `y` attempts where `x` is the `threshold` and `y` is the `window`.
+
+For example, if you have the following configuration for window and threshold:
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+
+instances:
+    -   name: My service
+        url: http://someurl.com
+        username: user
+        password: pass
+        timeout: 1
+        window: 5
+        threshold:  3</code></pre>
+
+You will only be notified if the check fails 3 times within the last 5 tries. -->
+
+<h3 id="http_config" class="linked-header">
+<a class="header-link" href="#http_config"><i class="fa fa-link"></i></a>HTTP のチェックのための設定</h3>
+
+<p>HTTP(S)のサービスチェックの設定ファイルの構造は、次のように成ります:</p>
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+instances:
+#    -   name: My_first_service
+#        url: http://someurl
+#        username: user
+#        password: pass
+#        timeout: 1
+
+#    -   name: My_second_service
+#        url: https://otherurl
+</code></pre>
+
+<div class="alert alert-block">
+注) YAML ファイルでは、タブを使わず、スペースを使って記述してください。
+</div>
+
+<h4 id="initconfig" class="linked-header">
+<a class="header-link" href="#initconfig"><i class="fa fa-link"></i></a>init_config</h4>
+
+<p><em>init_config</em>セクション内の<em>notify</em>パラメータを指定することでサービスが停止した際に、Datadog内のどのユーザが通知を受けるかを指定することができます。更に、Integrationによって外部のサービス(Pagerduty, Hipchat, etc)と連携している場合は、それらのサービスに対しても通知をすることができます。</p>
+
+<h4 id="instances" class="linked-header">
+<a class="header-link" href="#instances"><i class="fa fa-link"></i></a>instances</h4>
+
+<p><em>instances</em>セクションには、チェックを実施するケースの詳細を記述していきます。</p>
+
+<p>指定可能なパラメーター:</p>
+
+<ul>
+  <li>name <strong>(必須)</strong>: すべてのHTTP のチェック名を通して、一意である必要があります。</li>
+  <li>url <strong>(必須)</strong>: 監視をしたい url。</li>
+  <li>username (オプション): ベーシック認証付きのベージをテストする場合のユーザ名です。</li>
+  <li>password (オプション): ベーシック認証付きのベージをテストする場合のパスワードです。</li>
+  <li>timeout (オプション): HTTP(S) リクエストのタイムアウト時間です。デフォルト値は10秒。リクエストのタイムアウトが発生した場合、そのサービスは停止していると見なされます。</li>
+  <li>notify (オプション): <em>init_config</em> セクションで指定した内容を、変更するための通知先リストです。</li>
+</ul>
+
+<h4 id="section" class="linked-header">
+<a class="header-link" href="#section"><i class="fa fa-link"></i></a>通知条件の追加設定項目:</h4>
+
+<p>サービスチェックを設定する際に、一定の時間内に一定回数の障害が発生したことをエラーの条件とすることができます。
+このような通知条件の設定には<code>window</code> と<code>threshold</code> パラメーターを<em>instance</em> セクションに追記します。
+一定の時間枠(<code>window</code>)で表現されるチェック回数が<code>y</code>の内に、障害回数のしきい値(<code>threshold</code>)が<code>x</code>回発生した時にのみ通知するように設定することになります。</p>
+
+<p>例えば、次のようなチェック回数(window)と、その回数内でのしきい値(threshold)を指定したとします:</p>
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+
+instances:
+    -   name: My service
+        url: http://someurl.com
+        username: user
+        password: pass
+        timeout: 1
+        window: 5
+        threshold:  3</code></pre>
+
+<p>過去5回のチェックの内で、3回失敗した場合にのみ通知されます。</p>
+
+<!--
+======================================================
+TCP CHECK CONFIGURATION
+======================================================
+-->
+
+<!-- <h3 id="tcp_config">TCP Check Configuration</h3>
+
+The TCP Check configuration file has the following structure:
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+instances:
+#    -   name: My_first_service
+#        host: datadog.com
+#        port: 8080
+#        timeout: 1
+
+#    -   name: My_second_service
+#        host: 127.0.0.1
+#        port: 80
+</code></pre>
+
+#### init_config
+
+The *notify* parameter (optional) in the *init_config* section allows you to
+chose which Datadog users will be notified when your service goes down
+or when your service recovers.
+If you have installed the pagerduty integration or the hipchat integration,
+you can also notify them.
+
+#### instances
+
+The *instances* section is a list of instances that this check will be run
+against with the needed parameters.
+
+List of parameters:
+
+- name <b>(mandatory)</b>: A name that must be unique across all your TCP checks
+- host <b>(mandatory)</b>: The hostname or IP (v4 or v6) address you want to monitor
+- port <b>(mandatory)</b>: The port on which the check will try to connect to
+- timeout (optional): A timeout for the request, defaulting to 10 seconds.
+A service will be marked as down if the request times out
+- notify (optional): To override the global setting set in the *init_config* section.
+
+#### Custom notifying:
+
+You can also set-up your check to only trigger an error after a certain number of failures
+have happend within a certain timeframe. Using the `window` and `threshold` parameters,
+you can tell the alert to <em>only</em> trigger an alert if the check fails `x` times within
+the last `y` attempts where `x` is the `threshold` and `y` is the `window`.
+
+For example, if you have the following configuration for window and threshold:
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+
+instances:
+    -   name: My service
+        host: datadog.com
+        port: 8080
+        window: 5
+        threshold:  3</code></pre>
+
+You will only be notified if the check fails 3 times within the last 5 tries.
+ -->
+
+<h3 id="tcp_config" class="linked-header">
+<a class="header-link" href="#tcp_config"><i class="fa fa-link"></i></a>TCP のチェックのための設定</h3>
+
+<p>TCP のサービスチェックの設定ファイるの構造は、次のように成ります:</p>
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+instances:
+#    -   name: My_first_service
+#        host: datadog.com
+#        port: 8080
+#        timeout: 1
+
+#    -   name: My_second_service
+#        host: 127.0.0.1
+#        port: 80
+</code></pre>
+
+<h4 id="initconfig-1" class="linked-header">
+<a class="header-link" href="#initconfig-1"><i class="fa fa-link"></i></a>init_config</h4>
+
+<p><em>init_config</em>セクション内の<em>notify</em>パラメータを指定することでサービスが停止した際に、Datadog内のどのユーザが通知を受けるかを指定することができます。更に、Integrationによって外部のサービス(Pagerduty, Hipchat, etc)と連携しいてる場合は、それらのサービスに対しても通知をすることができます。</p>
+
+<h4 id="instances-1" class="linked-header">
+<a class="header-link" href="#instances-1"><i class="fa fa-link"></i></a>instances</h4>
+
+<p><em>instances</em> セクションには、チェックを実施するケースの詳細を記述していきます。</p>
+
+<p>指定可能なパラメータ:</p>
+
+<ul>
+  <li>name <strong>(必須)</strong>: すべてのTCP のチェック名を通して、一意である必要があります。</li>
+  <li>host <strong>(必須)</strong>: 監視したいホスト名又は、IP (v4 or v6) アドレス。</li>
+  <li>port <strong>(必須)</strong>: サービスチェックが接続するポート番号。</li>
+  <li>timeout (オプション): TCP リクエストのタイムアウト時間です。デフォルト値は10秒。リクエストのタイムアウトが発生した場合、そのサービスは停止していると見なされます。</li>
+  <li>notify (オプション): <em>init_config</em> セクションで指定した内容を、変更するための通知先リストです。</li>
+</ul>
+
+<h4 id="section-1" class="linked-header">
+<a class="header-link" href="#section-1"><i class="fa fa-link"></i></a>通知条件の追加設定項目:</h4>
+
+<p>サービスチェックを設定する際に、一定の時間内に一定回数の障害が発生したことをエラーの条件とすることができます。
+このような通知条件の設定には<code>window</code> と<code>threshold</code> パラメータを<em>instance</em> セクションに追記します。
+一定の時間枠(<code>window</code>)で表現されるチェック回数が<code>y</code>の内に、障害回数のしきい値(<code>threshold</code>)が<code>x</code>回発生した時にのみ通知するように設定することになります。</p>
+
+<p>例えば、次のようなチェック回数(window)と、その回数内でのしきい値(threshold)を指定したとします:</p>
+
+<pre class="code-block code-block-" lang=""><code class=""># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+init_config:
+
+instances:
+    -   name: My service
+        host: datadog.com
+        port: 8080
+        window: 5
+        threshold:  3</code></pre>
+
+<p>過去5回のチェックの内で、3回失敗した場合にのみ通知されます。</p>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

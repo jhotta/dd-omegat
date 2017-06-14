@@ -1,0 +1,2013 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-Google App Engine Integration</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#overview' onclick="$('#').collapse('show')">
+Overview</a></li><li><a style='' href='#installation' onclick="$('#').collapse('show')">
+Installation</a></li><li><a style='' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li>
+
+            <li class="nav-header auto">インテグレーション <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/ja/integrations/">インテックスへ戻る</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/airbrake/">Airbrake</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ansible/">Ansible</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsbilling/">AWS Billing</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsdynamo/">AWS DynamoDB *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsec2/">AWS EC2 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/elasticache/">AWS ElastiCache *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awselasticache/">AWS ElastiCache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/kinesis/">AWS Kinesis *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awslambda/">AWS Lambda *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsmapreduce/">AWS MapReduce *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/opsworks/">AWS OpsWorks *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsrds/">AWS RDS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsredshift/">AWS Redshift *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsroute53/">AWS Route 53 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awss3/">AWS S3</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awssns/">AWS SNS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awssqs/">AWS SQS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsstorage/">AWS Storage Gateway *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/bitbucket/">Bitbucket *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/bugsnag/">Bugsnag</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/cacti/">Cacti</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/capistrano/">Capistrano</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/cassandra/">Cassandras</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/catchpoint/">Catchpoint</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/chatwork/">Chatwork</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/chef/">Chef *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/dnscheck/">DNS Service Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/flowdock/">Flowdock</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/git/">Git</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> Google App Engine</a>
+                  </li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> Google App Engine</a>
+                  </li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_big_query/">Google BigQuery</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_functions/">Google Cloud Functions</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/gcp/">Google Cloud Platform *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloudsql/">Google CloudSQL</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_compute_engine/">Google Compute Engine</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_container_engine/">Google Container Engine</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_datastore/">Google Datastore</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_firebase/">Google Firebase</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_ml/">Google Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_pubsub/">Google Pub/Sub</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_spanner/">Google Spanner</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_stackdriver_logging/">Google Stackdriver Logging</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_storage/">Google Storage</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_vpn/">Google VPN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/hdfs/">Hadoop HDFS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/hipchat/">HipChat *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/honeybadger/">Honeybadger</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/immunio/">Immunio</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/jira/">Jira</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/java/">JMX Checks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kong/">Kong</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/marathon/">Marathon *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/memcached/">Memcached *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_app_services/">Microsoft Azure App Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_batch/">Microsoft Azure Batch Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_event_hub/">Microsoft Azure Event Hub Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_iot_hub/">Microsoft Azure IOT Hub</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_logic_app/">Microsoft Azure Logic App</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_redis_cache/">Microsoft Azure Redis Cache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_sql_database/">Microsoft Azure SQL Database</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_vm/">Microsoft Azure VM</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mongodb/">MongoDB *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/moxtra/">Moxtra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mysql/">MySQL *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/nagios/">Nagios</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/opsgenie/">OpsGenie</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/opsmatic/">Opsmatic</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/papertrail/">PaperTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/phpfpm/">PHP-FPM</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/pivotal/">Pivotal *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/powerdns/">PowerDNS Recursor</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/process/">Process *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/puppet/">Puppet *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/python/">Python *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/rabbitmq/">RabbitMQ *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/redis/">Redis *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/rollbar/">Rollbar</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/ruby/">Ruby *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/snmp/">SNMP Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/solr/">Solr *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/spark/">Spark</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/splunk/">Splunk *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/statuspage/">StatusPageIO</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sumologic/">SumoLogic *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/system/">System *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/teamcity/">TeamCity *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/tokumx/">TokuMX *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/tomcat/">Tomcat *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/varnish/">Varnish *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/vmware/">VMware *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/webhooks/">Webhooks *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/wmi/">WMI *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/zendesk/">Zendesk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/zookeeper/">Zookeeper *</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-Google App Engine Integration </h1>
+          
+          <div >
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div class="alert alert-info">
+<strong>NOTICE:</strong> アクセスいただきありがとうございます。こちらのページは現在英語のみのご用意となっております。引き続き日本語化の範囲を広げてまいりますので、皆様のご理解のほどよろしくお願いいたします。</div>
+
+<h3 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h3>
+
+<p>Install the Google App Engine integration in your Python project to:</p>
+
+<ul>
+  <li>See your Google App Engine services metrics: memcache, task queues, datastores</li>
+  <li>See metrics about requests: display percentiles, latency, cost</li>
+  <li>Tag Google App Engine metrics by version and compare the performance of different versions</li>
+</ul>
+
+<p>You can also send custom metrics to Datadog.</p>
+
+<h3 id="installation" class="linked-header">
+<a class="header-link" href="#installation"><i class="fa fa-link"></i></a>Installation</h3>
+
+<p>Ensure that Billing is enabled on your Google App Engine project to collect all metrics</p>
+
+<ol class="lang-shell">
+  <li>Change directory into to your project’s application directory.</li>
+  <li>
+    <p>Clone our Google App Engine module</p>
+
+    <pre><code> git clone https://github.com/DataDog/gae_datadog
+</code></pre>
+  </li>
+</ol>
+
+<ol>
+  <li>
+    <p>Edit your project’s app.yaml file</p>
+
+    <p>a. Add the Datadog handler to your app.yaml file:</p>
+
+    <pre class="lang-yaml"><code> handlers:
+   # Should probably be at the beginning of the list
+   # so it's not clobbered by a catchall route
+   - url: /datadog
+     script: gae_datadog.datadog.app
+</code></pre>
+
+    <p>b. Set your API key. This should be at the top level of the file and not in the handler section.</p>
+
+    <pre><code> env_variables:
+   DATADOG_API_KEY: 'YOUR_API_KEY_HERE'
+</code></pre>
+
+    <p>c. Since the dogapi module sends metrics and events through a secure TLS connection, add the ssl module in the app.yaml:</p>
+
+    <pre><code> libraries:
+   - name: ssl
+     version: "latest"
+</code></pre>
+  </li>
+  <li>
+    <p>Add <code>dogapi</code> to the requirements.txt file.</p>
+
+    <pre><code> echo dogapi &gt;&gt; requirements.txt
+</code></pre>
+  </li>
+  <li>
+    <p>Ensure the requirements are installed.</p>
+
+    <pre><code> pip install -r requirements.txt -t lib/
+</code></pre>
+  </li>
+  <li>
+    <p>Deploy your application. Refer to the Google App Engine documentation for language specific deployment command. For Python apps, it’s:</p>
+
+    <pre><code> appcfg.py -A &lt;project id&gt; update app.yaml
+</code></pre>
+  </li>
+  <li>
+    <p>Enter the URL for your application in the first text box on the integration configuration screen. If you are using Task queues in the Google Developers Console, you can add them here as well.</p>
+  </li>
+</ol>
+
+<p>At this point you will get a number of metrics for your environment. You can also choose to further instrument your app using the library for whatever language your app is written in.</p>
+
+<p>For Python apps, you might use the dogapi library. Here is the Getting Started Flask-based Python app, modified to increment a counter each time the main page has been hit:</p>
+
+<pre class="lang-python"><code>"""`main` is the top level module for your Flask application."""
+import os
+
+# Import the Flask Framework
+from flask import Flask
+app = Flask(__name__)
+# Note: We don't need to call run() since our application is embedded within
+# the App Engine WSGI application server.
+
+from dogapi import dog_stats_api as dog
+dog.start(
+    api_key=os.environ['DATADOG_API_KEY'],
+    flush_in_thread=False
+)
+
+@app.route('/')
+def hello():
+    """Return a friendly HTTP greeting."""
+    dog.increment('testapp.metric', 1)
+    dog.flush()
+    return 'Hello World dd!'
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Return a custom 404 error."""
+    return 'Sorry, Nothing at this URL.', 404
+
+
+@app.errorhandler(500)
+def application_error(e):
+    """Return a custom 500 error."""
+    return 'Sorry, unexpected error: {}'.format(e), 500
+</code></pre>
+
+<h3 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h3>
+
+<table class="table">
+<tr>
+<td>
+<strong>gcp.gae.memcache.byte_hits</strong><br>(gauge)</td>
+<td>Sum of key and value bytes in successful get() and contains()<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.bytes</strong><br>(gauge)</td>
+<td>Sum of key and value sizes for all live entries currently in cache<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.hits</strong><br>(gauge)</td>
+<td>The counter of "successful" MemcacheService.get(Object) or MemcacheService.contains(Object) operations<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.items</strong><br>(gauge)</td>
+<td>Number of entries currently "alive" in the cache<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.misses</strong><br>(gauge)</td>
+<td>The counter of "unsuccessful" MemcacheService.get(Object) or MemcacheService.contains(Object) operations<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.oldest_item_age</strong><br>(gauge)</td>
+<td>Milliseconds since last access of least-recently-used live entry<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.cost.95percentile</strong><br>(gauge)</td>
+<td>The 95th percentile estimated fractional dollar cost of this request<br><em>shown as dollar</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.cost.avg</strong><br>(gauge)</td>
+<td>The average estimated fractional dollar cost of this request<br><em>shown as dollar</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.cost.count</strong><br>(count)</td>
+<td>The number of times the cost metric was sampled<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.cost.max</strong><br>(gauge)</td>
+<td>The maximum estimated fractional dollar cost of this request<br><em>shown as dollar</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.cost.min</strong><br>(gauge)</td>
+<td>The minimum estimated fractional dollar cost of this request<br><em>shown as dollar</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.latency.95percentile</strong><br>(gauge)</td>
+<td>The 95th percentile of time required to process request in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.latency.avg</strong><br>(gauge)</td>
+<td>The Average time required to process request in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.latency.count</strong><br>(count)</td>
+<td>The number of times the request latency metric was sampled<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.latency.max</strong><br>(gauge)</td>
+<td>The maximum time required to process request in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.latency.min</strong><br>(gauge)</td>
+<td>The minimum time required to process request in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.mcycles.95percentile</strong><br>(gauge)</td>
+<td>The 95th percentile of machine cycles used to process request<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.mcycles.avg</strong><br>(gauge)</td>
+<td>The average number of machine cycles used to process request<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.mcycles.count</strong><br>(count)</td>
+<td>The number of times the mcycles metric was sampled<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.mcycles.max</strong><br>(gauge)</td>
+<td>The maximum number of machine cycles used to process request<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.mcycles.min</strong><br>(gauge)</td>
+<td>The minimum number of machine cycles used to process request<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.pending_time.95percentile</strong><br>(gauge)</td>
+<td>The 95th percentile of time this request spent in the pending request queue<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.pending_time.avg</strong><br>(gauge)</td>
+<td>The Average time this request spent in the pending request queue<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.pending_time.count</strong><br>(count)</td>
+<td>The number of times the pending request metric was sampled<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.pending_time.max</strong><br>(gauge)</td>
+<td>The maximum time this request spent in the pending request queue<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.pending_time.min</strong><br>(gauge)</td>
+<td>The minimum time this request spent in the pending request queue<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.response_size.95percentile</strong><br>(gauge)</td>
+<td>The 95th percentile of size in bytes sent back to client by request<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.response_size.avg</strong><br>(gauge)</td>
+<td>The Average size in bytes sent back to client by request<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.response_size.count</strong><br>(count)</td>
+<td>The number of times the response size metric was sampled<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.response_size.max</strong><br>(gauge)</td>
+<td>The maximum size in bytes sent back to client by request<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.requests.response_size.min</strong><br>(gauge)</td>
+<td>The minimum size in bytes sent back to client by request<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.task_queue.tasks</strong><br>(gauge)</td>
+<td>The number of tasks remaining in the queue<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.dos_intercept_count</strong><br>(count)</td>
+<td>Interceptions performed to prevent DoS attacks.<br><em>shown as occurrence</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.quota_denial_count</strong><br>(count)</td>
+<td>Failed requests due to the app being over quota.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_count</strong><br>(count)</td>
+<td>HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_style_count</strong><br>(count)</td>
+<td>Number of HTTP responses by serve style.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.centi_mcu_count</strong><br>(count)</td>
+<td>Memcache utilization as 1/100th Memcache Compute Units.<br><em>shown as unit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.operation_count</strong><br>(count)</td>
+<td>Count of memcache key operations.<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.received_bytes_count</strong><br>(count)</td>
+<td>Number of bytes received by app from the memcache API.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.memcache.sent_bytes_count</strong><br>(count)</td>
+<td>Number of bytes sent by app through the memcache API.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.system.cpu.usage</strong><br>(gauge)</td>
+<td>CPU usage.<br><em>shown as megahertz</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.system.instance_count</strong><br>(gauge)</td>
+<td>Number of App Engine instances.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.system.memory.usage</strong><br>(gauge)</td>
+<td>Total memory used by running instances.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.system.network.received_bytes_count</strong><br>(count)</td>
+<td>Incoming network traffic.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.system.network.sent_bytes_count</strong><br>(count)</td>
+<td>Outgoing network traffic.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.api.request_count</strong><br>(count)</td>
+<td>Number of Cloud Tasks API calls.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_count</strong><br>(count)</td>
+<td>Number of task attempts.<br><em>shown as attempt</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_latencies.avg</strong><br>(gauge)</td>
+<td>Average HTTP response latency.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_latencies.samplecount</strong><br>(count)</td>
+<td>Sample Count for HTTP response latency.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_latencies.max</strong><br>(gauge)</td>
+<td>Maximum HTTP response latency.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_latencies.min</strong><br>(gauge)</td>
+<td>Minimum HTTP response latency.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.http.server.response_latencies.sumsqdev</strong><br>(gauge)</td>
+<td>Sum of Squared Deviation for HTTP response latency.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_delays.avg</strong><br>(gauge)</td>
+<td>Average delay between each scheduled and actual attempt times.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_delays.samplecount</strong><br>(count)</td>
+<td>Sample Count for delay between each scheduled and actual attempt times.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_delays.max</strong><br>(gauge)</td>
+<td>Maximum delay between each scheduled and actual attempt times.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_delays.min</strong><br>(gauge)</td>
+<td>Minimum delay between each scheduled and actual attempt times.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.cloudtasks.queue.task_attempt_delays.sumsqdev</strong><br>(gauge)</td>
+<td>Sum of Squared Deviation for delay between each scheduled and actual attempt times.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.cpu.reserved_cores</strong><br>(gauge)</td>
+<td>Total number of CPU cores allocated to an App Engine flexible environment version.<br><em>shown as core</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.cpu.utilization</strong><br>(gauge)</td>
+<td>The percentage of allocated CPU in use across an App Engine flexible environment version. Note that some machine types allow bursting above 100%.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.disk.read_bytes_count</strong><br>(count)</td>
+<td>Count of bytes read from disk across an App Engine flexible environment version.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.disk.write_bytes_count</strong><br>(count)</td>
+<td>Delta count of bytes written from disk across an App Engine flexible environment version.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.network.received_bytes_count</strong><br>(count)</td>
+<td>Count of incoming network bytes across all VMs in an App Engine flexible environment version<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>gcp.gae.flex.network.sent_bytes_count</strong><br>(count)</td>
+<td>Count of outgoing network bytes across all VMs in an App Engine flexible environment version<br><em>shown as byte</em>
+</td>
+</tr>
+</table>
+
+<hr>
+
+<p><em>This documentation verified on November 3, 2015</em></p>
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

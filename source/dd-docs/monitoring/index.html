@@ -1,0 +1,1068 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Monitoring Reference</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a href='#glossary' onclick="$('#').collapse('show')">Glossary</a></li><li><a href='#host' onclick="$('#').collapse('show')">Host Monitors</a></li><li><a href='#metric' onclick="$('#').collapse('show')">Metric Monitors</a></li><li><a href='#integration' onclick="$('#').collapse('show')">Integration Monitors</a></li><li><a href='#process' onclick="$('#').collapse('show')">Process Monitors</a></li><li><a href='#network' onclick="$('#').collapse('show')">Network Monitors</a></li><li><a href='#event' onclick="$('#').collapse('show')">Event Monitors</a></li><li><a href='#custom' onclick="$('#').collapse('show')">Custom Monitors</a></li><li><a href='#notifications' onclick="$('#').collapse('show')">Monitor Notifications</a></li><li><a href='#faqs' onclick="$('#').collapse('show')">Monitor FAQs</a></li>
+            
+            
+              <li class="nav-header">Guides </li>
+              
+              
+                <li><a href="/guides/basic_agent_usage/">Getting Started with the Agent</a></li>
+              
+                <li><a href="/guides/overview/">Datadog Overview</a></li>
+              
+                <li><a href="/guides/hostmap/">Host Map Overview</a></li>
+              
+                <li><a href="/guides/integration_sdk/">Creating New Integrations</a></li>
+              
+                <li><a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a></li>
+              
+                <li><a href="/guides/eventcorrelation/">Correlating Events with Metrics</a></li>
+              
+                <li><a href="/guides/metrics/">Sending Metrics with DogStatsD</a></li>
+              
+                <li><a href="/guides/logs/">Log Parsing in the Agent</a></li>
+              
+                <li><a href="/guides/testing/">Testing Integrations</a></li>
+              
+                <li><a href="/guides/agent_checks/">Writing an Agent Check</a></li>
+              
+                <li><a href="/guides/chef/">Deploying the Agent with Chef</a></li>
+              
+                <li><a href="/guides/azure/">Deploying the Datadog Agent to Azure</a></li>
+              
+                <li><a href="/guides/monitors/">Guide to Monitors</a></li>
+              
+                <li><a href="/guides/composite_monitors/">Guide to Composite Monitors</a></li>
+              
+                <li><a href="/guides/markdown/">Using Markdown in Datadog events</a></li>
+              
+                <li><a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a></li>
+              
+                <li><a href="/guides/tagging/">Guide to Tagging</a></li>
+              
+                <li><a href="/guides/templating/">Guide to Dashboard Templating</a></li>
+              
+                <li><a href="/guides/saml/">Single Sign On With SAML</a></li>
+              
+                <li><a href="/guides/eventsemail/">Events via Email</a></li>
+              
+                <li><a href="/guides/new_integration/">Officially Integrating with Datadog</a></li>
+              
+                <li><a href="/guides/anomalies/">Anomaly Detection</a></li>
+              
+                <li><a href="/guides/outliers/">Outlier Detection</a></li>
+              
+                <li><a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Monitoring Reference </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>Monitoring in Datadog refers to the ability to notify your team when conditions are met. If you are just starting with monitors in Datadog, please refer to our <a href="/guides/monitors">Guide to Monitors</a> for an introduction.</p>
+
+<h2 id="glossary" class="linked-header">
+<a class="header-link" href="#glossary"><i class="fa fa-link"></i></a>Glossary</h2>
+
+<p>Here is a quick overview of the different terms used in this guide.</p>
+
+<ul>
+  <li>
+<strong>Status</strong>: Each check run submits a status of OK, WARNING or CRITICAL.</li>
+  <li>
+<strong>Check</strong>: Emits one or more statuses.</li>
+  <li>
+<strong>Monitor</strong>: Sends notifications based on a sequence of check statuses, metric
+threshold or other alerting conditions.</li>
+  <li>
+<strong>Monitor type</strong>: <a href="#host">host</a>-, <a href="#metric">metric</a>-, <a href="#integration">integration</a>-, <a href="#process">process</a>-, <a href="#network">network</a>-, <a href="#event">event</a>-based, and <a href="#custom">custom</a>. See side navigation to drill into a specific type.</li>
+  <li>
+<strong>Tags</strong>: Configurable labels that can be applied to each metric and host. See the <a href="/guides/tagging">Tagging</a> page for more details.</li>
+</ul>
+
+<h2 id="create" class="linked-header">
+<a class="header-link" href="#create"><i class="fa fa-link"></i></a>Creating a Monitor</h2>
+
+<p>Navigate to the <a href="https://app.datadoghq.com/monitors#/create">Create Monitors</a>
+page by highlighting the “Monitors” tab in the main menu and selecting the
+“Create Monitors” sub-tab (depending on your chosen theme, the main menu may be at the top or on the left).  You will be presented with a list of monitor types
+on the left. This document will walk through the configuration of each type.</p>
+
+<h3 id="host" class="linked-header">
+<a class="header-link" href="#host"><i class="fa fa-link"></i></a>Host Monitors</h3>
+
+<p><em>Requires Datadog Agent version &gt;= 5.0.0.</em></p>
+
+<p><img src="/static/images/monitor/host_monitor.png" alt="host monitor"></p>
+
+<p>Every Datadog Agent collection reports a heartbeat called <code>datadog.agent.up</code>
+with a status <code>UP</code>. You can monitor this heartbeat across one or more hosts.</p>
+
+<ol>
+  <li>
+    <p>Select your <strong>host by name or tag(s)</strong>. Providing a tag will monitor every
+host that has that tag or tag combination.</p>
+  </li>
+  <li>
+    <p>Select the <strong>no-data timeframe</strong>. If the heartbeat stops reporting for more
+than the number of minutes you have selected, then you will get notified.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong> Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<h3 id="metric" class="linked-header">
+<a class="header-link" href="#metric"><i class="fa fa-link"></i></a>Metric Monitors</h3>
+
+<ol>
+  <li>
+    <p>Select the metric and scope you want to monitor.
+  <img src="/static/images/monitor/metric_scope.png" alt="metric scope"></p>
+
+    <p>You can create a monitor on any metrics that you are currently sending to
+ Datadog. The standard scoping rules apply here. Please refer to the
+ <a href="/graphing/#scope">scope section</a> of the graphing primer for
+ further information.</p>
+  </li>
+  <li>
+    <p>Select the alert grouping.
+ <img src="/static/images/monitor/alert_grouping.png" alt="alert grouping"></p>
+
+    <p>A <strong>simple alert</strong> aggregates over all reporting sources. You will get one
+ alert when the aggregated value meets the conditions set below. This works
+ best to monitor a metric from a single host, like <code>avg</code> of
+ <code>system.cpu.iowait</code> over <code>host:bits</code>, or for an aggregate metric across many
+ hosts like <code>sum</code> of <code>nginx.bytes.net</code> over <code>region:us-east</code>.</p>
+
+    <p>A <strong>multi alert</strong> applies the alert to each source, according to your group
+ parameters. E.g. to alert on disk space you might group by host and device,
+ creating the query:</p>
+
+    <pre><code> avg:system.disk.in_use{*} by {host,device}
+</code></pre>
+
+    <p>This will trigger a separate alert for each device on each host that is
+ running out of space.</p>
+  </li>
+  <li>
+    <p>Select the alert type.
+ <img src="/static/images/monitor/alert_type.png" alt="alert type"></p>
+
+    <p>A <strong>threshold alert</strong> will compare the value in the selected
+ timeframe against a given threshold. There are additional options available
+ in the alerting conditions section. This is the standard alert case where
+ you know what sort values are unexpected.</p>
+
+    <p>A <strong>change alert</strong> will compare the change or % change of a value between
+ now and some time ago against a given threshold.
+ The compared data points will not be single points but are computed using
+ the parameters in the <em>alert conditions</em> section.</p>
+
+    <p>This type of alert is useful to track fast spikes or drops as well as slow
+ changes in a metric when you might not have an exact “unexpected” threshold.
+ <em>Note:</em> the calculated value is not the absolute value - meaning it will be
+ negative for a downward change.</p>
+  </li>
+  <li id="metric-conditions">
+    <p>Select the alert conditions</p>
+
+    <ul>
+      <li>
+        <p>The <strong>threshold</strong> options vary slightly depending on what alert type you
+have chosen. For either case, you input a threshold and comparison type
+based on your metric. As you change your threshold, you will see the graph
+update with a marker showing the cutoff point.</p>
+
+        <p><img src="/static/images/monitor/metric_threshold.png" alt="metric threshold"></p>
+
+        <p>Note that you can use formatted values in this input based on the
+metric itself. For example, if you are monitoring <code>system.disk.used</code>, you
+can give a threshold of <code>20GB</code>.</p>
+
+        <p>For a <strong>threshold alert</strong> you will be able to chose a <em>time aggregation</em>
+of the data. The alerting engine will generate a single series and perform
+selected aggregation.</p>
+
+        <p>Let’s look at the details of each option:</p>
+
+        <ul>
+          <li>
+            <p><em>on average</em>: The series will be averaged to produce a single
+value that will be checked against the threshold.</p>
+          </li>
+          <li>
+            <p><em>at least once</em>: If any single value in the generated series crosses
+the threshold then an alert will be triggered.</p>
+          </li>
+          <li>
+            <p><em>at all times</em>: If every point in the generated series is outside the
+threshold then an alert will be triggered.</p>
+          </li>
+          <li>
+            <p><em>in total</em>: If the summation of every point in the series is outside
+the threshold then an alert will be triggered.</p>
+          </li>
+        </ul>
+
+        <p>Note the <em>on average</em> and <em>at all times</em> aggregations <em>require</em> a full
+window of data in the final series. This does <em>not</em> mean that each series
+must be full but that there shouldn’t be a gap of more than 1 minute
+across all aggregated series. In other words, we recommend using <em>at least
+once</em> or <em>in total</em> for metrics with &gt; 1 minute interval.</p>
+      </li>
+      <li>
+        <p>When you select the <strong>change alert</strong> option, you will have additional
+ parameters you can adjust.</p>
+        <ul>
+          <li>
+<em>change</em> is an absolute change of the value whereas <em>% change</em> is the
+percentage change of your value compared to its previous value (so if
+it was a value of 2 and now 4, the <em>% change</em> will be 100%).</li>
+          <li>You can compare the change of the value during a given timeframe by
+selecting the period you want to compare against. This can range from 5
+minutes to up to 2 days.</li>
+          <li>Like the <strong>threshold alert</strong>, you will need to select the
+<em>time aggregation</em> and a <em>time window</em> on which the change will be
+calculated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>You can optionally <strong>notify on no data</strong> after a configurable timeframe. At
+the minimum, your chosen timeframe must be greater than 2x the alerting
+window. For example, if you are alerting over the last 5 minutes then you
+would need to wait at least 10 minutes before notifying on missing data.</p>
+  </li>
+  <li>
+    <p>You can opt to <strong>automatically resolve the monitor from a triggered
+state</strong>. In general you’ll want to leave this option off as you only want
+an alert to be resolved when it’s fixed.</p>
+
+    <p>This most common use-case for this option is when you have very sparse
+counters, e.g. for errors. When errors stop occuring the metric will stop
+reporting. This means the monitor will not resolve because there are not
+anymore values to trigger a resolution.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong> Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<h3 id="integration" class="linked-header">
+<a class="header-link" href="#integration"><i class="fa fa-link"></i></a>Integration Monitors</h3>
+
+<p><img src="/static/images/monitor/es_status.png" alt="es status"></p>
+
+<p>On the integration tab you will see a list of your installed integrations. Upon
+selection, you can choose to monitor either a “Status” or a “Metric”.</p>
+
+<ul>
+  <li>
+    <p>Choosing <strong>Integration Status</strong> will present you with one or more service
+checks for each integration. Please refer to the
+<a href="#check-alerting">custom monitors</a> section for details on the
+available options.</p>
+  </li>
+  <li>
+    <p>Choosing <strong>Integration Metric</strong> will provide a familiar interface used for a
+interface used for a Metric Monitor. You will be able to choose from any of
+the metrics provided by this integration. Please refer to the
+<a href="#metric-conditions">alert conditions</a> section for details on the available
+options.</p>
+  </li>
+</ul>
+
+<h3 id="process" class="linked-header">
+<a class="header-link" href="#process"><i class="fa fa-link"></i></a>Process Monitors</h3>
+
+<p><img src="/static/images/monitor/process_monitor.png" alt="process monitor"></p>
+
+<p>A process monitor will watch the status produced by the <code>process.up</code> service
+check reported by the check in the Agent. At the Agent level you can configure
+thresholds based on the number of matching processes.</p>
+
+<p>Read more about configuration on the <a href="/integrations/process/">Process Check</a>
+page.</p>
+
+<p>For each process, a single service check status will be produced. Through this
+creation interface, you can choose which of those checks to monitor and at what
+point they should notify.</p>
+
+<ol>
+  <li>
+    <p>Pick the <strong>process</strong> to monitor. You will see the names configured in any
+Agent with an active process check.</p>
+  </li>
+  <li>
+    <p>Pick the <strong>monitor scope</strong>. You will only see hosts or tags that
+are reporting a status for the selected process.</p>
+  </li>
+  <li>
+    <p>Select <strong>alerting options</strong>. Please refer to the
+<a href="#check-alerting">custom monitors</a> section for details on the available options.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong> Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<h3 id="network" class="linked-header">
+<a class="header-link" href="#network"><i class="fa fa-link"></i></a>Network Monitors</h3>
+
+<p><img src="/static/images/monitor/network_monitor.png" alt="network monitor"></p>
+
+<p>Network monitors cover the TCP and HTTP checks available in the Agent. Read
+the <a href="/guides/network_checks">guide to network checks</a> for details on Agent
+configuration.</p>
+
+<p><strong>Network Status</strong></p>
+
+<ol>
+  <li>
+    <p>Choose a <strong>network check</strong>. You will be able to choose from all HTTP and TCP
+checks being submitted by your Agents.</p>
+  </li>
+  <li>
+    <p>Pick <strong>monitor scope</strong>. You will only see hosts or tags reporting
+the check you have chosen.</p>
+  </li>
+  <li>
+    <p>Select <strong>alerting options</strong>. Please refer to the
+<a href="#check-alerting">custom monitors</a> section for details on the available
+options.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong> Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<p><strong>Network Metric</strong></p>
+
+<ol>
+  <li>
+    <p>Choose a <strong>network metric</strong>. You will be able to choose either the TCP or
+HTTP response time metric.</p>
+  </li>
+  <li>
+    <p>Pick <strong>monitor scope</strong>. You will only see hosts or tags reporting
+the metric you have chosen.</p>
+  </li>
+  <li>
+    <p>Select <strong>alerting options</strong>. Please refer to the
+<a href="#metric-conditions">alert-conditions</a> section for details on the available
+options.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong> Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<h3 id="event" class="linked-header">
+<a class="header-link" href="#event"><i class="fa fa-link"></i></a>Event Monitors</h3>
+
+<p>Event monitors allows you to alert when an event matching your query occurs.</p>
+
+<p><img src="/static/images/monitor/event_monitor.png" alt="event monitor"></p>
+
+<ol>
+  <li>
+    <p>Select the query and parameters (status, priority, sources and tags) you want
+ to monitor.</p>
+  </li>
+  <li>
+    <p>Select the alert gouping</p>
+  </li>
+  <li>
+    <p>Select the <strong>alerting conditions</strong>. The <strong>threshold value</strong> and <strong>timeframe</strong>
+ options allows you to set the number of occurence of an event required during
+ a timeframe before triggering the monitor.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notifcation options</strong>. Refer to the <a href="#notifications">Notifications</a>
+ section of this guide for informations.</p>
+  </li>
+</ol>
+
+<h3 id="custom" class="linked-header">
+<a class="header-link" href="#custom"><i class="fa fa-link"></i></a>Custom Monitors</h3>
+
+<p><img src="/static/images/monitor/custom_monitor.png" alt="custom monitor"></p>
+
+<p>Custom monitors encompass any service checks that are not reported by one of the
+out-of-the-box integrations included with the Agent.</p>
+
+<p>Refer to the <a href="/guides/agent_checks/">Guide to Agent Checks</a> for detailed
+information on writing your own checks that send metrics, events,
+or service checks.</p>
+
+<ol>
+  <li>
+    <p>Select your <strong>custom check</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>host or tags</strong> that you would like to monitor. The check will run
+for every unique set of tags from all monitored hosts. For example, the
+<code>Nginx</code> service check reports one status per <code>{host,port}</code>. So if you have
+multiple servers running on a single host, then each one will alert separately
+in the case of failure.</p>
+  </li>
+  <li id="check-alerting">
+    <p>Select your <strong>alert options</strong>.</p>
+
+    <p>While each check run will send a status of either CRITICAL, WARNING or OK,
+you can choose at what consecutive conditions to cause a state change and a
+notification. For example, you might want to know immediately when your check
+fails and only have it recover if it stays that way. In this case you might
+choose to notify on 1 critical status, 1 warning status and 4 OK statuses.</p>
+
+    <p>You can optionally <strong>notify on no data</strong> after a configurable timeframe. You
+must choose at least 2 minutes for your timeframe.</p>
+  </li>
+  <li>
+    <p>Configure your <strong>notification options</strong>. Refer to the
+<a href="#notifications">Notifications</a> section of this guide for a detailed
+walkthrough of the common notification options.</p>
+  </li>
+</ol>
+
+<h2 id="notifications" class="linked-header">
+<a class="header-link" href="#notifications"><i class="fa fa-link"></i></a>Monitor Notifications</h2>
+
+<p>Notifications are a key component of any monitor. You want to make sure the
+right people get notified so the problem can be resolved as soon as possible.</p>
+
+<p><img src="/static/images/monitor/notification.png" alt="notification"></p>
+
+<ol>
+  <li>
+    <p>Give your monitor a <strong>title</strong>. It is often useful to use a succinct
+explanation of the monitor so a notified team member can quickly understand
+what is going on.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>message</strong> for the monitor. This field allows standard
+<a href="http://daringfireball.net/projects/markdown/syntax">markdown formatting</a>
+as well as Datadog’s @-notification syntax. Note: you can notify any
+non-Datadog users via email by simply adding <code>@their-email</code> to the
+message.</p>
+
+    <p>A common use-case for the monitor message is to include a step-by-step way
+to resolve the problem. For example if you are monitoring a database then you
+might want to include steps for failing over to a standby node. All in all,
+you should attempt to give as much context to the monitor as possible.</p>
+  </li>
+  <li>
+    <p>Optionally enable <strong>monitor renotification</strong>. This option is useful to remind
+your team that a problem is not solved until the monitor is marked as
+resolved. If enabled, you can configure an escalation message to be sent
+anytime the monitor renotifies. The original message will be included as
+well.</p>
+  </li>
+</ol>
+
+<h3 id="message-template-variables" class="linked-header">
+<a class="header-link" href="#message-template-variables"><i class="fa fa-link"></i></a>Message template variables</h3>
+
+<p>Message template variables can be used to customize your monitor notifications.
+This feature is supported in all monitor types. There are two primary use cases
+for template variables: 1) displaying a different message depending on the
+notification type (e.g. triggered, recovered, no data) and 2) incorporating the
+triggering scope into the message of multi alerts.</p>
+
+<ol>
+  <li>
+    <p><strong>Conditional variables for different notification types</strong>: You can have a
+ monitor event display a different message depending on whether the event is a
+ trigger, warning, recovery, or no data notification. These variables use simple if-else
+ logic with the following syntax:</p>
+
+    <p><img src="/static/images/monitor/conditionalvars.png" alt="conditional variables"></p>
+
+    <p>Here is an example of how you can set it up in the editor:</p>
+
+    <p><img src="/static/images/monitor/templateconditionaleditor.png" alt="conditional editor"></p>
+
+    <p>The corresponding trigger event notification will look like this:</p>
+
+    <p><img src="/static/images/monitor/templateconditionaltrigger.png" alt="conditional trigger"></p>
+
+    <p>and the recovery notification:</p>
+
+    <p><img src="/static/images/monitor/templateconditionalrecover.png" alt="conditional recovery"></p>
+
+    <p>The conditional variables available are <code>is_alert</code>, <code>is_alert_recovery</code>,
+ <code>is_warning</code>, <code>is_warning_recovery</code>, <code>is_recovery</code>, and <code>is_no_data</code>.
+ These can also be seen in the “Use message template variables” help box in
+ Step 3 of the monitor editor.</p>
+  </li>
+  <li>
+    <p><strong>Tag variables for multi alerts</strong>: When your monitor is a multi alert, instead
+ of having a generic message (and finding the triggering tag scope in the alert
+ query definition), a variable can be used in the message for explicitly
+ identifying the triggering scope.</p>
+
+    <p>Here is an example of how you can use template variables for a multi alert:</p>
+
+    <p><img src="/static/images/monitor/templatevareditor.png" alt="template var editor"></p>
+
+    <p>and the corresponding event notification:</p>
+
+    <p><img src="/static/images/monitor/templatevar.png" alt="template var trigger"></p>
+
+    <p>The tag template variables available depend on the tag group selected in Step 1
+ of the monitor editor. The possible options will automatically populate at the
+ bottom of the “Use message template variables” help box in Step 3 of the editor.
+ These variables can also be used in the monitor titles (names), but note that
+ the variables are only populated in the text of Datadog child events (not the
+ parent, which displays an aggregation summary).</p>
+
+    <p>Some tags identifying your triggering scope will automatically be inserted into
+ the title of your multi alert. If your scope is defined by a lot of tags, your
+ alert title may end up being undesirably long. If you’ve used template tag variables
+ to include this information in the body of your alert, you can uncheck
+ <strong>Include triggering tags in notification title</strong> to save some space. This will make
+ your notification title look like this:</p>
+
+    <p><img src="/static/images/monitor/templatevar_short.png" alt="short template var trigger"></p>
+
+    <p>Note that template variable content is escaped by default. If your variable
+ contains JSON or code that you would NOT like to be escaped, then use triple braces
+ instead of double braces (e.g. <code>{{{event.text}}}</code>).</p>
+  </li>
+  <li>
+    <p><strong>Conditional variables for different triggering scopes</strong>: You can have a
+monitor event display a different message depending on the group that’s
+causing a notification.</p>
+
+    <p>The <code>{{is_match}}</code> conditional lets you match the triggering context to some
+string. For example, you might want to notify your db team if a triggering
+host has <code>role:db</code> but notify your app team if the host has <code>role:app</code>.</p>
+
+    <p>You can use any of the available tag variables in your condition. A match
+will be made if the comparison string is anywhere in the resolved variable.</p>
+
+    <p>The variable uses the following format:</p>
+
+    <pre><code>{{#is_match "tag_variable" "comparison_string"}}
+This will show if comparison_string is in tag_variable.
+{{/is_match}}
+</code></pre>
+
+    <p>Here is an example of how you can give a different message depending on the
+triggering context:</p>
+
+    <p><img src="/static/images/monitor/scope_match_editor.png" alt="scope match editor"></p>
+  </li>
+</ol>
+
+<h4 id="variable-availability" class="linked-header">
+<a class="header-link" href="#variable-availability"><i class="fa fa-link"></i></a>Variable availability</h4>
+
+<p>We provide a number of different types of monitors and not all variables are available for each type of monitor. Integration monitor variables are largely dependent on the specific integration and monitor configuration.</p>
+
+<table class="tpl-var-table">
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><a href="#host">host</a></td>
+      <td><a href="#metric">metric</a></td>
+      <td><a href="#integration">integration</a></td>
+      <td><a href="#process">process</a></td>
+      <td><a href="#network">network</a></td>
+      <td><a href="#custom">custom check</a></td>
+      <td><a href="#event">event</a></td>
+    </tr>
+    <tr>
+      <td><strong>Conditionals</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>is_alert</code></td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><code>is_alert_recovery</code></td>
+      <td> </td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>is_warning</code></td>
+      <td> </td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>is_warning_recovery</code></td>
+      <td> </td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>is_recovery</code></td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><code>is_no_data</code></td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><code>is_match</code></td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><strong>Variables</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>{{value}}</code></td>
+      <td> </td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>{{threshold}}</code></td>
+      <td>Y (cluster)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td><code>{{warn_threshold}}</code></td>
+      <td>Y (cluster)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>{{ok_threshold}}</code></td>
+      <td> </td>
+      <td> </td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>{{comparator}}</code></td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>Additional variables</td>
+      <td>Contextual</td>
+      <td> </td>
+      <td>Contextual<br><code>{{check_message}}</code>
+</td>
+      <td>Contextual<br><code>{{process.name}}</code>
+</td>
+      <td>Contextual<br><code>{{url.name}}</code><br><code>{{instance.name}}</code>
+</td>
+      <td><code>{{check_message}}</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  .tpl-var-table tr td {
+    text-align: center;
+    border: 1px #9d6ebf solid;
+    padding: 5px;
+  }
+  .tpl-var-table tr td:first-child {
+    text-align: right;
+  }
+</style>
+
+<p>Note that some monitors offer addtional contextual variables based on what you are monitoring. For example, host monitors may provide variables for <code>host.availability-zone</code> and <code>host.cloud_provider</code>. You can see a complete list of contextual template variables available to your monitor by clicking the “Use message template variables” link or in the list of suggestions that appears when you type “{{“ to begin a template variable name.</p>
+
+<h2 id="faq" class="linked-header">
+<a class="header-link" href="#faq"><i class="fa fa-link"></i></a>Monitor FAQs</h2>
+
+<ul>
+  <li>
+    <p><em>Can I manage my monitors programatically?</em></p>
+
+    <p>Yes. Refer to the <a href="http://docs.datadoghq.com/api/#alerts">Datadog API docs</a>
+for detailed information on managing monitors through the API using the
+available libraries or cURL.</p>
+  </li>
+  <li>
+    <p><em>Can you alert on a function?</em></p>
+
+    <p>Yes, selecting the ‘Source’ tab of a monitor editor (Step 1) will allow you to
+alert on custom queries and functions, similar to the JSON editor for graphs.</p>
+  </li>
+</ul>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

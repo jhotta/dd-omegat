@@ -1,0 +1,1149 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Agent Checkの書き方</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class='nav-header'>Table of Contents</li><li><a href='#overview' onclick="$('#').collapse('show')">概要</a></li><li><a href='#setup' onclick="$('#').collapse('show')">セットアップ</a></li><li><a href='#interface' onclick="$('#').collapse('show')">Agent Checkのインターフェース</a></li><li><a href='#config' onclick="$('#').collapse('show')">設定</a></li><li><a href='#directory' onclick="$('#').collapse('show')">ディレクトリーの構造</a></li><li><a href='#first' onclick="$('#').collapse('show')">始めてのチェック</a></li><li><a href='#http' onclick="$('#').collapse('show')">HTTPのチェック</a></li>
+            
+            
+              <li class="nav-header">ガイド </li>
+              
+              
+                <li><a href="/ja/overview/">Datadogが提供するサービスの概要</a></li>
+              
+                <li><a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a></li>
+              
+                <li><a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a></li>
+              
+                <li><a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a></li>
+              
+                <li><a href="/ja/guides/hostmap/">Host Map表示の入門</a></li>
+              
+                <li><a href="/ja/guides/agent_checks/">Agent Checkの書き方</a></li>
+              
+                <li><a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a></li>
+              
+                <li><a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a></li>
+              
+                <li><a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a></li>
+              
+                <li><a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Agent Checkの書き方 </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- <div class="alert alert-block">
+This guide requires an Agent version >= 3.2.0. Older versions of the Agent do
+not include the `AgentCheck` interface that we'll be using.
+</div> --><html><body>
+<div class="alert alert-block">
+Agent Checkを使うには、Datadog Agent 3.2.0 以降をインストールしている必要があります。 それ以前のバージョンには、Agent Checkのインターフェースは実装されていません。
+</div>
+
+<!--
+======================================================
+OVERVIEW
+======================================================
+-->
+
+<!-- <h3 id="overview">Overview</h3>
+This guide details how to collect metrics and events from a new data source
+by writing an Agent Check, a Python plugin to the Datadog Agent. We'll
+look at the `AgentCheck` interface, and then write a simple Agent Check
+that collects timing metrics and status events from HTTP services.
+
+Any custom checks will be included in the main check run loop, meaning
+they will run every check interval, which defaults to 15 seconds. -->
+
+<h3 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>概要</h3>
+
+<p>このガイドでは、Pythonで記述したDatadog Agent のpluginであるAgent Check を記述することで、新しいデータソースからメトリクスとイベント情報を取得する方法について説明します。
+<code>AgentCheck</code>のインターフェースを確認した後、HTTP サービスからタイミングメトリクスやステータスに関するイベント情報を取得する簡単なAgent Checkを記述してみます。</p>
+
+<p>Agent Checkは、メインチェックの実行ループに組み込まれ、デフォルト設定では15秒間隔で実行されます。</p>
+
+<!--
+======================================================
+SETUP
+======================================================
+-->
+
+<!-- <h3 id="setup">Setup</h3>
+
+First off, ensure you've properly
+<a href="http://app.datadoghq.com/account/settings#agent">installed the
+Agent</a> on your machine. If you run into any issues during the setup, pop by
+our chatroom, <a href="irc://irc.freenode.net/datadog">#datadog on FreeNode</a>,
+and we'll be happy to answer any questions you might have. (There's a
+<a href="http://webchat.freenode.net/?randomnick=1&channels=datadog&prompt=1">
+web chat client, too</a>.) -->
+
+<h3 id="setup" class="linked-header">
+<a class="header-link" href="#setup"><i class="fa fa-link"></i></a>セットアップ</h3>
+
+<p>まだDatadog Agentをインストールしていない場合は、<a href="../basic_agent_usage/">Datadog Agent 入門</a>又は、ダッシュボード内タブを<a href="http://app.datadoghq.com/account/settings#agent">Installations -&gt; Agent</a>とクリックしてインストールドキュメントを参照してください。これらのドキュメントでは、特定のOS用のDatadog Agent をインストールする手順を解説しています。</p>
+
+<p>セットアップ中に問題が発生した場合は、<a href="irc://irc.freenode.net/datadog">freenode にあるDatadog</a>のチャットルームで気兼ねなく質問してください。 (<a href="http://webchat.freenode.net/?randomnick=1&amp;channels=datadog&amp;prompt=1">web チャットクライアント</a>)</p>
+
+<!--
+======================================================
+INTERFACE
+======================================================
+-->
+
+<!-- <h3 id="interface">Agent Check Interface</h3>
+
+All custom checks inherit from the `AgentCheck` class found in `checks/__init__.py`
+and require a `check()` method that takes one argument, `instance` which is a
+`dict` having the configuration of a particular instance. The `check` method is
+run once per instance defined in the check configuration (discussed later). -->
+
+<h3 id="interface" class="linked-header">
+<a class="header-link" href="#interface"><i class="fa fa-link"></i></a>Agent Check のインターフェース</h3>
+
+<p>すべてのカスタムチェックは、<code>checks/__init__.py</code>に記述されている<code>AgentCheck</code>クラスを継承し、<code>check()</code>関数をオーバーライドして生成します。
+<code>check()</code> 関数には、そのインスタンスの構成が記述された辞書型の情報を引数に渡します。
+<code>check()</code> 関数は、Check設定で定義されたインスタンスごとに一回実行されることになります。(詳細に関しては、後述します)</p>
+
+<!-- #### Sending metrics
+
+Sending metrics in a check is easy. If you're already familiar with the
+methods available in DogStatsD, then the transition will be very simple. If
+you're not already familiar with that interface, you'll find sending metrics is
+a breeze.
+
+You have the following methods available to you:
+
+    self.gauge( ... ) # Sample a gauge metric
+
+    self.increment( ... ) # Increment a counter metric
+
+    self.decrement( ... ) # Decrement a counter metric
+
+    self.histogram( ... ) # Sample a histogram metric
+
+    self.rate( ... ) # Sample a point, with the rate calculated at the end of the check
+
+    self.count( ... ) # Sample a raw count metric
+
+    self.monotonic_count( ... ) # Sample an increasing counter metric
+
+All of these methods take the following arguments:
+
+- `metric`: The name of the metric
+- `value`: The value for the metric (defaults to 1 on increment, -1 on decrement)
+- `tags`: (optional) A list of tags to associate with this metric.
+- `hostname`: (optional) A hostname to associate with this metric. Defaults to the current host.
+- `device_name`: (optional) A device name to associate with this metric.
+
+These methods may be called from anywhere within your check logic. At the end of
+your `check` function, all metrics that were submitted will be collected and
+flushed out with the other Agent metrics.
+ -->
+
+<h4 id="section" class="linked-header">
+<a class="header-link" href="#section"><i class="fa fa-link"></i></a>メトリクスの送信</h4>
+
+<p>Agent Checkでメトリクスを送信することは非常に簡単です。既にDogStatsDが提供している関数に精通しているなら、移行は非常に簡単です。
+まだそれらの関数に慣れていない場合でも、それほど大変ではないことがすぐに分かるはずです。</p>
+
+<p>Agent Checkでは、以下の関数を利用することが出来ます:</p>
+
+<pre><code>self.gauge( ... ) # Sample a gauge metric
+
+self.increment( ... ) # Increment a counter metric
+
+self.decrement( ... ) # Decrement a counter metric
+
+self.histogram( ... ) # Sample a histogram metric
+
+self.rate( ... ) # Sample a point, with the rate calculated at the end of the check
+
+self.count( ... ) # Sample a raw count metric
+
+self.monotonic_count( ... ) # Sample an increasing counter metric
+</code></pre>
+
+<p>全ての関数は、以下の引数を取ります:</p>
+
+<ul>
+  <li>
+<code>metric</code>: The name of the metric</li>
+  <li>
+<code>value</code>: The value for the metric (defaults to 1 on increment, -1 on decrement)</li>
+  <li>
+<code>tags</code>: (optional) A list of tags to associate with this metric.</li>
+  <li>
+<code>hostname</code>: (optional) A hostname to associate with this metric. Defaults to the current host.</li>
+  <li>
+<code>device_name</code>: (optional) A device name to associate with this metric.</li>
+</ul>
+
+<p>これらの関数は、チェックロジックのどこからでも呼び出すことが出来ます。これらの関数を使って取得したメトリクスは、<code>check</code> 機能の実行の最後に他のAgent メトリクスと共にDatadogのサービスに転送されます。</p>
+
+<!-- #### Sending events
+
+At any time during your check, you can make a call to `self.event(...)` with one argument: the payload of the event. Your event should be structured like this:
+
+    {
+        "timestamp": int, the epoch timestamp for the event,
+        "event_type": string, the event name,
+        "api_key": string, the api key for your account,
+        "msg_title": string, the title of the event,
+        "msg_text": string, the text body of the event,
+        "aggregation_key": string, a key to use for aggregating events,
+        "alert_type": (optional) string, one of ('error', 'warning', 'success', 'info');
+            defaults to 'info',
+        "source_type_name": (optional) string, the source type name,
+        "host": (optional) string, the name of the host,
+        "tags": (optional) list, a list of tags to associate with this event
+    }
+
+
+At the end of your check, all events will be collected and flushed with the rest
+of the Agent payload. -->
+
+<h4 id="section-1" class="linked-header">
+<a class="header-link" href="#section-1"><i class="fa fa-link"></i></a>イベントの送信</h4>
+
+<p>Check 内でイベントを送信するには、<code>self.event(...)</code>を呼び出し、<code>"argument":</code>に値を設定することで、そのイベントに関する情報(payload)を設定することが出来ます。イベントの中身は次のような構造になっている必要があります:</p>
+
+<pre><code>{
+    "timestamp": int, the epoch timestamp for the event,
+    "event_type": string, the event name,
+    "api_key": string, the api key for your account,
+    "msg_title": string, the title of the event,
+    "msg_text": string, the text body of the event,
+    "aggregation_key": string, a key to use for aggregating events,
+    "alert_type": (optional) string, one of ('error', 'warning', 'success', 'info');
+        defaults to 'info',
+    "source_type_name": (optional) string, the source type name,
+    "host": (optional) string, the name of the host,
+    "tags": (optional) list, a list of tags to associate with this event
+}
+</code></pre>
+
+<p>全てのイベントは、<code>check</code> 機能の実行の最後に、他のAgent Checkの内容と共にDatadogのサービスに転送されます。</p>
+
+<!-- #### Exceptions
+
+If a check cannot run because of improper configuration,  programming error or
+because it could not collect any metrics, it should raise a meaningful exception.
+This exception will be logged, as well as be shown in the Agent <a href='/guides/basic_agent_usage/ubuntu/'>info command</a> for
+easy debugging. For example:
+
+    $ sudo /etc/init.d/datadog-agent info
+
+      Checks
+      ======
+
+        my_custom_check
+        ---------------
+          - instance #0 [ERROR]: ConnectionError('Connection refused.',)
+          - Collected 0 metrics & 0 events -->
+
+<h4 id="section-2" class="linked-header">
+<a class="header-link" href="#section-2"><i class="fa fa-link"></i></a>エラーと例外の表示</h4>
+
+<p>不適切な設定、プログラミング時のエラー、いずれかのメトリクスが取得できない時など、Checkが正常に実行できない場合には、状況を把握しやすい例外メッセージが必要です。この例外メッセージはログに記録されると同時に、<code>datadog-agent info</code> コマンドで表示出来るので、デバッグに利用することが出来ます:</p>
+
+<pre><code>$ sudo /etc/init.d/datadog-agent info
+
+  Checks
+  ======
+
+    my_custom_check
+    ---------------
+      - instance #0 [ERROR]: ConnectionError('Connection refused.',)
+      - Collected 0 metrics &amp; 0 events
+</code></pre>
+
+<!-- #### Logging
+
+As part of the parent class, you're given a logger at `self.log`, so you can do
+things like `self.log.info('hello')`. The log handler will be `checks.{name}`
+where `{name}` is the name of your check (based on the filename of the check
+module). -->
+
+<h4 id="section-3" class="linked-header">
+<a class="header-link" href="#section-3"><i class="fa fa-link"></i></a>ログの保存</h4>
+
+<p>AgentCheckクラスを承継しているので、親クラスで実装されているロギング機能を <code>self.log.info('hello')</code>の形で使うことが出来ます。
+<strong>The log handler will be <code>checks.{name}</code>
+where <code>{name}</code> is the name of your check (based on the filename of the check
+module).</strong></p>
+
+<!--
+======================================================
+CONFIGURATION
+======================================================
+-->
+
+<!-- <h3 id="config">Configuration</h3>
+
+Each check will have a configuration file that will be placed in the `conf.d`
+directory. Configuration is written using [YAML](http://www.yaml.org/). The
+file name should match the name of the check module (e.g.: `haproxy.py` and
+`haproxy.yaml`).
+
+The configuration file has the following structure:
+
+<pre class="" lang="console"><code class="">init_config:
+    key1: val1
+    key2: val2
+
+instances:
+    - username: jon_smith
+      password: 1234
+
+    - username: jane_smith
+      password: 5678
+</code></pre>
+
+<div class="alert alert-block">Note: YAML files must use spaces instead of tabs.</div> -->
+
+<h3 id="config" class="linked-header">
+<a class="header-link" href="#config"><i class="fa fa-link"></i></a>設定</h3>
+
+<p>Agent Checkには設定ファイルがあり、その設定ファイルは<code>conf.d</code> 以下に置かれています。設定ファイルは、<a href="http://www.yaml.org/">YAML</a> 形式で記述します。
+設定ファイルの名前は、Agent Checkのモジュールの名前と同じ名前である必要があります。
+(例: モジュール名が<code>haproxy.py</code> の場合は、設定ファイル名は、<code>haproxy.yaml</code> になります)</p>
+
+<p>設定ファイルは、以下のようになります:</p>
+
+<pre class="" lang="console"><code class="">init_config:
+    key1: val1
+    key2: val2
+
+instances:
+    - username: jon_smith
+      password: 1234
+
+    - username: jane_smith
+      password: 5678
+</code></pre>
+
+<div class="alert alert-block">注: YAML ファイルは、タブを使わず、スペースを使って記述してください。</div>
+
+<!-- #### init_config
+
+The *init_config* section allows you to have an arbitrary number of global
+configuration options that will be available on every run of the check in
+`self.init_config`. -->
+
+<h4 id="initconfig" class="linked-header">
+<a class="header-link" href="#initconfig"><i class="fa fa-link"></i></a>init_config</h4>
+
+<p><em>init_config</em>のセクションでは、Agent Check実行時に利用できるグローバルな設定オプションを複数記述することが出来ます。このオプションは、全てのCheckの実行において<code>self.init_config</code>の方法で、アクセスすることが出来ます。</p>
+
+<!-- #### instances
+
+The *instances* section is a list of instances that this check will be run
+against. Your actual `check()` method is run once per instance. This means that
+every check will support multiple instances out of the box. -->
+
+<h4 id="instances" class="linked-header">
+<a class="header-link" href="#instances"><i class="fa fa-link"></i></a>instances</h4>
+
+<p><em>instances</em>のセクションは、Checkが実行される全ての対象(instance)のリストになります。</p>
+
+<p>Checkの中で実行される<code>check()</code> 関数の実体は、各チェック対象(instance)に対して個別に実行されていきます。このことより全てのCheckは、そのままの状態で複数のチェック対象(instance)をサポートしていることを意味しています。</p>
+
+<!--
+======================================================
+DIRECTORY STRUCTURE
+======================================================
+-->
+
+<!-- <h3 id="directory">Directory Structure</h3>
+
+Before starting your first check it is worth understanding the checks directory
+structure. There are two places that you will need to add files for your check.
+The first is the `checks.d` folder, which lives in your Agent root.
+
+For all Linux systems, this means you will find it at: -->
+
+<h3 id="directory" class="linked-header">
+<a class="header-link" href="#directory"><i class="fa fa-link"></i></a>ディレクトリの構造</h3>
+
+<p>Checkのプログラミングを始める前に、まず関連するディレクトリの構造を理解しておくのは重要なことです。Checkで使用するファイルは２カ所に分けて配置します。
+Check のPython 実行ファイルは、Datadog Agent のルートディレクトリにある<code>checks.d</code> のフォルダに配置します。</p>
+
+<p>Linux系のシステムは、以下のディレクトリになります:</p>
+
+<pre><code>/etc/dd-agent/checks.d/
+</code></pre>
+
+<p>Windows Server &gt; = 2008の場合は、以下のディレクトリになります:</p>
+
+<pre><code>C:\Program Files (x86)\Datadog\Agent\checks.d\
+
+OR
+
+C:\Program Files\Datadog\Agent\checks.d\
+</code></pre>
+
+<p>Mac OS Xと、ソースからインストールした場合は、以下のディレクトリになります:</p>
+
+<pre><code>~/.datadog-agent/agent/checks.d/
+
+OR
+
+~/.pup/agent/checks.d/
+
+OR
+
+&lt;sandbox_folder&gt;/checks.d/
+</code></pre>
+
+<p>Check の設定ファイルは、Datadog Agent の設定ファイルのルートディレクトリにある<code>conf.d</code> になります。</p>
+
+<p>Linux系のシステムは、以下のディレクトリになります:</p>
+
+<pre><code>/etc/dd-agent/conf.d/
+</code></pre>
+
+<p>Windowsの場合は、以下のディレクトリになります：</p>
+
+<pre><code>C:\ProgramData\Datadog\conf.d\
+
+OR
+
+C:\Documents and Settings\All Users\Application Data\Datadog\conf.d\
+</code></pre>
+
+<p>Mac OS Xと、ソースからインストールした場合は、以下のディレクトリになります:</p>
+
+<pre><code>~/.datadog-agent/agent/conf.d/
+
+OR
+
+~/.pup/agent/conf.d/
+
+OR
+
+&lt;sandbox_folder&gt;/conf.d/
+</code></pre>
+
+<p>実行ファイルと設定ファイルは、デフォルトの場所以外に、一つのディレクトリにまとめて設置し、<code>datadog.conf</code> 内で設置ディレクトリを指定することも出来ます:</p>
+
+<pre><code>additional_checksd: /path/to/custom/checks.d/
+</code></pre>
+
+<!--
+======================================================
+FIRST CHECK
+======================================================
+-->
+
+<!-- <h3 id="first">Your First Check</h3>
+
+<div class="alert alert-block">
+The names of the configuration and check files must match. If your check
+is called <code>mycheck.py</code> your configuration file <em>must</em> be
+named <code>mycheck.yaml</code>.
+</div>
+
+To start off simple, we'll write a check that does nothing more than send a
+value of 1 for the metric `hello.world`. The configuration file will be very
+simple, including no real information. This will go into `conf.d/hello.yaml`:
+
+<pre class="" lang="console"><code class="">init_config:
+
+instances:
+    [{}]
+
+</code></pre>
+
+The check itself will inherit from `AgentCheck` and send a gauge of `1` for
+`hello.world` on each call. This will go in `checks.d/hello.py`:
+
+<pre class="" lang="python"><code class="language-python">from checks import AgentCheck
+class HelloCheck(AgentCheck):
+    def check(self, instance):
+        self.gauge('hello.world', 1)
+
+</code></pre>
+
+As you can see, the check interface is really simple and easy to get started
+with. In the next section we'll write a more useful check that will ping HTTP
+services and return interesting data. -->
+
+<h3 id="first" class="linked-header">
+<a class="header-link" href="#first"><i class="fa fa-link"></i></a>始めてのCheck</h3>
+
+<div class="alert alert-block">
+Check 実行ファイルおよび設定ファイルの名前(拡張子を除く)は一致している必要があります。
+例えば、実行ファイルが<code>mycheck.py</code> の場合、設定ファイルは、<code>mycheck.yaml</code> というファイル名になります。
+</div>
+
+<p>まず簡単な例として、メトリクス名<code>hello.world</code>で、値1を送信するAegent Checkを書いてみます。設定ファイルは、<code>conf.d / hello.yaml</code> に配置し、以下の3行で非常にシンプルな内容になります:</p>
+
+<pre class="" lang="console"><code class="">init_config:
+
+instances:
+    [{}]
+
+</code></pre>
+
+<p>HelloCheckは、AgentCheckクラスを継承し、<code>hello.world</code>というメトリクス名で毎回<code>1</code>を送信します。このCheckを記述した<code>hello.py</code> ファイルは、<code>checks.d</code> ディレクトリ以下に配置します:</p>
+
+<pre class="" lang="python"><code class="language-python">from checks import AgentCheck
+class HelloCheck(AgentCheck):
+    def check(self, instance):
+        self.gauge('hello.world', 1)
+
+</code></pre>
+<p>ごのようにCheckのインターフェースは、シンプルで、簡単に使い始めることが出来ます。</p>
+
+<p>次のセクションでは、HTTPサービスに対しpingを実行し、レスポンス時間を計測してDatadogに送信するCheckを書いてみることにします。</p>
+
+<!--
+======================================================
+HTTP CHECK
+======================================================
+-->
+
+<!-- <h3 id="http">An HTTP Check</h3>
+
+Now we will guide you through the process of writing a basic check that will
+check the status of an HTTP endpoint. On each run of the check, a GET
+request will be made to the HTTP endpoint. Based on the response, one of the
+following will happen:
+
+  - If the response is successful (response is 200, no timeout) the response
+  time will be submitted as a metric.
+  - If the response times out, an event will be submitted with the URL and
+  timeout.
+  - If the response code != 200, an event will be submitted with the URL and
+  the response code. -->
+
+<h3 id="http" class="linked-header">
+<a class="header-link" href="#http"><i class="fa fa-link"></i></a>HTTP のCheck</h3>
+
+<p>ここからは、HTTPのエンドポイントの状況を確認するための基本的なCheckの書き方を解説します。
+Checkが実行される度に、HTTPのエンドポイントに対してGETリクエストを実行します。
+レスポンスの結果に基づいて次の処理をします:</p>
+
+<ul>
+  <li>レスポンスが成功と判定された場合（レスポンスステータスが200で、タイムアウトをしていない）、レスポンス時間をメトリクスとして送信します。</li>
+  <li>レスポンスがタイムアウトした場合、URLとタイムアウトのイベントを送信します。</li>
+  <li>レスポンスステータスが200以外の場合、URL及びレスポンスコードのイベントを送信します。</li>
+</ul>
+
+<!-- #### Configuration
+
+First we will want to define how our configuration should look, so that we know
+how to handle the structure of the `instance` payload that is passed into the
+call to `check`.
+
+Besides just defining a URL per call, it'd be nice to allow you to set a timeout
+for each URL. We'd also want to be able to configure a default timeout if no
+timeout value is given for a particular URL.
+
+So our final configuration would look something like this:
+
+<pre class="" lang="console"><code class="">init_config:
+    default_timeout: 5
+
+instances:
+    -   url: https://google.com
+
+    -   url: http://httpbin.org/delay/10
+        timeout: 8
+
+    -   url: http://httpbin.org/status/400
+
+</code></pre> -->
+
+<h4 id="section-4" class="linked-header">
+<a class="header-link" href="#section-4"><i class="fa fa-link"></i></a>設定</h4>
+
+<p>インスタンス定義の中身が各Check本体でどのように処理されるのかを理解するために、
+まず最初に設定ファイルがどのようになるか考えてみることにします。</p>
+
+<p>設定ファイルは、Checkの実行先のURLの定義以外に、それぞれのURLに対してのタイムアウトを設定すると、より環境に合ったCheckを実行出来ることになります。更に、それぞれのインスタンスでタイムアウトを設定しなかった時のために、デフォルトのタイムアウトを設定しておくことも必要になります。</p>
+
+<p>上記をふまえると、設定ファイルは次のようになります:</p>
+
+<pre class="" lang="console"><code class="">init_config:
+    default_timeout: 5
+
+instances:
+    -   url: https://google.com
+
+    -   url: http://httpbin.org/delay/10
+        timeout: 8
+
+    -   url: http://httpbin.org/status/400
+
+</code></pre>
+<!-- #### The Check
+
+Now we can start defining our check method. The main part of the check will make
+a request to the URL and time the response time, handling error cases as it goes.
+
+In this snippet, we start a timer, make the GET request using the
+[requests library](http://docs.python-requests.org/en/latest/) and handle and
+errors that might arise.
+
+<pre class="" lang="console"><code class=""># Load values from the instance config
+url = instance['url']
+default_timeout = self.init_config.get('default_timeout', 5)
+timeout = float(instance.get('timeout', default_time))
+
+# Use a hash of the URL as an aggregation key
+aggregation_key = md5(url).hexdigest()
+
+# Check the URL
+start_time = time.time()
+try:
+    r = requests.get(url, timeout=timeout)
+    end_time = time.time()
+except requests.exceptions.Timeout as e:
+    # If there's a timeout
+    self.timeout_event(url, timeout, aggregation_key)
+
+if r.status_code != 200:
+    self.status_code_event(url, r, aggregation_key)
+</code></pre>
+
+If the request passes, we want to submit the timing to Datadog as a metric. Let's
+call it `http.response_time` and tag it with the URL.
+
+<pre class="" lang="python"><code class="language-python">timing = end_time - start_time
+self.gauge('http.reponse_time', timing, tags=['http_check'])
+</code></pre>
+
+Finally, we'll want to define what happens in the error cases. We have already
+seen that we call `self.timeout_event` in the case of a URL timeout and
+we call `self.status_code_event` in the case of a bad status code. Let's
+define those methods now.
+
+First, we'll define `timeout_event`. Note that we want to aggregate all of these
+events together based on the URL so we will define the aggregation_key as a hash
+of the URL.
+
+<pre class="" lang="python"><code class="language-python">def timeout_event(self, url, timeout, aggregation_key):
+    self.event({
+        'timestamp': int(time.time()),
+        'event_type': 'http_check',
+        'msg_title': 'URL timeout',
+        'msg_text': '%s timed out after %s seconds.' % (url, timeout),
+        'aggregation_key': aggregation_key
+    })
+</code></pre>
+Next, we'll define `status_code_event` which looks very similar to the timeout
+event method.
+
+<pre class="" lang="python"><code class="language-python">def status_code_event(self, url, r, aggregation_key):
+    self.event({
+        'timestamp': int(time.time()),
+        'event_type': 'http_check',
+        'msg_title': 'Invalid reponse code for %s' % url,
+        'msg_text': '%s returned a status of %s' % (url, r.status_code),
+        'aggregation_key': aggregation_key
+    })
+</code></pre>
+ -->
+
+<h4 id="check-" class="linked-header">
+<a class="header-link" href="#check-"><i class="fa fa-link"></i></a>Check 本体</h4>
+
+<p>では、Check 本体の関数を定義することにします。関数のメインは、設定ファイルで指定したURLに対しHTTP リクエストを実行し、レスポンス時間を計測します。
+エラーが発生していれば、エラー条件によって処理をします。</p>
+
+<p>以下のセクションでは、タイマをスタートし、<a href="http://docs.python-requests.org/en/latest/">requests library</a>を使いHTTPリクエストを実行し、発生する可能性のあるエラーの処理を行います。</p>
+
+<pre class="" lang="console"><code class=""># Load values from the instance config
+url = instance['url']
+default_timeout = self.init_config.get('default_timeout', 5)
+timeout = float(instance.get('timeout', default_time))
+
+# Use a hash of the URL as an aggregation key
+aggregation_key = md5(url).hexdigest()
+
+# Check the URL
+start_time = time.time()
+try:
+    r = requests.get(url, timeout=timeout)
+    end_time = time.time()
+except requests.exceptions.Timeout as e:
+    # If there's a timeout
+    self.timeout_event(url, timeout, aggregation_key)
+
+if r.status_code != 200:
+    self.status_code_event(url, r, aggregation_key)
+</code></pre>
+
+<p>リクエストが成功した場合、レスポンス時間をDatadogへ送信します。その際、メトリクス名は、<code>http.response_time</code>。URLをタグとして付記します。</p>
+
+<pre class="" lang="python"><code class="language-python">timing = end_time - start_time
+self.gauge('http.reponse_time', timing, tags=['http_check'])
+</code></pre>
+
+<p>最後に、エラー発生時の処理内容を定義します。
+先のコードで既に、 HTTP リクエストがタイムアウトした場合の<code>timeout_event</code> 関数と、レスポンスステータスが200
+以外の場合の<code>self.status_code_event</code> 関数を定義しています。
+従って、これらのイベントの関数の中身を定義します。</p>
+
+<p>まず、<code>timeout_event</code> を定義します。<code>self.event()</code> で注目してほしいのは、<code>'aggregation_key':</code> に、先のコードに出ているURLのハッシュである<code>aggregation_key = md5(url).hexdigest()</code>を設定している部分です。このaggregation_key を使って、特定のURLに関連したイベントを集約します。</p>
+
+<pre class="" lang="python"><code class="language-python">def timeout_event(self, url, timeout, aggregation_key):
+    self.event({
+        'timestamp': int(time.time()),
+        'event_type': 'http_check',
+        'msg_title': 'URL timeout',
+        'msg_text': '%s timed out after %s seconds.' % (url, timeout),
+        'aggregation_key': aggregation_key
+    })
+</code></pre>
+
+<p>次に、<code>status_code_event</code> を定義します。先に定義した<code>timeout_event</code> とほぼ同じ内容になります。</p>
+
+<pre class="" lang="python"><code class="language-python">def status_code_event(self, url, r, aggregation_key):
+    self.event({
+        'timestamp': int(time.time()),
+        'event_type': 'http_check',
+        'msg_title': 'Invalid reponse code for %s' % url,
+        'msg_text': '%s returned a status of %s' % (url, r.status_code),
+        'aggregation_key': aggregation_key
+    })
+</code></pre>
+
+<!-- #### Putting It All Together
+
+For the last part of this guide, we'll show the entire check. This module would
+be placed into the `checks.d` folder as `http.py`. The corresponding
+configuration would be placed into the `conf.d` folder as `http.yaml`.
+
+Once the check is in `checks.d`, you can test it by running it as a python
+script. **Make sure to change the conf.d path in the test method**. From your
+Agent root, run:
+
+    PYTHONPATH=. python checks.d/http.py
+
+You'll see what metrics and events are being generated for each instance.
+
+Here's the full source of the check:
+
+<pre class="code-block code-block-python" lang="python"><code class="language-python">import time
+import requests
+
+from checks import AgentCheck
+from hashlib import md5
+
+class HTTPCheck(AgentCheck):
+    def check(self, instance):
+        if 'url' not in instance:
+            self.log.info("Skipping instance, no url found.")
+            return
+
+        # Load values from the instance config
+        url = instance['url']
+        default_timeout = self.init_config.get('default_timeout', 5)
+        timeout = float(instance.get('timeout', default_timeout))
+
+        # Use a hash of the URL as an aggregation key
+        aggregation_key = md5(url).hexdigest()
+
+        # Check the URL
+        start_time = time.time()
+        try:
+            r = requests.get(url, timeout=timeout)
+            end_time = time.time()
+        except requests.exceptions.Timeout as e:
+            # If there's a timeout
+            self.timeout_event(url, timeout, aggregation_key)
+            return
+
+        if r.status_code != 200:
+            self.status_code_event(url, r, aggregation_key)
+
+        timing = end_time - start_time
+        self.gauge('http.reponse_time', timing, tags=['http_check'])
+
+    def timeout_event(self, url, timeout, aggregation_key):
+        self.event({
+            'timestamp': int(time.time()),
+            'event_type': 'http_check',
+            'msg_title': 'URL timeout',
+            'msg_text': '%s timed out after %s seconds.' % (url, timeout),
+            'aggregation_key': aggregation_key
+        })
+
+    def status_code_event(self, url, r, aggregation_key):
+        self.event({
+            'timestamp': int(time.time()),
+            'event_type': 'http_check',
+            'msg_title': 'Invalid reponse code for %s' % url,
+            'msg_text': '%s returned a status of %s' % (url, r.status_code),
+            'aggregation_key': aggregation_key
+        })
+
+if __name__ == '__main__':
+    check, instances = HTTPCheck.from_yaml('/path/to/conf.d/http.yaml')
+    for instance in instances:
+        print "\nRunning the check against url: %s" % (instance['url'])
+        check.check(instance)
+        if check.has_events():
+            print 'Events: %s' % (check.get_events())
+        print 'Metrics: %s' % (check.get_metrics())</code></pre>
+ -->
+
+<h4 id="section-5" class="linked-header">
+<a class="header-link" href="#section-5"><i class="fa fa-link"></i></a>今までの解説をまとめると</h4>
+
+<p>このガイドの最後に、Checkの実行コード全体を載せてあります。このコードを、<code>checks.d</code>フォルダ以下へ、<code>http.py</code>のファイル名で配置します。この実行コードに必要な、設定ファイルは、<code>conf.d</code>フォルダー以下に、<code>http.yaml</code>として配置します。</p>
+
+<p>Checkに実行ファイルを配置したら、次のpython スクリプトを使ってテストを実行することが出来ます。
+尚、<strong><code>__main__</code>の部分の<code>/path/to/conf.d/http.yaml</code>を、テスト用の設定ファイルを配置している場所に書き換えてあることを必ず確認してください。</strong></p>
+
+<p>Agent のroot から、次のコマンドでテストを実行します:</p>
+
+<pre><code>PYTHONPATH=. python checks.d/http.py
+</code></pre>
+
+<p>インスタンスごとに生成されているメトリクスとイベントが表示されます。</p>
+
+<p>チェックの完全なソースは次の通りです。</p>
+
+<pre class="code-block code-block-python" lang="python"><code class="language-python">import time
+import requests
+
+from checks import AgentCheck
+from hashlib import md5
+
+class HTTPCheck(AgentCheck):
+    def check(self, instance):
+        if 'url' not in instance:
+            self.log.info("Skipping instance, no url found.")
+            return
+
+        # Load values from the instance config
+        url = instance['url']
+        default_timeout = self.init_config.get('default_timeout', 5)
+        timeout = float(instance.get('timeout', default_timeout))
+
+        # Use a hash of the URL as an aggregation key
+        aggregation_key = md5(url).hexdigest()
+
+        # Check the URL
+        start_time = time.time()
+        try:
+            r = requests.get(url, timeout=timeout)
+            end_time = time.time()
+        except requests.exceptions.Timeout as e:
+            # If there's a timeout
+            self.timeout_event(url, timeout, aggregation_key)
+            return
+
+        if r.status_code != 200:
+            self.status_code_event(url, r, aggregation_key)
+
+        timing = end_time - start_time
+        self.gauge('http.reponse_time', timing, tags=['http_check'])
+
+    def timeout_event(self, url, timeout, aggregation_key):
+        self.event({
+            'timestamp': int(time.time()),
+            'event_type': 'http_check',
+            'msg_title': 'URL timeout',
+            'msg_text': '%s timed out after %s seconds.' % (url, timeout),
+            'aggregation_key': aggregation_key
+        })
+
+    def status_code_event(self, url, r, aggregation_key):
+        self.event({
+            'timestamp': int(time.time()),
+            'event_type': 'http_check',
+            'msg_title': 'Invalid reponse code for %s' % url,
+            'msg_text': '%s returned a status of %s' % (url, r.status_code),
+            'aggregation_key': aggregation_key
+        })
+
+if __name__ == '__main__':
+    check, instances = HTTPCheck.from_yaml('/path/to/conf.d/http.yaml')
+    for instance in instances:
+        print "\nRunning the check against url: %s" % (instance['url'])
+        check.check(instance)
+        if check.has_events():
+            print 'Events: %s' % (check.get_events())
+        print 'Metrics: %s' % (check.get_metrics())</code></pre>
+
+<!--
+======================================================
+Troubleshooting
+======================================================
+-->
+
+<!-- <h3 id="troubleshooting">Troubleshooting</h3>
+
+Custom Agent checks can't be directly called from python and instead
+ need to be called by the agent. To test this, run:
+
+    sudo -u dd-agent dd-agent check my_check
+
+If your issue continues, please reach out to Support with the help page that
+ lists the paths it installs. -->
+
+<h3 id="troubleshooting" class="linked-header">
+<a class="header-link" href="#troubleshooting"><i class="fa fa-link"></i></a>トラブルシュート</h3>
+
+<p>カスタム Agent checkは、Pythonコマンドから直接実行出来ません。代わりに、Datadog Agentを使って、テスト実行するようにします。テストするには、次のようなコマンドを実行します:</p>
+
+<pre><code>sudo -u dd-agent dd-agent check my_check
+</code></pre>
+
+<p>問題が解決しない場合、<a href="../../help">お問い合わせ</a>に記載された方法でサポート要請のご連絡をしていただけると幸いです。</p>
+
+<!-- <h4>Testing Custom Checks on Windows</h4>
+
+Testing custom checks on Windows is easy. The Agent install includes a file called shell.exe
+in your Program Files directory for the Datadog Agent which you can use to run python within the Agent environment.
+
+Once you're check (called "my_check") is written and you have the .py and .yaml files
+in their correct places, you can run the following in shell.exe:
+
+    >>> from checks import run_check
+    >>> run_check('my_check')
+
+This will output any metrics or events that the check will return. -->
+
+<h4 class="linked-header">
+<a class="header-link" href="#"><i class="fa fa-link"></i></a>WindowsでのカスタムCheckのテスト</h4>
+
+<p>Windows上でカスタムチェックのテストは簡単です。
+Datadog Agentのインストールには<code>shell.exe</code> というDatadog Agent 用のpythonの実行環境が含まれています。
+このファイルは、<code>Program Files</code> ディレクトリに保存されています。</p>
+
+<p>Agent Check（例えば「my_check」）を書き終え、<code>.py</code>ファイルと<code>.yaml</code>ファイルの配置が終わったら、次のコマンドを、<code>shell.exe</code> で起動したウインドウ内で実行してみて下さい。</p>
+
+<pre><code>&gt;&gt;&gt; from checks import run_check
+&gt;&gt;&gt; run_check('my_check')
+</code></pre>
+
+<p>このコマンドは、Checkが送信するメトリクスかイベントを表示します。</p>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

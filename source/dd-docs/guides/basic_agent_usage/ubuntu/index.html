@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Basic Agent Usage for Ubuntu</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+
+  <body>
+
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-3 col-sm-3 hidden-xs hidden-print">
+        <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+          <!-- AGENT PLATFORM SELECTION -->
+          <li class="nav-header">Agent Guides by Platform</li>
+          <li><a href='/guides/basic_agent_usage/amazonlinux/'>Amazon Linux</a></li>
+          <li><a href='/guides/basic_agent_usage/centos/'>CentOS</a></li>
+          <li><a href='/guides/basic_agent_usage/docker/'>CoreOS/Docker</a></li>
+          <li><a href='/guides/basic_agent_usage/deb/'>Debian</a></li>
+          <li><a href='/guides/basic_agent_usage/fedora/'>Fedora</a></li>
+          <li><a href='/guides/basic_agent_usage/osx/'>Mac OS X</a></li>
+          <li><a href='/guides/basic_agent_usage/redhat/'>Red Hat</a></li>
+          <li><a href='/guides/basic_agent_usage/ubuntu/'>Ubuntu</a></li>
+          <li><a href='/guides/basic_agent_usage/windows/'>Windows</a></li>
+          <li><a href='/guides/basic_agent_usage/source/'>From Source</a></li>
+
+          <!-- PAGE-SPECIFIC LINKS -->
+          
+        </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 main col-xs-12">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Basic Agent Usage for Ubuntu </h1>
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--
+======================================================
+Overview
+======================================================
+--><html><body>
+<h3 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h3>
+
+<p>This guide will outline the basic functionality of the Datadog Agent.
+If you haven’t installed the Agent yet, instructions can be found <a href="https://app.datadoghq.com/account/settings#agent">here</a>. </p>
+
+<p>The process to upgrade from the previous version of the agent is to simply re-run the installation. </p>
+
+<!--
+======================================================
+Starting and Stopping the Agent
+======================================================
+-->
+
+<h3 id="starting_and_stopping_the_agent" class="linked-header">
+<a class="header-link" href="#starting_and_stopping_the_agent"><i class="fa fa-link"></i></a>Starting and Stopping the Agent</h3>
+
+<p>To manually start the Agent:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent start
+</code></pre>
+
+<p>To stop the Agent:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent stop
+</code></pre>
+
+<p>To restart the Agent and to reload the configuration files:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent restart
+</code></pre>
+
+<!--
+======================================================
+Status and Information
+======================================================
+-->
+
+<h3 id="status_and_information" class="linked-header">
+<a class="header-link" href="#status_and_information"><i class="fa fa-link"></i></a>Status and Information</h3>
+
+<p>To check if the Agent is running: <em>(since 3.8.0)</em></p>
+
+<pre><code>sudo /etc/init.d/datadog-agent status
+</code></pre>
+
+<p>To receive information about the Agent’s state:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent info
+</code></pre>
+
+<p>Tracebacks for errors can be retrieved by setting the <strong>-v</strong> flag: <em>(since 3.8.0)</em></p>
+
+<pre><code>sudo /etc/init.d/datadog-agent info -v
+</code></pre>
+
+<p>More information about the metrics, events and service checks for an integration can be retrieved with the check command:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent check [integration]
+</code></pre>
+
+<p>Add the check_rate argument to get the most recent values for rates:</p>
+
+<pre><code>sudo /etc/init.d/datadog-agent check [integration] check_rate
+</code></pre>
+
+<!--
+======================================================
+Configuration
+======================================================
+-->
+
+<h3 id="configuration" class="linked-header">
+<a class="header-link" href="#configuration"><i class="fa fa-link"></i></a>Configuration</h3>
+
+<p>The configuration file for the Agent is located at <code>/etc/dd-agent/datadog.conf</code></p>
+
+<p>Configuration files for integrations are located in <code>/etc/dd-agent/conf.d/</code></p>
+
+<!--
+======================================================
+Troubleshooting
+======================================================
+-->
+
+<h3 id="troubleshooting" class="linked-header">
+<a class="header-link" href="#troubleshooting"><i class="fa fa-link"></i></a>Troubleshooting</h3>
+
+<p>Try running the <a href="#status_and_information">info</a> command to see the state of the Agent.</p>
+
+<p>Logs for the subsystems are in the following files:</p>
+
+<ul>
+  <li>
+<code>/var/log/datadog/supervisord.log</code> <em>(since 3.8.0)</em>
+</li>
+  <li><code>/var/log/datadog/collector.log</code></li>
+  <li><code>/var/log/datadog/dogstatsd.log</code></li>
+  <li><code>/var/log/datadog/forwarder.log</code></li>
+</ul>
+
+<p><br></p>
+
+<p>If you’re still having trouble, our support team will be glad to provide further assistance.
+You can contact them in one of the following ways:</p>
+
+<h4 id="knowledgebase" class="linked-header">
+<a class="header-link" href="#knowledgebase"><i class="fa fa-link"></i></a>Visit the Knowledge Base</h4>
+<p>Learn more about what you can do in Datadog on the <a href="//datadog.zendesk.com">Support Knowledge Base</a>.</p>
+
+<h4 id="support" class="linked-header">
+<a class="header-link" href="#support"><i class="fa fa-link"></i></a>Web Support</h4>
+<p>Messages in the <a href="http://app.datadoghq.com/event/stream">event stream</a> containing
+<strong>@support-datadog</strong> will reach our Support Team. This is a convenient channel for referencing graph snapshots or a particular event. In addition, we have a livechat service available during the day (EST) from any page within the app.</p>
+
+<h4 id="email" class="linked-header">
+<a class="header-link" href="#email"><i class="fa fa-link"></i></a>By Email</h4>
+<p>You can also contact our Support Team via email at <a href="mailto:support@datadoghq.com">support@datadoghq.com</a>.</p>
+
+<h4 id="slack" class="linked-header">
+<a class="header-link" href="#slack"><i class="fa fa-link"></i></a>Over Slack</h4>
+<p>Reach out to our team and other Datadog users on <a href="http://chat.datadoghq.com">Slack</a>.</p>
+
+<h4 id="status" class="linked-header">
+<a class="header-link" href="#status"><i class="fa fa-link"></i></a>Status Page</h4>
+<p>Our <a href="http://status.datadoghq.com/">Status Page</a> and <a href="http://www.twitter.com/datadogops">Ops twitter account</a> have the latest on any performance issues that we are experiencing.</p>
+
+</body></html>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

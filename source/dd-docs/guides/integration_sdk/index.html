@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Creating New Integrations</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#requirements' onclick="$('#').collapse('show')">
+Requirements</a></li><li><a style='' href='#setup' onclick="$('#').collapse('show')">
+Setup</a></li><li><a style='' href='#building-an-integration' onclick="$('#').collapse('show')">
+Building an integration</a></li><li><a style='padding: 5px 25px;' href='#integration-files' onclick="$('#').collapse('show')">
+Integration files</a></li><li><a style='padding: 5px 25px;' href='#libraries' onclick="$('#').collapse('show')">
+Libraries</a></li><li><a style='padding: 5px 25px;' href='#testing-your-integration' onclick="$('#').collapse('show')">
+Testing your integration</a></li><li><a style='padding: 5px 25px;' href='#docker-test-environments' onclick="$('#').collapse('show')">
+Docker test environments</a></li><li><a style='padding: 5px 25px;' href='#installing-your-integration-locally' onclick="$('#').collapse('show')">
+Installing your integration locally</a></li><li><a style='padding: 5px 25px;' href='#teardown-and-cleanup' onclick="$('#').collapse('show')">
+Teardown and cleanup</a></li><li><a style='' href='#submitting-your-integration' onclick="$('#').collapse('show')">
+Submitting Your integration</a></li><li><a style='' href='#other-considerations' onclick="$('#').collapse('show')">
+Other Considerations</a></li>
+            
+            
+              <li class="nav-header">Guides </li>
+              
+              
+                <li><a href="/guides/basic_agent_usage/">Getting Started with the Agent</a></li>
+              
+                <li><a href="/guides/overview/">Datadog Overview</a></li>
+              
+                <li><a href="/guides/hostmap/">Host Map Overview</a></li>
+              
+                <li><a href="/guides/integration_sdk/">Creating New Integrations</a></li>
+              
+                <li><a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a></li>
+              
+                <li><a href="/guides/eventcorrelation/">Correlating Events with Metrics</a></li>
+              
+                <li><a href="/guides/metrics/">Sending Metrics with DogStatsD</a></li>
+              
+                <li><a href="/guides/logs/">Log Parsing in the Agent</a></li>
+              
+                <li><a href="/guides/testing/">Testing Integrations</a></li>
+              
+                <li><a href="/guides/agent_checks/">Writing an Agent Check</a></li>
+              
+                <li><a href="/guides/chef/">Deploying the Agent with Chef</a></li>
+              
+                <li><a href="/guides/azure/">Deploying the Datadog Agent to Azure</a></li>
+              
+                <li><a href="/guides/monitors/">Guide to Monitors</a></li>
+              
+                <li><a href="/guides/composite_monitors/">Guide to Composite Monitors</a></li>
+              
+                <li><a href="/guides/markdown/">Using Markdown in Datadog events</a></li>
+              
+                <li><a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a></li>
+              
+                <li><a href="/guides/tagging/">Guide to Tagging</a></li>
+              
+                <li><a href="/guides/templating/">Guide to Dashboard Templating</a></li>
+              
+                <li><a href="/guides/saml/">Single Sign On With SAML</a></li>
+              
+                <li><a href="/guides/eventsemail/">Events via Email</a></li>
+              
+                <li><a href="/guides/new_integration/">Officially Integrating with Datadog</a></li>
+              
+                <li><a href="/guides/anomalies/">Anomaly Detection</a></li>
+              
+                <li><a href="/guides/outliers/">Outlier Detection</a></li>
+              
+                <li><a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Creating New Integrations </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- Additional styling to help file name headers stand out --><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>h5 code{font-size:16px;display:inline-block;margin-top:20px;}</style>
+
+</head>
+<body>
+<h3 id="requirements" class="linked-header">
+<a class="header-link" href="#requirements"><i class="fa fa-link"></i></a>Requirements</h3>
+
+<p>You will need a working <a href="https://www.ruby-lang.org">Ruby</a> environment. For more information on installing Ruby, please reference <a href="https://www.ruby-lang.org/en/documentation/installation/">the Ruby installation documentation</a>.</p>
+
+<p>You will also need <a href="https://www.gnu.org/software/wget/">Wget</a>. Wget is already installed on most Linux systems and is easy to install on Mac using <a href="http://brew.sh/">Homebrew</a> or on Windows using <a href="https://chocolatey.org/">Chocolatey</a>.</p>
+
+<h3 id="setup" class="linked-header">
+<a class="header-link" href="#setup"><i class="fa fa-link"></i></a>Setup</h3>
+
+<p>We’ve written <a href="https://rubygems.org/gems/datadog-sdk-testing">a gem</a> and a set of scripts to help you get set up, ease development, and provide testing. To begin:</p>
+
+<ol>
+  <li>Fork the <a href="https://github.com/DataDog/integrations-extras">integrations-extras repository</a> on Github and clone the repository to your dev environment.</li>
+  <li>Run <code>gem install bundler</code>
+</li>
+  <li>Run <code>bundle install</code>
+</li>
+</ol>
+
+<p>Once the required Ruby gems have been installed by Bundler, you can easily create a <a href="https://www.python.org/">Python</a> environment:</p>
+
+<ol>
+  <li>Run <code>rake setup_env</code>. This will install a Python virtual environment along with all the components necessary for integration development.</li>
+  <li>Run <code>source venv/bin/activate</code> to activate the installed Python virtual environment. To exit the virtual environment, run <code>deactivate</code>. You can learn more about the Python virtual environment on the <a href="https://virtualenv.pypa.io/en/stable/">Virtualenv documentation</a>.</li>
+</ol>
+
+<h3 id="building-an-integration" class="linked-header">
+<a class="header-link" href="#building-an-integration"><i class="fa fa-link"></i></a>Building an integration</h3>
+
+<p>You can use rake to generate the skeleton for a new integration by running <code>rake generate:skeleton[my_integration]</code>, where “my_integration” is the name of your new integration (note: you must enclose your integration name in square brackets).</p>
+
+<p>This will create a new directory, <code>my_integration</code>, that contains all the files required for your new integration. This will also create an entry for your new integration in our <code>.travis.yml</code> and <code>circle.yml</code> continuous integration files to ensure that your tests are run whenever new builds are created.</p>
+
+<h4 id="integration-files" class="linked-header">
+<a class="header-link" href="#integration-files"><i class="fa fa-link"></i></a>Integration files</h4>
+
+<p>New integrations should contain the following files:</p>
+
+<h5 id="readmemd" class="linked-header">
+<a class="header-link" href="#readmemd"><i class="fa fa-link"></i></a><code>README.md</code>
+</h5>
+
+<p>Your README file should provide the following sections:</p>
+
+<ul>
+  <li>
+<strong>Overview</strong> (required): Let others know what they can expect to do with your integration.</li>
+  <li>
+<strong>Installation</strong> (required): Provide information about how to install your integration.</li>
+  <li>
+<strong>Configuration</strong> (required): Detail any steps necessary to configure your integration or the service you are integrating.</li>
+  <li>
+<strong>Validation</strong> (required): How can users ensure the integration is working as intended?</li>
+  <li>
+<strong>Troubleshooting</strong>: Help other users by sharing solutions to common problems they might experience.</li>
+  <li>
+<strong>Compatibility</strong> (required): List the version(s) of the application or service that your integration has been tested and validated against.</li>
+  <li>
+<strong>Metrics</strong> (required): Include a list of the metrics your integration will provide.</li>
+  <li>
+<strong>Events</strong>: Include a list of events if your integration provides any.</li>
+  <li>
+<strong>Service Checks</strong>: Include a list of service checks if your integration provides any.</li>
+</ul>
+
+<h5 id="checkpy" class="linked-header">
+<a class="header-link" href="#checkpy"><i class="fa fa-link"></i></a><code>check.py</code>
+</h5>
+
+<p>The file where your check logic should reside. The skeleton function will boilerplate an integration class for your integration, including a <code>check</code> method where you should place your check logic.</p>
+
+<p>For example:</p>
+
+<pre><code># Example check.py
+import time
+from checks import AgentCheck
+
+class MyIntegrationCheck(AgentCheck):
+  def __init__(self, name, init_config, agentConfig, instances=None):
+    AgentCheck.__init__(self, name, init_config, agentConfig, instances)
+
+  def check(self, instance):
+    # Send a custom event.
+    self.event({
+      'timestamp': int(time.time()),
+      'source_type_name': 'my_integration',
+      'msg_title': 'Custom event',
+      'msg_text': 'My custom integration event occurred.',
+      'host': self.hostname,
+      'tags': [
+          'action:my_integration_custom_event',
+      ]
+    })
+</code></pre>
+
+<p>For more information about writing checks and how to send metrics to the Datadog agent, reference our <a href="http://docs.datadoghq.com/guides/agent_checks/">Writing an Agent Check guide</a></p>
+
+<p>If you need to import any third party libraries, you can add them to the <code>requirements.txt</code> file.</p>
+
+<h5 id="cimyintegrationrake" class="linked-header">
+<a class="header-link" href="#cimyintegrationrake"><i class="fa fa-link"></i></a><code>ci/my_integration.rake</code>
+</h5>
+
+<p>If your tests require a testing environment, you can use the <code>install</code> and <code>cleanup</code> tasks to respectively set up and tear down a testing environment.</p>
+
+<p>For example:</p>
+
+<pre><code># Example my_integration.rake
+namespace :ci do
+  namespace :my_integration do |flavor|
+    task install: ['ci:common:install'] do
+
+      # Use the Python Virtual Environment and install packages.
+      use_venv = in_venv
+      install_requirements('my_integration/requirements.txt',
+                           "--cache-dir #{ENV['PIP_CACHE']}",
+                           "#{ENV['VOLATILE_DIR']}/ci.log",
+                           use_venv)
+
+      # Setup a docker testing container.
+      $(docker run -p 80:80 --name my_int_container -d my_docker)
+</code></pre>
+
+<p>For more information about writing integration tests, please see <a href="https://github.com/DataDog/dd-agent/blob/master/tests/README.md#integration-tests">the documentation in the Datadog agent repository</a>. You can also reference the <a href="https://github.com/DataDog/dd-agent/blob/master/ci/common.rb">ci common library</a> for helper functions such as <code>install_requirements</code> and <code>sleep_for</code>.</p>
+
+<p>A note about terminology: You may notice the variable <code>flavor</code> in this file and other areas of testing. <em>Flavor</em> is a term we use to denote variations of integrated software, typically versions. This allows you to write one set of tests, but target different <em>flavors</em>, variants or versions of the software you are integrating.</p>
+
+<h5 id="confyamlexample" class="linked-header">
+<a class="header-link" href="#confyamlexample"><i class="fa fa-link"></i></a><code>conf.yaml.example</code>
+</h5>
+
+<p>In order to install your integration, users will need to configure the integration for their specific instances. To do this, they’ll copy the <code>conf.yaml.example</code> file that you provide into their Agent’s <code>conf.d</code> directory, then update it with their instance specific information.</p>
+
+<p>Your <code>conf.yaml.example</code> file should provide two sections:</p>
+
+<ul>
+  <li>
+<code>init_config</code> for any globally configured parameters</li>
+  <li>
+<code>instances</code> for specific instances to integrate. This often includes a server or host address with additional parameters such as authentication information, additional tags and configuration settings.</li>
+</ul>
+
+<h5 id="manifestjson" class="linked-header">
+<a class="header-link" href="#manifestjson"><i class="fa fa-link"></i></a><code>manifest.json</code>
+</h5>
+
+<p>This JSON file provides metadata about your integration and should include:</p>
+
+<ul>
+  <li>
+<strong><code>maintainer</code></strong>: Provide a valid email address where you can be contacted regarding this integration.</li>
+  <li>
+<strong><code>manifest_version</code></strong>: The version of this manifest file.</li>
+  <li>
+<strong><code>max_agent_version</code></strong>: The maximum version of the Datadog agent that is compatible with your integration. We do our best to maintain integration stability within major versions, so you should leave this at the number generated for you. If your integration breaks with a new release of the Datadog agent, please set this number and <a href="https://github.com/DataDog/dd-agent/blob/master/CONTRIBUTING.md#submitting-issues">submit an issue on the Datadog Agent project</a>.</li>
+  <li>
+<strong><code>min_agent_version</code></strong>: The minimum version of the Datadog agent that is compatible with your integration.</li>
+  <li>
+<strong><code>name</code></strong>: The name of your integration.</li>
+  <li>
+<strong><code>short_description</code></strong>: Provide a short description of your integration.</li>
+  <li>
+<strong><code>support</code></strong>: As a community contributed integration, this should be set to “contrib”. Only set this to another value if directed to do so by Datadog staff.</li>
+  <li>
+<strong><code>version</code></strong>: The current version of your integration.</li>
+</ul>
+
+<p>You can reference one of the existing integrations for an example of the manifest file.</p>
+
+<h5 id="metadatacsv" class="linked-header">
+<a class="header-link" href="#metadatacsv"><i class="fa fa-link"></i></a><code>metadata.csv</code>
+</h5>
+
+<p>The metadata CSV contains a list of the metrics your integration will provide and basic details that will help inform the Datadog web application as to which graphs and alerts can be provided for the metric.</p>
+
+<p>The CSV should include a header row and the following columns:</p>
+
+<p><strong><code>metric_name</code></strong> (required): The name of the metric as it should appear in the Datadog web application when creating dashboards or monitors. Often this name is a period delimited combination of the provider, service, and metric (e.g. <code>aws.ec2.disk_write_ops</code>) or the application, application feature, and metric (e.g. <code>apache.net.request_per_s</code>).</p>
+
+<p><strong><code>metric_type</code></strong> (required): The type of metric you are reporting. This will influence how the Datadog web application handles and displays your data. Accepted values are: <code>count</code>, <code>gauge</code>, or <code>rate</code>.</p>
+
+<ul>
+  <li>
+<code>count</code>: A count is the number of particular events that have occurred. When reporting a count, you should only submit the number of new events (delta) recorded since the previous submission. For example, the <code>aws.apigateway.5xxerror</code> metric is a <code>count</code> of the number of server-side errors.</li>
+  <li>
+<code>gauge</code>: A gauge is a metric that tracks a value at a specific point in time. For example, <code>docker.io.read_bytes</code> is a <code>guage</code> of the number of bytes read per second.</li>
+  <li>
+<code>rate</code>: A rate a metric over time (and as such, will typically include a <code>per_unit_name</code> value). For example, <code>lighttpd.response.status_2xx</code> is a <code>rate</code> metric capturing the number of 2xx status codes produced per second.</li>
+</ul>
+
+<p><strong><code>interval</code></strong>: The interval used for conversion between rates and counts. This is required when the <code>metric_type</code> is set to the <code>rate</code> type.</p>
+
+<p><strong><code>unit_name</code></strong>: The label for the unit of measure you are gathering. The following units (grouped by type) are available:</p>
+
+<ul>
+  <li>
+<strong>Bytes</strong>: <code>bit</code>, <code>byte</code>, <code>kibibyte</code>, <code>mebibyte</code>, <code>gibibyte</code>, <code>tebibyte</code>, <code>pebibyte</code>, <code>exbibyte</code>
+</li>
+  <li>
+<strong>Cache</strong>: <code>eviction</code>, <code>get</code>,  <code>hit</code>,  <code>miss</code>,  <code>set</code>
+</li>
+  <li>
+<strong>Database</strong>: <code>assertion</code>, <code>column</code>, <code>command</code>, <code>commit</code>, <code>cursor</code>, <code>document</code>, <code>fetch</code>, <code>flush</code>, <code>index</code>, <code>key</code>, <code>lock</code>, <code>merge</code>, <code>object</code>, <code>offset</code>, <code>query</code>, <code>question</code>, <code>record</code>, <code>refresh</code>, <code>row</code>, <code>scan</code>, <code>shard</code>, <code>table</code>, <code>ticket</code>, <code>transaction</code>, <code>wait</code>
+</li>
+  <li>
+<strong>Disk</strong>: <code>block</code>, <code>file</code>, <code>inode</code>, <code>sector</code>
+</li>
+  <li>
+<strong>Frequency</strong>: <code>hertz</code>, <code>kilohertz</code>, <code>megahertz</code>, <code>gigahertz</code>
+</li>
+  <li>
+<strong>General</strong>: <code>buffer</code>, <code>check</code>, <code>email</code>, <code>error</code>, <code>event</code>, <code>garbage</code>,  <code>collection</code>, <code>item</code>, <code>location</code>, <code>monitor</code>, <code>occurrence</code>, <code>operation</code>, <code>read</code>, <code>resource</code>, <code>sample</code>, <code>stage</code>, <code>task</code>, <code>time</code>, <code>unit</code>, <code>worker</code>, <code>write</code>
+</li>
+  <li>
+<strong>Memory</strong>: <code>page</code>, <code>split</code>
+</li>
+  <li>
+<strong>Money</strong>: <code>cent</code>, <code>dollar</code>
+</li>
+  <li>
+<strong>Network</strong>: <code>connection</code>, <code>datagram</code>, <code>message</code>, <code>packet</code>, <code>payload</code>, <code>request</code>, <code>response</code>, <code>segment</code>, <code>timeout</code>
+</li>
+  <li>
+<strong>Percentage</strong>: <code>apdex</code>, <code>fraction</code>, <code>percent</code>, <code>percent_nano</code>
+</li>
+  <li>
+<strong>System</strong>: <code>core</code>, <code>fault</code>, <code>host</code>, <code>instance</code>, <code>node</code>, <code>process</code>, <code>service</code>, <code>thread</code>
+</li>
+  <li>
+<strong>Time</strong>: <code>microsecond</code>, <code>millisecond</code>, <code>second</code>, <code>minute</code>, <code>hour</code>, <code>day</code>, <code>week</code>
+</li>
+</ul>
+
+<p>If the unit name is not listed above, please leave this value blank. To add a unit to this listing, please file an <a href="https://github.com/DataDog/integrations-extras/issues">issue</a></p>
+
+<p><strong><code>per_unit_name</code></strong>: If you are gathering a per unit metric, you may provide an additional unit name here and it will be combined with the <code>unit_name</code>. For example, providing a <code>unit_name</code> of “request” and a <code>per_unit_name</code> of “second” will result in a metric of “requests per second”. If provided, this must be a value from the available units listed above.</p>
+
+<p><strong><code>description</code></strong>: A basic description (limited to 400 characters) of the information this metric represents.</p>
+
+<p><strong><code>orientation</code></strong> (required): An integer of <code>-1</code>, <code>0</code>, or <code>1</code>.</p>
+
+<ul>
+  <li>
+<code>-1</code> indicates that smaller values are better. For example, <code>mysql.performance.slow_queries</code> or <code>varnish.fetch_failed</code> where low counts are desirable.</li>
+  <li>
+<code>0</code> indicates no intrinsic preference in values. For example, <code>rabbitmq.queue.messages</code> or <code>postgresql.rows_inserted</code> where there is no preference for the size of the value or the preference will depend on the business objectives of the system.</li>
+  <li>
+<code>1</code> indicates that larger values are better. For example, <code>mesos.stats.uptime_secs</code> where higher uptime or <code>mysql.performance.key_cache_utilization</code> where more cache hits are desired.</li>
+</ul>
+
+<p><strong><code>integration</code></strong> (required): This must match the name of your integration. (e.g. “my_integration”).</p>
+
+<p><strong><code>short_name</code></strong>: A more human-readable and abbreviated version of the metric name. For example, <code>postgresql.index_blocks_read</code> might be set to <code>idx blks read</code>. Aim for human-readability and easy understandability over brevity. Don’t repeat the integration name. If you can’t make the <code>short_name</code> shorter and easier to understand than the <code>metric_name</code>, leave this field empty.</p>
+
+<h5 id="requirementstxt" class="linked-header">
+<a class="header-link" href="#requirementstxt"><i class="fa fa-link"></i></a><code>requirements.txt</code>
+</h5>
+
+<p>If you require any additional Python libraries, you can list them here and they will be automatically installed via pip when others use your integration.</p>
+
+<h5 id="testmyintegrationpy" class="linked-header">
+<a class="header-link" href="#testmyintegrationpy"><i class="fa fa-link"></i></a><code>test_my_integration.py</code>
+</h5>
+
+<p>Integration tests ensure that the Datadog agent is correctly receiving and recording metrics from the software you are integrating.</p>
+
+<p>Though we don’t require test for each of the metrics collected by your integration, we strongly encourage you to provide as much coverage as possible. You can run the <code>self.coverage_report()</code> method in your test to see which metrics are covered.</p>
+
+<p>Here’s an example <code>test_my_integration.py</code>:</p>
+
+<pre><code># Example test_my_integraion.py
+from nose.plugins.attrib import attr
+from checks import AgentCheck
+from tests.checks.common import AgentCheckTest
+
+@attr(requires='my_integration')
+Class TestMyIntegration(AgentCheckTest):
+
+  def testMyIntegration(self):
+    self.assertServiceCheck('my_integration.can_connect',
+                            count=1,
+                            status=AgentCheck.OK,
+                            tags=[host:localhost', 'port:80'])
+    self.coverage_report()
+</code></pre>
+
+<p>For more information about tests and available test methods, please reference the <a href="https://github.com/DataDog/dd-agent/blob/master/tests/checks/common.py">AgentCheckTest class in the Datadog Agent repository</a></p>
+
+<h4 id="libraries" class="linked-header">
+<a class="header-link" href="#libraries"><i class="fa fa-link"></i></a>Libraries</h4>
+
+<p>The <a href="https://github.com/DataDog/dd-agent">Datadog Agent</a> provides a number of useful libraries in the <a href="https://github.com/DataDog/dd-agent/tree/master/utils"><code>utils</code> directory</a>. These libraries can be helpful when building your integration and we encourage you to use them, but please be aware that these libraries will be moved in the upcoming Datadog Agent version 6.0. We will provide more details regarding integrations and these libraries prior to the Datadog Agent 6.0 release.</p>
+
+<h4 id="testing-your-integration" class="linked-header">
+<a class="header-link" href="#testing-your-integration"><i class="fa fa-link"></i></a>Testing your integration</h4>
+
+<p>As you build your check and test code, you can use the following to run your tests:</p>
+
+<ul>
+  <li>
+<code>rake lint</code>: Lint your code for potential errors</li>
+  <li>
+<code>rake ci:run[my_integration]</code>: Run the tests that you have created in your <code>test_my_integration.py</code> file.</li>
+  <li>
+<code>rake ci:run[default]</code>: Run the tests you have written in addition to some additional generic tests we have written.</li>
+</ul>
+
+<p>Travis CI will automatically run tests when you create a pull request. Please ensure that you have thorough test coverage and that you are passing all tests prior to submitting pull requests.</p>
+
+<h4 id="docker-test-environments" class="linked-header">
+<a class="header-link" href="#docker-test-environments"><i class="fa fa-link"></i></a>Docker test environments</h4>
+
+<p>At Datadog we’re using Docker containers for testing environments and we highly encourage you to do the same. Containers are lightweight, easy to manage, and provide consistent, standardized environments for each test run.</p>
+
+<p>For example in our MySQL integration, the <a href="https://github.com/DataDog/integrations-core/blob/master/mysql/ci/mysql.rake"><code>ci/mysql.rake</code> file</a> uses the <a href="https://hub.docker.com/_/mysql/">official MySQL container</a> and involves four main tasks</p>
+
+<ol>
+  <li>
+<code>before_install</code> - Prior to starting our new Docker test environment, we need to ensure that any previous Docker test environments are stopped and removed.</li>
+  <li>
+<code>install</code> - The install task performs the Docker <code>run</code> which will start the MySQL test server.</li>
+  <li>
+<code>before_script</code> - This task first ensures that the MySQL server is running, then connects to the server to perform some setup tasks. We highly recommend that you keep setup tasks in your <code>test_integration.py</code> file when possible, but we recognize that sometimes setup and configurations will need to be performed prior to the python test script.</li>
+  <li>
+<code>cleanup</code> - After the tests are complete, the Docker test environment is stopped and removed.</li>
+</ol>
+
+<h4 id="installing-your-integration-locally" class="linked-header">
+<a class="header-link" href="#installing-your-integration-locally"><i class="fa fa-link"></i></a>Installing your integration locally</h4>
+
+<p>When your integration is merged into the <code>integrations-extras</code> repository, we will generate packages so that others can easily install your integration (see the <a href="http://docs.datadoghq.com/guides/installcoreextra">Installing Core &amp; Extra Integrations guide</a>). However, you may want to install your integration locally before it’s merged.</p>
+
+<p>To run locally, first copy your <code>check.py</code> file into the Datadog Agent’s <code>checks.d</code> directory and rename it to <code>my_integration.py</code> (using the actual name of your integration).</p>
+
+<p>Next, copy your <code>conf.yaml.example</code> file into the Datadog Agent’s <code>conf.d</code> directory and rename it to <code>my_integration.yaml</code> (again, using the actual name of your integration).</p>
+
+<p>See the Agent Check guide for more information about the <a href="http://docs.datadoghq.com/guides/agent_checks/#directory">Datadog Agent directory structure</a>).</p>
+
+<h4 id="teardown-and-cleanup" class="linked-header">
+<a class="header-link" href="#teardown-and-cleanup"><i class="fa fa-link"></i></a>Teardown and cleanup</h4>
+
+<p>When you have finished building your integration, you can run <code>rake clean_env</code> to remove the Python virtual environment.</p>
+
+<h3 id="submitting-your-integration" class="linked-header">
+<a class="header-link" href="#submitting-your-integration"><i class="fa fa-link"></i></a>Submitting Your integration</h3>
+
+<p>Once you have completed the development of your integration, submit a <a href="https://github.com/DataDog/integrations-extras/compare">pull request</a> to have Datadog review your integration. After we’ve reviewed your integration, we will approve and merge your pull request or provide feedback and next steps required for approval.</p>
+
+<h3 id="other-considerations" class="linked-header">
+<a class="header-link" href="#other-considerations"><i class="fa fa-link"></i></a>Other Considerations</h3>
+
+<p>In our experience building integrations, we’ve also faced a number of challenges. As your write your tests, here are a few things to consider:</p>
+
+<ul>
+  <li>Test clusters. Testing single instances of your software is often easier, but tests are more useful when run against setups that are representative of real-world uses. For example, MongoDB is typically used with sharding and replica set features, so <a href="https://github.com/DataDog/integrations-core/tree/master/mongo/ci">our tests reflect that</a>.</li>
+  <li>Consider generating calculated metrics in addition to raw metrics. For example, many databases will have slow, but less frequently run queries. So it’s often useful to look at percentiles. For example, our MySQL integration includes a calculated metric for the <a href="https://github.com/DataDog/integrations-core/blob/master/mysql/check.py#L1169">95th percentile query execution time</a>.</li>
+</ul>
+</body>
+</html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

@@ -1,0 +1,1975 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-AWS ElastiCache Integration</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class="nav-header hidden-xs">Documentation Search</li>
+            <li class="hidden-xs">
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#collecting-native-metrics-with-the-agent' onclick="$('#').collapse('show')">
+Collecting native metrics with the Agent</a></li><li><a style='' href='#how-this-works' onclick="$('#').collapse('show')">
+How this works</a></li><li><a style='' href='#step-by-step' onclick="$('#').collapse('show')">
+Step-by-step</a></li><li><a style='padding: 5px 25px;' href='#gather-connection-details-for-your-elasticache-instance' onclick="$('#').collapse('show')">
+Gather connection details for your ElastiCache instance</a></li><li><a style='padding: 5px 25px;' href='#configure-the-agent' onclick="$('#').collapse('show')">
+Configure the Agent</a></li><li><a style='padding: 5px 25px;' href='#visualize-elasticache-and-redismemcached-metrics-together' onclick="$('#').collapse('show')">
+Visualize ElastiCache and Redis/Memcached metrics together</a></li><li><a style='' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li><li><a style='' href='#whats-next' onclick="$('#').collapse('show')">
+What’s next?</a></li>
+
+            <li class="nav-header auto">Other Integrations <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/integrations/">Back to Overview</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/airbrake/">Airbrake *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ansible/">Ansible *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awsbilling/">AWS Billing *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsdynamo/">AWS DynamoDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsec2/">AWS EC2</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> AWS ElastiCache</a>
+                  </li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awslambda/">AWS Lambda</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsrds/">AWS RDS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsredshift/">AWS Redshift</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsroute53/">AWS Route 53</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awss3/">AWS S3 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssns/">AWS SNS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssqs/">AWS SQS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/bitbucket/">Bitbucket</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/bugsnag/">Bugsnag *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/cacti/">Cacti *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/capistrano/">Capistrano *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/cassandra/">Cassandra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/catchpoint/">Catchpoint *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/chatwork/">Chatwork *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/chef/">Chef</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dnscheck/">DNS Service Check *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/flowdock/">Flowdock *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/git/">Git *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_app_engine/">Google App Engine</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_big_query/">Google BigQuery *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_functions/">Google Cloud Functions *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloudsql/">Google CloudSQL *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_compute_engine/">Google Compute Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_container_engine/">Google Container Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_datastore/">Google Datastore *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_firebase/">Google Firebase *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_ml/">Google Machine Learning *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_pubsub/">Google Pub/Sub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_spanner/">Google Spanner *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_stackdriver_logging/">Google Stackdriver Logging *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_storage/">Google Storage *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_vpn/">Google VPN *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hdfs/">Hadoop HDFS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hipchat/">HipChat</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/honeybadger/">Honeybadger *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/immunio/">Immunio *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/java/">Java/JMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/jira/">Jira *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kong/">Kong *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/marathon/">Marathon</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/memcached/">Memcached</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_app_services/">Microsoft Azure App Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_batch/">Microsoft Azure Batch Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_event_hub/">Microsoft Azure Event Hub Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_iot_hub/">Microsoft Azure IOT Hub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_logic_app/">Microsoft Azure Logic App *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_redis_cache/">Microsoft Azure Redis Cache *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_database/">Microsoft Azure SQL Database *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm/">Microsoft Azure VM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mongodb/">MongoDB</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/moxtra/">Moxtra *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mysql/">MySQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nagios/">Nagios *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/opsgenie/">OpsGenie</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/opsmatic/">Opsmatic *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/papertrail/">PaperTrail *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/phpfpm/">PHP-FPM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pivotal/">Pivotal Tracker *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/powerdns/">PowerDNS Recursor *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/process/">Process Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/puppet/">Puppet</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/python/">Python</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/rabbitmq/">RabbitMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/redis/">Redis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rollbar/">Rollbar *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ruby/">Ruby</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/snmp/">SNMP</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/solr/">Solr</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/spark/">Spark *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/splunk/">Splunk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/statuspage/">StatusPageIO *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/sumologic/">Sumo Logic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/system/">System Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/teamcity/">TeamCity</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tokumx/">TokuMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tomcat/">Tomcat</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/varnish/">Varnish</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/vmware/">VMware</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/webhooks/">Webhooks</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/wmi/">WMI</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/zendesk/">Zendesk *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/zookeeper/">Zookeeper</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-AWS ElastiCache Integration </h1>
+          
+          <div >
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p><img src="/static/images/elasticache-memcached.png" alt="ElastiCache Memcached default dashboard"></p>
+
+<p>Learn more about how to monitor ElastiCache performance metrics, whether you use Redis or Memcached, thanks to <a href="https://www.datadoghq.com/blog/monitoring-elasticache-performance-metrics-with-redis-or-memcached/">our series of posts</a>. We detail the key performance metrics, how to collect them, and how <a href="https://www.coursera.org/">Coursera</a> monitors ElastiCache using Datadog.</p>
+
+<p>To collect all available ElastiCache metrics, you need to do two things:</p>
+
+<ol>
+  <li>
+<a href="https://app.datadoghq.com/account/settings#integrations/amazon_elasticache">Turn on the ElastiCache integration</a> to pull metrics from ElastiCache into Datadog</li>
+  <li>Set up the Datadog Agent as described in this article (optional, but recommended)</li>
+</ol>
+
+<h2 id="collecting-native-metrics-with-the-agent" class="linked-header">
+<a class="header-link" href="#collecting-native-metrics-with-the-agent"><i class="fa fa-link"></i></a>Collecting native metrics with the Agent</h2>
+
+<p>The following diagram shows how Datadog collects metrics directly from CloudWatch via the native ElastiCache integration, and how it can additionally collect native metrics directly from the backend technology: Redis or Memcached. By collecting from the backend directly, you will have access to a greater number of important metrics, and at a higher resolution.</p>
+
+<p><img src="/static/images/elasticache1.png" alt="ElastiCache, Redis and Memcached integrations"></p>
+
+<h2 id="how-this-works" class="linked-header">
+<a class="header-link" href="#how-this-works"><i class="fa fa-link"></i></a>How this works</h2>
+
+<p>Because the agent metrics will be tied to the EC2 instance where the agent is running and not to the actual ElastiCache instance, you will need to use the <code>cacheclusterid</code> tag to connect all metrics together. Once the agent is configured with the same tags as the ElastiCache instance, combining Redis/Memcached metrics with ElastiCache metrics is straightforward.</p>
+
+<h2 id="step-by-step" class="linked-header">
+<a class="header-link" href="#step-by-step"><i class="fa fa-link"></i></a>Step-by-step</h2>
+
+<p>Since the Agent is not running on an actual ElastiCache instance, but on a remote machine, the key to setting up this integration correctly is telling the Agent where to collect the metrics from.</p>
+
+<h3 id="gather-connection-details-for-your-elasticache-instance" class="linked-header">
+<a class="header-link" href="#gather-connection-details-for-your-elasticache-instance"><i class="fa fa-link"></i></a>Gather connection details for your ElastiCache instance</h3>
+
+<p>First navigate to the AWS Console, open the ElastiCache section and then the Cache Clusters tab to find the cluster you want to monitor. It should look like:</p>
+
+<p><img src="/static/images/elasticache2.png" alt="ElastiCache Clusters in AWS console"></p>
+
+<p>Then click on the “node” link to access its endpoint URL:</p>
+
+<p><img src="/static/images/elasticache3.png" alt="Node link in AWS console"></p>
+
+<p>Write down the endpoint URL (e.g. <strong>replica-001.xxxx.use1.cache.amazonaws.com</strong>) and the <code>cacheclusterid</code> (e.g. <strong>replica-001</strong>). You will need these values to configure the agent and to create graphs and dashboards.</p>
+
+<h3 id="configure-the-agent" class="linked-header">
+<a class="header-link" href="#configure-the-agent"><i class="fa fa-link"></i></a>Configure the Agent</h3>
+
+<p>The Redis/Memcached integrations support the tagging of individual cache instances. Originally designed to allow the monitoring of multiple instances on the same machine, you can use these tags to your advantage. Here is an example of a configuration for ElastiCache with Redis using <code>redisdb.yaml</code>, usually found in <code>/etc/dd-agent/conf.d</code></p>
+
+<div class="highlighter-coderay">
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">init_config</span>:
+
+<span style="color:#606">instances</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">host: replica-001.xxxx.use1.cache.amazonaws.com</span></span> <span style="color:#777"># Endpoint URL from AWS console</span>
+    <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">6379</span></span>
+    <span style="color:#606">tags</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">cacheclusterid:replicaa-001</span></span> <span style="color:#777"># Cache Cluster ID from AWS console</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then restart the agent: <code>sudo /etc/init.d/datadog-agent restart</code> (on linux).</p>
+
+<h3 id="visualize-elasticache-and-redismemcached-metrics-together" class="linked-header">
+<a class="header-link" href="#visualize-elasticache-and-redismemcached-metrics-together"><i class="fa fa-link"></i></a>Visualize ElastiCache and Redis/Memcached metrics together</h3>
+
+<p>After a few minutes, ElastiCache metrics and Redis/Memcached metrics will be accessible in Datadog for graphing, monitoring, etc.</p>
+
+<p>Here’s an example of setting up a graph to combine cache hit metrics from ElastiCache with native latency metrics from Redis using the same <code>cacheclusterid</code> tag <strong>replicaa-001</strong>.</p>
+
+<p><img src="/static/images/elasticache4.png" alt="ElastiCache and Cache metrics"></p>
+
+<h2 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h2>
+
+<table class="table">
+<tr>
+<td>
+<strong>aws.elasticache.bytes_read_into_memcached</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of bytes that have been read from the network by the cache node.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.bytes_used_for_cache</strong><br>(gauge)</td>
+<td>Redis - The total number of bytes allocated by Redis.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.bytes_used_for_cache_items</strong><br>(gauge)</td>
+<td>Memcached - The number of bytes used to store cache items.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.bytes_used_for_hash</strong><br>(gauge)</td>
+<td>Memcached - The number of bytes currently used by hash tables.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.bytes_written_out_from_memcached</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of bytes that have been written to the network by the cache node.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cache_hits</strong><br>(count every 60 seconds)</td>
+<td>Redis - The number of successful key lookups.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cache_misses</strong><br>(count every 60 seconds)</td>
+<td>Redis - The number of unsuccessful key lookups.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cas_badval</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of CAS (check and set) requests the cache has received where the Cas value did not match the Cas value stored.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cas_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of CAS requests the cache has received where the requested key was found and the Cas value matched.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cas_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of CAS requests the cache has received where the key requested was not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_config_get</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The cumulative number of config get requests.<br><em>shown as get</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_config_set</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The cumulative number of config set requests.<br><em>shown as set</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_flush</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of flush commands the cache has received.<br><em>shown as flush</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_get</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of get commands the cache has received.<br><em>shown as get</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_set</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of set commands the cache has received.<br><em>shown as set</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cmd_touch</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The cumulative number of touch requests.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.cpuutilization</strong><br>(gauge)</td>
+<td>The percentage of CPU utilization.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.curr_config</strong><br>(gauge)</td>
+<td>Memcached - The current number of configurations stored.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.curr_connections</strong><br>(gauge)</td>
+<td>Redis - The number of client connections, excluding connections from read replicas.  Memcached - A count of the number of connections connected to the cache at an instant in time.<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.curr_items</strong><br>(gauge)</td>
+<td>Redis - The number of items in the cache. This is derived from the Redis keyspace statistic, summing all of the keys in the entire keyspace.  Memcached - A count of the number of items currently stored in the cache.<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.decr_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of decrement requests the cache has received where the requested key was found.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.decr_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of decrement requests the cache has received where the requested key was not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.delete_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of delete requests the cache has received where the requested key was found.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.delete_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of delete requests the cache has received where the requested key was not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.evicted_unfetched</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of valid items evicted from the least recently used cache (LRU) which were never touched after being set.<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.evictions</strong><br>(count every 60 seconds)</td>
+<td>Redis - The number of keys that have been evicted due to the maxmemory limit.  Memcached - The number of non-expired items the cache evicted to allow space for new writes.<br><em>shown as eviction</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.expired_unfetched</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of expired items reclaimed from the LRU which were never touched after being set.<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.freeable_memory</strong><br>(gauge)</td>
+<td>The amount of free memory available on the host.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.get_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of get requests the cache has received where the key requested was found.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.get_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of get requests the cache has received where the key requested was not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.get_type_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of get types of commands. This is derived from the Redis commandstats statistic by summing all of the get types of commands (get, mget, hget, etc.)<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.hash_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are hash-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more hashes.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.hyper_log_log_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of HyperLogLog based commands. This is derived from the Redis commandstats statistic by summing all of the pf type of commands (pfadd, pfcount, pfmerge).<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.incr_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of increment requests the cache has received where the key requested was found.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.incr_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of increment requests the cache has received where the key requested was not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.key_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are key-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more keys.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.list_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are list-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more lists.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.network_bytes_in</strong><br>(count every 60 seconds)</td>
+<td>The number of bytes the host has read from the network.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.network_bytes_out</strong><br>(count every 60 seconds)</td>
+<td>The number of bytes the host has written to the network.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.new_connections</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of connections that have been accepted by the server during this period.  Memcached - The number of new connections the cache has received. This is derived from the memcached total_connections statistic by recording the change in total_connections across a period of time. This will always be at least 1, due to a connection reserved for a ElastiCache.<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.new_items</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of new items the cache has stored. This is derived from the memcached total_items statistic by recording the change in total_items across a period of time.<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.reclaimed</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of key expiration events.  Memcached - The number of expired items the cache evicted to allow space for new writes.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.replication_bytes</strong><br>(gauge)</td>
+<td>Redis - For primaries with attached replicas, ReplicationBytes reports the number of bytes that the primary is sending to all of its replicas. This metric is representative of the write load on the replication group. For replicas and standalone primaries, ReplicationBytes is always 0.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.replication_lag</strong><br>(gauge)</td>
+<td>Redis - This metric is only applicable for a cache node running as a read replica. It represents how far behind, in seconds, the replica is in applying changes from the primary cache cluster.<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.save_in_progress</strong><br>(gauge)</td>
+<td>Redis - This binary metric returns 1 whenever a background save (forked or forkless) is in progress, and 0 otherwise. A background save process is typically used during snapshots and syncs. These operations can cause degraded performance. Using the SaveInProgress metric, you can diagnose whether or not degraded performance was caused by a background save process.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.set_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are set-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more sets.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.set_type_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of set types of commands. This is derived from the Redis commandstats statistic by summing all of the set types of commands (set, hset, etc.)<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.slabs_moved</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The total number of slab pages that have been moved.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.sorted_set_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are sorted set-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more sorted sets.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.string_based_cmds</strong><br>(count every 60 seconds)</td>
+<td>Redis - The total number of commands that are string-based. This is derived from the Redis commandstats statistic by summing all of the commands that act upon one or more strings.<br><em>shown as command</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.swap_usage</strong><br>(gauge)</td>
+<td>The amount of swap used on the host.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.touch_hits</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of keys that have been touched and were given a new expiration time.<br><em>shown as hit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.touch_misses</strong><br>(count every 60 seconds)</td>
+<td>Memcached - The number of items that have been touched, but were not found.<br><em>shown as miss</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.unused_memory</strong><br>(gauge)</td>
+<td>Memcached - The amount of unused memory the cache can use to store items. This is derived from the memcached statistics limit_maxbytes and bytes by subtracting bytes from limit_maxbytes.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.is_master</strong><br>(gauge)</td>
+<td>Redis - Returns 1 if the node is master, 0 otherwise.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.elasticache.geo_spatial_based_cmds</strong><br>(count)</td>
+<td>Redis - The total number of geo spatial based commands.<em></em>
+</td>
+</tr>
+</table>
+
+<h2 id="whats-next" class="linked-header">
+<a class="header-link" href="#whats-next"><i class="fa fa-link"></i></a>What’s next?</h2>
+
+<p>Not working? Have questions for us? Don’t hesitate to contact our <a href="mailto:support@datadoghq.com">support team</a>.</p>
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

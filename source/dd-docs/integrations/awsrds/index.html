@@ -1,0 +1,2469 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-AWS RDS Integration</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class="nav-header hidden-xs">Documentation Search</li>
+            <li class="hidden-xs">
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#overview' onclick="$('#').collapse('show')">
+Overview</a></li><li><a style='padding: 5px 25px;' href='#how-this-works' onclick="$('#').collapse('show')">
+How this works</a></li><li><a style='' href='#installation' onclick="$('#').collapse('show')">
+Installation</a></li><li><a style='' href='#configuration' onclick="$('#').collapse('show')">
+Configuration</a></li><li><a style='' href='#validation' onclick="$('#').collapse('show')">
+Validation</a></li><li><a style='' href='#usage' onclick="$('#').collapse('show')">
+Usage</a></li><li><a style='' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li>
+
+            <li class="nav-header auto">Other Integrations <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/integrations/">Back to Overview</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/airbrake/">Airbrake *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ansible/">Ansible *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awsbilling/">AWS Billing *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsdynamo/">AWS DynamoDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsec2/">AWS EC2</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselasticache/">AWS ElastiCache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awslambda/">AWS Lambda</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> AWS RDS</a>
+                  </li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsredshift/">AWS Redshift</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsroute53/">AWS Route 53</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awss3/">AWS S3 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssns/">AWS SNS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssqs/">AWS SQS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/bitbucket/">Bitbucket</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/bugsnag/">Bugsnag *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/cacti/">Cacti *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/capistrano/">Capistrano *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/cassandra/">Cassandra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/catchpoint/">Catchpoint *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/chatwork/">Chatwork *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/chef/">Chef</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dnscheck/">DNS Service Check *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/flowdock/">Flowdock *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/git/">Git *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_app_engine/">Google App Engine</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_big_query/">Google BigQuery *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_functions/">Google Cloud Functions *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloudsql/">Google CloudSQL *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_compute_engine/">Google Compute Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_container_engine/">Google Container Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_datastore/">Google Datastore *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_firebase/">Google Firebase *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_ml/">Google Machine Learning *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_pubsub/">Google Pub/Sub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_spanner/">Google Spanner *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_stackdriver_logging/">Google Stackdriver Logging *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_storage/">Google Storage *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_vpn/">Google VPN *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hdfs/">Hadoop HDFS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hipchat/">HipChat</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/honeybadger/">Honeybadger *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/immunio/">Immunio *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/java/">Java/JMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/jira/">Jira *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kong/">Kong *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/marathon/">Marathon</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/memcached/">Memcached</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_app_services/">Microsoft Azure App Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_batch/">Microsoft Azure Batch Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_event_hub/">Microsoft Azure Event Hub Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_iot_hub/">Microsoft Azure IOT Hub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_logic_app/">Microsoft Azure Logic App *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_redis_cache/">Microsoft Azure Redis Cache *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_database/">Microsoft Azure SQL Database *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm/">Microsoft Azure VM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mongodb/">MongoDB</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/moxtra/">Moxtra *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mysql/">MySQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nagios/">Nagios *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/opsgenie/">OpsGenie</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/opsmatic/">Opsmatic *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/papertrail/">PaperTrail *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/phpfpm/">PHP-FPM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pivotal/">Pivotal Tracker *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/powerdns/">PowerDNS Recursor *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/process/">Process Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/puppet/">Puppet</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/python/">Python</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/rabbitmq/">RabbitMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/redis/">Redis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rollbar/">Rollbar *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ruby/">Ruby</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/snmp/">SNMP</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/solr/">Solr</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/spark/">Spark *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/splunk/">Splunk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/statuspage/">StatusPageIO *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/sumologic/">Sumo Logic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/system/">System Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/teamcity/">TeamCity</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tokumx/">TokuMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tomcat/">Tomcat</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/varnish/">Varnish</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/vmware/">VMware</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/webhooks/">Webhooks</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/wmi/">WMI</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/zendesk/">Zendesk *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/zookeeper/">Zookeeper</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-AWS RDS Integration </h1>
+          
+          <div id="pagecontent">
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h1>
+
+<p><img src="/static/images/rdsdashboard.png" alt="RDS Dashboard"></p>
+
+<p>Amazon Relational Database Service (RDS) is a web service that makes it easy to setup, operate, and scale a relational database in the cloud. Enable this integration to see all your RDS metrics in Datadog</p>
+
+<h2 id="how-this-works" class="linked-header">
+<a class="header-link" href="#how-this-works"><i class="fa fa-link"></i></a>How this works</h2>
+
+<p>There are 3 options for monitoring RDS instances. You can choose to use standard or enhanced, and then optionally turn on the native database integration as well if you wish.</p>
+
+<ul>
+  <li>
+    <p><strong>Standard RDS Integration</strong> - The standard integration requires selecting RDS on the left side of the AWS integration tile. You will receive metrics about your instance as often as your Cloudwatch integration allows. All RDS Engine types are supported.</p>
+  </li>
+  <li>
+    <p><strong>Enhanced RDS Integration</strong> - The enhanced integration requires additional configuration and is only available for MySQL, Aurora, and MariaDB engines. Additional metrics are available but an AWS Lambda is required to submit the metrics to Datadog. The higher granularity and additional required services may result in additional AWS charges.</p>
+  </li>
+  <li>
+    <p><strong>RDS + Native Database Integration</strong> - You can also choose to turn on the Native Database Integration. This is available for MySQL, Aurora, MariaDB, SQL Server, and Postgres engine types. To get the metrics from RDS and the ones from the native integration to match up, you will need to use the <code>dbinstanceidentifier</code> tag on the native integration based on the identifier you assign to the RDS instance. The RDS instances will automatically have the tag assigned.</p>
+  </li>
+</ul>
+
+<h1 id="installation" class="linked-header">
+<a class="header-link" href="#installation"><i class="fa fa-link"></i></a>Installation</h1>
+
+<ul>
+  <li>
+    <p><strong>Standard RDS Integration</strong></p>
+
+    <p>If you haven’t already, set up the <a href="/integrations/aws">Amazon Web Services integration first</a>.</p>
+  </li>
+  <li>
+    <p><strong>Enhanced RDS Integration</strong></p>
+
+    <ol>
+      <li>Enable Enhanced Monitoring for your RDS instance. This can either be done during instance creation or afterwards by choosing <strong>Modify</strong> under <strong>Instance Actions</strong>. We recommend choosing 15 for Monitoring Granularity.
+<img src="/static/images/rds-enhanced-install.png" alt="">
+</li>
+      <li>From the IAM Management Console, click on <strong>Encryption Keys</strong>. Click the <strong>Create Key</strong> button.</li>
+      <li>Enter an Alias for the key, such as <code>lambda-datadog-key</code>.</li>
+      <li>Add the appropriate administrators and then users for the key. Ensure that you select yourself at least as a user.</li>
+      <li>
+        <p>Encrypt the key you just created by using the <a href="http://aws.amazon.com/documentation/cli/">AWS CLI</a>:</p>
+
+        <pre><code>aws kms encrypt --key-id alias/&lt;KMS key name&gt; --plaintext '{"api_key":"&lt;datadog_api_key&gt;", "app_key":"&lt;datadog_app_key&gt;"}'
+</code></pre>
+
+        <p>The KMS key name should be replaced by the alias of the key you just created. The datadog api and app keys should be replaced by <a href="https://app.datadoghq.com/account/settings#api">the api and app keys found here</a>.</p>
+
+        <p>The output of this command will include two parts: a ciphertext blob followed by the key ID that starts with something similar to <strong>arn:aws:kms</strong>.</p>
+      </li>
+      <li>From the IAM Management Console, create a new role. Enter a name for the role, such as <code>lambda-datadog-post-execution</code>.</li>
+      <li>Select <strong>AWS Lambda</strong> from the AWS Service Roles list. You do not need to attach any policies at this time. Press the appropriate buttons to complete the role creation.</li>
+      <li>Click on the role you just created. Expand the Inline Policies section and click the link to create a policy. Choose <strong>Custom Policy</strong> and press the button to continue.</li>
+      <li>
+        <p>Enter a policy name, such as <code>lambda-datadog-policy</code>. For Policy Document, enter the following, replacing &lt;ENCRYPTION_KEY ARN&gt; with the ARN of the Encryption Key:</p>
+
+        <pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "&lt;ENCRYPTION_KEY ARN&gt;"
+            ]
+        }
+    ]
+}
+</code></pre>
+      </li>
+      <li>From the Lambda Management Console, create a new Lambda Function.</li>
+      <li>On the Select blueprint screen, select the datadog-process-rds-metrics blueprint.</li>
+      <li>Choose <code>RDSOSMetrics</code> from the <strong>Log Group</strong> dropdown.</li>
+      <li>Enter anything for the Filter Name and click Next.</li>
+      <li>Enter a name for your function, such as <code>lambda-datadog-post-function</code>.</li>
+      <li>In the Lambda function code area, replace <code>&lt;KMS_ENCRYPTED_KEYS&gt;</code> with the ciphertext blob part of the CLI command output above.</li>
+      <li>Under Lambda function handler and role, choose the role you created above. Click <strong>Next</strong>.</li>
+      <li>Choose the <strong>Enable Now</strong> radio button.</li>
+      <li>Click the <strong>Create Function</strong> button.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Native Database Integration</strong></p>
+
+    <ol>
+      <li>Navigate to the AWS Console and open the RDS section to find the instance you want to monitor.
+<img src="/static/images/rds-console.png" alt="">
+</li>
+      <li>Copy the endpoint URL (e.g. <strong>mysqlrds.blah.us-east1.rds.amazonaws.com:3306</strong>); You will need it when you configure the agent. Also make a note of the <code>DB Instance identifier</code> (e.g. <strong>mysqlrds</strong>). You will need it to create graphs and dashboards.</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="configuration" class="linked-header">
+<a class="header-link" href="#configuration"><i class="fa fa-link"></i></a>Configuration</h1>
+
+<ul>
+  <li>
+    <p><strong>Standard RDS Integration</strong></p>
+
+    <ol>
+      <li>Ensure RDS is checked in the AWS Integration tile.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Enhanced RDS Integration</strong></p>
+
+    <ol>
+      <li>Ensure RDS is checked in the AWS Integration tile.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Native Database Integration</strong></p>
+
+    <ol>
+      <li>
+        <p>Configure an agent and connect to your RDS instance by editing the appropriate yaml file in your conf.d directory.
+a.  If you are using MySQL, MariaDB, or Aurora, then edit mysql.yaml:</p>
+
+        <div class="highlighter-coderay">
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">init_config</span>:
+
+<span style="color:#606">instances</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">server: mysqlrds.blah.us-east1-rds.amazonaws.com</span></span> <span style="color:#777"># The endpoint URL from the AWS console</span>
+    <span style="color:#606">user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_username</span></span>
+    <span style="color:#606">pass</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_password</span></span>
+    <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3306</span></span>
+    <span style="color:#606">tags</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">dbinstanceidentifier:my_own_instance</span></span>
+</pre></div>
+</div>
+        </div>
+
+        <p>b.  If you are using PostgreSQL, then edit postgres.yaml:</p>
+
+        <div class="highlighter-coderay">
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">init_config</span>:
+
+<span style="color:#606">instances</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">host: mysqlrds.blah.us-east1-rds.amazonaws.com</span></span>
+    <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5432</span></span>
+    <span style="color:#606">username</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_username</span></span>
+    <span style="color:#606">password</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_password</span></span>
+    <span style="color:#606">dbname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">db_name</span></span>
+    <span style="color:#606">tags</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">dbinstanceidentifier:my_own_instance</span></span>
+</pre></div>
+</div>
+        </div>
+
+        <p>c.  If you are using Microsoft SQL Server, then edit sqlserver.yaml</p>
+
+        <div class="highlighter-coderay">
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">init_config</span>:
+
+<span style="color:#606">instances</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">host: mysqlrds.blah.us-east1-rds.amazonaws.com,1433</span></span>
+    <span style="color:#606">username</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_username</span></span>
+    <span style="color:#606">password</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">my_password</span></span>
+    <span style="color:#606">tags</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">dbinstanceidentifier:my_own_instance</span></span>
+</pre></div>
+</div>
+        </div>
+      </li>
+      <li>
+        <p>Restart the agent.</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="validation" class="linked-header">
+<a class="header-link" href="#validation"><i class="fa fa-link"></i></a>Validation</h1>
+
+<p>To validate that the native database integration is working, run <code>datadog-agent info</code>. You should see something like the following:</p>
+
+<pre><code>Checks
+======
+
+  [...]
+
+  mysql
+  -----
+      - instance #0 [OK]
+      - Collected 8 metrics &amp; 0 events
+</code></pre>
+
+<h1 id="usage" class="linked-header">
+<a class="header-link" href="#usage"><i class="fa fa-link"></i></a>Usage</h1>
+
+<p>After a few minutes, RDS metrics and metrics from MySQL, Aurora, MariaDB, SQL Server, or PostgreSQL will be accessible in Datadog in the Metrics Explorer, in Graphs and in Alerts. Here’s an example of an Aurora dashboard displaying a number of metrics from both RDS and the MySQL integration. Metrics from both integrations on the instance <code>quicktestrds</code> are unified using the <code>dbinstanceidentifier</code> tag. <img src="/static/images/aurora-rds-dash.png" alt=""></p>
+
+<p>Here is the default dashboard for MySQL on Amazon RDS:
+<img src="/static/images/rds-mysql.png" alt="RDS MySQL default dashboard"></p>
+
+<p>Learn more about how to monitor MySQL on Amazon RDS performance metrics thanks to <a href="https://www.datadoghq.com/blog/monitoring-rds-mysql-performance-metrics/">our series of posts</a>. We detail the key performance metrics, how to collect them, and how to use Datadog to monitor MySQL on Amazon RDS.</p>
+
+<h1 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h1>
+
+<p>In addition to the metrics you get from the database engines you will also get the following RDS metrics:</p>
+
+<table class="table">
+<tr>
+<td>
+<strong>aws.rds.bin_log_disk_usage</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of disk space occupied by binary logs on the master. (Standard)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization</strong><br>(gauge every 60 seconds)</td>
+<td>Percentage of CPU utilization. (Standard)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpucredit_usage</strong><br>(gauge every 60 seconds)</td>
+<td>Number of CPU credits consumed. (Standard)<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpucredit_balance</strong><br>(gauge every 60 seconds)</td>
+<td>Number of CPU credits that an instance has accumulated. (Standard)<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.database_connections</strong><br>(gauge every 60 seconds)</td>
+<td>Number of database connections in use. (Standard)<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.disk_queue_depth</strong><br>(gauge every 60 seconds)</td>
+<td>Number of outstanding IOs (read/write requests) waiting to access the disk. (Standard)<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.freeable_memory</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of available random access memory. (Standard)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.free_storage_space</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of available storage space. (Standard)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.replica_lag</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of time a Read Replica DB Instance lags behind the source DB Instance.(Standard)<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.swap_usage</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of swap space used on the DB Instance. (Standard)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.read_iops</strong><br>(rate every 60 seconds)</td>
+<td>Average number of disk read I/O operations. (Standard)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.write_iops</strong><br>(rate every 60 seconds)</td>
+<td>Average number of disk write I/O operations per second. (Standard)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.read_latency</strong><br>(gauge every 60 seconds)</td>
+<td>Average amount of time taken per disk read I/O operation. (Standard)<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.write_latency</strong><br>(gauge every 60 seconds)</td>
+<td>Average amount of time taken per disk write I/O operation. (Standard)<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.read_throughput</strong><br>(rate every 60 seconds)</td>
+<td>Average number of bytes read from disk. (Standard)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.write_throughput</strong><br>(rate every 60 seconds)</td>
+<td>Average number of bytes written to  (Standard)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.network_receive_throughput</strong><br>(rate every 60 seconds)</td>
+<td>Incoming (Receive) network traffic on the DB instance. (Standard)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.network_transmit_throughput</strong><br>(rate every 60 seconds)</td>
+<td>Outgoing (Transmit) network traffic on the DB instance.  (Standard)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.update_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of update queries. (Enhanced, Aurora only)<br><em>shown as query/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.update_latency</strong><br>(gauge every 60 seconds)</td>
+<td>The average latency for update queries. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.transaction_logs_disk_usage</strong><br>(gauge every 60 seconds)</td>
+<td>Amount of disk space occupied by transaction logs. (Enhanced, Postgres Only)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.total_storage_space</strong><br>(gauge every 60 seconds)</td>
+<td>Total amount of storage available on an instance. (Standard)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.select_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of select queries. (Enhanced, Aurora only)<br><em>shown as query/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.select_latency</strong><br>(gauge every 60 seconds)</td>
+<td>The average latency for select queries. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.result_set_cache_hit_ratio</strong><br>(gauge every 60 seconds)</td>
+<td>The percentage of requests that are served by the Resultset cache. (Enhanced, Aurora only)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.queries</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of queries. (Enhanced)<br><em>shown as query/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.network_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The rate of network throughput sent and received from clients by each instance in the DB cluster. (Standard)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.login_failures</strong><br>(count every 60 seconds)</td>
+<td>The average number of failed login attempts per second (Enhanced, Aurora only)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.insert_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of insert queries. (Enhanced, Aurora only)<br><em>shown as query/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.insert_latency</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of latency for insert queries. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.free_local_storage</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of local storage that is free on an instance. (Enhanced, Aurora only)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.engine_uptime</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of time that the DB instance has been active. (Enhanced)<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.dmlthroughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of inserts and updates and deletes. (Enhanced, Aurora only)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.dmllatency</strong><br>(gauge every 60 seconds)</td>
+<td>The average latency for inserts and updates and deletes. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.delete_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of delete queries. (Enhanced, Aurora only)<br><em>shown as query/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.delete_latency</strong><br>(gauge every 60 seconds)</td>
+<td>The average latency for delete queries. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.deadlocks</strong><br>(count every 60 seconds)</td>
+<td>The average number of deadlocks in the database per second. (Enhanced, Aurora only)<br><em>shown as lock</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.ddlthroughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of DDL requests per second. (Enhanced, Aurora only)<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.ddllatency</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of latency for DDL requests (create/alter/drop). (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.commit_throughput</strong><br>(rate every 60 seconds)</td>
+<td>The average rate of committed transactions. (Enhanced, Aurora only)<br><em>shown as transaction/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.commit_latency</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of latency for committed transactions. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.buffer_cache_hit_ratio</strong><br>(gauge every 60 seconds)</td>
+<td>The percentage of requests that are served by the Buffer cache. (Enhanced, Aurora only)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.blocked_transactions</strong><br>(count every 60 seconds)</td>
+<td>The average rate of transactions in the database that are blocked. (Enhanced, Aurora only)<br><em>shown as transaction/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.aurora_replica_lag_minimum</strong><br>(gauge every 60 seconds)</td>
+<td>The minimum amount of lag between the primary instance and each Aurora instance in the DB cluster. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.aurora_replica_lag_maximum</strong><br>(gauge every 60 seconds)</td>
+<td>The maximum amount of lag between the primary instance and each Aurora instance in the DB cluster. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.aurora_replica_lag</strong><br>(gauge every 60 seconds)</td>
+<td>The average lag when replicating updates from the primary instance. (Enhanced, Aurora only)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.active_transactions</strong><br>(gauge every 60 seconds)</td>
+<td>The average rate of current transactions executing on a DB instance. (Enhanced, Aurora only)<br><em>shown as transaction/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.volume_bytes_used</strong><br>(gauge every 60 seconds)</td>
+<td>The amount of storage in bytes used by your Aurora database. (Enhanced, Aurora, only)<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.volume_read_iops</strong><br>(count every 60 seconds)</td>
+<td>The number of billed read I/O operations from a cluster volume, reported at 5-minute intervals (Enhanced, Aurora only)<br><em>shown as operation/minute</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.volume_write_iops</strong><br>(count every 60 seconds)</td>
+<td>The average number of write disk I/O operations to the cluster volume reported at 5-minute intervals (Enhanced, Aurora only)<br><em>shown as operation/minute</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.uptime</strong><br>(gauge)</td>
+<td>RDS instance uptime. (Enhanced)<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.guest</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by guest programs. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.idle</strong><br>(gauge)</td>
+<td>The percentage of CPU that is idle. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.irq</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by software interrupts. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.nice</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by programs running at lowest priority. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.steal</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by other virtual machines. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.system</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by the kernel. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.total</strong><br>(gauge)</td>
+<td>The total percentage of the CPU in use. This value excludes the nice value. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.user</strong><br>(gauge)</td>
+<td>The percentage of CPU in use by user programs. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.cpuutilization.wait</strong><br>(gauge)</td>
+<td>The percentage of CPU unused while waiting for I/O access. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.load.1</strong><br>(gauge)</td>
+<td>The number of processes requesting CPU time over the last minute. (Enhanced)<br><em>shown as process</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.load.15</strong><br>(gauge)</td>
+<td>The number of processes requesting CPU time over the last 15 minutes. (Enhanced)<br><em>shown as process</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.load.5</strong><br>(gauge)</td>
+<td>The number of processes requesting CPU time over the last 5 minutes. (Enhanced)<br><em>shown as process</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.active</strong><br>(gauge)</td>
+<td>The amount of assigned memory. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.buffers</strong><br>(gauge)</td>
+<td>The amount of memory used for buffering I/O requests prior to writing to the storage device. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.cached</strong><br>(gauge)</td>
+<td>The amount of memory used for caching file systemâ€“based I/O. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.dirty</strong><br>(gauge)</td>
+<td>The amount of memory pages in RAM that have been modified but not written to their related data block in storage. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.free</strong><br>(gauge)</td>
+<td>The amount of unassigned memory. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.hugePagesFree</strong><br>(gauge)</td>
+<td>The number of free huge pages. (Enhanced)<br><em>shown as page</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.hugePagesRsvd</strong><br>(gauge)</td>
+<td>The number of committed huge pages. (Enhanced)<br><em>shown as page</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.hugePagesSize</strong><br>(gauge)</td>
+<td>The size for each huge pages unit. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.hugePagesSurp</strong><br>(gauge)</td>
+<td>The number of available surplus huge pages over the total. (Enhanced)<br><em>shown as page</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.hugePagesTotal</strong><br>(gauge)</td>
+<td>The total number of huge pages for the system. (Enhanced)<br><em>shown as page</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.inactive</strong><br>(gauge)</td>
+<td>The amount of inactive memory (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.mapped</strong><br>(gauge)</td>
+<td>The total amount of file-system contents that is memory mapped inside a process address space. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.pageTables</strong><br>(gauge)</td>
+<td>The amount of memory used by page tables. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.slab</strong><br>(gauge)</td>
+<td>The amount of reusable kernel data structures. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.total</strong><br>(gauge)</td>
+<td>The total amount of memory. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.memory.writeback</strong><br>(gauge)</td>
+<td>The amount of dirty pages in RAM that are still being written to the backing storage. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.cpuUsedPc</strong><br>(gauge)</td>
+<td>The percentage of CPU used by the process. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.memoryUsedPc</strong><br>(gauge)</td>
+<td>The amount of memory used by the process. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.parentID</strong><br>(gauge)</td>
+<td>The process identifier for the parent proces of the process. (Enhanced)<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.rss</strong><br>(gauge)</td>
+<td>The amount of RAM allocated to the process. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.tgid</strong><br>(gauge)</td>
+<td>The thread group identifier which is a number representing the process ID to which a thread belongs. This identifier is used to group threads from the same process. (Enhanced)<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.process.vss</strong><br>(gauge)</td>
+<td>The amount of virtual memory allocated to the process. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.avgQueueLen</strong><br>(gauge)</td>
+<td>The number of requests waiting in the I/O device's queue. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.avgReqSz</strong><br>(gauge)</td>
+<td>The average request size. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.await</strong><br>(gauge)</td>
+<td>The number of milliseconds required to respond to requests including queue time and service time. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.readIOsPS</strong><br>(rate)</td>
+<td>The rate of read operations. (Enhanced)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.readKb</strong><br>(gauge)</td>
+<td>The total amount of data read. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.readKbPS</strong><br>(rate)</td>
+<td>The rate that data is read. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as kibibyte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.rrqmPS</strong><br>(rate)</td>
+<td>The rate of merged read requests queue. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.tps</strong><br>(rate)</td>
+<td>The rate of I/O transactions. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as transaction/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.util</strong><br>(gauge)</td>
+<td>The percentage of CPU time during which requests were issued. The percentage of CPU time during which requests were issued. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.writeIOsPS</strong><br>(rate)</td>
+<td>The rate of write operations. (Enhanced)<br><em>shown as operation/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.writeKb</strong><br>(gauge)</td>
+<td>The total amount of data written. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.writeKbPS</strong><br>(rate)</td>
+<td>The rate that data is written. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as kibibyte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.diskio.wrqmPS</strong><br>(rate)</td>
+<td>The rate of merged write requests queue. This metric is not available for Amazon Aurora. (Enhanced)<br><em>shown as request/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.maxFiles</strong><br>(gauge)</td>
+<td>The maximum number of files that can be created for the file system. (Enhanced)<br><em>shown as file</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.total</strong><br>(gauge)</td>
+<td>The total amount of disk space available for the file system. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.used</strong><br>(gauge)</td>
+<td>The amount of disk space used by files in the file system. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.usedFilePercent</strong><br>(gauge)</td>
+<td>The percentage of available files in use. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.usedFiles</strong><br>(gauge)</td>
+<td>The number of files in the file system. (Enhanced)<br><em>shown as file</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.filesystem.usedPercent</strong><br>(gauge)</td>
+<td>The percentage of the file-system disk space in use. (Enhanced)<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.network.rx</strong><br>(gauge)</td>
+<td>The number of packets received. (Enhanced)<br><em>shown as packet</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.network.tx</strong><br>(gauge)</td>
+<td>The number of packets uploaded. (Enhanced)<br><em>shown as packet</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.swap.cached</strong><br>(gauge)</td>
+<td>The amount of swap memory used as cache memory. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.swap.free</strong><br>(gauge)</td>
+<td>The total amount of swap memory free. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.swap.total</strong><br>(gauge)</td>
+<td>The total amount of swap memory available. (Enhanced)<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.blocked</strong><br>(gauge)</td>
+<td>The number of tasks that are blocked. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.running</strong><br>(gauge)</td>
+<td>The number of tasks that are running. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.sleeping</strong><br>(gauge)</td>
+<td>The number of tasks that are sleeping. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.stopped</strong><br>(gauge)</td>
+<td>The number of tasks that are stopped. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.total</strong><br>(gauge)</td>
+<td>The total number of tasks. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.tasks.zombie</strong><br>(gauge)</td>
+<td>The number of child tasks that are inactive with an active parent task. (Enhanced)<br><em>shown as task</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>aws.rds.virtual_cpus</strong><br>(gauge)</td>
+<td>The number of virtual CPUs for the DB instance. (Enhanced)<br><em>shown as cpu</em>
+</td>
+</tr>
+</table>
+
+<p>Each of the metrics retrieved from AWS will be assigned the same tags that appear in the AWS console, including but not limited to host name, security-groups, and more.</p>
+
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

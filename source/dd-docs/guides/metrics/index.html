@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Sending Metrics with DogStatsD</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#overview' onclick="$('#').collapse('show')">
+Overview</a></li><li><a style='' href='#setup' onclick="$('#').collapse('show')">
+Setup</a></li><li><a style='padding: 5px 25px;' href='#' onclick="$('#').collapse('show')">
+Metric names</a></li><li><a style='' href='#counters' onclick="$('#').collapse('show')">
+Counters</a></li><li><a style='' href='#gauges' onclick="$('#').collapse('show')">
+Gauges</a></li><li><a style='' href='#histograms' onclick="$('#').collapse('show')">
+Histograms</a></li><li><a style='' href='#service-checks' onclick="$('#').collapse('show')">
+Service Checks</a></li><li><a style='' href='#sets' onclick="$('#').collapse('show')">
+Sets</a></li><li><a style='' href='#tags' onclick="$('#').collapse('show')">
+Tags</a></li><li><a style='' href='#sample-rates' onclick="$('#').collapse('show')">
+Sample Rates</a></li><li><a style='' href='#methods' onclick="$('#').collapse('show')">
+Other Submission Methods</a></li><li><a style='' href='#custom' onclick="$('#').collapse('show')">
+Seeing Your Custom Metrics</a></li>
+            
+            
+              <li class="nav-header">Guides </li>
+              
+              
+                <li><a href="/guides/basic_agent_usage/">Getting Started with the Agent</a></li>
+              
+                <li><a href="/guides/overview/">Datadog Overview</a></li>
+              
+                <li><a href="/guides/hostmap/">Host Map Overview</a></li>
+              
+                <li><a href="/guides/integration_sdk/">Creating New Integrations</a></li>
+              
+                <li><a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a></li>
+              
+                <li><a href="/guides/eventcorrelation/">Correlating Events with Metrics</a></li>
+              
+                <li><a href="/guides/metrics/">Sending Metrics with DogStatsD</a></li>
+              
+                <li><a href="/guides/logs/">Log Parsing in the Agent</a></li>
+              
+                <li><a href="/guides/testing/">Testing Integrations</a></li>
+              
+                <li><a href="/guides/agent_checks/">Writing an Agent Check</a></li>
+              
+                <li><a href="/guides/chef/">Deploying the Agent with Chef</a></li>
+              
+                <li><a href="/guides/azure/">Deploying the Datadog Agent to Azure</a></li>
+              
+                <li><a href="/guides/monitors/">Guide to Monitors</a></li>
+              
+                <li><a href="/guides/composite_monitors/">Guide to Composite Monitors</a></li>
+              
+                <li><a href="/guides/markdown/">Using Markdown in Datadog events</a></li>
+              
+                <li><a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a></li>
+              
+                <li><a href="/guides/tagging/">Guide to Tagging</a></li>
+              
+                <li><a href="/guides/templating/">Guide to Dashboard Templating</a></li>
+              
+                <li><a href="/guides/saml/">Single Sign On With SAML</a></li>
+              
+                <li><a href="/guides/eventsemail/">Events via Email</a></li>
+              
+                <li><a href="/guides/new_integration/">Officially Integrating with Datadog</a></li>
+              
+                <li><a href="/guides/anomalies/">Anomaly Detection</a></li>
+              
+                <li><a href="/guides/outliers/">Outlier Detection</a></li>
+              
+                <li><a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Sending Metrics with DogStatsD </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--
+======================================================
+OVERVIEW
+======================================================
+--><html><body>
+<h3 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h3>
+
+<p>This guide explains how to send your application’s custom metrics to Datadog.
+Sending your application’s custom metrics to Datadog will let you correlate
+what’s happening with your application, your users and your system.</p>
+
+<p>Metrics are collected by sending them to StatsD, a small metrics aggregation
+server that is bundled with the Datadog Agent. You can read about how it works <a href="/guides/dogstatsd/">here</a>. If you want to dive into code right away,
+read on.</p>
+
+<p>In this tutorial, we’ll cover some common instrumentation use cases, like:</p>
+
+<ul>
+  <li>How to count web page views</li>
+  <li>How to time database queries</li>
+  <li>How to measure the amount of free memory</li>
+</ul>
+
+<!--
+======================================================
+SETUP
+======================================================
+-->
+
+<h3 id="setup" class="linked-header">
+<a class="header-link" href="#setup"><i class="fa fa-link"></i></a>Setup</h3>
+
+<p>First off, <a href="https://app.datadoghq.com/account/settings#agent">install</a>
+the Datadog Agent (version 3 or greater), which
+contains our StatsD server, and make sure it’s running.</p>
+
+<p>Next, let’s set up a client library for your language.</p>
+
+<ul class="nav nav-tabs" id="setup-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#setup-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#setup-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="setup-python">
+First, install the module:
+
+<pre class="" lang="console"><code class="">$ pip install datadog
+</code></pre>
+And import it, so it's ready to use:
+
+<pre class="" lang="python"><code class="language-python">from datadog import statsd
+</code></pre>
+  </div>
+
+  <div class="tab-pane fade in" id="setup-ruby">
+First, install the module:
+<pre class="" lang="console"><code class="">$ gem install dogstatsd-ruby
+</code></pre>
+And add it to your code:
+<pre class="" lang="ruby"><code class="language-ruby"># Import the library
+require 'datadog/statsd'
+
+# Create a statsd client instance.
+statsd = Datadog::Statsd.new
+</code></pre>
+  </div>
+  <p>Now we're ready to roll.</p>
+  <div class="alert info-block">
+    This tutorial has examples for Python and Ruby, but check out the
+    <a href="/libraries/">libraries page</a> if you use another language.
+  </div>
+
+</div>
+
+<h4 class="linked-header">
+<a class="header-link" href="#"><i class="fa fa-link"></i></a>Metric names</h4>
+<p>There are a few rules to stick to when naming metrics:</p>
+<ul>
+<li>Metric names must start with a letter</li>
+<li>Can only contain ascii alphanumerics, underscore and periods (other characters will get converted to underscores)</li>
+<li>Should not exceed 200 characters (though less than 100 is genearlly preferred from a UI perspective)</li>
+<li>Unicode is not supported</li>
+<li>We recommend avoiding spaces</li>
+</ul>
+<p>Metrics reported by the Agent are in a
+pseudo-hierarchical dotted format (e.g. http.nginx.response_time). We say
+pseudo-hierarchical because we’re not actually enforcing a hierarchy or doing
+anything with it, but we have aspirations to use it to infer things about
+servers (e.g. “hey, I see hostA and hostB are reporting ‘http.nginx.*’, those
+must be web frontends”).</p>
+
+<!--
+======================================================
+COUNTERS
+======================================================
+-->
+
+<h3 id="counters" class="linked-header">
+<a class="header-link" href="#counters"><i class="fa fa-link"></i></a>Counters</h3>
+
+<p>Counters are used to (ahem) count things. Let’s walk through a common example -
+counting web page views. To achieve this, we’ll increment a metric called
+<code>web.page_views</code> each time our <code>render_page</code> function is called.</p>
+
+<ul class="nav nav-tabs" id="counters-page-views-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#counters-page-views-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#counters-page-views-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="counters-page-views-python">
+<pre class="" lang="python"><code class="language-python">def render_page():
+    """ Render a web page. """
+    statsd.increment('web.page_views')
+    return 'Hello World!'
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="counters-page-views-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">def render_page()
+  # Render a web page.
+  statsd.increment('web.page_views')
+  return 'Hello World!'
+end
+</code></pre>
+  </div>
+</div>
+
+<p>That’s it. With this one line of code we can start graphing the data.
+Here’s an example:</p>
+
+<p><img src="/static/images/graph-guides-metrics-page-views.png" style="width:100%"></p>
+
+<p>Note that StatsD counters are normalized over the flush interval to report
+per-second units. In the graph above, the marker is reporting
+35.33 web page views per second at ~15:24. In contrast, if one person visited
+the webpage each second, the graph would be a flat line at y = 1. To increment or
+measure values over time, please see <a href="#gauges">gauges</a>.</p>
+
+<p>We can also count by arbitrary numbers. Suppose we wanted to count the number
+of bytes processed by a file uploading service. We’ll increment a metric
+called <code>file_service.bytes_uploaded</code> by the size of the file each time our
+<code>upload_file</code> function is called:</p>
+
+<ul class="nav nav-tabs" id="counters-uploaded-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#counters-uploaded-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#counters-uploaded-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="counters-uploaded-python">
+<pre class="" lang="python"><code class="language-python">def upload_file(file):
+    statsd.increment('file_service.bytes_uploaded', file.size())
+    save_file(file)
+    return 'File uploaded!'
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="counters-uploaded-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">def upload_file(file)
+  statsd.count('file_service.bytes_uploaded', file.size())
+  save_file(file)
+  return 'File uploaded!'
+end
+</code></pre>
+  </div>
+</div>
+
+<p>Note that for counters coming from another source that are ever-increasing and never
+reset – for example, the number of queries from MySQL over time – we track the
+rate between flushed values. While there currently isn’t an elegant solution to
+get raw counts within Datadog, you may want to apply a function to
+your series like cumulative sum or integral. There is more information on those
+<a href="http://docs.datadoghq.com/graphing/#functions">here</a>.</p>
+
+<!--
+======================================================
+GAUGES
+======================================================
+-->
+
+<h3 id="gauges" class="linked-header">
+<a class="header-link" href="#gauges"><i class="fa fa-link"></i></a>Gauges</h3>
+
+<p>Gauges measure the value of a particular thing over time. Suppose a developer
+wanted to track the amount of free memory on a machine, we can periodically
+sample that value as the metric <code>system.mem.free</code>:</p>
+
+<ul class="nav nav-tabs" id="gauges-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#gauges-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#gauges-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="gauges-python">
+<pre class="" lang="python"><code class="language-python"># Record the amount of free memory every ten seconds.
+while True:
+    statsd.gauge('system.mem.free', get_free_memory())
+    time.sleep(10)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="gauges-ruby">
+<pre class="" lang="ruby"><code class="language-ruby"># Record the amount of free memory every ten seconds.
+while true do
+    statsd.gauge('system.mem.free', get_free_memory())
+    sleep(10)
+end
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+HISTOGRAMS
+======================================================
+-->
+
+<h3 id="histograms" class="linked-header">
+<a class="header-link" href="#histograms"><i class="fa fa-link"></i></a>Histograms</h3>
+
+<p>Histograms measure the statistical distribution of a set of values.
+Suppose we wanted to measure the duration of a database query,
+we can sample each query time with the metric <code>database.query.time</code>.</p>
+
+<ul class="nav nav-tabs" id="histograms-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#histograms-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#histograms-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="histograms-python">
+<pre class="" lang="python"><code class="language-python"># Track the run time of the database query.
+start_time = time.time()
+results = db.query()
+duration = time.time() - start_time
+statsd.histogram('database.query.time', duration)
+
+# We can also use the `timed` decorator as a short-hand for timing functions.
+@statsd.timed('database.query.time')
+def get_data():
+    return db.query()
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="histograms-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">start_time = Time.now
+results = db.query()
+duration = Time.now - start_time
+statsd.histogram('database.query.time', duration)
+
+# We can also use the `time` helper as a short-hand for timing blocks
+# of code.
+statsd.time('database.query.time') do
+  return db.query()
+end
+</code></pre>
+  </div>
+</div>
+
+<p>The above instrumentation will produce the following metrics:</p>
+
+<ul>
+  <li>
+<code>database.query.time.count</code> - the number of times this metric was sampled</li>
+  <li>
+<code>database.query.time.avg</code> - the average time of the sampled values</li>
+  <li>
+<code>database.query.time.median</code> - the median sampled value</li>
+  <li>
+<code>database.query.time.max</code> - the maximum sampled value</li>
+  <li>
+<code>database.query.time.95percentile</code> - the 95th percentile sampled value</li>
+</ul>
+
+<p>These metrics give insight into how different each query time is. We can see
+how long the query usually takes by graphing the <code>median</code>. We can see how long
+most queries take by graphing the <code>95percentile</code>.</p>
+
+<p><img src="/static/images/graph-guides-metrics-query-times.png" style="width:100%"></p>
+
+<p>For this toy example, let’s say a query time of 1 second is acceptable.
+Our median query time (graphed in purple) is usually less than 100
+milliseconds, which is great. But unfortunately, our 95th percentile (graphed in
+blue) has large spikes sometimes nearing three seconds, which is unacceptable.
+This means most of our queries are running just fine, but our worst ones are
+very bad. If the 95th percentile was close to the median, than we would know
+that almost all of our queries are performing just fine.</p>
+
+<p class="alert alert-warning">
+Histograms aren't just for measuring times. They can be used to measure the
+distribution of any type of value, like the size of uploaded files or classroom
+test scores.
+</p>
+
+<!--
+======================================================
+SERVICE CHECKS
+======================================================
+-->
+
+<h3 id="service-checks" class="linked-header">
+<a class="header-link" href="#service-checks"><i class="fa fa-link"></i></a>Service Checks</h3>
+
+<p>Service checks are used to send information about the status of a service.</p>
+
+<ul class="nav nav-tabs" id="service-checks-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#service-checks-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#service-checks-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="service-checks-python">
+<pre class="" lang="python"><code class="language-python">from datadog.api.constants import CheckStatus
+
+# Report the status of an app.
+name = 'web.app1'
+status = CheckStatus.OK
+message = 'Response: 200 OK'
+
+statsd.service_check(check_name=name, status=status, message=message)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="service-checks-ruby">
+<pre class="" lang="ruby"><code class="language-ruby"># Report the status of an app.
+name = 'web.app1'
+status = Datadog::Statsd::OK
+opts = {
+  'message' =&gt; 'Response: 200 OK'
+}
+
+statsd.service_check(name, status, opts)
+</code></pre>
+  </div>
+</div>
+
+<p>After a service check has been reported, you can use it to trigger a Custom Check monitor.</p>
+
+<!--
+======================================================
+SETS
+======================================================
+-->
+
+<h3 id="sets" class="linked-header">
+<a class="header-link" href="#sets"><i class="fa fa-link"></i></a>Sets</h3>
+
+<p>Sets are used to count the number of unique elements in a group. If you want to
+track the number of unique visitors to your site, sets are a great way to do
+that.</p>
+
+<ul class="nav nav-tabs" id="sets-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#sets-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#sets-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="sets-python">
+<pre class="" lang="python"><code class="language-python">def login(self, user_id):
+    # Log the user in ...
+    statsd.set('users.uniques', user_id)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="sets-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">def login(self, user_id)
+    # Log the user in ...
+    statsd.set('users.uniques', user_id)
+end
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+TAGS
+======================================================
+-->
+
+<h3 id="tags" class="linked-header">
+<a class="header-link" href="#tags"><i class="fa fa-link"></i></a>Tags</h3>
+
+<p>Tags are a way of adding dimensions to metrics, so they can be sliced, diced,
+aggregated and compared on the front end. Suppose we wanted to measure the
+performance of two algorithms in the real world. We could sample one metric
+<code>algorithm.run_time</code> and specify each version with a tag:</p>
+
+<ul class="nav nav-tabs" id="tags-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#tags-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#tags-ruby">Ruby</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="tags-python">
+<pre class="" lang="python"><code class="language-python">@statsd.timed('algorithm.run_time', tags=['algorithm:one'])
+def algorithm_one():
+    # Do fancy things here ...
+
+@statsd.timed('algorithm.run_time', tags=['algorithm:two'])
+def algorithm_two():
+    # Do fancy things here ...
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="tags-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">def algorithm_one()
+  statsd.timed('algorithm.run_time', :tags =&gt; ['algorithm:one']) do
+    # Do fancy things here ...
+  end
+end
+
+def algorithm_two()
+  statsd.timed('algorithm.run_time', :tags =&gt; ['algorithm:two']) do
+    # Do different fancy things here ...
+  end
+end
+</code></pre>
+  </div>
+</div>
+
+<p>On the front end, the metric instances can be aggregated as sums or averages,
+or the minimum/maximum can be reported. The metrics can also be broken down by
+each tag ‘key’ (in the key:value syntax). For instance, we could run a
+query like this:</p>
+
+<p><code>avg:algorithm.run_time{*} by {algorithm}</code></p>
+
+<p>In this query, all instances of this metric (e.g. across all hosts, indicated by <code>*</code>) are averaged
+(<code>avg</code>) and broken down by the tag key <code>algorithm</code>.</p>
+
+<p class="alert alert-warning">
+We store one time series per host + metric + tag combination on our backend,
+thus we cannot support infinitely bounded tags. Please don't include endlessly
+growing tags in your metrics, like timestamps or user ids. Please limit each
+metric to 1000 tags.
+</p>
+
+<p>Tags must start with a letter, and after that may contain alphanumerics,
+underscores, minuses, colons, periods and slashes. Other characters will get
+converted to underscores. Tags can be up to 200 characters long and support
+unicode. Tags will be converted to lowercase as well.</p>
+
+<p>For optimal functionality, we recommend constructing tags that use the key:value
+syntax. Examples of commonly used metric tag keys are <code>env</code>, <code>instance</code>, <code>name</code>, and <code>role</code>.
+Note that <code>device</code>, <code>host</code>, and <code>source</code> are treated specially and cannot be specified
+in the standard way. Check out some of our other docs for how to use these:</p>
+
+<ul>
+  <li><a href="http://docs.datadoghq.com/api/#metrics">metrics in the API</a></li>
+  <li><a href="http://docs.datadoghq.com/api/#tags">tags in the API</a></li>
+  <li><a href="http://docs.datadoghq.com/guides/agent_checks/">Agent Checks</a></li>
+  <li><a href="http://docs.datadoghq.com/guides/logs/">log parsing</a></li>
+</ul>
+
+<h3 id="sample-rates" class="linked-header">
+<a class="header-link" href="#sample-rates"><i class="fa fa-link"></i></a>Sample Rates</h3>
+
+<p>Each metric point is sent over UDP to the StatsD server. This can incur a lot
+of overhead for performance intensive code paths. To work around this, StatsD
+supports sample rates, which allows sending a metric a fraction of the time
+and scaling up correctly on the server.</p>
+
+<ul class="nav nav-tabs" id="sample-rates-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#sample-rates-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#sample-rates-ruby">Ruby</a>
+      </li>
+</ul>
+
+<p>The following code will only send points half of the time:</p>
+
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="sample-rates-python">
+<pre class="" lang="python"><code class="language-python">while True:
+  do_something_intense()
+  statsd.increment('loop.count', sample_rate=0.5)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="sample-rates-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">while true do
+  do_something_intense()
+  statsd.increment('loop.count', :sample_rate =&gt; 0.5)
+end
+</code></pre>
+  </div>
+</div>
+
+<h3 id="methods" class="linked-header">
+<a class="header-link" href="#methods"><i class="fa fa-link"></i></a>Other Submission Methods</h3>
+
+<p>Using the StatsD server bundled with the Datadog Agent is the simplest
+way of submitting metrics to Datadog, but it’s not
+the only one. Here are some other ways of getting your metrics data into
+Datadog:</p>
+
+<ul>
+  <li>
+    Submit metrics directly to Datadog's <a href="/api/">HTTP API</a>
+  </li>
+  <li>
+    Use Dropwizard's Java <a href="https://github.com/dropwizard/metrics">metrics</a> library, with the
+<a href="https://github.com/coursera/metrics-datadog">metrics-datadog</a>
+    backend (thanks to the good folks at
+    <a href="http://www.vistarmedia.com/">Vistar Media</a>,
+    <a href="https://www.coursera.org">Coursera</a>, and
+    <a href="http://www.bazaarvoice.com">Bazaarvoice</a> for the great
+    contributions).
+  </li>
+</ul>
+
+<h3 id="custom" class="linked-header">
+<a class="header-link" href="#custom"><i class="fa fa-link"></i></a>Seeing Your Custom Metrics</h3>
+
+<p>The quickest way to see your custom metric is to use the metrics explorer. You
+can navigate to it by clicking the “Metrics” link in the top navigation bar.</p>
+
+<p>Once you’re at the metrics explorer you can type in the custom metric you set
+in the “Graph:” field and it should autocomplete. If it doesn’t autocomplete,
+then it might mean that we haven’t received data for that metric in the last
+few hours.</p>
+
+<p>You can also filter the metric by tag using the “Over:” field, or graph the
+metric by tag group using the “One graph per:” field.</p>
+
+<p>Note that the metrics explorer doesn’t save any of these graphs. If you’ve
+created some graphs that you’d like to save, you need to click one of the
+save buttons at the bottom left, either saving to a new dashboard or to
+an existing one.</p>
+
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    
+  <script type="text/javascript">
+    $(DD_docs.metricsGuidePage);
+  </script>
+
+  </body>
+</html>
+
+

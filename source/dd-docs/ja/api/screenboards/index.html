@@ -1,0 +1,865 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Screenboards API</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          
+          <!--
+======================================================
+Endpoints
+======================================================
+-->
+
+<h2 id="endpoints">Endpoints</h2>
+
+<ul>
+  <li>create: <code>POST /api/v1/screen</code></li>
+  <li>read: <code>GET /api/v1/screen/{board_id}</code></li>
+  <li>update: <code>PUT /api/v1/screen/{board_id}</code></li>
+  <li>delete: <code>DELETE /api/v1/screen/{board_id}</code></li>
+  <li>sharing <code>GET /api/v1/screen/share/{board_id}</code></li>
+  <li>revoke sharing <code>DELETE /api/v1/screen/share/{board_id}</code></li>
+</ul>
+
+<p>For <code>create</code>/<code>read</code>/<code>update</code> endpoints, the body is one JSON payload describing the Screenboard.</p>
+
+<h4 id="base-payload">Base Payload:</h4>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+  "board_title": "My Board",
+
+  // Options, e.g.: height, width, etc.
+
+  "widgets": [
+    // Put a list of widgets here. Each type described below.
+  ]
+}
+</code></pre>
+
+<h2 id="notes">General Notes</h2>
+
+<h3 id="sizing-and-positioning">Sizing and positioning</h3>
+
+<p>For position and sizing Screenboards use a grid system which allows widgets to scale as the size of the window changes. This is currently used when you switch between a fullscreen and windowed view.</p>
+
+<p>Because we use a grid system, all positioning and sizing values (x, y, height, width) are relative to that grid and are not in raw pixels as you might expect. You should note that the default grid size is <strong>12px per 1 “grid length”</strong>.</p>
+
+<p>This means if you give a widget a height and width of 2x2, the actual height will be 24x24px on the windowed view. Widgets will be scaled up/down on the fullscreen view to fit in the viewport given by your monitor.</p>
+
+<h3 id="timeframes">Timeframes</h3>
+
+<p>Timeframes are all given as short names to represent a value. The available timeframes depend on the widget you’re using (in the widget descriptions below) but the overall options for timeframes are:</p>
+
+<ul>
+  <li><code>5m</code>: 5 minutes</li>
+  <li><code>10m</code>: 10 minutes</li>
+  <li><code>1h</code>: 1 hour</li>
+  <li><code>4h</code>: 4 hours</li>
+  <li><code>1d</code>: 1 day</li>
+  <li><code>2d</code>: 2 days</li>
+  <li><code>1w</code>: 1 week</li>
+</ul>
+
+<h3 id="templating">Templating</h3>
+
+<p>If you would like to create or update boards that use templated variables, you must have the following attributes in the base payload:</p>
+
+<ul>
+  <li><code>templated</code>: boolean of <code>true</code> or <code>false</code></li>
+  <li><code>template_variables</code>: A list of variables you want to be “templateable.”  Variables are defined by a name and optional prefix and default parameters, which determine the list of tags associated with the variable and the variable’s initial value.</li>
+</ul>
+
+<p>The final “base” payload of a templated board would look like this:</p>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+  "board_title": "My Board",
+
+  // Template options
+  "templated": true,
+  "template_variables": [
+  	{
+  		"name": "redis_port",
+  		"prefix": "redis_port",
+  		"default": "redis_port:1234"
+  	}, {
+  		"name": "availability-zone",
+  		"prefix": "availability-zone",
+  		"default": "availability-zone:us-east-1a"
+  	}],
+
+  // Options, e.g.: height, width, etc.
+
+  "widgets": [
+    // Put a list of widgets here. Each type described below.
+  ]
+}
+</code></pre>
+
+<h2 id="usage">API Usage</h2>
+
+<p>The Screenboard API is supported in the Python and Ruby clients as well as with simple <code>curl</code> commands.</p>
+
+<!--
+======================================================
+CREATE SCREENBOARD
+======================================================
+-->
+
+<h3 id="creating-boards">Creating Boards</h3>
+
+<ul class="nav nav-tabs" id="screenboard_create-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#screenboard_create-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#screenboard_create-ruby">Ruby</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab console-lang-tab" lang="console" href="#screenboard_create-console">Console</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="screenboard_create-python">
+<pre class="" lang="python"><code class="language-python">from datadog import initialize, api
+
+options = {
+    'api_key': 'api_key',
+    'app_key': 'app_key'
+}
+
+initialize(**options)
+
+board = {
+    "width": 1024,
+    "height": 768,
+    "board_title": "dogapi test",
+    "widgets": [
+        {
+          "type": "image",
+          "height": 20,
+          "width": 32,
+          "y": 7,
+          "x": 32,
+          "url": "https://path/to/image.jpg"
+        }
+    ]
+}
+
+result = api.Screenboard.create(**board)
+</code></pre>
+</div>
+
+  <div class="tab-pane fade in" id="screenboard_create-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">require 'rubygems'
+require 'dogapi'
+
+api_key='9775a026f1ca7d1c6c5af9d94d9595a4'
+app_key='87ce4a24b5553d2e482ea8a8500e71b8ad4554ff'
+
+dog = Dogapi::Client.new(api_key, app_key)
+
+board = {
+    "width" =&gt; 1024,
+    "height" =&gt; 768,
+    "board_title" =&gt; "dogapi test",
+    "widgets" =&gt; [
+        {
+          "type" =&gt; "image",
+          "height" =&gt; 20,
+          "width" =&gt; 32,
+          "y" =&gt; 7,
+          "x" =&gt; 32,
+          "url" =&gt; "https://path/to/image.jpg"
+        }
+    ]
+}
+
+result = dog.create_screenboard(board)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="screenboard_create-console">
+<pre class="" lang="console"><code class="">api_key=9775a026f1ca7d1c6c5af9d94d9595a4
+app_key=87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+
+curl -X POST -H "Content-type: application/json" -d '{
+        "width": 1024,
+        "height": 768,
+        "board_title": "dogapi test",
+        "widgets": [
+            {
+              "type": "image",
+              "height": 20,
+              "width": 32,
+              "y": 7,
+              "x": 32,
+              "url": "https://path/to/image.jpg"
+            }
+        ]
+    }' "https://app.datadoghq.com/api/v1/screen?api_key=${api_key}&amp;application_key=${app_key}"
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+UPDATE SCREENBOARD
+======================================================
+-->
+
+<h3 id="updating-boards">Updating Boards</h3>
+
+<ul class="nav nav-tabs" id="screenboard_update-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#screenboard_update-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#screenboard_update-ruby">Ruby</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab console-lang-tab" lang="console" href="#screenboard_update-console">Console</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="screenboard_update-python">
+<pre class="" lang="python"><code class="language-python">from datadog import initialize, api
+
+options = {
+    'api_key': 'api_key',
+    'app_key': 'app_key'
+}
+
+initialize(**options)
+
+board_id = 1234
+
+updated_board = {
+    "width": 1024,
+    "height": 768,
+    "board_title": "dogapi test",
+    "widgets": [
+        {
+          "type": "image",
+          "height": 25,
+          "width": 35,
+          "y": 7,
+          "x": 32,
+          "url": "https://path/to/new_image.jpg"
+        }
+    ]
+}
+
+result = api.Screenboard.update(board_id, **updated_board)
+</code></pre>
+</div>
+
+  <div class="tab-pane fade in" id="screenboard_update-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">require 'rubygems'
+require 'dogapi'
+
+api_key='9775a026f1ca7d1c6c5af9d94d9595a4'
+app_key='87ce4a24b5553d2e482ea8a8500e71b8ad4554ff'
+board_id = 1234
+
+dog = Dogapi::Client.new(api_key, app_key)
+
+updated_board = {
+    "width" =&gt; 1024,
+    "height" =&gt; 768,
+    "board_title" =&gt; "dogapi test",
+    "widgets" =&gt; [
+        {
+          "type" =&gt; "image",
+          "height" =&gt; 25,
+          "width" =&gt; 35,
+          "y" =&gt; 7,
+          "x" =&gt; 32,
+          "url" =&gt; "https://path/to/new_image.jpg"
+        }
+    ]
+}
+
+result = dog.update_screenboard(board_id, updated_board)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="screenboard_update-console">
+<pre class="" lang="console"><code class="">api_key=9775a026f1ca7d1c6c5af9d94d9595a4
+app_key=87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+board_id=1234
+
+curl -X PUT -H "Content-type: application/json" -d '{
+        "width": 1024,
+        "height": 768,
+        "board_title": "dogapi test",
+        "widgets": [
+            {
+              "type": "image",
+              "height": 25,
+              "width": 35,
+              "y": 7,
+              "x": 32,
+              "url": "https://path/to/new_image.jpg"
+            }
+        ]
+    }' "https://app.datadoghq.com/api/v1/screen/${board_id}?api_key=${api_key}&amp;application_key=${app_key}"
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+GET SCREENBOARD
+======================================================
+-->
+
+<h3 id="get-boards">Get Boards</h3>
+
+<ul class="nav nav-tabs" id="screenboard_get-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#screenboard_get-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#screenboard_get-ruby">Ruby</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab console-lang-tab" lang="console" href="#screenboard_get-console">Console</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="screenboard_get-python">
+<pre class="" lang="python"><code class="language-python">from datadog import initialize, api
+
+options = {
+    'api_key': 'api_key',
+    'app_key': 'app_key'
+}
+
+initialize(**options)
+
+board_id = 1234
+
+result = api.Screenboard.get(board_id)
+</code></pre>
+</div>
+
+  <div class="tab-pane fade in" id="screenboard_get-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">require 'rubygems'
+require 'dogapi'
+
+api_key='9775a026f1ca7d1c6c5af9d94d9595a4'
+app_key='87ce4a24b5553d2e482ea8a8500e71b8ad4554ff'
+board_id = 1234
+
+dog = Dogapi::Client.new(api_key, app_key)
+
+result = dog.get_screenboard(board_id)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="screenboard_get-console">
+<pre class="" lang="console"><code class="">api_key=9775a026f1ca7d1c6c5af9d94d9595a4
+app_key=87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+board_id=1234
+
+curl -X GET "https://app.datadoghq.com/api/v1/screen/${board_id}?api_key=${api_key}&amp;application_key=${app_key}"
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+DELETE SCREENBOARD
+======================================================
+-->
+
+<h3 id="deleting-boards">Deleting Boards</h3>
+
+<ul class="nav nav-tabs" id="screenboard_delete-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#screenboard_delete-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#screenboard_delete-ruby">Ruby</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab console-lang-tab" lang="console" href="#screenboard_delete-console">Console</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="screenboard_delete-python">
+<pre class="" lang="python"><code class="language-python">from datadog import initialize, api
+
+options = {
+    'api_key': 'api_key',
+    'app_key': 'app_key'
+}
+
+initialize(**options)
+
+board_id = 1234
+
+result = api.Screenboard.delete(board_id)
+</code></pre>
+</div>
+
+  <div class="tab-pane fade in" id="screenboard_delete-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">require 'rubygems'
+require 'dogapi'
+
+api_key='9775a026f1ca7d1c6c5af9d94d9595a4'
+app_key='87ce4a24b5553d2e482ea8a8500e71b8ad4554ff'
+board_id = 1234
+
+dog = Dogapi::Client.new(api_key, app_key)
+
+result = dog.delete_screenboard(board_id)
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="screenboard_delete-console">
+<pre class="" lang="console"><code class="">api_key=9775a026f1ca7d1c6c5af9d94d9595a4
+app_key=87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+board_id=1234
+
+curl -X DELETE "https://app.datadoghq.com/api/v1/screen/${board_id}?api_key=${api_key}&amp;application_key=${app_key}"
+</code></pre>
+  </div>
+</div>
+
+<!--
+======================================================
+SHARE SCREENBOARD
+======================================================
+-->
+
+<h3 id="sharing-boards">Sharing Boards</h3>
+
+<ul class="nav nav-tabs" id="screenboard_share-tabs">      <li class="active">
+        <a data-toggle="tab" class="lang-tab python-lang-tab" lang="python" href="#screenboard_share-python">Python</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab ruby-lang-tab" lang="ruby" href="#screenboard_share-ruby">Ruby</a>
+      </li>
+      <li class="">
+        <a data-toggle="tab" class="lang-tab console-lang-tab" lang="console" href="#screenboard_share-console">Console</a>
+      </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active fade in" id="screenboard_share-python">
+<pre class="" lang="python"><code class="language-python">from datadog import initialize, api
+
+options = {
+    'api_key': 'api_key',
+    'app_key': 'app_key'
+}
+
+initialize(**options)
+
+board_id = 1234
+
+result = api.Screenboard.share(board_id)
+</code></pre>
+</div>
+
+  <div class="tab-pane fade in" id="screenboard_share-ruby">
+<pre class="" lang="ruby"><code class="language-ruby">require 'rubygems'
+require 'dogapi'
+
+api_key='9775a026f1ca7d1c6c5af9d94d9595a4'
+app_key='87ce4a24b5553d2e482ea8a8500e71b8ad4554ff'
+board_id = 1234
+
+dog = Dogapi::Client.new(api_key, app_key)
+
+result = dog.share_screenboard(board_id)
+# result = {"board_id" =&gt; board_id, "public_url" =&gt; "https://path/to/sb"}
+</code></pre>
+  </div>
+  <div class="tab-pane fade in" id="screenboard_share-console">
+<pre class="" lang="console"><code class="">api_key=9775a026f1ca7d1c6c5af9d94d9595a4
+app_key=87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+board_id=1234
+
+curl -X GET "https://app.datadoghq.com/api/v1/screen/share/${board_id}?api_key=${api_key}&amp;application_key=${app_key}"
+</code></pre>
+  </div>
+</div>
+
+<h2>Widget Examples</h2>
+
+<h3 id="timeseries-widget">Timeseries Widget</h3>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+  "type": "timeseries",
+
+  // Title
+  "title": true,
+  "title_size": 16,
+  "title_align": "left",
+  "title_text": "My Metric (m/s)",
+
+  // Sizing
+  "height": 13,
+  "width": 47,
+
+  // Positioning
+  "y": 28,
+  "x": 32,
+
+  // Widget Parameters
+  "timeframe": "1h", // Choose from: [1h, 4h, 1d, 2d, 1w]
+  "tile_def": {
+    "viz": "timeseries",
+    "requests": [
+      {
+         "q": "sum:my.important.metric{*} by {host}"
+      }
+    ],
+    "events": [
+      {
+        "q": "tags:release"
+      }
+    ]
+  }
+}
+</code></pre>
+
+<h3 id="event-stream-widget">Event Stream Widget</h3>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+    "type": "event_stream"
+
+    // Title
+    "title": false,
+
+    // Sizing
+    "height": 57,
+    "width": 59,
+
+    // Positioning
+    "y": 18,
+    "x": 84,
+
+    // Widgets Parameters
+    "query": "tags:release",
+    "timeframe": "1w" // Choose from: [1h, 4h, 1d, 2d, 1w]
+}
+</code></pre>
+
+<h3 id="query-value-widget">Query Value Widget</h3>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+  "type": "query_value",
+
+  // Title
+  "title": true,
+  "title_size": 16,
+  "title_text": "Throughput",
+  "title_align": "left",
+
+  // Sizing
+  "height": 4,
+  "width": 14,
+
+  // Positioning
+  "y": 21,
+  "x": 65,
+
+  // Widget Parameters
+  "aggregator": "avg", // Choose from: [avg, sum, min, max]
+  "query": "sum:dd.sobotka.throughput.actual{*}",
+  "conditional_formats": [
+    {
+      "color": "white_on_green",
+      "invert": false,
+      "comparator": "&gt;", // Choose from: [&gt;, &gt;=, &lt;, &lt;=]
+      "value": 20000
+    }
+  ],
+  "text_align": "left",
+  "precision": 1,
+  "timeframe": "5m", // Choose from: [5m, 10m, 1h, 4h, 1d, 2d, 1w]
+  "text_size": "auto",
+  "unit": "/s" // Give a custom unit or use "auto"
+}
+</code></pre>
+
+<h3 id="image-widget">Image Widget</h3>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+  "type": "image",
+
+  // Sizing
+  "height": 20,
+  "width": 32,
+
+  // Positioning
+  "y": 7,
+  "x": 32
+
+  // Widget Parameters
+  "url": "http://path/to/image.jpg" // Note that you shouldn't hotlink to images you don't own.
+}
+</code></pre>
+
+<h3 id="note-widget">Note Widget</h3>
+
+<pre class="code-block code-block-javascript" lang="javascript"><code class="language-javascript"># Make sure you replace the API and/or APP key below
+# with the ones for your account
+
+{
+    "type": "note",
+
+    // Title
+    "title": false,
+
+    // Sizing
+    "height": 15,
+    "width": 30,
+
+    // Positioning
+    "x": 1,
+    "y": 28,
+
+    // Widget Parameters
+    "html": "Put your note text in here.",
+    "text_align": "left",
+    "font_size": 14,
+    "bgcolor": "yellow", // Choose from: [yellow, blue, pink, gray, white, red, green]
+    "tick": true,
+    "tick_pos": "50%",
+    "tick_edge": "right" // Choose from: [top, right, bottom, left]
+    "auto_refresh": true // Defaults to false
+}
+</code></pre>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

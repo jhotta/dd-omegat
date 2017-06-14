@@ -1,0 +1,1645 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-OpsGenie Integration</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/ja/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ガイド <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/ja/overview/">Datadogが提供するサービスの概要</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/basic_agent_usage/">Datadog Agent 入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/metrics/">DogStatsD を使った、メトリクスの送信</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/logs/">Datadog Agent によるログの解析方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/hostmap/">Host Map表示の入門</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/agent_checks/">Agent Checkの書き方</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/azure/">Azure WindowsへDatadog Agentのインストール</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/monitors/">Monitor(監視)機能の設定ガイド</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/templating/">ダッシュボードのテンプレートの作成方法</a>
+              </li>
+              
+              <li>
+                <a href="/ja/guides/eventsemail/">メールによるイベント情報の送信</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">レファレンス <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/ja/api/">APIレファレンス</a></li>
+            <li><a href="/ja/tracing/">Tracing (APM)</a></li>
+            <li><a href="/ja/libraries/">APIライブラリー</a></li>
+            <li><a href="/ja/monitoring/">アラート設定</a></li>
+            <li><a href="/ja/graphing/">グラフ表示入門</a></li>
+            <li><a href="/graphingjson/">JSONを使ったグラフの設定</a></li>
+            <li><a href="/ja/hostnames/">ホスト名について</a></li>
+            <li><a href="/ja/integrations/">インテグレーション</a></li>
+            <li><a href="/ja/guides/dogstatsd/">DogStatsDの解説</a></li>
+            <li><a href="/ja/examples/">サンプルコード</a></li>
+            <li><a href="/ja/videos/">ビデオ</a></li>
+            <li><a href="/ja/guides/billing/">課金に関するFAQ</a></li>
+            <li><a href="/ja/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="/ja/help/">お問い合わせ</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">無料体験</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">サポートログイン</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#int-overview' onclick="$('#').collapse('show')">
+概要</a></li><li><a style='' href='#int-configuration' onclick="$('#').collapse('show')">
+設定</a></li><li><a style='padding: 5px 25px;' href='#opsgeniedatadog' onclick="$('#').collapse('show')">
+OpsGenie側でDatadogインテグレーションを作成する</a></li><li><a style='padding: 5px 25px;' href='#opsgeniedatadog-1' onclick="$('#').collapse('show')">
+OpsGenie側で作成したインテグレーションをDatadog側に追加していきます</a></li><li><a style='' href='#datadogopsgenie' onclick="$('#').collapse('show')">
+DatadogとOpsGenieを連携して使う方法</a></li><li><a style='padding: 5px 25px;' href='#datadogopsgenie-1' onclick="$('#').collapse('show')">
+DatadogからOpsGenieアラートを作成、承認、クローズする方法</a></li><li><a style='padding: 5px 25px;' href='#receive-acknowledge-and-close-datadog-alerts-created-by-opsgenie' onclick="$('#').collapse('show')">
+Receive, acknowledge and close Datadog alerts created by OpsGenie</a></li>
+
+            <li class="nav-header auto">インテグレーション <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/ja/integrations/">インテックスへ戻る</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/airbrake/">Airbrake</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ansible/">Ansible</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsbilling/">AWS Billing</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsdynamo/">AWS DynamoDB *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsec2/">AWS EC2 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/elasticache/">AWS ElastiCache *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awselasticache/">AWS ElastiCache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/kinesis/">AWS Kinesis *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awslambda/">AWS Lambda *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsmapreduce/">AWS MapReduce *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/opsworks/">AWS OpsWorks *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsrds/">AWS RDS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsredshift/">AWS Redshift *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsroute53/">AWS Route 53 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awss3/">AWS S3</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awssns/">AWS SNS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awssqs/">AWS SQS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/awsstorage/">AWS Storage Gateway *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/bitbucket/">Bitbucket *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/bugsnag/">Bugsnag</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/cacti/">Cacti</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/capistrano/">Capistrano</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/cassandra/">Cassandras</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/catchpoint/">Catchpoint</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/chatwork/">Chatwork</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/chef/">Chef *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/dnscheck/">DNS Service Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/flowdock/">Flowdock</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/git/">Git</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_app_engine/">Google App Engine</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/gae/">Google App Engine *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_big_query/">Google BigQuery</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_functions/">Google Cloud Functions</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/gcp/">Google Cloud Platform *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloudsql/">Google CloudSQL</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_compute_engine/">Google Compute Engine</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_container_engine/">Google Container Engine</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_datastore/">Google Datastore</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_firebase/">Google Firebase</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_ml/">Google Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_pubsub/">Google Pub/Sub</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_spanner/">Google Spanner</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_stackdriver_logging/">Google Stackdriver Logging</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_storage/">Google Storage</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/google_cloud_vpn/">Google VPN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/hdfs/">Hadoop HDFS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/hipchat/">HipChat *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/honeybadger/">Honeybadger</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/immunio/">Immunio</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/jira/">Jira</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/java/">JMX Checks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kong/">Kong</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/marathon/">Marathon *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/memcached/">Memcached *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_app_services/">Microsoft Azure App Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_batch/">Microsoft Azure Batch Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_event_hub/">Microsoft Azure Event Hub Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_iot_hub/">Microsoft Azure IOT Hub</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_logic_app/">Microsoft Azure Logic App</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_redis_cache/">Microsoft Azure Redis Cache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_sql_database/">Microsoft Azure SQL Database</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/azure_vm/">Microsoft Azure VM</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mongodb/">MongoDB *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/moxtra/">Moxtra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/mysql/">MySQL *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/nagios/">Nagios</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li class='selected_integration'>
+                    <a href="#">> OpsGenie</a>
+                  </li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/opsmatic/">Opsmatic</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/papertrail/">PaperTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/phpfpm/">PHP-FPM</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/pivotal/">Pivotal *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/powerdns/">PowerDNS Recursor</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/process/">Process *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/puppet/">Puppet *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/python/">Python *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/rabbitmq/">RabbitMQ *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/redis/">Redis *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/rollbar/">Rollbar</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/ruby/">Ruby *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/snmp/">SNMP Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/solr/">Solr *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/spark/">Spark</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/splunk/">Splunk *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/statuspage/">StatusPageIO</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/sumologic/">SumoLogic *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/system/">System *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/teamcity/">TeamCity *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/tokumx/">TokuMX *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/tomcat/">Tomcat *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/varnish/">Varnish *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/vmware/">VMware *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/webhooks/">Webhooks *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/wmi/">WMI *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/ja/integrations/zendesk/">Zendesk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/ja/integrations/zookeeper/">Zookeeper *</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-OpsGenie Integration </h1>
+          
+          <div >
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- <style>
+.class {
+  padding-bottom: 5px;
+}
+</style> --><!-- ## Overview
+{:#int-overview}
+
+Create alerts using @opsgenie:
+
+- From your event stream
+- By taking a snapshot
+- When a metric alert is triggered --><html><body>
+<h3 id="int-overview" class="linked-header">
+<a class="header-link" href="#int-overview"><i class="fa fa-link"></i></a>概要</h3>
+
+<p>OpenGineインテグレーションを使用すると、<code>@opengenie:</code>を使ってOpengenieへアラートを送信できます:</p>
+
+<ul>
+  <li>Datadogのイベントストリームへコメントを書き込む時</li>
+  <li>グラフのスナップショットを撮った時 (メッセージ欄)</li>
+  <li>メトリクスを基にした、アラートが発生した時　(通知メッセージ欄)</li>
+</ul>
+
+<!-- ### Configuration
+{:#int-configuration}
+
+#### Create a Datadog integration in OpsGenie
+
+1. Log in to your OpsGenie account and go to the [OpsGenie Integrations](https://www.opsgenie.com/integration/index) page.
+2. As seen below, filter for Datadog and click on the tile.
+        <img src="/static/images/opsgenie-int-index.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;" />
+3. Enter your Datadog API key from the [Integrations > APIs page](https://app.datadoghq.com/account/settings#api) in the dedicated field. The key looks like this:
+        <img src="/static/images/where-is-dd-key.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;" />
+4. Choose the recipients in OpsGenie and set up your filters.
+5. Change the name of the integration if necessary.
+6. Save the configuration.
+7. Copy the red key and the name. You will use this in Datadog.
+        <img src="/static/images/opsgenie-add-api-key.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;" />
+8. Add more DataDog integrations on OpsGenie by going to the [OpsGenie Integration](https://www.opsgenie.com/integration/index) page and repeating the steps above.
+
+#### List the integration(s) you made in OpsGenie in Datadog
+
+1. In Datadog, select the OpsGenie tile on <a href="https://app.datadoghq.com/account/settings">Account Integrations</a>.
+
+2. In the dialog box that pops up, click on the Configuration tab.
+
+3. Paste the key(s) provided for each Datadog integration (created in OpsGenie) in the **"Datadog Integration Key"** field, and enter the **"Datadog Integration Name"**.
+
+<img src="/static/images/datadog-add-opsgenie-key.png" style="width:100% border:1px #777777;padding-top:15px;" />
+
+### How to Use Datadog and OpsGenie Together
+
+#### Create, acknowledge and close  OpsGenie alerts from Datadog
+
+Create an OpsGenie alert by putting @opsgenie-service_name or @opsgenie in the **Say What’s Happening** field, section 5, in the Edit Metric Alert. When this alert is triggered in Datadog, an alert will be sent to the recipients in your OpsGenie service.
+
+<img src="/static/images/og_metric_alert.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:20px;" />
+
+Acknowledge or close OpsGenie alerts from Datadog using @opsgenie-acknowledge or @opsgenie-close mentions in the Comments field of an OpsGenie event in Datadog.
+
+<img src="/static/images/dd_ack_og_alert.png" style="width:100% border:1px #777777;padding-bottom:10px;" />
+
+#### Receive, acknowledge and close Datadog alerts created by OpsGenie
+
+Set-up alerts in OpsGenie. When that alert is triggered, an event will be created in Datadog. The tags and description field from the OpsGenie alert will be carried over to Datadog.
+
+<img src="/static/images/og_create_alert_dd_updated.png" style="width:100% border:1px #777777;padding-bottom:10px;" />
+
+Acknowledge and close OpsGenie alerts from OpsGenie. When you do this, the associated event in Datadog will be updated with the username of the person who closed this alert.
+
+<img src="/static/images/og_closed_dd_updated.png" style="width:100% border:1px #777777;padding-bottom:10px;" /> -->
+
+<h3 id="int-configuration" class="linked-header">
+<a class="header-link" href="#int-configuration"><i class="fa fa-link"></i></a>設定</h3>
+
+<h4 id="opsgeniedatadog" class="linked-header">
+<a class="header-link" href="#opsgeniedatadog"><i class="fa fa-link"></i></a>OpsGenie側でDatadogインテグレーションを作成する</h4>
+
+<ol>
+  <li>OpsGenieアカウントにログインし、<a href="https://www.opsgenie.com/integration/index">OpsGenie Integrations</a> ページに移動します。</li>
+  <li>以下の図のようにDatadogのサービスインテグレーションを検索します。
+     <img src="/static/images/opsgenie-int-index.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;">
+</li>
+  <li>Datadogサイトの<a href="https://app.datadoghq.com/account/settings#api">Integrations &gt; APIs page</a>で生成したAPI keyを入力します。
+     <img src="/static/images/where-is-dd-key.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;">
+</li>
+  <li>OpsGenie内での受信者を選択し、フィルタを設定します。</li>
+  <li>必要に応じてのDatadog側に表示するインテグレーションの名前を変更します。</li>
+  <li>設定を保存します。</li>
+  <li>以下に赤色で表示されているOpsGenie側のAPI keyとステップ4で決めたインテグレーション名をコピーします。
+     <img src="/static/images/opsgenie-add-api-key.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:10px;">
+</li>
+  <li>更に別のDatadogインテグレーションを<a href="https://www.opsgenie.com/integration/index">OpsGenie Integration</a>に追加する場合は、ステップ2からステップ7を繰り返します。</li>
+</ol>
+
+<h4 id="opsgeniedatadog-1" class="linked-header">
+<a class="header-link" href="#opsgeniedatadog-1"><i class="fa fa-link"></i></a>OpsGenie側で作成したインテグレーションをDatadog側に追加していきます</h4>
+
+<ol>
+  <li>
+    <p>Datadog側の<a href="https://app.datadoghq.com/account/settings"><code>Integrations</code></a>ページから、OpsGenieのタイルを選択します。</p>
+  </li>
+  <li>
+    <p>ポップアップの中で、<code>Configuration</code>タブを選択します。</p>
+  </li>
+  <li>
+    <p>OpsGenie側で作成したDatadogインテグレーションのAPI keyと名前を、<strong>“Datadog Integration Key”</strong> 欄と　<strong>“Datadog Integration Name”</strong> 欄へ入力します。</p>
+  </li>
+</ol>
+
+<p><img src="/static/images/datadog-add-opsgenie-key.png" style="width:100% border:1px #777777;padding-top:15px;"></p>
+
+<h3 id="datadogopsgenie" class="linked-header">
+<a class="header-link" href="#datadogopsgenie"><i class="fa fa-link"></i></a>DatadogとOpsGenieを連携して使う方法</h3>
+
+<h4 id="datadogopsgenie-1" class="linked-header">
+<a class="header-link" href="#datadogopsgenie-1"><i class="fa fa-link"></i></a>DatadogからOpsGenieアラートを作成、承認、クローズする方法</h4>
+
+<p>Datadog側のMonitor設定のセクション5 <strong>Say What’s Happening</strong> の部分に @opsgenie-service_name や @opsgenie とメッセージに送信先を書き、OpsGenieへのアラートを作成していきます。Datadog側でこのアラートが動作した際に、OpsGenie側の受診者に通知が送られます。</p>
+
+<p><img src="/static/images/og_metric_alert.png" style="width:100% border:1px #777777;padding-top:15px;padding-bottom:20px;"></p>
+
+<p>Datadog側からOpsGenieに通知したアラートを承認やクローズするには、 DatadogのイベントストリームのOpsGenieの該当するイベントに @opsgenie-acknowledge や @opsgenie-close を付けてコメントを書き込みます。</p>
+
+<p><img src="/static/images/dd_ack_og_alert.png" style="width:100% border:1px #777777;padding-bottom:10px;"></p>
+
+<h4 id="receive-acknowledge-and-close-datadog-alerts-created-by-opsgenie" class="linked-header">
+<a class="header-link" href="#receive-acknowledge-and-close-datadog-alerts-created-by-opsgenie"><i class="fa fa-link"></i></a>Receive, acknowledge and close Datadog alerts created by OpsGenie</h4>
+
+<p>次の画像は、OpsGenie側でアラートが動作した際に表示したい内容を設定する画面です。OpsGenie側でアラートが動作すると、OpsGenie側でアラートに設定したタグと詳細が付されたイベントがDatadog側にも登録されます。</p>
+
+<p><img src="/static/images/og_create_alert_dd_updated.png" style="width:100% border:1px #777777;padding-bottom:10px;"></p>
+
+<p>発生したOpsGenieのアラートにOpsGenie上で承認やクローズすると、Datadog上の関連イベントは、OpsGenieのアラートを処理を行った人の名前で更新されます。</p>
+
+<p><img src="/static/images/og_closed_dd_updated.png" style="width:100% border:1px #777777;padding-bottom:10px;"></p>
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">お困りの場合は、 <a href="/ja/help/">お気軽にお声がけ下さい。</a> &bull; ドキュメント内の不備を見つけた場合は、 <a href="https://github.com/DataDog/documentation/issues">ご連絡を頂けると助かります。</a></div>
+    <div class=".col-md-12"><a href="/">Read the docs in English</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>

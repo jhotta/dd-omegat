@@ -1,0 +1,1064 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Graphing Primer using JSON</title>
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+      
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-md-3 hidden-xs hidden-print" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+          
+            <li class="nav-header">Documentation Search</li>
+            <li>
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#graphing' onclick="$('#').collapse('show')">
+Graphing with the JSON editor</a></li><li><a style='padding: 5px 25px;' href='#grammar' onclick="$('#').collapse('show')">
+Grammar</a></li><li><a style='' href='#requests' onclick="$('#').collapse('show')">
+Requests</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#functions' onclick="$('#').collapse('show')">
+Functions</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#aggregation' onclick="$('#').collapse('show')">
+Aggregation Method</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#scope' onclick="$('#').collapse('show')">
+Scope</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#groups' onclick="$('#').collapse('show')">
+Groups</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#math' onclick="$('#').collapse('show')">
+Arithmetic</a></li><li><a style='padding: 5px 25px;' href='#events' onclick="$('#').collapse('show')">
+Events</a></li><li><a style='padding: 5px 25px;' href='#viz' onclick="$('#').collapse('show')">
+Visualization</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#linecharts' onclick="$('#').collapse('show')">
+Line Charts</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#stacked' onclick="$('#').collapse('show')">
+Stacked Series</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#slice' onclick="$('#').collapse('show')">
+Slice-n-Stack</a></li><li><a style='padding: 5px 25px;' href='#yaxis' onclick="$('#').collapse('show')">
+Y-Axis Controls</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#filter' onclick="$('#').collapse('show')">
+Filtering</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#examples' onclick="$('#').collapse('show')">
+Examples</a></li>
+            
+            
+              <li class="nav-header">Guides </li>
+              
+              
+                <li><a href="/guides/basic_agent_usage/">Getting Started with the Agent</a></li>
+              
+                <li><a href="/guides/overview/">Datadog Overview</a></li>
+              
+                <li><a href="/guides/hostmap/">Host Map Overview</a></li>
+              
+                <li><a href="/guides/integration_sdk/">Creating New Integrations</a></li>
+              
+                <li><a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a></li>
+              
+                <li><a href="/guides/eventcorrelation/">Correlating Events with Metrics</a></li>
+              
+                <li><a href="/guides/metrics/">Sending Metrics with DogStatsD</a></li>
+              
+                <li><a href="/guides/logs/">Log Parsing in the Agent</a></li>
+              
+                <li><a href="/guides/testing/">Testing Integrations</a></li>
+              
+                <li><a href="/guides/agent_checks/">Writing an Agent Check</a></li>
+              
+                <li><a href="/guides/chef/">Deploying the Agent with Chef</a></li>
+              
+                <li><a href="/guides/azure/">Deploying the Datadog Agent to Azure</a></li>
+              
+                <li><a href="/guides/monitors/">Guide to Monitors</a></li>
+              
+                <li><a href="/guides/composite_monitors/">Guide to Composite Monitors</a></li>
+              
+                <li><a href="/guides/markdown/">Using Markdown in Datadog events</a></li>
+              
+                <li><a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a></li>
+              
+                <li><a href="/guides/tagging/">Guide to Tagging</a></li>
+              
+                <li><a href="/guides/templating/">Guide to Dashboard Templating</a></li>
+              
+                <li><a href="/guides/saml/">Single Sign On With SAML</a></li>
+              
+                <li><a href="/guides/eventsemail/">Events via Email</a></li>
+              
+                <li><a href="/guides/new_integration/">Officially Integrating with Datadog</a></li>
+              
+                <li><a href="/guides/anomalies/">Anomaly Detection</a></li>
+              
+                <li><a href="/guides/outliers/">Outlier Detection</a></li>
+              
+                <li><a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a></li>
+              
+            
+          </ul>
+        &nbsp;
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <!-- MAIN -->
+        <div class="col-xs-12 col-sm-9 col-md-9 main">
+          <!-- PAGE TITLE -->
+          
+          <h1 id="pagetitle">Graphing Primer using JSON </h1>
+          
+          
+          <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>There are two ways to interact with the Graphing Editor: using the GUI (the default method) and writing JSON (the more complete method). This page covers using JSON. To learn more about the GUI editor, visit the main <a href="/graphing">Graphing Primer Page</a></p>
+
+<h2 id="graphing" class="linked-header">
+<a class="header-link" href="#graphing"><i class="fa fa-link"></i></a>Graphing with the JSON editor</h2>
+
+<p><img src="/static/images/references-graphing-jsoneditor.png" alt="JSON Editor"></p>
+
+<h3 id="grammar" class="linked-header">
+<a class="header-link" href="#grammar"><i class="fa fa-link"></i></a>Grammar</h3>
+
+<p>The graph definition language is well-formed JSON and is structured in four parts:</p>
+
+<ol>
+  <li>Requests</li>
+  <li>Events</li>
+  <li>Visualization</li>
+  <li>Y Axis</li>
+</ol>
+
+<p>Here is how they fit together in a JSON dictionary:</p>
+
+<pre><code>{
+  "requests": [
+    {
+      "q": "metric{scope}"
+    }
+  ],
+  "events": [
+    {
+      "q": "search query"
+    }
+  ],
+  "viz": "visualization type",
+  "yaxis": {
+    "yaxisoptionkey": "yaxisoptionvalue"
+  }
+}
+</code></pre>
+
+<p>In other words at the highest level the JSON structure is a dictionary with two, three, or four entries:</p>
+
+<ol>
+  <li>“requests” *</li>
+  <li>“events”</li>
+  <li>“viz” *</li>
+  <li>“yaxis”</li>
+</ol>
+
+<p>* <em>only requests and viz are required.</em></p>
+
+<h2 id="requests" class="linked-header">
+<a class="header-link" href="#requests"><i class="fa fa-link"></i></a>Requests</h2>
+
+<p>The general format for a series is:</p>
+
+<pre><code>"requests": [
+    {
+      "q": "function(aggregation method:metric{scope} [by {group}])"
+    }
+]
+</code></pre>
+
+<p>The <code>function</code> and <code>group</code> are optional.</p>
+
+<p>A Series can be further combined together via binary operators (+, -, /, *):</p>
+
+<pre><code>metric{scope} [by {group}] operator metric{scope} [by {group}]
+</code></pre>
+
+<h4 id="functions" class="linked-header">
+<a class="header-link" href="#functions"><i class="fa fa-link"></i></a>Functions</h4>
+
+<p>You can apply functions to the result of each query.</p>
+
+<p>A few of these functions have been further explained in a series of examples. Visit this page for more detail: <a href="/examples/graphing%20functions/">Examples</a></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>abs()</code></td>
+      <td>Arithmetic</td>
+      <td>absolute value</td>
+    </tr>
+    <tr>
+      <td><code>log2()</code></td>
+      <td>Arithmetic</td>
+      <td>base-2 logarithm</td>
+    </tr>
+    <tr>
+      <td><code>log10()</code></td>
+      <td>Arithmetic</td>
+      <td>base-10 logarithm</td>
+    </tr>
+    <tr>
+      <td><code>cumsum()</code></td>
+      <td>Arithmetic</td>
+      <td>cumulative sum over visible time window</td>
+    </tr>
+    <tr>
+      <td><code>integral()</code></td>
+      <td>Arithmetic</td>
+      <td>cumulative sum of ([time delta] x [value delta]) over all consecutive pairs of points in the visible time window</td>
+    </tr>
+    <tr>
+      <td><code>.fill()</code></td>
+      <td>Interpolation</td>
+      <td>choose how to interpolate missing values</td>
+    </tr>
+    <tr>
+      <td><code>hour_before()</code></td>
+      <td>Timeshift</td>
+      <td>metric values from one hour ago</td>
+    </tr>
+    <tr>
+      <td><code>day_before()</code></td>
+      <td>Timeshift</td>
+      <td>metric values from one day ago</td>
+    </tr>
+    <tr>
+      <td><code>week_before()</code></td>
+      <td>Timeshift</td>
+      <td>metric values from one week ago</td>
+    </tr>
+    <tr>
+      <td><code>month_before()</code></td>
+      <td>Timeshift</td>
+      <td>metric values from one month ago</td>
+    </tr>
+    <tr>
+      <td><code>per_second()</code></td>
+      <td>Rate</td>
+      <td>the rate at which the metric changes per second</td>
+    </tr>
+    <tr>
+      <td><code>per_minute()</code></td>
+      <td>Rate</td>
+      <td>
+<code>per_second()</code> * 60</td>
+    </tr>
+    <tr>
+      <td><code>per_hour()</code></td>
+      <td>Rate</td>
+      <td>
+<code>per_second()</code> * 3600</td>
+    </tr>
+    <tr>
+      <td><code>dt()</code></td>
+      <td>Rate</td>
+      <td>time delta between points</td>
+    </tr>
+    <tr>
+      <td><code>diff()</code></td>
+      <td>Rate</td>
+      <td>value delta between points</td>
+    </tr>
+    <tr>
+      <td><code>derivative()</code></td>
+      <td>Rate</td>
+      <td>1st order derivative; <code>diff()</code> / <code>dt()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code>ewma_3()</code></td>
+      <td>Smoothing</td>
+      <td>exponentially weighted moving average with a span of 3</td>
+    </tr>
+    <tr>
+      <td><code>ewma_5()</code></td>
+      <td>Smoothing</td>
+      <td>EWMA with a span of 5</td>
+    </tr>
+    <tr>
+      <td><code>ewma_10()</code></td>
+      <td>Smoothing</td>
+      <td>EWMA with a span of 10</td>
+    </tr>
+    <tr>
+      <td><code>ewma_20()</code></td>
+      <td>Smoothing</td>
+      <td>EWMA with a span of 20</td>
+    </tr>
+    <tr>
+      <td><code>median_3()</code></td>
+      <td>Smoothing</td>
+      <td>rolling median with a span of 3</td>
+    </tr>
+    <tr>
+      <td><code>median_5()</code></td>
+      <td>Smoothing</td>
+      <td>rolling median with a span of 5</td>
+    </tr>
+    <tr>
+      <td><code>median_7()</code></td>
+      <td>Smoothing</td>
+      <td>rolling median with a span of 7</td>
+    </tr>
+    <tr>
+      <td><code>median_9()</code></td>
+      <td>Smoothing</td>
+      <td>rolling median with a span of 9</td>
+    </tr>
+    <tr>
+      <td><code>.rollup()</code></td>
+      <td>Rollup</td>
+      <td>override default time aggregation type and time period; see the “Rollup” section below for details</td>
+    </tr>
+    <tr>
+      <td><code>count_nonzero()</code></td>
+      <td>Count</td>
+      <td>count all the non-zero values</td>
+    </tr>
+    <tr>
+      <td><code>count_not_null()</code></td>
+      <td>Count</td>
+      <td>count all the non-null values</td>
+    </tr>
+    <tr>
+      <td><code>top()</code></td>
+      <td>Rank</td>
+      <td>select the top series responsive to a given query, according to some ranking method; see the “Top functions” section below for more details</td>
+    </tr>
+    <tr>
+      <td><code>top_offset()</code></td>
+      <td>Rank</td>
+      <td>similar to <code>top()</code>, except with an additional offset parameter, which controls where in the ordered sequence of series the graphing starts. For example, an offset of 2 would start graphing at the number 3 ranked series, according to the chosen ranking metric.</td>
+    </tr>
+    <tr>
+      <td><code>robust_trend()</code></td>
+      <td>Regression</td>
+      <td>fit a robust regression trend line using Huber loss; see the “Robust regression” section below for more details</td>
+    </tr>
+    <tr>
+      <td><code>trend_line()</code></td>
+      <td>Regression</td>
+      <td>fit an ordinary least squares regression line through the metric values</td>
+    </tr>
+    <tr>
+      <td><code>piecewise_constant()</code></td>
+      <td>Regression</td>
+      <td>approximate the metric with a piecewise function composed of constant-valued segments</td>
+    </tr>
+    <tr>
+      <td><code>anomalies()</code></td>
+      <td>Algorithms</td>
+      <td>overlay a gray band showing the expected behavior of a series based on past behavior; see our <a href="/guides/anomalies">guide to anomaly detection</a>
+</td>
+    </tr>
+    <tr>
+      <td><code>outliers()</code></td>
+      <td>Algorithms</td>
+      <td>highlight outlier series; see our <a href="/guides/outliers">guide to outlier detection</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><code>.as_count()</code> &amp; <code>.as_rate()</code></strong></p>
+
+<p>These functions are only intended for metrics submitted as rates or counters via statsd. These functions will have no effect for other metric types. For more on details about how to use <code>.as_count()</code> and <code>.as_rate()</code> please see <a href="https://www.datadoghq.com/blog/visualize-statsd-metrics-counts-graphing/">our blog post</a>.</p>
+
+<p><strong>Rollup</strong></p>
+
+<p><code>.rollup()</code> is recommended for expert users only. Appending this function to the end of a query allows you to control the number of raw points rolled up into a single point plotted on the graph. The function takes two parameters, method and time: <code>.rollup(method,time)</code></p>
+
+<p>The method can be sum/min/max/count/avg and time is in seconds. You can use either one individually, or both together like <code>.rollup(sum,120)</code>. We impose a limit of 350 points per time range. For example, if you’re requesting <code>.rollup(20)</code> for a month-long window, we will return data at a rollup far greater than 20 seconds in order to prevent returning a gigantic number of points.</p>
+
+<p><strong>Top functions</strong></p>
+
+<ul>
+  <li>a metric query string with some grouping, e.g. <code>avg:system.cpu.idle{*} by {host}</code>
+</li>
+  <li>the number of series to be displayed, as an integer.</li>
+  <li>one of <code>'max'</code>, <code>'min'</code>, <code>'last'</code>, <code>'l2norm'</code>, or <code>'area'</code>.  <code>'area'</code> is the signed area under the curve being graphed, which can be negative.  <code>'l2norm'</code> uses the <a href="http://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm">L2 Norm</a> of the time series, which is always positive, to rank the series.</li>
+  <li>either <code>'desc'</code> (rank the results in descending order) or <code>'asc'</code> (ascending order).</li>
+</ul>
+
+<p>The <code>top()</code> method also has convenience functions of the following form, all of which take a single series list as input:</p>
+
+<p><code>[top, bottom][5, 10, 15, 20]_[mean, min, max, last, area, l2norm]()</code></p>
+
+<p>For example, <code>bottom10_min()</code> retrieves lowest-valued 10 series using the ‘min’ metric.</p>
+
+<p><strong>Robust regression</strong></p>
+
+<p>The most common type of linear regression – ordinary least squares (OLS) – can be heavily influenced by a small number of points with extreme values. Robust regression is an alternative method for fitting a regression line; it is not influenced as strongly by a small number of extreme values. As an example, see the following plot.</p>
+
+<p><img src="/static/images/robust-trend.png" alt=""></p>
+
+<p>The original metric is shown as a solid blue line. The purple dashed line is an OLS regression line, and the yellow dashed line is a robust regression line. The one short-lived spike in the metric leads to the OLS regression line trending upward, but the robust regression line ignores the spike and does a better job fitting the overall trend in the metric.</p>
+
+<p>There are also a few functions you can append to a query which we recommend for expert users only.</p>
+<p>
+One of these is <code>.rollup()</code>. Appending this function allows you to control the
+number of points rolled up into a single point. This function takes two parameters, method and time, like so:
+<code>.rollup(method,time)</code>.
+
+The method can be sum/min/max/count/avg and time is in seconds. You can use either one individually,
+or both combined like <code>.rollup(sum,120)</code>. There are some checks on this,
+though, because for a given time range we do not return more than 350 points. Thus if
+you're requesting <code>.rollup(20)</code> where 20 is in seconds, and ask for a
+month of data, we will be returning the points at a rollup of far greater than 20 seconds.
+</p>
+
+<p><code>.as_count()</code> and <code>.as_rate()</code> are two other expert-only functions,
+which are only intended for metrics submitted in a certain way (for metadata types where
+that is acceptable).  At present, for metrics submitted as rates or counters via statsd,
+appending <code>.as_count()</code> or <code>.as_rate()</code> will function correctly.
+For other metrics, including gauges submitted by statsd, <code>.as_count()</code> and
+<code>.as_rate()</code> will have no effect.</p>
+
+<p>For more on <code>.as_count()</code> please see our blog post
+<a target="_blank" href="https://www.datadoghq.com/blog/visualize-statsd-metrics-counts-graphing/">here</a>.</p>
+
+<h4 id="aggregation" class="linked-header">
+<a class="header-link" href="#aggregation"><i class="fa fa-link"></i></a>Aggregation Method</h4>
+
+<p>In most cases, the number of data points available outnumbers the maximum number that can be shown on screen. To overcome this, the data is aggregated using one of 4 available methods: average,  max, min, and sum.</p>
+
+<h4 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h4>
+
+<p>The metric is the main focus of the graph. You can find the list of metrics available to you in the <a href="https://app.datadoghq.com/metric/summary">Metrics Summary</a>. Click on any metric to see more detail about that metric, including the type of data collected, units, tags, hosts, and more.</p>
+
+<h4 id="scope" class="linked-header">
+<a class="header-link" href="#scope"><i class="fa fa-link"></i></a>Scope</h4>
+
+<p>A scope lets you filter a Series. It can be a host, a device on a host
+or any arbitrary tag you can think of that contains only alphanumeric
+characters plus colons and underscores (<code>[a-zA-Z0-9:_]+</code>).</p>
+
+<p>Examples of scope (meaning in parentheses):</p>
+
+<pre><code>host:my_host                      (related to a given host)
+host:my_host, device:my_device    (related to a given device on a given host)
+source:my_source                  (related to a given source)
+my_tag                            (related to a tagged group of hosts)
+my:tag                            (same)
+*                                 (wildcard for everything)
+</code></pre>
+
+<h4 id="groups" class="linked-header">
+<a class="header-link" href="#groups"><i class="fa fa-link"></i></a>Groups</h4>
+
+<p>For any given metric, data may come from a number of hosts. The data will normally be aggregated from all these hosts to a single value for each time slot. If you wish to split this out, you can by any tag. To include a data point seperated out by each host,  use {host} for your group.</p>
+
+<h4 id="math" class="linked-header">
+<a class="header-link" href="#math"><i class="fa fa-link"></i></a>Arithmetic</h4>
+
+<p>You can apply simple arithmetic to a Series (+, -, * and /). In this
+example we graph 5-minute load and its double:</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "system.load.5{intake} * 2"
+    },
+    {
+      "q": "system.load.5{intake}"
+    }
+  ]
+}
+</code></pre>
+
+<p>You can also add, substract, multiply and divide a Series. Beware that
+Datadog does not enforce consistency at this point so you <em>can</em> divide
+apples by oranges.</p>
+
+<pre><code>{
+    "viz": "timeseries",
+    "requests": [
+      {
+        "q": "metric{apples} / metric{oranges}"
+      }
+    ]
+}
+</code></pre>
+
+<h3 id="events" class="linked-header">
+<a class="header-link" href="#events"><i class="fa fa-link"></i></a>Events</h3>
+
+<p>You can overlay any event from Datadog. The general format is:</p>
+
+<pre><code>"events": [
+  {
+    "q": "search query"
+  }
+]
+</code></pre>
+
+<p>For instance, to indicate that you want events for host X and tag Y:</p>
+
+<pre><code>"events": [
+  {
+    "q": "host:X tags:Y"
+  }
+]
+</code></pre>
+
+<p>or if you’re looking to display all errors:</p>
+
+<pre><code>"events": [
+  {
+    "q": "status:error"
+  }
+]
+</code></pre>
+
+<h3 id="viz" class="linked-header">
+<a class="header-link" href="#viz"><i class="fa fa-link"></i></a>Visualization</h3>
+
+<p>Data can be visualized in a few different ways:</p>
+
+<ol>
+  <li>Time Series</li>
+  <li>Heatmap</li>
+  <li>Distribution</li>
+  <li>Toplist</li>
+  <li>Change</li>
+  <li>Hostmap</li>
+</ol>
+
+<p>The Time Series can be further broken down to:</p>
+
+<ol>
+  <li>as line charts</li>
+  <li>as stacked areas</li>
+  <li>as slice-n-stack areas</li>
+  <li>as bar charts</li>
+</ol>
+
+<h4 id="linecharts" class="linked-header">
+<a class="header-link" href="#linecharts"><i class="fa fa-link"></i></a>Line Charts</h4>
+
+<p><img src="/static/images/multi-lines.png" style="width:100%; border:1px solid #777777"></p>
+
+<p>The representation is automatically derived from having multiple <code>requests</code> values.</p>
+
+<pre><code>"requests": [
+    {
+      "q": "metric1{scope}"
+    },
+    {
+      "q": "metric2{scope}"
+    },
+    {
+      "q": "metric3{scope}"
+    }
+  ]
+</code></pre>
+
+<h4 id="stacked" class="linked-header">
+<a class="header-link" href="#stacked"><i class="fa fa-link"></i></a>Stacked Series</h4>
+
+<p><img src="/static/images/slice-n-stack.png" style="width:100%; border:1px solid #777777"></p>
+
+<p>In the case of related Time Series, you can easily draw them as stacked areas by using the following syntax:</p>
+
+<pre><code>"requests": [
+    {
+      "q": "metric1{scope}, metric2{scope}, metric3{scope}"
+    }
+]
+</code></pre>
+
+<p>Instead of one query per chart you can aggregate all queries into one and simply concatenate the queries.</p>
+
+<h4 id="slice" class="linked-header">
+<a class="header-link" href="#slice"><i class="fa fa-link"></i></a>Slice-n-Stack</h4>
+
+<p>A useful visualization is to represent a metric shared across
+hosts and stack the results. For instance, when selecting a tag that
+applies to more than 1 host you will see that ingress and egress
+traffic is nicely stacked to give you the sum as well as the split per
+host. This is useful to spot wild swings in the distribution of network
+traffic.</p>
+
+<p>Here’s how to do it for any metric:</p>
+
+<pre><code>"requests" [
+  {
+     "q": "system.net.bytes_rcvd{some_tag, device:eth0} by {host}"
+  }
+]
+</code></pre>
+
+<p>Note that in this case you can only have 1 query. But you can also split by device, or a combination of both:</p>
+
+<pre><code>"requests" [
+  {
+     "q": "system.net.bytes_rcvd{some_tag} by {host,device}"
+  }
+]
+</code></pre>
+
+<p>to get traffic for all the tagged hosts, split by host and network device.</p>
+
+<h3 id="yaxis" class="linked-header">
+<a class="header-link" href="#yaxis"><i class="fa fa-link"></i></a>Y-Axis Controls</h3>
+
+<p>The Datadog y-axis controls (currently just via the JSON editor) allow you to:</p>
+<ul>
+ <li>Clip y-axis to specific ranges</li>
+ <li>Filter series either by specifying a percentage or an absolute value</li>
+ <li>Change y-axis scale from linear to log, sqrt or power scale</li>
+</ul>
+
+<p>There are four configuration settings:</p>
+<ul>
+<li>
+<code>min</code> (optional): Specifies minimum value to show on y-axis. It takes a number, or "auto" for
+    default behvior. Default value is "auto"</li>
+<li>
+<code>max</code> (optional): Specifies the maximum value to show on y-axis. It takes a number, or "auto"
+    for default behavior. Default value is "auto"</li>
+<li>
+<code>scale</code> (optional): Specifies the scale type. Possible values: "linear", "log", "sqrt", "pow##"
+    (eg. pow2, pow0.5, 2 is used if only "pow" was provided"), Default scale is "linear".</li>
+<li>
+<code>units</code> (optional): Specifies whether to show the metric unit along the y-axis. Possible values: "true"
+    or "false". Default is "false".</li>
+</ul>
+
+<p>Examples:</p>
+
+<pre><code>"yaxis": {
+    "min": "auto",
+    "max": 200,
+    "scale": "log"
+}
+
+"yaxis": {
+    "min": 200,
+    "scale": "sqrt"
+}
+
+"yaxis": {
+    "min": 9000,
+    "max": 10000
+}
+
+"yaxis": {
+    "scale": "pow0.1"
+}
+
+"yaxis": {
+    "scale": "pow3"
+}
+
+"yaxis": {
+    "units": "true"
+}
+</code></pre>
+
+<h4 id="filter" class="linked-header">
+<a class="header-link" href="#filter"><i class="fa fa-link"></i></a>Filtering</h4>
+
+<p>Filter configuration allows you to automatically change y-axis bounds based on a
+threshold. Thresholds can be a percentage or an absolute value, and it can apply to
+both both ends of the graph (lower and upper).</p>
+
+<p>For y-axis filtering, there are two ways to set up the configuration.</p>
+
+<p>To begin, there is a simple configuration where you specify an absolute value or a percentage and all
+values above the value or all values that sit within the top ##% will be cutoff.</p>
+
+<p>Examples:</p>
+
+<pre><code>"yaxis": {
+    "filter": 30 // all values above 30 will not appear
+}
+
+"yaxis": {
+    "filter": "5%" // the top 5% of that data will not appear
+}
+</code></pre>
+
+<p>Advanced configuration works the same way as simple configuration, with the added
+flexibility of configuring the lower or the upper or both parts of the graph. For
+example, the following configuration will limit the graph to data points that are
+not in the bottom 10% nor in the top 30%.</p>
+
+<pre><code>"yaxis": {
+    "filter": {
+        "top": "30%",
+        "bottom": "10%"
+    }
+}
+</code></pre>
+
+<p>The following will show all data except those with values higher than 15:</p>
+
+<pre><code>"yaxis": {
+    "filter": {
+        "above": 15
+    }
+}
+</code></pre>
+
+<p>The following will hide data points below 2:</p>
+
+<pre><code>"yaxis": {
+    "filter": {
+        "below": 2
+    }
+}
+</code></pre>
+
+<p>Here is a full JSON example:</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "system.cpu.idle{host:hostname}",
+      "stacked": false
+    }
+  ],
+  "events": [],
+  "yaxis": {
+    "scale": "log"
+    "filter": {
+         "top": "5%",
+         "below": 15
+     }
+  },
+}
+</code></pre>
+
+<h4 id="examples" class="linked-header">
+<a class="header-link" href="#examples"><i class="fa fa-link"></i></a>Examples</h4>
+
+<p>Here is an example using the <code>rate()</code> function, which takes only a single metric as a parameter.  Other functions, with the exception of <code>top()</code> and <code>top_offset()</code>, have identical syntax.</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "rate(sum:system.load.5{role:intake-backend2} by {host})",
+      "stacked": false
+    }
+  ]
+}
+</code></pre>
+
+<p>Here is an example using the <code>top()</code> function:</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "top(avg:system.cpu.iowait{*} by {host}, 5, 'max', 'desc')",
+      "stacked": false
+    }
+  ]
+}
+</code></pre>
+
+<p>This will show the graphs for the five series with the highest peak <code>system.cpu.iowait</code> values in the query window.</p>
+
+<p>To look at the hosts with the 6th through 10th highest values (for example), use <code>top_offset</code> instead:</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "top_offset(avg:system.cpu.iowait{*} by {host}, 5, 'max', 'desc', 5)",
+      "stacked": false
+    }
+  ]
+}
+</code></pre>
+
+<p>Here is an example using the <code>week_before()</code> function:</p>
+
+<pre><code>{
+  "viz": "timeseries",
+  "requests": [
+    {
+      "q": "sum:haproxy.count_per_status{status:available} - week_before(sum:haproxy.count_per_status{status:available})"
+    }
+  ]
+}
+</code></pre>
+</body></html>
+
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+  </body>
+</html>
+
+

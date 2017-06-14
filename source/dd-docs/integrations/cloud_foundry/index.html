@@ -1,0 +1,4318 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Datadog-Cloud Foundry Integration</title>
+    
+    <meta name="robots" content="noindex">
+    
+
+    <meta itemprop="description" name="description" property="og:description" content="" />
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
+    <link href="/static/css/bootstrap3-cbdde23cd71.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tipuesearch.css">
+    <link href="/static/css/style-cba6fad8d5d.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css" media="screen">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21102638-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script src="https://use.fontawesome.com/700fac0342.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- HEADER -->
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand " href="/">
+        <img src="/static/dd_docs_logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="topmenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guides <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          
+            
+              <li>
+                <a href="/guides/basic_agent_usage/">Getting Started with the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/overview/">Datadog Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/hostmap/">Host Map Overview</a>
+              </li>
+              
+              <li>
+                <a href="/guides/integration_sdk/">Creating New Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/installcoreextra/">Installing Core & Extra Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventcorrelation/">Correlating Events with Metrics</a>
+              </li>
+              
+              <li>
+                <a href="/guides/metrics/">Sending Metrics with DogStatsD</a>
+              </li>
+              
+              <li>
+                <a href="/guides/logs/">Log Parsing in the Agent</a>
+              </li>
+              
+              <li>
+                <a href="/guides/testing/">Testing Integrations</a>
+              </li>
+              
+              <li>
+                <a href="/guides/agent_checks/">Writing an Agent Check</a>
+              </li>
+              
+              <li>
+                <a href="/guides/chef/">Deploying the Agent with Chef</a>
+              </li>
+              
+              <li>
+                <a href="/guides/azure/">Deploying the Datadog Agent to Azure</a>
+              </li>
+              
+              <li>
+                <a href="/guides/monitors/">Guide to Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/composite_monitors/">Guide to Composite Monitors</a>
+              </li>
+              
+              <li>
+                <a href="/guides/markdown/">Using Markdown in Datadog events</a>
+              </li>
+              
+              <li>
+                <a href="/guides/autodiscovery/">Guide to using Autodiscovery with Docker</a>
+              </li>
+              
+              <li>
+                <a href="/guides/tagging/">Guide to Tagging</a>
+              </li>
+              
+              <li>
+                <a href="/guides/templating/">Guide to Dashboard Templating</a>
+              </li>
+              
+              <li>
+                <a href="/guides/saml/">Single Sign On With SAML</a>
+              </li>
+              
+              <li>
+                <a href="/guides/eventsemail/">Events via Email</a>
+              </li>
+              
+              <li>
+                <a href="/guides/new_integration/">Officially Integrating with Datadog</a>
+              </li>
+              
+              <li>
+                <a href="/guides/anomalies/">Anomaly Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/outliers/">Outlier Detection</a>
+              </li>
+              
+              <li>
+                <a href="/guides/multiaccountorg/">Configuring Teams & Organizations with Multiple Accounts</a>
+              </li>
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="nav-reference-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="nav-guide-dropdown">
+            <li><a href="/api/">API</a></li>
+            <li><a href="/tracing/">Tracing (APM)</a></li>
+            <li><a href="/libraries/">Libraries</a></li>
+            <li><a href="/monitoring/">Monitoring</a></li>
+            <li><a href="/graphing/">Graphing</a></li>
+            <li><a href="/graphingjson/">Graphing using JSON</a></li>
+            <li><a href="/hostnames/">Host Names</a></li>
+            <li><a href="/integrations/">Integrations</a></li>
+            <li><a href="/guides/dogstatsd/">DogStatsD</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/guides/billing/">Billing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </li>
+        
+        <li class="hidden-sm hidden-md hidden-lg">
+          <form class="navbar-form navbar-left" role="search" action="/search/">
+            <div class="form-group">
+              <input type="text" name="q" id="tipue_search_input" required class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        
+        <li><a href="/help/">Help</a></li>
+        <li id="signin">
+          <a class="btn navbar-btn flexbutton blueflex" href="https://app.datadoghq.com/signup">Free Trial</a>
+        </li>
+        <li id="signup">
+          <a class="btn navbar-btn flexbutton" href="https://help.datadoghq.com/hc/en-us/signin?return_to=https%3A%2F%2Fhelp.datadoghq.com%2Fhc%2Fen-us&locale=1">Support Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END HEADER -->
+
+    <div class="container">
+      <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-sm-3 col-xs-12" id="sidebarcolumn">
+          <ul class="nav nav-tabs nav-stacked sidebar">
+            
+            <li class="nav-header hidden-xs">Documentation Search</li>
+            <li class="hidden-xs">
+              <form action="/search/">
+                <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+              </form>
+            </li>
+            
+            <li class='nav-header'>Table of Contents</li><li><a style='' href='#overview' onclick="$('#').collapse('show')">
+Overview</a></li><li><a style='' href='#prerequisites' onclick="$('#').collapse('show')">
+Prerequisites</a></li><li><a style='' href='#install-the-datadog-agent-bosh-release' onclick="$('#').collapse('show')">
+Install the Datadog Agent BOSH Release</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#upload-datadogs-release-to-your-bosh-director' onclick="$('#').collapse('show')">
+Upload Datadog’s release to your BOSH Director</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#configure-the-agent-as-an-addon-in-your-bosh-director' onclick="$('#').collapse('show')">
+Configure the Agent as an addon in your BOSH Director</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#enable-extra-agent-checks' onclick="$('#').collapse('show')">
+Enable extra Agent checks</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#sync-the-runtime-configuration-to-the-director' onclick="$('#').collapse('show')">
+Sync the runtime configuration to the Director</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#redeploy-your-cloud-foundry-deployment' onclick="$('#').collapse('show')">
+Redeploy your Cloud Foundry deployment</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#verify-the-agent-is-installed-everywhere' onclick="$('#').collapse('show')">
+Verify the Agent is installed everywhere</a></li><li><a style='' href='#deploy-the-datadog-firehose-nozzle' onclick="$('#').collapse('show')">
+Deploy the Datadog Firehose Nozzle</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#upload-datadogs-release-to-your-bosh-director-1' onclick="$('#').collapse('show')">
+Upload Datadog’s release to your BOSH Director</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#configure-a-uaa-client' onclick="$('#').collapse('show')">
+Configure a UAA client</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#add-nozzle-jobs' onclick="$('#').collapse('show')">
+Add Nozzle jobs</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#redeploy-the-deployment' onclick="$('#').collapse('show')">
+Redeploy the deployment</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#verify-the-nozzle-is-collecting' onclick="$('#').collapse('show')">
+Verify the Nozzle is collecting</a></li><li><a style='' href='#configure-the-datadog-plugin-for-bosh-health-monitor' onclick="$('#').collapse('show')">
+Configure the Datadog plugin for BOSH Health Monitor</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#add-the-configuration' onclick="$('#').collapse('show')">
+Add the configuration</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#redeploy-the-director' onclick="$('#').collapse('show')">
+Redeploy the Director</a></li><li><a style='padding: 3px 35px;font-size:13px;' href='#verify-the-plugin-is-working' onclick="$('#').collapse('show')">
+Verify the plugin is working</a></li><li><a style='' href='#events' onclick="$('#').collapse('show')">
+Events</a></li><li><a style='' href='#metrics' onclick="$('#').collapse('show')">
+Metrics</a></li>
+
+            <li class="nav-header auto">Other Integrations <span class="toggle visible-xs-inline">(<a href="#toggleIntegrations" data-toggle="collapse">Toggle to show integrations</a>)<br></span></li>
+            <div class="collapse div-collapse" id="toggleIntegrations">
+              <li><a href="/integrations/">Back to Overview</a></li>
+              
+                
+              
+              
+                
+                
+                
+                  <li><a href="/integrations/activemq/">ActiveMQ</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/airbrake/">Airbrake *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/aws/">Amazon Web Services</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ansible/">Ansible *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/apache/">Apache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kafka/">Apache Kafka</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsapigateway/">AWS API Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsautoscaling/">AWS Auto Scaling</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awsbilling/">AWS Billing *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudfront/">AWS CloudFront</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudsearch/">AWS CloudSearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awscloudtrail/">AWS CloudTrail</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsdynamo/">AWS DynamoDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsec2/">AWS EC2</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ecs/">AWS ECS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsbeanstalk/">AWS Elastic Beanstalk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsebs/">AWS Elastic Block Store</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsefs/">AWS Elastic File System</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsemr/">AWS Elastic Map Reduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselasticache/">AWS ElastiCache</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awselb/">AWS ELB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awses/">AWS ES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsfirehose/">AWS Firehose</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsiot/">AWS Internet of Things</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskms/">AWS Key Management Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awskinesis/">AWS Kinesis</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awslambda/">AWS Lambda</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsml/">AWS Machine Learning</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsopsworks/">AWS OpsWorks</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awspolly/">AWS Polly</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsrds/">AWS RDS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsredshift/">AWS Redshift</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsroute53/">AWS Route 53</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/awss3/">AWS S3 *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsses/">AWS SES</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsswf/">AWS Simple Workflow Service</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssns/">AWS SNS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awssqs/">AWS SQS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsstoragegateway/">AWS Storage Gateway</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awswaf/">AWS Web Application Firewall</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/awsworkspaces/">AWS Workspaces</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/bitbucket/">Bitbucket</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/btrfs/">btrfs *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/bugsnag/">Bugsnag *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/cacti/">Cacti *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/campfire/">Campfire *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/capistrano/">Capistrano *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/cassandra/">Cassandra</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/catchpoint/">Catchpoint *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ceph/">Ceph</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/chatwork/">Chatwork *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/chef/">Chef</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/consul/">Consul</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/couchbase/">Couchbase *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/couchdb/">CouchDB</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/desk/">Desk</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/directory/">Directory Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/disk/">Disk Check</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dnscheck/">DNS Service Check *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/docker/">Docker</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/dyn/">Dyn *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/elasticsearch/">Elasticsearch</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/etcd/">etcd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/eventviewer/">Event Viewer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/expressjs/">ExpressJS *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fabric/">Fabric *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fastly/">Fastly *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/flowdock/">Flowdock *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/fluentd/">Fluentd *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gearman/">Gearman</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/git/">Git *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/github/">Github</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/goexpvar/">Go Expvar *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_app_engine/">Google App Engine</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_big_query/">Google BigQuery *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_functions/">Google Cloud Functions *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/google_cloud_platform/">Google Cloud Platform</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloudsql/">Google CloudSQL *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_compute_engine/">Google Compute Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_container_engine/">Google Container Engine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_datastore/">Google Datastore *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_firebase/">Google Firebase *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_ml/">Google Machine Learning *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_pubsub/">Google Pub/Sub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_spanner/">Google Spanner *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_stackdriver_logging/">Google Stackdriver Logging *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_storage/">Google Storage *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/google_cloud_vpn/">Google VPN *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/gunicorn/">gunicorn</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hdfs/">Hadoop HDFS</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mapreduce/">Hadoop MapReduce</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/yarn/">Hadoop YARN</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/haproxy/">HAProxy</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/hipchat/">HipChat</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/honeybadger/">Honeybadger *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/httpcheck/">HTTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/iis/">IIS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/immunio/">Immunio *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/java/">Java/JMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/jenkins/">Jenkins</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/jira/">Jira *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kong/">Kong *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/kubernetes/">Kubernetes</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/kyototycoon/">Kyoto Tycoon *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/lighttpd/">Lighttpd</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/marathon/">Marathon</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/memcached/">Memcached</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mesos/">Mesos *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure/">Microsoft Azure</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_app_services/">Microsoft Azure App Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_batch/">Microsoft Azure Batch Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_event_hub/">Microsoft Azure Event Hub Service *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_iot_hub/">Microsoft Azure IOT Hub *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_logic_app/">Microsoft Azure Logic App *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_redis_cache/">Microsoft Azure Redis Cache *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_database/">Microsoft Azure SQL Database *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_sql_elastic_pool/">Microsoft Azure SQL Elastic Pool *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/azure_storage/">Microsoft Azure Storage</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm_scale_set/">Microsoft Azure Virtual Machine Scale Set *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/azure_vm/">Microsoft Azure VM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mongodb/">MongoDB</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/moxtra/">Moxtra *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/mparticle/">mParticle *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/mysql/">MySQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nagios/">Nagios *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/network/">Network Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/new_relic/">New Relic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/nginx/">NGINX</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/nodejs/">NodeJS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ntp/">NTP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/openstack/">OpenStack</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/opsgenie/">OpsGenie</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/opsmatic/">Opsmatic *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pagerduty/">PagerDuty *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/papertrail/">PaperTrail *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pgbouncer/">PGBouncer</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/php/">PHP *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/phpfpm/">PHP-FPM *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/pingdom/">Pingdom</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/pivotal/">Pivotal Tracker *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/postfix/">Postfix *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/postgresql/">PostgreSQL</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/powerdns/">PowerDNS Recursor *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/process/">Process Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/puppet/">Puppet</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/python/">Python</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/rabbitmq/">RabbitMQ</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/redis/">Redis</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/redmine/">Redmine *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/riak/">Riak *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/riakcs/">RiakCS</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rollbar/">Rollbar *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/rss/">RSS *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/ruby/">Ruby</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sentry/">Sentry *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/servicenow/">ServiceNow</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/slack/">Slack *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/snmp/">SNMP</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/solr/">Solr</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/spark/">Spark *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/splunk/">Splunk</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/sqlserver/">SQL Server *</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/ssh/">ssh *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/statsd/">StatsD</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/statuspage/">StatusPageIO *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/sumologic/">Sumo Logic</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/supervisor/">Supervisor</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/system/">System Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/systemcore/">System Core</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcpcheck/">TCP Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tcprtt/">TCP RTT Check</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/teamcity/">TeamCity</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tokumx/">TokuMX</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/tomcat/">Tomcat</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/varnish/">Varnish</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/victorops/">VictorOps *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/vmware/">VMware</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/webhooks/">Webhooks</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/winservices/">Windows Services *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/wmi/">WMI</a></li>
+                
+              
+                
+                
+                  
+                
+                
+                  <li><a href="/integrations/zendesk/">Zendesk *</a></li>
+                
+              
+                
+                
+                
+                  <li><a href="/integrations/zookeeper/">Zookeeper</a></li>
+                
+              
+            </div>
+          </ul>
+        &nbsp;
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-sm-9 col-xs-12 main">
+          <!-- PAGE TITLE -->
+          <h1 id="pagetitle">Datadog-Cloud Foundry Integration </h1>
+          
+          <div class="alert alert-danger">
+          <strong>BETA:</strong> This content describes a feature currently in beta.
+          We are actively working on completing the feature but the docs may get out of
+          sync with the feature as it is updated. If you have any issues, contact support
+          for assistance.
+          </div>
+          
+          <div id="pagecontent">
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="overview" class="linked-header">
+<a class="header-link" href="#overview"><i class="fa fa-link"></i></a>Overview</h1>
+
+<p>Any Cloud Foundry deployment can send metrics and events to Datadog. The data helps you track the health and availability of all nodes in the deployment, monitor the jobs they run, collect metrics from the Loggregator Firehose, and more.</p>
+
+<p>There are three points of integration with Datadog, each of which achieves a different goal:</p>
+
+<ul>
+  <li>
+<strong>Datadog Agent BOSH release</strong> — Install the Datadog Agent on every node in your deployment to track system, network, and disk metrics. Enable any other Agent checks you wish.</li>
+  <li>
+<strong>Datadog Firehose Nozzle</strong> — Deploy one or more Datadog Firehose Nozzle jobs. The jobs tap into your deployment’s Loggregator Firehose and send all non-container metrics to Datadog.</li>
+  <li>
+<strong>Datadog plugin for BOSH Health Monitor</strong> — Configure your BOSH Director’s Health Monitor to send heartbeats (as metrics) and alerts (as events) from each node’s BOSH Agent to Datadog.</li>
+</ul>
+
+<p>These integrations are meant for Cloud Foundry deployment administrators, not end users.</p>
+
+<h1 id="prerequisites" class="linked-header">
+<a class="header-link" href="#prerequisites"><i class="fa fa-link"></i></a>Prerequisites</h1>
+
+<p>You need to have a working Cloud Foundry deployment and access to the BOSH Director that manages it. You also need BOSH CLI to deploy each integration. You may use either major version of the CLI—<a href="https://bosh.io/docs/bosh-cli.html">v1</a> or <a href="https://bosh.io/docs/cli-v2.html#install">v2</a>.</p>
+
+<p>To configure the Datadog plugin for BOSH Health Monitor, you need access to the <code>state.json</code> (or similarly named) file that accurately reflects the current state of your BOSH Director. If you don’t have such a file, you’ll need to <a href="https://bosh.io/docs/cli-envs.html#deployment-state">create one</a>.</p>
+
+<h1 id="install-the-datadog-agent-bosh-release" class="linked-header">
+<a class="header-link" href="#install-the-datadog-agent-bosh-release"><i class="fa fa-link"></i></a>Install the Datadog Agent BOSH Release</h1>
+
+<p>Datadog provides tarballs of the Datadog Agent packaged as a BOSH release. You can upload the latest release to your BOSH Director and then easily install it on every node in your deployment as an <a href="https://bosh.io/docs/runtime-config.html#addons">addon</a> (i.e. the same way a Director deploys the BOSH Agent to all nodes).</p>
+
+<h3 id="upload-datadogs-release-to-your-bosh-director" class="linked-header">
+<a class="header-link" href="#upload-datadogs-release-to-your-bosh-director"><i class="fa fa-link"></i></a>Upload Datadog’s release to your BOSH Director</h3>
+
+<pre><code># BOSH CLI v1
+bosh upload release 
+
+# BOSH CLI v2
+bosh upload-release 
+</code></pre>
+
+<p>If you’d like to create your own release, see the <a href="https://github.com/DataDog/datadog-agent-boshrelease">Datadog Agent BOSH Release repository</a>.</p>
+
+<h3 id="configure-the-agent-as-an-addon-in-your-bosh-director" class="linked-header">
+<a class="header-link" href="#configure-the-agent-as-an-addon-in-your-bosh-director"><i class="fa fa-link"></i></a>Configure the Agent as an addon in your BOSH Director</h3>
+
+<p>Add the following to your BOSH Director’s runtime configuration file (e.g. <code>runtime.yml</code>):</p>
+
+<pre><code>---
+releases:
+  - name: datadog-agent
+    version: &lt;VERSION_YOU_UPLOADED&gt; # specify the real version, i.e. x.y.z, not 'latest'
+
+addons:
+- name: datadog
+  jobs:
+  - name: dd-agent
+    release: datadog-agent
+  properties:
+    dd:
+      use_dogstatsd: yes
+      dogstatsd_port: 18125               # Many CF deployments have a StatsD already on port 8125
+      api_key: &lt;YOUR_DATADOG_API_KEY&gt;
+      tags: ["cloudfoundry_deployment_1"] # any tags you wish
+      generate_processes: true            # to enable the process check
+</code></pre>
+
+<p>To see which <code>datadog-agent</code> release version you uploaded earlier, run <code>bosh releases</code>.</p>
+
+<p>If you don’t have a local copy of the runtime configuration, create a <code>runtime.yml</code> with the current runtime configuration (<code>bosh runtime-config</code>) and add the above YAML to it. If the Director’s runtime configuration is empty, create a new <code>runtime.yml</code> containing only the above YAML.</p>
+
+<h3 id="enable-extra-agent-checks" class="linked-header">
+<a class="header-link" href="#enable-extra-agent-checks"><i class="fa fa-link"></i></a>Enable extra Agent checks</h3>
+
+<p>For each extra Agent check you want to enable across your deployment, add its configuration under the <code>properties.dd.integrations</code> key, e.g.:</p>
+
+<pre><code>  properties:
+    dd:
+      integrations:
+        directory:
+          init_config: {}
+          instances:
+            directory: "."
+        #process:
+        #  init_config: {}
+        #...
+</code></pre>
+
+<p>The configuration under each check name should look the same as if you were configuring the check in its own file in the Agent’s conf.d directory.</p>
+
+<p>You cannot configure a check for a subset of nodes in your deployment; everything you configure in <code>runtime.yml</code> will apply to every node.</p>
+
+<p>To customize configuration for the default checks—system, network, disk, and ntp—see the <a href="https://github.com/DataDog/datadog-agent-boshrelease/blob/master/jobs/dd-agent/spec">full list of configuration options</a> for the Datadog Agent BOSH release.</p>
+
+<h3 id="sync-the-runtime-configuration-to-the-director" class="linked-header">
+<a class="header-link" href="#sync-the-runtime-configuration-to-the-director"><i class="fa fa-link"></i></a>Sync the runtime configuration to the Director</h3>
+
+<pre><code># BOSH CLI v1
+bosh update runtime-config runtime.yml
+
+# BOSH CLI v2
+bosh update-runtime-config runtime.yml
+</code></pre>
+
+<h3 id="redeploy-your-cloud-foundry-deployment" class="linked-header">
+<a class="header-link" href="#redeploy-your-cloud-foundry-deployment"><i class="fa fa-link"></i></a>Redeploy your Cloud Foundry deployment</h3>
+
+<pre><code># BOSH CLI v1
+bosh deployment yourDeploymentManifest.yml
+bosh -n deploy
+
+# BOSH CLI v2
+bosh -n -d yourDeployment deploy yourDeploymentManifest.yml
+</code></pre>
+
+<p>Since runtime configuration applies globally, BOSH will redeploy every node in your deployment. If you have more than one deployment, redeploy those, too, to install the Datadog Agent everywhere.</p>
+
+<h3 id="verify-the-agent-is-installed-everywhere" class="linked-header">
+<a class="header-link" href="#verify-the-agent-is-installed-everywhere"><i class="fa fa-link"></i></a>Verify the Agent is installed everywhere</h3>
+
+<p>The easiest way to check that Agent installs were successful is to filter for them in the <a href="https://app.datadoghq.com/infrastructure/map">Host map page</a> in Datadog. The Agent BOSH release tags each host with a generic <code>cloudfoundry</code> tag, so filter by that, and optionally group hosts by any tag you wish (e.g. <code>bosh_job</code>), as in the following screenshot:</p>
+
+<p><img src="/static/images/cloud-foundry-host-map.png" alt="cloud-foundry-host-map"></p>
+
+<p>Click on any host to zoom in, then click ‘system’ within its hexagon to make sure Datadog is receiving metrics for it:</p>
+
+<p><img src="/static/images/cloud-foundry-host-map-detail.png" alt="cloud-foundry-host-map-detail"></p>
+
+<h1 id="deploy-the-datadog-firehose-nozzle" class="linked-header">
+<a class="header-link" href="#deploy-the-datadog-firehose-nozzle"><i class="fa fa-link"></i></a>Deploy the Datadog Firehose Nozzle</h1>
+
+<p>As with the Datadog Agent, Datadog provides a BOSH release of the Datadog Firehose Nozzle. After uploading the release to your Director, you can add the Nozzle to an existing deployment, or create a new deployment that only includes the Nozzle. The instructions below assume you’re adding it to an existing Cloud Foundry deployment that has a working Loggregator Firehose.</p>
+
+<h3 id="upload-datadogs-release-to-your-bosh-director-1" class="linked-header">
+<a class="header-link" href="#upload-datadogs-release-to-your-bosh-director-1"><i class="fa fa-link"></i></a>Upload Datadog’s release to your BOSH Director</h3>
+
+<pre><code># BOSH CLI v1
+bosh upload release http://cloudfoundry.datadoghq.com/datadog-firehose-nozzle/datadog-firehose-nozzle-release-latest.tgz
+
+# BOSH CLI v2
+bosh upload-release http://cloudfoundry.datadoghq.com/datadog-firehose-nozzle/datadog-firehose-nozzle-release-latest.tgz
+</code></pre>
+
+<p>If you’d like to create your own release, see the <a href="https://github.com/DataDog/datadog-firehose-nozzle-release">Datadog Firehose Nozzle release repository</a>.</p>
+
+<h3 id="configure-a-uaa-client" class="linked-header">
+<a class="header-link" href="#configure-a-uaa-client"><i class="fa fa-link"></i></a>Configure a UAA client</h3>
+
+<p>In the manifest that contains your UAA configuration, add a new client for the Datadog Nozzle so the job(s) can access the Firehose:</p>
+
+<pre><code>uaa:
+  clients:
+    datadog-firehose-nozzle:
+      access-token-validity: 1209600
+      authorities: doppler.firehose
+      authorized-grant-types: client_credentials
+      override: true
+      scope: doppler.firehose
+      secret: &lt;MAKE_IT_A_GOOD_ONE&gt;
+</code></pre>
+
+<p>And redeploy the deployment to add the user.</p>
+
+<h3 id="add-nozzle-jobs" class="linked-header">
+<a class="header-link" href="#add-nozzle-jobs"><i class="fa fa-link"></i></a>Add Nozzle jobs</h3>
+
+<p>Configure one or more Nozzle jobs in your main Cloud Foundry deployment manifest (e.g. cf-manifest.yml):</p>
+
+<pre><code>jobs:
+#- instances: 4
+#  name: some_other_job
+#  ...
+- instances: 1            # add more instances if one job cannot keep up with the Firehose
+  name: datadog_nozzle_z1
+  networks:
+    - name: cf1           # some network you've configured elsewhere in the manifest
+  resource_pool: small_z1 # some resource_pool you've configured elsewhere in the manifest
+  templates:
+    - name: datadog-firehose-nozzle
+      release: datadog-firehose-nozzle
+  properties:
+    datadog:
+      api_key: &lt;YOUR_DATADOG_API_KEY&gt;
+      api_url: https://app.datadoghq.com/api/v1/series
+      flush_duration_seconds: 15 # seconds between flushes to Datadog. Default is 15.
+    loggregator:
+      # do NOT append '/firehose' or even a trailing slash to the URL; 'ws://&lt;host&gt;:&lt;port&gt;' will do
+      traffic_controller_url: &lt;LOGGREGATOR_URL&gt; # e.g. ws://traffic-controller.your-cf-domain.com:8081
+    nozzle:
+      deployment: &lt;DEPLOYMENT_NAME&gt;    # tags each firehose metric with 'deployment:&lt;DEPLOYMENT_NAME&gt;'
+      subscription_id: datadog-nozzle  # can be anything (firehose streams data evenly to all jobs using the same subscription_id)
+      # disable_access_control: true   # for development only
+      # insecure_ssl_skip_verify: true # for development only; enable if your UAA does not use a verifiable cert
+    uaa:
+      client: datadog-firehose-nozzle # client name you just configured
+      client_secret: &lt;SECRET_YOU_JUST_CONFIGURED&gt;
+      url: &lt;UAA_URL&gt; # e.g. https://uaa.your-cf-domain.com:8443
+</code></pre>
+
+<p>To see all available configuration options, check the <a href="https://github.com/DataDog/datadog-firehose-nozzle-release/blob/master/jobs/datadog-firehose-nozzle/spec">Datadog Firehose Nozzle repository</a>.</p>
+
+<p>In the same manifest, add the Datadog Nozzle release name and version:</p>
+
+<pre><code>releases:
+# - name: some-other-release
+#   version: x.y.z
+# ...
+  - name: datadog-firehose-nozzle
+    version: $VERSION_YOU_UPLOADED # specify the real version, i.e. x.y.z, not 'latest' 
+</code></pre>
+
+<p>To see which <code>datadog-firehose-nozzle</code> release version you uploaded earlier, run <code>bosh releases</code>.</p>
+
+<h3 id="redeploy-the-deployment" class="linked-header">
+<a class="header-link" href="#redeploy-the-deployment"><i class="fa fa-link"></i></a>Redeploy the deployment</h3>
+
+<pre><code># BOSH CLI v1
+bosh deployment cf-manifest.yml
+bosh -n deploy
+
+# BOSH CLI v2
+bosh -n -d cf-manifest deploy cf-manifest.yml
+</code></pre>
+
+<h3 id="verify-the-nozzle-is-collecting" class="linked-header">
+<a class="header-link" href="#verify-the-nozzle-is-collecting"><i class="fa fa-link"></i></a>Verify the Nozzle is collecting</h3>
+
+<p>On the <a href="https://app.datadoghq.com/metric/explorer">Metrics explorer</a> page in Datadog, search for metrics beginning <code>cloudfoundry.nozzle</code>:</p>
+
+<p><img src="/static/images/cloud-foundry-nozzle-metrics.png" alt="cloud-foundry-nozzle-metrics"></p>
+
+<h1 id="configure-the-datadog-plugin-for-bosh-health-monitor" class="linked-header">
+<a class="header-link" href="#configure-the-datadog-plugin-for-bosh-health-monitor"><i class="fa fa-link"></i></a>Configure the Datadog plugin for BOSH Health Monitor</h1>
+
+<p>The plugin is packaged with the BOSH Health Monitor, so if the Health Monitor is already installed and running on your BOSH Director, you just need to configure the plugin and redeploy the Director.</p>
+
+<h3 id="add-the-configuration" class="linked-header">
+<a class="header-link" href="#add-the-configuration"><i class="fa fa-link"></i></a>Add the configuration</h3>
+
+<p>In the manifest originally used to deploy the Director (e.g. bosh.yml), configure the Datadog plugin:</p>
+
+<pre><code>instance_groups:
+- instances: 1
+  properties:
+    hm:
+    # loglevel: info
+    # resurrector: enabled
+    #...other stuff
+      datadog_enabled: true
+      datadog:
+        api_key: &lt;YOUR_DATADOG_API_KEY&gt;
+        application_key: &lt;YOUR_DATADOG_APP_KEY&gt;
+        pagerduty_service_name: "your_service_name" # optional
+</code></pre>
+
+<h3 id="redeploy-the-director" class="linked-header">
+<a class="header-link" href="#redeploy-the-director"><i class="fa fa-link"></i></a>Redeploy the Director</h3>
+
+<p>BOSH cannot simply configure the plugin and restart the Health Monitor; it must destroy the Director and redeploy it as a new instance. To do this while retaining the Director’s current disk and database, you MUST redeploy using a <code>state.json</code> (or similarly named) file that accurately reflects the current state of your Director. If you don’t have such a file, follow the BOSH docs on <a href="https://bosh.io/docs/cli-envs.html#deployment-state">Deployment State</a> to create a basic <code>state.yml</code>.</p>
+
+<p>You may use <a href="https://bosh.io/docs/install-bosh-init.html">bosh-init</a> or BOSH CLI v2 to redeploy the Director. If you use bosh-init, your state file must be named similarly to your manifest; for a manifest named <code>bosh.yml</code>, <code>bosh-init</code> expects a state file named <code>bosh-state.yml</code>.</p>
+
+<pre><code># bosh-init (legacy)
+bosh-init deploy bosh.yml
+
+# BOSH CLI v2 - if your state file is not named bosh-state.yml, provide its name via --state
+bosh create-env --state=your-state-file.json bosh.yml
+</code></pre>
+
+<h3 id="verify-the-plugin-is-working" class="linked-header">
+<a class="header-link" href="#verify-the-plugin-is-working"><i class="fa fa-link"></i></a>Verify the plugin is working</h3>
+
+<p>On the <a href="https://app.datadoghq.com/metric/explorer">Metrics explorer</a> page in Datadog, search for metrics beginning <code>bosh.healthmonitor</code>:</p>
+
+<p><img src="/static/images/cloud-foundry-bosh-hm-metrics.png" alt="cloud-foundry-bosh-hm-metrics"></p>
+
+<h1 id="events" class="linked-header">
+<a class="header-link" href="#events"><i class="fa fa-link"></i></a>Events</h1>
+
+<p>The BOSH Health Monitor Datadog plugin emits an event to Datadog for any alert it receives from your deployment’s BOSH Agents. Read the <a href="https://bosh.io/docs/monitoring.html">BOSH Health Monitor docs</a> to see what kinds of alerts might show up in your Datadog event stream.</p>
+
+<p>The BOSH Agent sets a severity for each alert it generates, and the Datadog Health Monitor plugin uses that severity to prioritize the event it emits. Alerts with an Error, Critical, or Alert severity become Normal priority events in Datadog. Alerts with any other severity become Low priority events.</p>
+
+<h1 id="metrics" class="linked-header">
+<a class="header-link" href="#metrics"><i class="fa fa-link"></i></a>Metrics</h1>
+
+<p>The following metrics are sent by the Datadog Firehose Nozzle (<code>cloudfoundry.nozzle</code>) and the BOSH Health Monitor Datadog plugin (<code>bosh.healthmonitor</code>). The Datadog Agent release does not send any special metrics of its own, just the usual metrics from any Agent checks you configure in the Director runtime config (and, by default, <a href="/integrations/system/#metrics">system</a>, <a href="/integrations/network/#metrics">network</a>, <a href="/integrations/disk/#metrics">disk</a>, and <a href="/integrations/ntp/#metrics">ntp</a> metrics).</p>
+
+<p>The Datadog Firehose Nozzle only collects CounterEvents (as metrics, not events) and ValueMetrics; it ignores LogMessages, Errors, and ContainerMetrics.</p>
+
+<table class="table">
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.LockHeld.v1_locks_auctioneer_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.LockHeldDuration.v1_locks_auctioneer_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.auctioneer.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceLRPDuration</strong><br>(gauge)</td>
+<td>Time the BBS took to run its LRP convergence pass<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceLRPRuns</strong><br>(gauge)</td>
+<td>Cumulative number of times BBS has run its LRP convergence pass.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceTaskDuration</strong><br>(gauge)</td>
+<td>Time the BBS took to run its Task convergence pass<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceTaskRuns</strong><br>(gauge)</td>
+<td>Cumulative number of times the BBS has run its Task convergence pass.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceTasksKicked</strong><br>(gauge)</td>
+<td>Cumulative number of times the BBS has updated a Task during its Task convergence pass.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ConvergenceTasksPruned</strong><br>(gauge)</td>
+<td>Cumulative number of times the BBS has deleted a malformed Task during its Task convergence pass.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.CrashedActualLRPs</strong><br>(gauge)</td>
+<td>Total number of LRP instances that have crashed.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.CrashingDesiredLRPs</strong><br>(gauge)</td>
+<td>Total number of DesiredLRPs that have at least one crashed instance.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.Domain.cf_apps</strong><br>(gauge)</td>
+<td>Whether the domain name (Domain.<domain-name>) is up to date. So that instances from that domain have been synchronized with DesiredLRPs for Diego to run. 1 means the domain is up-to-date. No data means it is not.<br><em>shown as monitor</em><tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.Domain.cf_tasks</strong><br>(gauge)</td>
+<td>Whether the domain name (Domain.<domain-name>) is up to date. So that instances from that domain have been synchronized with DesiredLRPs for Diego to run. 1 means the domain is up-to-date. No data means it is not.<br><em>shown as monitor</em><tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDLeader</strong><br>(gauge)</td>
+<td>Index of the leader node in the etcd cluster<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDRaftTerm</strong><br>(gauge)</td>
+<td>Raft term of the etcd cluster<br><em>shown as unit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDReceivedBandwidthRate</strong><br>(gauge)</td>
+<td>Number of bytes per second received by the follower etcd node<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDReceivedRequestRate</strong><br>(gauge)</td>
+<td>Number of requests per second received by the follower etcd node<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDSentBandwidthRate</strong><br>(gauge)</td>
+<td>Number of bytes per second sent by the leader etcd node<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDSentRequestRate</strong><br>(gauge)</td>
+<td>Number of requests per second sent by the leader etcd node<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.ETCDWatchers</strong><br>(gauge)</td>
+<td>Number of watchers on the etcd cluster<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LockHeld.v1_locks_bbs_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LockHeldDuration.v1_locks_bbs_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsClaimed</strong><br>(gauge)</td>
+<td>Total number of LRP instances that have been claimed by some cell.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsDesired</strong><br>(gauge)</td>
+<td>Total number of LRP instances desired across all LRPs.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsExtra</strong><br>(gauge)</td>
+<td>Total number of LRP instances that are no longer desired but still have a BBS record.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsMissing</strong><br>(gauge)</td>
+<td>Total number of LRP instances that are desired but have no record in the BBS.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsRunning</strong><br>(gauge)</td>
+<td>Total number of LRP instances that are running on cells.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.LRPsUnclaimed</strong><br>(gauge)</td>
+<td>Total number of LRP instances that have not yet been claimed by a cell.<br><em>shown as instance</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.MetricsReportingDuration</strong><br>(gauge)</td>
+<td>Time it took to report periodic metrics.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.RequestCount</strong><br>(gauge)</td>
+<td>Cumulative number of requests the BBS has handled through its API.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.RequestLatency</strong><br>(gauge)</td>
+<td>Time the BBS took to handle requests to its API endpoints<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.TasksCompleted</strong><br>(gauge)</td>
+<td>Total number of Tasks that have completed.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.TasksPending</strong><br>(gauge)</td>
+<td>Total number of Tasks that have not yet been placed on a cell.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.TasksResolving</strong><br>(gauge)</td>
+<td>Total number of Tasks locked for deletion.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.bbs.TasksRunning</strong><br>(gauge)</td>
+<td>Total number of Tasks running on cells.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.failed_job_count.total</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.1xx</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 1xx<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.2XX</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 2XX<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.3xx</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 3xx<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.4xx</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 4xx<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.5xx</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 5xx<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.http_status.5XX</strong><br>(gauge)</td>
+<td>Number of HTTP response status codes of type 5XX<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.job_queue_length.total</strong><br>(gauge)</td>
+<td>Jobs in the job queue<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.all</strong><br>(gauge)</td>
+<td>The total number of log messages of all severity levels<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.debug</strong><br>(gauge)</td>
+<td>Number of log messages of severity debug<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.debug1</strong><br>(gauge)</td>
+<td>Number of log messages of severity debug1<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.debug2</strong><br>(gauge)</td>
+<td>Number of log messages of severity debug2<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.error</strong><br>(gauge)</td>
+<td>Number of log messages of severity error<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.fatal</strong><br>(gauge)</td>
+<td>Number of log messages of severity fatal<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.info</strong><br>(gauge)</td>
+<td>Number of log messages of severity info<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.off</strong><br>(gauge)</td>
+<td>Number of log messages of severity off<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.log_count.warn</strong><br>(gauge)</td>
+<td>Number of log messages of severity warn<br><em>shown as entry</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.requests.completed</strong><br>(gauge)</td>
+<td>Number of requests that have been processed.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.requests.outstanding</strong><br>(gauge)</td>
+<td>Number of request that are currently being processed.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.tasks_running.count</strong><br>(gauge)</td>
+<td>Number of currently running tasks.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.tasks_running.memory_in_mb</strong><br>(gauge)</td>
+<td>Memory being consumed by all currently running tasks.<br><em>shown as mebibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.event_machine.connection_count</strong><br>(gauge)</td>
+<td>Number of open connections to event machine.<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.event_machine.resultqueue.num_waiting</strong><br>(gauge)</td>
+<td>Number of scheduled tasks in the result.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.event_machine.resultqueue.size</strong><br>(gauge)</td>
+<td>Number of unscheduled tasks in the result.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.event_machine.threadqueue.num_waiting</strong><br>(gauge)</td>
+<td>Number of scheduled tasks in the threadqueue.<br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.event_machine.threadqueue.size</strong><br>(gauge)</td>
+<td>Number of unscheduled tasks in the threadqueue. <br><em>shown as job</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.thread_info.thread_count</strong><br>(gauge)</td>
+<td>Total number of threads that are either runnable or stopped.<br><em>shown as thread</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.total_users</strong><br>(gauge)</td>
+<td>Total number of users ever created including inactive users.<br><em>shown as unit</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.cpu</strong><br>(gauge)</td>
+<td>Percentage of CPU used by the Cloud Controller process.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.cpu_load_avg</strong><br>(gauge)</td>
+<td>System CPU load averaged over the last 1 minute according to the OS.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.mem_bytes</strong><br>(gauge)</td>
+<td>The RSS bytes (resident set size) or real memory of the Cloud Controller process.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.mem_free_bytes</strong><br>(gauge)</td>
+<td>Total memory available according to the OS.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.mem_used_bytes</strong><br>(gauge)</td>
+<td>Total memory used (active + wired) according to the OS.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.num_cores</strong><br>(gauge)</td>
+<td>The number of CPUs of a host machine.<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc.vitals.uptime</strong><br>(gauge)</td>
+<td>Uptime in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.cc_uploader.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeListener.receivedByteCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeListener.receivedMessageCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.httpServer.receivedMessages</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.LinuxFileDescriptor</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.listeners.receivedEnvelopes</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.listeners.totalReceivedByteCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.listeners.totalReceivedMessageCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.messageRouter.numberOfDumpSinks</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.sentEnvelopes</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.sentMessagesFirehose</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.signatureVerifier.validSignatures</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.udpListener.receivedByteCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.udpListener.receivedMessageCount</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.DopplerServer.Uptime</strong><br>(gauge)</td>
+<td>Uptime in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CompareAndDeleteFail</strong><br>(gauge)</td>
+<td>CompareAndDeleteFail operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CompareAndDeleteSuccess</strong><br>(gauge)</td>
+<td>CompareAndDeleteSuccess operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CompareAndSwapFail</strong><br>(gauge)</td>
+<td>CompareAndSwapFail operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CompareAndSwapSuccess</strong><br>(gauge)</td>
+<td>CompareAndSwapSuccess operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CreateFail</strong><br>(gauge)</td>
+<td>CreateFail operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.CreateSuccess</strong><br>(gauge)</td>
+<td>CreateSuccess operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.DeleteFail</strong><br>(gauge)</td>
+<td>DeleteFail operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.DeleteSuccess</strong><br>(gauge)</td>
+<td>DeleteSuccess operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.EtcdIndex</strong><br>(gauge)</td>
+<td>Etcd Index<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.ExpireCount</strong><br>(gauge)</td>
+<td>ExpireCount operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.Followers</strong><br>(gauge)</td>
+<td>number of etcd followers<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.GetsFail</strong><br>(gauge)</td>
+<td>GetsFail operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.GetsSuccess</strong><br>(gauge)</td>
+<td>GetsSuccess operations count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.IsLeader</strong><br>(gauge)</td>
+<td>1 if it is the leader. 0 if it is not<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.logSenderTotalMessagesRead</strong><br>(gauge)</td>
+<td>Lifetime number of application log messages<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.RaftIndex</strong><br>(gauge)</td>
+<td>Raft index of the etcd cluster<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.RaftTerm</strong><br>(gauge)</td>
+<td>Raft term of the etcd cluster<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.ReceivedAppendRequests</strong><br>(gauge)</td>
+<td>The number of append requests this node has recieved<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.ReceivingBandwidthRate</strong><br>(gauge)</td>
+<td>Number of bytes per second this node is receiving (follower only)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.ReceivingRequestRate</strong><br>(gauge)</td>
+<td>Number of requests per second this node is receiving (follower only)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.SendingBandwidthRate</strong><br>(gauge)</td>
+<td>Number of bytes per second this node is sending (leader only)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.SendingRequestRate</strong><br>(gauge)</td>
+<td>Number of requests per second this node is sending (leader only)<br><em>shown as byte/second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.SentAppendRequests</strong><br>(gauge)</td>
+<td>Number of requests that this node has sent<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.SetsFail</strong><br>(gauge)</td>
+<td>SetsFail operation count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.SetsSuccess</strong><br>(gauge)</td>
+<td>SetsSuccess operation count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.UpdateFail</strong><br>(gauge)</td>
+<td>UpdateFail operation count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.UpdateSuccess</strong><br>(gauge)</td>
+<td>UpdateSuccess operation count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.etcd.Watchers</strong><br>(gauge)</td>
+<td>Watchers operation count<br><em>shown as operation</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.file_server.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.BackingStores</strong><br>(gauge)</td>
+<td>Number of container backing store files.<br><em>shown as file</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.DepotDirs</strong><br>(gauge)</td>
+<td>Number of directories in the Garden depot.<br><em>shown as file</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.LoopDevices</strong><br>(gauge)</td>
+<td>Number of attached loop devices.<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.MetricsReporting</strong><br>(gauge)</td>
+<td>How long it took to emit the BackingStores; DepotDirs; and LoopDevices metrics.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.garden_linux.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.latency</strong><br>(gauge)</td>
+<td>Time in milliseconds that the Gorouter took to handle requests to its application endpoints.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.latency.CloudController</strong><br>(gauge)</td>
+<td>Time in milliseconds that the Gorouter took to handle requests from a component to its endpoints.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.latency.route_emitter</strong><br>(gauge)</td>
+<td>Time in milliseconds that the Gorouter took to handle requests from a component to its endpoints.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.logSenderTotalMessagesRead</strong><br>(gauge)</td>
+<td>Lifetime number of application log messages<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.ms_since_last_registry_update</strong><br>(gauge)</td>
+<td>Time in millisecond since the last route register has been been received. <br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.registry_message</strong><br>(gauge)</td>
+<td>Time in milliseconds that the Gorouter took to handle requests to its application endpoints.<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.registry_message.</strong><br>(gauge)</td>
+<td>Lifetime number of route register messages received for a component.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.registry_message.CloudController</strong><br>(gauge)</td>
+<td>Lifetime number of route register messages received for a component.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.registry_message.redis_broker</strong><br>(gauge)</td>
+<td>Lifetime number of route register messages received for a component.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.registry_message.route_emitter</strong><br>(gauge)</td>
+<td>Lifetime number of route register messages received for a component.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.rejected_requests</strong><br>(gauge)</td>
+<td>Lifetime number of bad requests received on Gorouter.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.requests.CloudController</strong><br>(gauge)</td>
+<td>Lifetime number of requests received for a component<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.requests.route_emitter</strong><br>(gauge)</td>
+<td>Lifetime number of requests received for a component<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses</strong><br>(gauge)</td>
+<td>Lifetime number of HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.1xx</strong><br>(gauge)</td>
+<td>Lifetime number of 1xx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.1XX</strong><br>(gauge)</td>
+<td>Lifetime number of 1XX HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.2xx</strong><br>(gauge)</td>
+<td>Lifetime number of 2xx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.3xx</strong><br>(gauge)</td>
+<td>Lifetime number of 3xx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.3XX</strong><br>(gauge)</td>
+<td>Lifetime number of 3XX HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.4xx</strong><br>(gauge)</td>
+<td>Lifetime number of 4xx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.4XX</strong><br>(gauge)</td>
+<td>Lifetime number of 4XX HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.5xx</strong><br>(gauge)</td>
+<td>Lifetime number of 5xx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.5XX</strong><br>(gauge)</td>
+<td>Lifetime number of 5XX HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.XXX</strong><br>(gauge)</td>
+<td>Lifetime number of XXX HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.responses.xxx</strong><br>(gauge)</td>
+<td>Lifetime number of xxx HTTP responses.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.route_lookup_time</strong><br>(gauge)</td>
+<td>Time in nanoseconds to look up a request URL in the route table.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.routed_app_requests</strong><br>(gauge)</td>
+<td>The collector sums up requests for all dea-{index} components for its output metrics.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.total_requests</strong><br>(gauge)</td>
+<td>Lifetime number of requests received.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.total_routes</strong><br>(gauge)</td>
+<td>Current number of routes registered.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.unregistry_message</strong><br>(gauge)</td>
+<td>Lifetime number of route unregister messages received for each component.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.uptime</strong><br>(gauge)</td>
+<td>Uptime in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.websocket_failures</strong><br>(gauge)</td>
+<td>Lifetime number of WebSocket failures.<br><em>shown as response</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.gorouter.websocket_upgrades</strong><br>(gauge)</td>
+<td>Lifetime number of WebSocket upgrades.<br><em>shown as connection</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.LinuxFileDescriptor</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.listeners.receivedEnvelopes</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.LoggregatorTrafficController.Uptime</strong><br>(gauge)</td>
+<td>Uptime in seconds<br><em>shown as second</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.DopplerForwarder.sentMessages</strong><br>(gauge)</td>
+<td>Lifetime number of messages sent to Doppler regardless of protocol.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeAgentListener.receivedByteCount</strong><br>(gauge)</td>
+<td>Lifetime number of bytes of Dropsonde messages read by UDP socket.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount</strong><br>(gauge)</td>
+<td>Lifetime number of Dropsonde messages read by UDP socket.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes</strong><br>(gauge)</td>
+<td>Lifetime number of sent envelopes<br><em>shown as payload</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.containerMetricReceived</strong><br>(gauge)</td>
+<td>Lifetime number of ContainerMetric messages unmarshalled.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.counterEventReceived</strong><br>(gauge)</td>
+<td>Lifetime number of CounterEvent messages unmarshalled.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.httpStartStopReceived</strong><br>(gauge)</td>
+<td>Lifetime number of HttpStartStop messages unmarshalled.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.logMessageTotal</strong><br>(gauge)</td>
+<td>Lifetime number of LogMessage messages unmarshalled.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.receivedEnvelopes</strong><br>(gauge)</td>
+<td>Lifetime number of received envelopes<br><em>shown as payload</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.dropsondeUnmarshaller.valueMetricReceived</strong><br>(gauge)</td>
+<td>Lifetime number of ValueMetric messages unmarshalled.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.MessageAggregator.counterEventReceived</strong><br>(gauge)</td>
+<td>Lifetime number of CounterEvents aggregated in Metron.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.udp.sentByteCount</strong><br>(gauge)</td>
+<td>Lifetime number of sent bytes to Doppler over UDP.<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.MetronAgent.udp.sentMessageCount</strong><br>(gauge)</td>
+<td>Lifetime number of sent messages to Doppler over UDP.<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.DesiredLRPSyncDuration</strong><br>(gauge)</td>
+<td>Time in nanoseconds that the nsync-bulker took to synchronize CF apps and Diego DesiredLRPs.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.LockHeld.v1_locks_nsync_bulker_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.LockHeldDuration.v1_locks_nsync_bulker_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.NsyncInvalidDesiredLRPsFound</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_bulker.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.nsync_listener.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityRemainingContainers</strong><br>(gauge)</td>
+<td>Remaining number of containers this cell can host. <br><em>shown as container</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityRemainingDisk</strong><br>(gauge)</td>
+<td>Remaining amount in MiB of disk available for this cell to allocate to containers.<br><em>shown as mebibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityRemainingMemory</strong><br>(gauge)</td>
+<td>Remaining amount in MiB of memory available for this cell to allocate to containers.<br><em>shown as mebibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityTotalContainers</strong><br>(gauge)</td>
+<td>Total number of containers this cell can host.<br><em>shown as container</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityTotalDisk</strong><br>(gauge)</td>
+<td>Time in nanoseconds that the nsync-bulker took to synchronize CF apps and Diego DesiredLRPs.<br><em>shown as mebibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.CapacityTotalMemory</strong><br>(gauge)</td>
+<td>Total amount in MiB of disk available for this cell to allocate to containers.<br><em>shown as mebibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.ContainerCount</strong><br>(gauge)</td>
+<td>Number of containers hosted on the cell.<br><em>shown as container</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.logSenderTotalMessagesRead</strong><br>(gauge)</td>
+<td>Lifetime number of application log messages<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.RepBulkSyncDuration</strong><br>(gauge)</td>
+<td>Time in nanoseconds that the cell rep took to synchronize the ActualLRPs it has claimed with its actual garden containers.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.rep.UnhealthyCell</strong><br>(gauge)</td>
+<td>Whether the cell has failed to pass its healthcheck against the garden backend. 0 signifies healthy and 1 signifies unhealthy.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.ConsulDownMode</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.LockHeld.v1_locks_route_emitter_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.LockHeldDuration.v1_locks_route_emitter_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.MessagesEmitted</strong><br>(gauge)</td>
+<td>The cumulative number of registration messages that this process has sent. <br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.RouteEmitterSyncDuration</strong><br>(gauge)</td>
+<td>Time in nanoseconds that the active route-emitter took to perform its synchronization pass.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.RoutesRegistered</strong><br>(gauge)</td>
+<td>Cumulative number of route registrations emitted from the route-emitter as it reacts to changes to LRPs.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.RoutesSynced</strong><br>(gauge)</td>
+<td>Cumulative number of route registrations emitted from the route-emitter during its periodic route-table synchronization.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.RoutesTotal</strong><br>(gauge)</td>
+<td>Number of routes in the route-emitter's routing table.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.route_emitter.RoutesUnregistered</strong><br>(gauge)</td>
+<td>Cumulative number of route unregistrations emitted from the route-emitter as it reacts to changes to LRPs.<br><em>shown as route</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.key_refresh_events</strong><br>(gauge)</td>
+<td>Total number of events when fresh token was fetched from UAA.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.LockHeld.v1_locks_routing_api_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.LockHeldDuration.v1_locks_routing_api_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.total_http_routes</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.total_http_subscriptions</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.total_tcp_routes</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.total_tcp_subscriptions</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.routing_api.total_token_errors</strong><br>(gauge)</td>
+<td><em></em></td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.slowConsumerAlert</strong><br>(gauge)</td>
+<td>If the nozzle is processing metrics too slow this is 1 otherwise 0<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.ssh_proxy.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.stager.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.pollCount</strong><br>(gauge)</td>
+<td>Number of times the syslog drain binder has polled the cloud controller for syslog drain bindings<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.syslog_drain_binder.totalDrains</strong><br>(gauge)</td>
+<td>Number of syslog drains returned by cloud controller. <br><em>shown as resource</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.LockHeld.v1_locks_tcp_emitter_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.LockHeldDuration.v1_locks_tcp_emitter_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_emitter.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.AverageConnectTimeMs</strong><br>(gauge)</td>
+<td>Average backend response time (in ms).<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.AverageQueueTimeMs</strong><br>(gauge)</td>
+<td>Average time spent in queue (in ms).<br><em>shown as millisecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.TotalBackendConnectionErrors</strong><br>(gauge)</td>
+<td>Total number of backend connection errors.<br><em>shown as error</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tcp_router.TotalCurrentQueuedRequests</strong><br>(gauge)</td>
+<td>otal number of requests unassigned in queue.<br><em>shown as request</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.totalMessagesReceived</strong><br>(gauge)</td>
+<td>Total number of messages received by the nozzle<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.totalMetricsSent</strong><br>(gauge)</td>
+<td>Total number of metrics sent to Datadog by the nozzle<br><em>shown as message</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_listener.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.LockHeld.v1_locks_tps_watcher_lock</strong><br>(gauge)</td>
+<td>0 means the lock is not held not held 1 means it is.<br><em>shown as monitor</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.LockHeldDuration.v1_locks_tps_watcher_lock</strong><br>(gauge)</td>
+<td>The time in nanoseconds that the lock has been held.<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.lastGCPauseTimeNS</strong><br>(gauge)</td>
+<td>Last GC pause in NS<br><em>shown as nanosecond</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.numBytesAllocated</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.numBytesAllocatedHeap</strong><br>(gauge)</td>
+<td>Bytes allocated and not yet freed<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.numBytesAllocatedStack</strong><br>(gauge)</td>
+<td>Number of bytes in the stack<br><em>shown as byte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.numFrees</strong><br>(gauge)</td>
+<td>Number of frees<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.memoryStats.numMallocs</strong><br>(gauge)</td>
+<td>Number of mallocs<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.numCPUS</strong><br>(gauge)</td>
+<td>Number of CPUs usable by current process<br><em>shown as cpu</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.tps_watcher.numGoRoutines</strong><br>(gauge)</td>
+<td>Number of existing goroutines<br><em>shown as item</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.client_authentication_count</strong><br>(gauge)</td>
+<td>Number of successful client authentication attempts since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.client_authentication_failure_count</strong><br>(gauge)</td>
+<td>Number of failed client authentication attempts since the last startup. <br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.principal_authentication_failure_count</strong><br>(gauge)</td>
+<td>Number of failed non-user authentication attempts since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.principal_not_found_count</strong><br>(gauge)</td>
+<td>Number of times non-user was not found since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.user_authentication_count</strong><br>(gauge)</td>
+<td>Number of successful authentications by the user since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.user_authentication_failure_count</strong><br>(gauge)</td>
+<td>Number of failed user authentication attempts since the last startup. <br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.user_not_found_count</strong><br>(gauge)</td>
+<td>Number of times the user was not found since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.user_password_changes</strong><br>(gauge)</td>
+<td>Number of successful password changes by the user since the last startups<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>cloudfoundry.nozzle.uaa.audit_service.user_password_failures</strong><br>(gauge)</td>
+<td>Number of failed password changes by the user since the last startup.<br><em>shown as event</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.healthy</strong><br>(gauge)</td>
+<td>The status—1 for up, 0 for down—of a job on a given node, tagged by job, e.g. 'job:api_1'.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.cpu.user</strong><br>(gauge)</td>
+<td>The user space CPU usage of a node.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.cpu.sys</strong><br>(gauge)</td>
+<td>The system CPU usage of a node.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.cpu.wait</strong><br>(gauge)</td>
+<td>The CPU wait for a node.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.load.1m</strong><br>(gauge)</td>
+<td>The one minute load average for a node.<em></em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.mem.percent</strong><br>(gauge)</td>
+<td>The percentage memory usage of a node.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.mem.kb</strong><br>(gauge)</td>
+<td>The memory usage of a node in KiB.<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.swap.percent</strong><br>(gauge)</td>
+<td>The percentage swap usage of a node.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.swap.kb</strong><br>(gauge)</td>
+<td>The swap usage of a node in KiB.<br><em>shown as kibibyte</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.system.percent</strong><br>(gauge)</td>
+<td>The percentage disk usage of a node's system disk.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.system.inode_percent</strong><br>(gauge)</td>
+<td>The percentage inode usage of a node's system disk.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.ephemeral.percent</strong><br>(gauge)</td>
+<td>The percentage disk usage of a node's ephemeral disk.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.ephemeral.inode_percent</strong><br>(gauge)</td>
+<td>The percentage inode usage of a node's ephemeral disk.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.persistent.percent</strong><br>(gauge)</td>
+<td>The percentage disk usage of a node's persistent disk.<br><em>shown as percent</em>
+</td>
+</tr>
+<tr>
+<td>
+<strong>bosh.healthmonitor.system.disk.persistent.inode_percent</strong><br>(gauge)</td>
+<td>The percentage inode usage of a node's persistent disk.<br><em>shown as percent</em>
+</td>
+</tr>
+</domain-name>
+</td>
+</tr></domain-name>
+</td>
+</tr>
+</table>
+</body></html>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row" id="footer">
+    <div class=".col-md-12">Need some help?  <a href="/help/">Get in touch.</a> &bull; Mistake in the docs? <a href="https://github.com/DataDog/documentation/issues">Let us know.</a></div>
+    <div class=".col-md-12"><a href="/ja">日本語ドキュメントへのリンク。</a></div>
+    <div class=".col-md-12">&copy; Datadog, Inc. All rights reserved.</div>
+  </div>
+</div>
+
+    
+
+        <script type="text/javascript">
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://don08600y3gfm.cloudfront.net/ps3b/static/js/plow232.js","snowplow"));
+      window.snowplow('newTracker', 'co', 'collector.datadoghq.com', { // Initialise a tracker
+      appId: 'datadog', // Application ID. Make sure you use the same value across all the tags you fire on your trial
+      platform: 'web',
+      cookieDomain: '.datadoghq.com',
+      contexts: {
+        performanceTiming: true,
+        webPage: true
+        }
+      });
+      window.snowplow('enableActivityTracking', 5, 5); // Ping every 30 seconds after 30 seconds
+      window.snowplow('enableLinkClickTracking');
+      window.snowplow('trackPageView');
+    </script>
+
+        <script type="text/javascript">
+      (function() {
+       var didInit = false;
+       function initMunchkin() {
+         if(didInit === false) {
+           didInit = true;
+           Munchkin.init('875-UVY-685');
+         }
+       }
+       var s = document.createElement('script');
+       s.type = 'text/javascript';
+       s.async = true;
+       s.src = '//munchkin.marketo.net/munchkin.js';
+       s.onreadystatechange = function() {
+         if (this.readyState == 'complete' || this.readyState == 'loaded') {
+           initMunchkin();
+         }
+       };
+       s.onload = initMunchkin;
+       document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+
+
+    <!-- <script src="/static/jquery-1.7.2.min.js"></script> -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch-set.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+<script type="text/javascript" src="/tipuesearch/tipuesearch.js"></script>
+<script src="/static/datadog-docs.js"></script>
+
+
+    <!-- No page Javascript -->
+
+  </body>
+</html>
