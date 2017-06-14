@@ -199,6 +199,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Datadog's integrated APM tool eliminates the traditional separation between infrastructure and application performance monitoring.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055707Z" creationid="papago" creationdate="20170614T055707Z">
+        <seg>Datadogに統合されたAPMツールは、従来の監視システムにぞんざいしていたインフラストラクチャとアプリケーションのパフォーマンス監視の壁を取り除きました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Each of the metrics retrieved from AWS will be assigned the same tags that appear in the AWS console, including but not limited to host name, security-groups, and more.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103702Z" creationid="papago" creationdate="20170613T103500Z">
@@ -931,6 +939,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054221Z" creationid="papago" creationdate="20170614T054221Z">
         <seg>トレースが正常に動作していると、表示されたメッセージに次のような内容が表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can find additional documentation on [the GoDoc Package page](https://godoc.org/github.com/DataDog/dd-trace-go/tracer).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055405Z" creationid="papago" creationdate="20170614T055405Z">
+        <seg>[GoDocパッケージのページ]（https://godoc.org/github.com/DataDog/dd-trace-go/tracer）に関する追加のドキュメントがあります。</seg>
       </tuv>
     </tu>
     <tu>
