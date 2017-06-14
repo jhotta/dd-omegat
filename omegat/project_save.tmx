@@ -247,6 +247,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For Docker, you will likely need to specify the host or ip address.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054827Z" creationid="papago" creationdate="20170614T054827Z">
+        <seg>Docker環境の場合は、ホストまたはIPアドレスを指定する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For a sql database, a resource would be the sql of the query itself like .</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113706Z" creationid="papago" creationdate="20170613T113706Z">
@@ -275,6 +283,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113135Z" creationid="papago" creationdate="20170613T113135Z">
         <seg>たとえば、複雑なWeb要求を処理するために費やされる時間全体を追跡するためにトレースを使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example: tracer.configure(hostname="172.17.0.1")</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054837Z" creationid="papago" creationdate="20170614T054837Z">
+        <seg>例：tracer.configure（hostname = "172.17.0.1"）</seg>
       </tuv>
     </tu>
     <tu>
@@ -647,6 +663,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The agent accepts requests by binding to 0.0.0.0 (or the appropriate IP address).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054905Z" creationid="papago" creationdate="20170614T054905Z">
+        <seg>エージェントは、0.0.0.0（または適切なIPアドレス）にバインドして要求を受け入れます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The ddtrace library includes support for a number of web frameworks, including:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111703Z" creationid="papago" creationdate="20170613T111703Z">
@@ -799,6 +823,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Tracing is supported in Docker, but you'll have to make sure:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054726Z" creationid="papago" creationdate="20170614T054726Z">
+        <seg>トレースはDocker環境でもサポートされていますが、以下を確認する必要があります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Tracing is supported in the Datadog Agent for Linux and Docker.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053931Z" creationid="papago" creationdate="20170614T053931Z">
@@ -863,6 +895,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>You can set the agent binding via  in  or the DD_BIND_HOST env variable</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054952Z" creationid="papago" creationdate="20170614T054952Z">
+        <seg>DD_BIND_HOSTのenv変数を使用してエージェントバインディングを設定できます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>You may also send multiple traces.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052845Z" creationid="papago" creationdate="20170614T052845Z">
@@ -875,6 +915,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103210Z" creationid="papago" creationdate="20170613T103032Z">
         <seg>[AWS Console]（http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html#turning_on_billing_metrics）の請求メトリックスを有効にする必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your application is able to connect to the Agent (by default it submits to localhost).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054802Z" creationid="papago" creationdate="20170614T054802Z">
+        <seg>アプリケーションはエージェントに接続できる必要があります（デフォルトでは、localhostに送信されます）。</seg>
       </tuv>
     </tu>
     <tu>
