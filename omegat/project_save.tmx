@@ -167,6 +167,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Connection refused</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054301Z" creationid="papago" creationdate="20170614T054301Z">
+        <seg>接続拒否</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Data Retention</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053822Z" creationid="papago" creationdate="20170614T053822Z">
@@ -395,6 +403,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052954Z" creationid="papago" creationdate="20170614T052954Z">
         <seg>配信に失敗すると、500のステータスコードとエラーメッセージが返されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you're receiving  in your application logs, either the trace functionality is not running or your application is having trouble connecting to the Datadog Agent.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054513Z" creationid="papago" creationdate="20170614T054513Z">
+        <seg>アプリケーションログを受け取っていない場合は、トレース機能が実行されていないか、アプリケーションからDatadog Agentへの接続に問題があります。</seg>
       </tuv>
     </tu>
     <tu>
@@ -687,6 +703,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>To enable the trace agent add  to your  file and restart .</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054117Z" creationid="papago" creationdate="20170614T054117Z">
+        <seg>トレースエージェントを有効にするには、ファイルに追加し再起動します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>To instrument these libraries, please see [the library documentation](http://pypi.datadoghq.com/trace/docs/#other-libraries)</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
@@ -715,6 +739,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112949Z" creationid="papago" creationdate="20170613T112949Z">
         <seg>トレース</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Trace agent source code is available on [the Github repo](https://github.com/DataDog/datadog-trace-agent).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054014Z" creationid="papago" creationdate="20170614T054014Z">
+        <seg>トレースエージェントのソースコードは[Github repo]（https://github.com/DataDog/datadog-trace-agent）で利用できます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -751,6 +783,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Tracing functionality is an opt-in process.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054032Z" creationid="papago" creationdate="20170614T054032Z">
+        <seg>トレース機能はオプトインプロセスです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Tracing is supported in the Datadog Agent for Linux and Docker.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053931Z" creationid="papago" creationdate="20170614T053931Z">
@@ -767,10 +807,34 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Verify this by tailing the logs:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054125Z" creationid="papago" creationdate="20170614T054125Z">
+        <seg>ログをテーリングしてこれを確認します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Verifying Functionality</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054020Z" creationid="papago" creationdate="20170614T054020Z">
+        <seg>機能の確認</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>We provide some [official libraries](/tracing/#instrument-your-application) that simplify sending metrics to the Datadog Agent, however you may want to interact directly with the API to instrument applications that cannot use the libraries or are written in languages that don't yet have an official Datadog Tracing library.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052437Z" creationid="papago" creationdate="20170614T052437Z">
         <seg>Datadog Agentへのメトリクス送信を簡素化するためにいくつかの[公式ライブラリ]（/ tracing /＃instrument-your-application）を公開していますが、APIを直接使用してライブラリが使用できないアプリケーションや、公式のDatadog Tracingライブラリが存在していないプログラミング言語で書かれたアプリケーションのメトリクスを送信することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When tracing is working properly you will see flushed payload messages similar to the following:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054221Z" creationid="papago" creationdate="20170614T054221Z">
+        <seg>トレースが正常に動作していると、表示されたメッセージに次のような内容が表示されます。</seg>
       </tuv>
     </tu>
     <tu>
