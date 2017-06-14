@@ -87,6 +87,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>**a maximum length of 50 characters**</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053746Z" creationid="papago" creationdate="20170614T053746Z">
+        <seg>**最大50文字の長さ**に制限されます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>**a maximum length of 5000 bytes**</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053817Z" creationid="papago" creationdate="20170614T053817Z">
+        <seg>**最大長は5000バイト**に制限されます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>**must be lowercase, alphanumeric characters**</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053645Z" creationid="papago" creationdate="20170614T053645Z">
@@ -147,6 +163,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111556Z" creationid="papago" creationdate="20170613T111556Z">
         <seg>互換性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Data Retention</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053822Z" creationid="papago" creationdate="20170614T053822Z">
+        <seg>データ保持</seg>
       </tuv>
     </tu>
     <tu>
@@ -295,6 +319,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For more information, please reference [the project on Github](https://github.com/DataDog/heroku-buildpack-datadog)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053918Z" creationid="papago" creationdate="20170614T053918Z">
+        <seg>詳細については、[Githubのプロジェクト]（https://github.com/DataDog/heroku-buildpack-datadog）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For now, using functions like day_before is out of scope for the graphical editor so you have to use the JSON editor.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114743Z" creationid="papago" creationdate="20170613T114743Z">
@@ -319,6 +351,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For other architectures, you can use the source install (coming soon).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054002Z" creationid="papago" creationdate="20170614T053941Z">
+        <seg>他のアーキテクチャーの場合は、ソースインストールを使用することができます（近々正式版を公開します）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Here is an example of aws.ec2.cpuutilization with the month_before value shown as a thin, solid line.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T041900Z" creationid="papago" creationdate="20170614T041900Z">
@@ -339,6 +379,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114750Z" creationid="papago" creationdate="20170613T114750Z">
         <seg>このグラフのJSONは次のとおりです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Heroku support is currently provided by the Datadog Heroku Buildpack.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053911Z" creationid="papago" creationdate="20170614T053911Z">
+        <seg>Herokuサポートは現在、Datadog Heroku Buildpackによって提供されています。</seg>
       </tuv>
     </tu>
     <tu>
@@ -395,6 +443,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112637Z" creationid="papago" creationdate="20170613T112637Z">
         <seg>また、次のライブラリのサポートも含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Metadata and resource names have</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053800Z" creationid="papago" creationdate="20170614T053800Z">
+        <seg>メタデータとリソース名は</seg>
       </tuv>
     </tu>
     <tu>
@@ -499,6 +555,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113433Z" creationid="papago" creationdate="20170613T113433Z">
         <seg>サービス</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service names and metadata keys are limited to</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053719Z" creationid="papago" creationdate="20170614T053719Z">
+        <seg>サービス名とメタデータキーは、</seg>
       </tuv>
     </tu>
     <tu>
@@ -655,6 +719,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Trace data is currently being stored for about 36 hours.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053902Z" creationid="papago" creationdate="20170614T053902Z">
+        <seg>トレースデータは現在約36時間保存されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Traces are a list of spans as JSON objects containing the span information:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052548Z" creationid="papago" creationdate="20170614T052548Z">
@@ -675,6 +747,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T051648Z" creationid="papago" creationdate="20170614T051648Z">
         <seg>トレースデータは、HTTP APIを介してDatadog Agentに送信されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tracing is supported in the Datadog Agent for Linux and Docker.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053931Z" creationid="papago" creationdate="20170614T053931Z">
+        <seg>トレースは、LinuxおよびDockerのDatadog Agentでサポートされています。</seg>
       </tuv>
     </tu>
     <tu>
