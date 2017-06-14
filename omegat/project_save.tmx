@@ -1113,8 +1113,8 @@
       <tuv lang="EN-US">
         <seg>Tracing is supported in the Datadog Agent for Linux and Docker.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053931Z" creationid="papago" creationdate="20170614T053931Z">
-        <seg>トレースは、LinuxおよびDockerのDatadog Agentでサポートされています。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080834Z" creationid="papago" creationdate="20170614T053931Z">
+        <seg>LinuxおよびDockerのDatadog Agentで、トレースをサポートしています。</seg>
       </tuv>
     </tu>
     <tu>
