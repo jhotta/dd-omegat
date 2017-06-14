@@ -625,8 +625,8 @@
       <tuv lang="EN-US">
         <seg>Naming</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053546Z" creationid="papago" creationdate="20170614T053546Z">
-        <seg>命名</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080219Z" creationid="papago" creationdate="20170614T053546Z">
+        <seg>命名規則</seg>
       </tuv>
     </tu>
     <tu>
@@ -761,8 +761,8 @@
       <tuv lang="EN-US">
         <seg>Service names and resource names</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053552Z" creationid="papago" creationdate="20170614T053552Z">
-        <seg>サービス名とリソース名</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080233Z" creationid="papago" creationdate="20170614T053552Z">
+        <seg>サービス名とリソース名は、</seg>
       </tuv>
     </tu>
     <tu>
@@ -1283,6 +1283,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T041955Z" creationid="papago" creationdate="20170614T041955Z">
         <seg>[fuzzy]要求(R)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>| File setting | Env variable | Description | |---|---|---| | **main** | |  |  | The Datadog Agent will accept trace metrics when the value is set to .</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080056Z" creationid="papago" creationdate="20170614T080056Z">
+        <seg>[fuzzy]デフォルト値なし</seg>
       </tuv>
     </tu>
     <tu>
