@@ -11,7 +11,7 @@ Get metrics from your app in real time to
 
 ![spark graph](/static/images/sparkgraph.png)
 
-# Configuration*Install Datadog Agent on the Master Node where the ResourceManager is running*
+# 設定*Install Datadog Agent on the Master Node where the ResourceManager is running*
 
 1.  Configure the agent to connect to the ResourceManager. Edit `conf.d/spark.yaml`
 

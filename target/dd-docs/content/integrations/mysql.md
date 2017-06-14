@@ -29,7 +29,7 @@ mysql -u datadog --password=<UNIQUEPASSWORD> -e "show slave status" && \
 echo -e "\033[0;32mMySQL grant - OK\033[0m" || \
 echo -e "\033[0;31mMissing REPLICATION CLIENT grant\033[0m"
 
-# Configuration
+# 設定
 
 1. Edit the mysql.yaml file in your agent's conf.d directory, replacing ```<UNIQUEPASSWORD>``` with the password used above.
 

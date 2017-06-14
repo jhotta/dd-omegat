@@ -8,7 +8,7 @@ This Agent check monitors the availability and uptime of non-Datadog StatsD serv
 
 This check does NOT forward application metrics from StatsD servers to Datadog.
 
-# Configuration
+# 設定
 
 `/etc/dd-agent/conf.d/statsd.yaml`To configure the Agent to connect to StatsD, edit . An example configuration can be found at [statsd.yaml.example](https://github.com/gphat/dd-agent/blob/master/conf.d/statsd.yaml.example).
 

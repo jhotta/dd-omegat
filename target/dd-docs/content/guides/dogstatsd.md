@@ -130,7 +130,7 @@ statsd.event('There might be a storm tomorrow', 'A friend warned me earlier.')
   - `alert_type` (String, None) — default: 'info' — Can be 'error', 'warning', 'info' or 'success'.
   - `tags` - (Array[str], None) — default: None — An array of tags
 
-## Configuration
+## 設定
 
 DogStatsD supports the following option, that can be tweaked in the Agent <a href="https://github.com/DataDog/dd-agent/blob/master/datadog.conf.example"> configuration file</a>:
 

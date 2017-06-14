@@ -12,7 +12,7 @@ Enable this integration to see in Datadog all your SES metrics.
 
 `ses:get`If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws). The only requirement for this integration is the permission .
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that SES is checked under metric collection.
 

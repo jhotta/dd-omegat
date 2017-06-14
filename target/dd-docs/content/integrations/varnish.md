@@ -579,7 +579,7 @@ A breakdown by Varnish version is available below.
 
 If you're running Varnish 4.1+, you must add the dd-agent user to the varnish group: `$ sudo usermod -G varnish -a dd-agent`
 
-# Configuration
+# 設定
 
 <%= insert_example_links%>
 

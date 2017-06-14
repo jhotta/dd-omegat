@@ -12,7 +12,7 @@ Enable the PHP-FPM check to monitor the state of your FPM pool and track request
 
 No installation steps are required for this integration.
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to your FPM status endpoint (look at your pools definition). Edit conf.d/php_fpm.yaml:
 

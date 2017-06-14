@@ -10,7 +10,7 @@ Connects Marathon to Datadog in order to:
 
 <%= insert_example_links%>
 
-# Configuration*NOTICE : If you include the acs_url parameter in the marathon.yaml config, the user and password will be used to generate an ACS token, not as basic auth for the marathon api.*
+# 設定*NOTICE : If you include the acs_url parameter in the marathon.yaml config, the user and password will be used to generate an ACS token, not as basic auth for the marathon api.*
 
 1.  Configure the Agent to connect to Marathon. Edit conf.d/marathon.yaml:
 

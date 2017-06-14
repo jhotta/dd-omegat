@@ -40,7 +40,7 @@ JIRA is an issue and project tracking system for software teams. This integratio
 
 	![settings](/static/images/jira/JiraInstallation6.png){:style="width:75%;"}
 
-# Configuration
+# 設定
 
 11. Navigate back to the Jira Tile
 

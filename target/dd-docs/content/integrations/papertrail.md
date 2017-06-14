@@ -29,7 +29,7 @@ To capture metrics from Papertrail:
 
 Papertrail will update Datadog at your chosen interval.
 
-# Configuration
+# 設定
 
 No configuration steps are required for this integration.
 

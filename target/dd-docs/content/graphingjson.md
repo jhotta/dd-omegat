@@ -22,14 +22,14 @@ The graph definition language is well-formed JSON and is structured in four part
 
 Here is how they fit together in a JSON dictionary:
 
-{
+[fuzzy]要求(R)
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "metric{scope}"
     }
   ],
   "events": [
-    {
+    [fuzzy]要求(R)
       "q": "search query"
     }
   ],
@@ -54,7 +54,7 @@ In other words at the highest level the JSON structure is a dictionary with two,
 The general format for a series is:
 
 [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "function(aggregation method:metric{scope} [by {group}])"
     }
 ]
@@ -117,13 +117,13 @@ For any given metric, data may come from a number of hosts. The data will normal
 
 You can apply simple arithmetic to a Series (+, -, * and /). In this example we graph 5-minute load and its double:
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "system.load.5{intake} * 2"
     },
-    {
+    [fuzzy]要求(R)
       "q": "system.load.5{intake}"
     }
   ]
@@ -131,10 +131,10 @@ You can apply simple arithmetic to a Series (+, -, * and /). In this example we 
 
 You can also add, substract, multiply and divide a Series. Beware that Datadog does not enforce consistency at this point so you *can* divide apples by oranges.
 
-{
+[fuzzy]要求(R)
     "viz": "timeseries",
     [fuzzy]要求(R)
-      {
+      [fuzzy]要求(R)
         "q": "metric{apples} / metric{oranges}"
       }
     ]
@@ -147,7 +147,7 @@ You can also add, substract, multiply and divide a Series. Beware that Datadog d
 You can overlay any event from Datadog. The general format is:
 
 "events": [
-  {
+  [fuzzy]要求(R)
     "q": "search query"
   }
 ]
@@ -155,7 +155,7 @@ You can overlay any event from Datadog. The general format is:
 For instance, to indicate that you want events for host X and tag Y:
 
 "events": [
-  {
+  [fuzzy]要求(R)
     "q": "host:X tags:Y"
   }
 ]
@@ -163,7 +163,7 @@ For instance, to indicate that you want events for host X and tag Y:
 or if you're looking to display all errors:
 
 "events": [
-  {
+  [fuzzy]要求(R)
     "q": "status:error"
   }
 ]
@@ -194,13 +194,13 @@ The Time Series can be further broken down to:
 `requests`The representation is automatically derived from having multiple  values.
 
 [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "metric1{scope}"
     },
-    {
+    [fuzzy]要求(R)
       "q": "metric2{scope}"
     },
-    {
+    [fuzzy]要求(R)
       "q": "metric3{scope}"
     }
   ]
@@ -212,7 +212,7 @@ The Time Series can be further broken down to:
 In the case of related Time Series, you can easily draw them as stacked areas by using the following syntax:
 
 [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "metric1{scope}, metric2{scope}, metric3{scope}"
     }
 ]
@@ -227,7 +227,7 @@ A useful visualization is to represent a metric shared across hosts and stack th
 Here's how to do it for any metric:
 
 "requests" [
-  {
+  [fuzzy]要求(R)
      "q": "system.net.bytes_rcvd{some_tag, device:eth0} by {host}"
   }
 ]
@@ -235,7 +235,7 @@ Here's how to do it for any metric:
 Note that in this case you can only have 1 query. But you can also split by device, or a combination of both:
 
 "requests" [
-  {
+  [fuzzy]要求(R)
      "q": "system.net.bytes_rcvd{some_tag} by {host,device}"
   }
 ]
@@ -331,10 +331,10 @@ The following will hide data points below 2:
 
 Here is a full JSON example:
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "system.cpu.idle{host:hostname}",
       "stacked": false
     }
@@ -356,10 +356,10 @@ Here is a full JSON example:
 
 Here is an example using the <code>rate()</code> function, which takes only a single metric as a parameter. Other functions, with the exception of <code>top()</code> and <code>top_offset()</code>, have identical syntax.
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "rate(sum:system.load.5{role:intake-backend2} by {host})",
       "stacked": false
     }
@@ -368,10 +368,10 @@ Here is an example using the <code>rate()</code> function, which takes only a si
 
 Here is an example using the <code>top()</code> function:
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "top(avg:system.cpu.iowait{*} by {host}, 5, 'max', 'desc')",
       "stacked": false
     }
@@ -384,10 +384,10 @@ This will show the graphs for the five series with the highest peak <code>system
 
 To look at the hosts with the 6th through 10th highest values (for example), use <code>top_offset</code> instead:
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "top_offset(avg:system.cpu.iowait{*} by {host}, 5, 'max', 'desc', 5)",
       "stacked": false
     }
@@ -396,10 +396,10 @@ To look at the hosts with the 6th through 10th highest values (for example), use
 
 Here is an example using the <code>week_before()</code> function:
 
-{
+[fuzzy]要求(R)
   "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "sum:haproxy.count_per_status{status:available} - week_before(sum:haproxy.count_per_status{status:available})"
     }
   ]

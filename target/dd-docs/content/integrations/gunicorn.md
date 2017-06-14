@@ -17,7 +17,7 @@ The Datadog Agent collects one main metric about Gunicorn: the number of worker 
 
 `gunicorn``setproctitle``gunicorn.workers`The Gunicorn check requires your Gunicorn app's Python environment to have the [](https://pypi.python.org/pypi/setproctitle) package; without it, the Datadog Agent will always report that it cannot find a  master process (and hence, cannot find workers, either). Install the  package in your app's Python environment if you want to collect the  metric.
 
-# Configuration
+# 設定
 
 ### Configure the Agent
 

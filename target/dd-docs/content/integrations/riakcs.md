@@ -10,7 +10,7 @@ Capture Riak CS (Cloud Storage) metrics in Datadog to:
 * Visualize key RiakCS metrics.
 * Correlate RiakCS performance with the rest of your applications.
 
-### Configuration
+### 設定
 
 To configure the RiakCS integration, copy riakcs.yaml.example if the conf.d directory to riakcs.yaml and make the appropriate changes.
 

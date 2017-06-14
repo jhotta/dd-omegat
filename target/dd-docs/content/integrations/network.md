@@ -8,7 +8,7 @@
 The network check collects TCP and IP network metrics from the agent's host.
 
 
-# Configuration
+# 設定
 
 `network.yaml.default``network.yaml`The network check is enabled by default. If you would like to make any changes to the check, rename  to  and edit:
 

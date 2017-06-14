@@ -10,7 +10,7 @@ Get metrics related to disk usage and IO metrics.
 
 Included by default with the Datadog agent installation.
 
-# Configuration
+# 設定
 
 
 This configuration does not require any explicit configuration to begin monititoring your storage devices. One however can override the default settings to adjust how disks are monitored.

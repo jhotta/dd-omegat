@@ -24,7 +24,7 @@ To capture errors from Honeybadger:
 5.  Add your API key.
 6.  Save the integration.
 
-# Configuration
+# 設定
 
 Click the **Install Integration** button on the Honeybadger Integration Tile. configuration steps are required for this integration.
 

@@ -13,7 +13,7 @@ summary: The day_before() function allows you to overlay data from the previous 
 #!json
 {
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "day_before(avg:nginx.net.connections{*})",
       "type": "line",
       "style": {
@@ -21,7 +21,7 @@ summary: The day_before() function allows you to overlay data from the previous 
         "width": "thin"
       }
     },
-    {
+    [fuzzy]要求(R)
       "q": "avg:nginx.net.connections{*}",
       "style": {
         "palette": "warm"

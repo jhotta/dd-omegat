@@ -72,7 +72,7 @@ All of these methods take the following arguments:
 
 `self.event(...)`At any time during your check, you can make a call to  with one argument: the payload of the event. Your event should be structured like this:
 
-{
+[fuzzy]要求(R)
     "timestamp": int, the epoch timestamp for the event,
     "event_type": string, the event name,
     "api_key": string, the api key for your account,
@@ -255,7 +255,7 @@ Now we will guide you through the process of writing a basic check that will che
   - If the response times out, an event will be submitted with the URL and  timeout.
   - If the response code != 200, an event will be submitted with the URL and  the response code.
 
-#### Configuration
+#### 設定
 
 `instance``check`First we will want to define how our configuration should look, so that we know how to handle the structure of the  payload that is passed into the call to .
 

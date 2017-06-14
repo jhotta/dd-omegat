@@ -18,7 +18,7 @@ For more information on syncing your system clock with NTP, [see this article in
 
 No installation steps are required for this integration.
 
-# Configuration
+# 設定
 
 1.  `ntp.yaml.default``ntp.yaml`The ntp check is enabled by default. If you would like to make any changes to the configuration, move  to  and edit:
 

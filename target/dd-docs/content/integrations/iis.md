@@ -23,7 +23,7 @@ winmgmt /resyncperf
 
     winmgmt /resyncperf
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to IIS. Edit conf.d/iis.yaml and add this server to instances with (optional) tags:
 

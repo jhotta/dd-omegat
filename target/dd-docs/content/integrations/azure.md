@@ -497,7 +497,7 @@ azure cli >= 0.10.2:
 
 Learn more about how to monitor Azure VM performance metrics with [our series of posts](https://www.datadoghq.com/blog/how-to-monitor-microsoft-azure-vms/). We detail the key performance metrics, how to collect them, and how to use Datadog to monitor Azure VMs.
 
-### Configuration
+### 設定
 {: #configuration}
 
 Optionally, you can limit the Azure VMs that are pulled into Datadog by entering tags in the "Optionally filter to VMs with tag" textbox. This comma separated list of tags (in the form 'key:value') defines a filter that we will use when collecting metrics from Azure VMs. Wildcards, such as '?' (for single characters) and '*' (for multiple characters) can also be used. Only VMs that match one of the defined tags will be imported into Datadog. The rest will be ignored.

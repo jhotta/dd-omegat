@@ -8,7 +8,7 @@ Capture NameNode and DataNode HDFS metrics in Datadog to:
 * Visualize cluster health, performance and utilization.
 * Analyze and inspect individual node utilization
 
-# Configuration*These steps only apply to the Datadog Agent >= 5.7.0, please refer to the conf.d/hdfs.yaml file for older versions of the Agent.*
+# 設定*These steps only apply to the Datadog Agent >= 5.7.0, please refer to the conf.d/hdfs.yaml file for older versions of the Agent.*
 
 1.  Configure the NameNode agent to connect to the JMX URI: Edit conf.d/hdfs_namenode.yaml
 

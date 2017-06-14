@@ -10,7 +10,7 @@ With Webhooks you'll be able to:
 * Alert your services when a metric alert is triggered.
 
 
-# Configuration
+# 設定
 
 Go to the [webhook integration tile](https://app.datadoghq.com/account/settings#integrations/webhooks) and enter the URL and name of the webhook you want to use
 
@@ -30,7 +30,7 @@ You can also specify your own payload in order to add your own custom fields to 
 
 `https://{Your-Account-id}:{Your-Auth-Token}@api.twilio.com/2010-04-01/Accounts/{Your-Account-id}/Messages.json`Use as URL:  and as payload
 
-{
+[fuzzy]要求(R)
     "To":"+1347XXXXXXX",
     "From":"+1347XXXXXX",
     "Body":"$EVENT_TITLE \n Related Graph: $SNAPSHOT"
@@ -44,7 +44,7 @@ You can also specify your own payload in order to add your own custom fields to 
 
 `https://{Your-Jira-Username}:{Your-Jira-Password}@{Your-Domain}.atlassian.net/rest/api/2/issue`Use as URL:  and as payload
 
-{
+[fuzzy]要求(R)
     "fields": {
         "project": {
             "key": "YOUR-PROJECT-KEY"

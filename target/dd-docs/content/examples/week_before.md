@@ -1,5 +1,5 @@
 --- title: Using week_before() function kind: example tags:  - "Graphing Functions"  - Dashboards  - JSON Editing  - "Cassandra Metrics"
-summary: The week_before() function allows you to overlay data from the previous week on your current data.
+[fuzzy]summary：month_before（）関数を使用すると、前の月のデータを現在のデータにオーバーレイすることができます。
 ---
 [Graphing Primer]（http://docs.datadoghq.com/graphing/）ページには、グラフに適用できる関数のリストがあります。そこには、パターン<timeperiod> _before（）の1組の関数が存在する。これらの関数は、対応する期間の値をグラフに表示します。それ自体では、価値が高いわけではないかもしれませんが、現在の価値と合わせて、アプリケーションのパフォーマンスに有用な情報を提供するかもしれません。 
 
@@ -13,7 +13,7 @@ For now, using functions like week_before is out of scope for the graphical edit
 #!json
 {
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "week_before(avg:cassandra.db.read_count{*})",
       "type": "line",
       "style": {
@@ -22,7 +22,7 @@ For now, using functions like week_before is out of scope for the graphical edit
         "type": "dotted"
       }
     },
-    {
+    [fuzzy]要求(R)
       "q": "avg:cassandra.db.read_count{*}",
       "style": {
         "palette": "orange"

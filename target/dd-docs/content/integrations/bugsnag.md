@@ -16,7 +16,7 @@ With this integration:
 
 No installation is required.
 
-### Configuration
+### 設定
 
 To integrate Bugsnag with Datadog:
 

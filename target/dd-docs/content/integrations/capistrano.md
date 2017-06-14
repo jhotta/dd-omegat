@@ -16,7 +16,7 @@ Install the Capistrano Datadog integration to:
 
     sudo gem install dogapi --version ">=1.10.0"
 
-# Configuration
+# 設定
 
 `Capfile`Add the following to the beginning of any  whose tasks you want to send to Datadog:
 

@@ -22,7 +22,7 @@ newhlevel: true
 
 1.  Once your configuration changes are finished, simply save them, and you're good to go!
 
-# Configuration
+# 設定
 
 No configuration steps are required for this integration.
 

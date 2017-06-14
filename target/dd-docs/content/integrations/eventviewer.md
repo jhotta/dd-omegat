@@ -10,7 +10,7 @@ Connect Event Viewer to Datadog in order to:
 * Correlate system and application events with the rest of your application.
 
 
-### Configuration
+### 設定
 
 
 Use the Windows Event Viewer GUI to list all the event logs you can capture with this integration.

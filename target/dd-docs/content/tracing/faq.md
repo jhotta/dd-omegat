@@ -2,42 +2,42 @@
 customnav: tracingnav
 ---
 
-### Naming
+### 命名
 
-* Service names and resource names **must be lowercase, alphanumeric characters**.
-* Service names and metadata keys are limited to **a maximum length of 50 characters**.
-* Metadata and resource names have **a maximum length of 5000 bytes**.
+* サービス名とリソース名 **小文字、英数字である必要があります**.
+* サービス名とメタデータキーは、 **最大50文字の長さ**に制限されます.
+* メタデータとリソース名は **最大長は5000バイト**に制限されます.
 
-### Data Retention
+### データ保持
 
-Trace data is currently being stored for about 36 hours.
+トレースデータは現在約36時間保存されています。
 
 ### Heroku
 
-Heroku support is currently provided by the Datadog Heroku Buildpack. For more information, please reference [the project on Github](https://github.com/DataDog/heroku-buildpack-datadog)
+Herokuサポートは現在、Datadog Heroku Buildpackによって提供されています。詳細については、[Githubのプロジェクト]（https://github.com/DataDog/heroku-buildpack-datadog）を参照してください。
 
 ### Agent Source
 
-Tracing is supported in the Datadog Agent for Linux and Docker. For other architectures, you can use the source install (coming soon). Trace agent source code is available on [the Github repo](https://github.com/DataDog/datadog-trace-agent).
+トレースは、LinuxおよびDockerのDatadog Agentでサポートされています。他のアーキテクチャーの場合は、ソースインストールを使用することができます（近々正式版を公開します）。トレースエージェントのソースコードは[Github repo]（https://github.com/DataDog/datadog-trace-agent）で利用できます。
 
-### Verifying Functionality
+### 機能の確認
 
-`apm_enabled: true``datadog.conf``datadog-agent`Tracing functionality is an opt-in process. To enable the trace agent add  to your  file and restart . Verify this by tailing the logs:
+`apm_enabled: true``datadog.conf``datadog-agent`トレース機能はオプトインプロセスです。トレースエージェントを有効にするには、ファイルに追加し再起動します。ログをテーリングしてこれを確認します。
 
 tail -f /var/log/datadog/trace-agent.log
 
 
-When tracing is working properly you will see flushed payload messages similar to the following:
+トレースが正常に動作していると、表示されたメッセージに次のような内容が表示されます。
 
 2017-02-07 23:12:10 INFO (endpoint.go:140) - flushed payload to the API, time:185.409088ms, size:1437
 2017-02-07 23:12:20 INFO (endpoint.go:140) - flushed payload to the API, time:17.781515ms, size:753
 
-### Connection refused
+### 接続拒否
 
-`error: [Errno 111] Connection refused`If you're receiving  in your application logs, either the trace functionality is not running or your application is having trouble connecting to the Datadog Agent. This often happens because of a misconfiguration in Docker environments. Tracing is supported in Docker, but you'll have to make sure:
+`error: [Errno 111] Connection refused`アプリケーションログを受け取っていない場合は、トレース機能が実行されていないか、アプリケーションからDatadog Agentへの接続に問題があります。この状態は、Docker環境で設定にミスがある場合によく見かけます。トレースはDocker環境でもサポートされていますが、以下を確認する必要があります：
 
-1.  Your application is able to connect to the Agent (by default it submits to localhost). For Docker, you will likely need to specify the host or ip address. For example: tracer.configure(hostname="172.17.0.1")
+1.  アプリケーションはエージェントに接続できる必要があります（デフォルトでは、localhostに送信されます）。Docker環境の場合は、ホストまたはIPアドレスを指定する必要があります。例：tracer.configure（hostname = "172.17.0.1"）
 
-`bind_host``/etc/dd-agent/datadog.conf`2) The agent accepts requests by binding to 0.0.0.0 (or the appropriate IP address). You can set the agent binding via  in  or the DD_BIND_HOST env variable
+`bind_host``/etc/dd-agent/datadog.conf`2)エージェントは、0.0.0.0（または適切なIPアドレス）にバインドして要求を受け入れます。DD_BIND_HOSTのenv変数を使用してエージェントバインディングを設定できます
 
-For more info see [the docker-dd-agent documentation](https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm)
+詳細は[docker-dd-agentのドキュメント]（https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm）を参照してください。

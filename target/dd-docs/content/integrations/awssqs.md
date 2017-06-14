@@ -14,7 +14,7 @@ Enable this integration to see all your SQS metrics in Datadog.
 
 If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws). There are no other installation steps that need to be performed.
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that SQS is checked under metric collection.
 

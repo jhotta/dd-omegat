@@ -34,7 +34,7 @@ docker run -d --name dd-agent -h `hostname` \
   -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
   -e API_KEY='YOUR_API_KEY_HERE' -e KUBERNETES=yes datadog/docker-dd-agent:latest
 
-# Configuration
+# 設定
 
 Configure the agent by editing the kubernetes.yaml file in conf.d:
 

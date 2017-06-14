@@ -35,7 +35,7 @@ Reload supervisor and specify the inet or unix socket server information in the 
 
 See [the supervisor configuration docs](http://supervisord.org/configuration.html)for more information on configuring supervisord sockets and inet http servers.
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to the supervisor daemon. Edit conf.d/supervisord.yaml:
 

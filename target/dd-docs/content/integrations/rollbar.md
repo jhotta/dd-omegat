@@ -14,7 +14,7 @@ With this integration Rollbar users can:
 
 No installation is required.
 
-### Configuration
+### 設定
 
 To integrate Rollbar with Datadog:
 

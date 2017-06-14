@@ -89,7 +89,7 @@ board = {
     "height": 768,
     "board_title": "dogapi test",
     "widgets": [
-        {
+        [fuzzy]要求(R)
           "type": "image",
           "height": 20,
           "width": 32,
@@ -120,7 +120,7 @@ board = {
     "height" => 768,
     "board_title" => "dogapi test",
     "widgets" => [
-        {
+        [fuzzy]要求(R)
           "type" => "image",
           "height" => 20,
           "width" => 32,
@@ -146,7 +146,7 @@ curl -X POST -H "Content-type: application/json" \
         "height": 768,
         "board_title": "dogapi test",
         "widgets": [
-            {
+            [fuzzy]要求(R)
               "type": "image",
               "height": 20,
               "width": 32,
@@ -190,7 +190,7 @@ updated_board = {
     "height": 768,
     "board_title": "dogapi test",
     "widgets": [
-        {
+        [fuzzy]要求(R)
           "type": "image",
           "height": 25,
           "width": 35,
@@ -222,7 +222,7 @@ updated_board = {
     "height" => 768,
     "board_title" => "dogapi test",
     "widgets" => [
-        {
+        [fuzzy]要求(R)
           "type" => "image",
           "height" => 25,
           "width" => 35,
@@ -249,7 +249,7 @@ curl -X PUT -H "Content-type: application/json" \
         "height": 768,
         "board_title": "dogapi test",
         "widgets": [
-            {
+            [fuzzy]要求(R)
               "type": "image",
               "height": 25,
               "width": 35,

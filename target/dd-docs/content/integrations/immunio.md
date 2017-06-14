@@ -21,7 +21,7 @@ IMMUNIO monitors your applications to detect and defend against all of the follo
 1.  Click "Add an API Key". ![Add API Key](/static/images/immuniosetup2.png)
 1.  Add your API key.
 
-# Configuration
+# 設定
 
 No configuration steps are required for this integration.
 

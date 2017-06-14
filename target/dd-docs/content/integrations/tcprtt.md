@@ -25,7 +25,7 @@ Finally, configure PCAP:
 
 $ sudo setcap cap_net_raw+ep /opt/datadog-agent/bin/go-metro
 
-# Configuration
+# 設定
 
 ```go-metro.yaml``````conf.d```Edit the  file in your agent's  directory. The following is an example file that will show the TCP RTT times for app.datadoghq.com and 192.168.0.22:
 

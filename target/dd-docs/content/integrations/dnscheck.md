@@ -6,7 +6,7 @@ newhlevel: true
 
 The DNS Service Check allows you to monitor the resolution of host names against a specified DNS server. This will allow you to monitor the availability and response times of your DNS infrastructure, as well as validate that key host names are resolvable.
 
-# Configuration
+# 設定
 
 To configure the DNS Service Check, edit the dns_check.yaml file in your conf.d directory.
 

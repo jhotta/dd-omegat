@@ -78,7 +78,7 @@ By default, `queue` metrics are tagged by queue and `node` metrics are tagged by
 
    [3[the RabbitMQ documentation](https://www.rabbitmq.com/management.html) for information on how to install the plugin.
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to RabbitMQ. Edit conf.d/rabbitmq.yaml
 

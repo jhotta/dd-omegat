@@ -27,7 +27,7 @@ psql -h localhost -U datadog postgres -c \
 
 When it prompts for a password, enter the one used in the first command.
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to PostgreSQL. Edit conf.d/postgres.yaml:
 

@@ -10,7 +10,7 @@ Capture Yarn metrics to:
 * Visualize cluster health, performance, and utilization.
 * Analyze and inspect individual application performance.
 
-# Configuration*Install Datadog Agent on the ResourceManager*
+# 設定*Install Datadog Agent on the ResourceManager*
 
 1.  Configure the agent to connect to the ResourceManager: Edit conf.d/yarn.yaml
 

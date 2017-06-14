@@ -12,7 +12,7 @@ Capture metrics from the files in given directories:
 
 
 
-# Configuration*To capture Directory metrics you need to install the Datadog Agent.*
+# 設定*To capture Directory metrics you need to install the Datadog Agent.*
 
 2.  Ensure the user account running the Agent (typically `dd-agent`) has read access to the monitored directory and files.
 3.  Configure the Agent to connect to your directories. Edit `directory.yaml` in your `conf.d` directory.

@@ -18,7 +18,7 @@ To see Opsmatic events in your DataDog stream:
 
 Check out the [docs on the Opsmatic website for more information](https://opsmatic.com/app/docs/datadog-integration).
 
-# Configuration
+# 設定
 
 Click the **Install Integration** button on the Opsmatic Integration Tile. configuration steps are required for this integration.
 

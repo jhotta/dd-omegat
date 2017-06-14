@@ -13,7 +13,7 @@ Here is an example of system.load.1 with the hour_before value shown as a dotted
 #!json
 { "viz": "timeseries",
   [fuzzy]要求(R)
-    {
+    [fuzzy]要求(R)
       "q": "avg:system.load.1{host:MyMachine.local}",
       "style": {
         "width": "thin",
@@ -22,7 +22,7 @@ Here is an example of system.load.1 with the hour_before value shown as a dotted
       },
       "type": "area"
     },
-    {
+    [fuzzy]要求(R)
       "q": "hour_before(avg:system.load.1{host:MyMachine.local})",
       "style": {
         "width": "thin",

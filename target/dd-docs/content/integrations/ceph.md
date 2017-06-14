@@ -14,7 +14,7 @@ Enable the Datadog-Ceph integration to:
 
 The integration is meant to be enabled on each Ceph monitor host.
 
-# Configuration
+# 設定
 
 `/usr/bin/ceph``ceph_cmd`Adjust the configuration file to match your environment. By default the check will use  to retrieve metrics; this can be overriden by using the  option. If sudo access is required to run it, please enable the use_sudo flag.
 

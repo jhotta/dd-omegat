@@ -37,7 +37,7 @@ Configure your fluentd to use a monitor agent and plugin id (see doc), for insta
   </server>
 </match>
 
-# Configuration
+# 設定
 
 Configure the Agent to connect to fluentd, and set the plugins id you want to monitor Edit conf.d/fluentd.yaml
 

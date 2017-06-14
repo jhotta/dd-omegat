@@ -50,9 +50,9 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
 
 Configure Route 53 on AWS and ensure that the policy you created has the **route53:List*** action allowed. Here is an example policy to give access to Route 53 health checks.
 
-{
+[fuzzy]要求(R)
   "Statement": [
-    {
+    [fuzzy]要求(R)
       "Effect": "Allow",
       "Action": [
         "route53:List*"
@@ -66,7 +66,7 @@ Configure Route 53 on AWS and ensure that the policy you created has the **route
 {:.language-json}
 
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that Route53 is checked under metric collection.
 

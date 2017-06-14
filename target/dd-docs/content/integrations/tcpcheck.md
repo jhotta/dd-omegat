@@ -13,7 +13,7 @@ Also see the related [HTTP Checks](/integrations/httpcheck).
 
 No installation is required
 
-# Configuration
+# 設定
 
 `tcp_check.yaml``conf.d``network.tcp.response_time`Edit the  file in your agent's  directory. The following yaml file will check both ports 22 and 443 on 192.168.22.1 with timeouts of 10 seconds. The response time will be available in the metric .
 

@@ -364,10 +364,10 @@ Note: The GovCloud and China regions do not currently support IAM role delegatio
 
 1.  `DatadogAWSIntegrationPolicy`First create a new policy in the [IAM Console](https://console.aws.amazon.com/iam/home#s=Home). Name the policy , or choose a name that is more relevant for you. To take advantage of every AWS integration offered by Datadog, using the following in the **Policy Document** textbox. As we add other components to the integration, these permissions may change.
 
-    {
+    [fuzzy]要求(R)
   "Version": "2012-10-17",
   "Statement": [
-    {
+    [fuzzy]要求(R)
       "Action": [
         "autoscaling:Describe*",
         "budgets:ViewBudget",
@@ -422,7 +422,7 @@ Note: The GovCloud and China regions do not currently support IAM role delegatio
 6.  Select the policy you created above.
 7.  Review what you selected and click the **Create Role** button.
 
-# Configuration
+# 設定
 
 ![logo](/static/images/integrations-aws-secretentry.png)
 

@@ -52,10 +52,10 @@ You need to first configure the [Amazon Web Services tile][1]. Once you complete
 [2**AWSCloudTrailReadOnlyAccess** policy assigned. The actions in that policy are **s3:ListBucket**, **s3:GetBucketLocation**, and **s3:GetObject**. Also ensure that the policy gives access to the S3 bucket you selected for the CloudTrail Trail. Here is an example policy to give access to an S3 bucket.
 
 
-{ 
+[fuzzy]要求(R)
   "Version": "2012-10-17",
   "Statement": [
-  {
+  [fuzzy]要求(R)
     "Action": [
       "s3:ListBucket",
       "s3:GetBucketLocation",
@@ -71,7 +71,7 @@ You need to first configure the [Amazon Web Services tile][1]. Once you complete
 {:.language-json}
 
 
-# Configuration
+# 設定
 
 [][2]Open the AWS CloudTrail tile. The accounts you configured in the Amazon Web Services tile are shown here and you can choose what kinds of events will be collected by Datadog. If you would like to see other events that are not mentioned here, please reach out to our support team.
 

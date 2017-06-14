@@ -9,7 +9,7 @@ Get metrics from Postfix in real time to monitor the messages pending in your Po
 
 <%= insert_example_links%>
 
-# Configuration
+# 設定
 
 1.  Make sure that the user that dd-agent runs has sudo access for the 'find' command.
 1.  Configure the Agent to connect to Postfix. Edit conf.d/postfix.yaml:

@@ -12,7 +12,7 @@ Enable this integration to begin collecting Cloudwatch & custom metrics from you
 
 If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws).
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that Lambda is checked under metric collection.
 

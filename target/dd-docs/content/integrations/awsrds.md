@@ -194,10 +194,10 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
   8.  Click on the role you just created. Expand the Inline Policies section and click the link to create a policy. Choose **Custom Policy** and press the button to continue.
   9.  Enter a policy name, such as `lambda-datadog-policy`. For Policy Document, enter the following, replacing &lt;ENCRYPTION_KEY ARN> with the ARN of the Encryption Key:
 
-      {
+      [fuzzy]要求(R)
       "Version": "2012-10-17",
       "Statement": [
-          {
+          [fuzzy]要求(R)
               "Effect": "Allow",
               "Action": [
                   "kms:Decrypt"
@@ -222,7 +222,7 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
   1.  Navigate to the AWS Console and open the RDS section to find the instance you want to monitor.  ![][1]
   2.  Copy the endpoint URL (e.g. **mysqlrds.blah.us-east1.rds.amazonaws.com:3306**); You will need it when you configure the agent. Also make a note of the `DB Instance identifier` (e.g. **mysqlrds**). You will need it to create graphs and dashboards.
 
-# Configuration**Standard RDS Integration**
+# 設定**Standard RDS Integration**
 
   1.  Ensure RDS is checked in the AWS Integration tile.**Enhanced RDS Integration**
 

@@ -19,7 +19,7 @@ To enable this integration...
 2.  Search for Datadog and Add the integration.
 
 
-# Configuration
+# 設定
 
 1.  Click the **Install Integration** button on the Moxtra Integration Tile.
 2.  Add your Webhook URL to Datadog's webhooks-enabled services [here](https://app.datadoghq.com/account/settings#integrations/webhooks).

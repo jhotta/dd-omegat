@@ -12,7 +12,7 @@ The System Core integration collects information about the host's CPU Cores.
 
 No installation steps are required for this integration.
 
-# Configuration
+# 設定
 
 `system_core.yaml.example``system_core.yaml`The only configuration step for this integration is to copy  to .
 

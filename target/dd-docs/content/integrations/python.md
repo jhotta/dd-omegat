@@ -45,7 +45,7 @@ stats = ThreadStats()
 stats.start()
 stats.increment('home.page.hits')
 
-# Configuration
+# 設定
 
 There is nothing that you need to do in the Datadog application to configure Python.
 

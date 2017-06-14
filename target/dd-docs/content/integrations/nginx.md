@@ -59,7 +59,7 @@ The metrics shown for the basic NGINX integration show up differently in the NGI
 
 <br/>Finally, these metrics have no good translation:
 
-| nginx.net.reading | The current number of connections where nginx is reading the request header. | | nginx.net.writing | The current number of connections where nginx is writing the response back to the client. | {:.table}
+| nginx.net.reading | The current number of connections where nginx is reading the request header. | | nginx.net.writing | The current number of connections where nginx is writing the response back to the client. [fuzzy]表
 
 
 The data pulled from the NGINX Plus status page are described in the [NGINX docs](http://nginx.org/en/docs/http/ngx_http_status_module.html#data).

@@ -12,7 +12,7 @@ Use the SNMP Agent Check to:
 * Correlate their performance with the rest of your applications
 
 
-# Configuration
+# 設定
 
 To use the SNMP checks, edit the **snmp.yaml** file in your **conf.d** directory as follows:
 

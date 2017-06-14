@@ -12,7 +12,7 @@ Capture MapReduce metrics to:
 
 Install Datadog Agent on the Master Node where the ResourceManager is running.
 
-# Configuration
+# 設定
 
 1.  Configure the agent to connect to the ResourceManager: Edit conf.d/mapreduce.yaml
 

@@ -27,7 +27,7 @@ If you assign the new metric a category of My_New_Metric, the WMI path will be `
 `winmgmt /resyncperf`If the metric isn't showing up in WMI, try running  to force the computer to reregister the performance libraries with WMI.
 
 
-# Configuration
+# 設定
 
 1.  Click the **Install Integration** button on the WMI Integration Tile. 
 2.  Open the Datadog Agent Manager on the Windows server.

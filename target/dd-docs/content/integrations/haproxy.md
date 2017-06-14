@@ -16,7 +16,7 @@ Capture HAProxy activity in Datadog to:
 
 Make sure that stats are enabled on your HAProxy configuration. See [this post for guidance on doing this](https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/).
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to HAProxy. Edit conf.d/haproxy.yaml:
 

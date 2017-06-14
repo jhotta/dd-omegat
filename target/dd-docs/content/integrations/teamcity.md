@@ -11,7 +11,7 @@ Connect TeamCity to Datadog to create events for each build in order to:
 
 # インストール
 
-# Configuration
+# 設定
 
 1. Configure the Agent to connect to TeamCity
 

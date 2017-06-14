@@ -75,7 +75,7 @@ Logs for the subsystems are available in Event Viewer, under Windows Logs -> App
    [2]: /static/images/windows-start-menu.png
    [3_status page_ by going to **Settings -> Agent Status** in Agent version 5.2 and above and by going to **http://localhost:17125/status** in Agent version 3.9.1 to 5.1.
 
-### Configuration
+### 設定
 
 #### For version >= 3.9.1
 

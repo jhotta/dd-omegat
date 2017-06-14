@@ -13,7 +13,7 @@ Connect ZooKeeper to Datadog in order to:
 
 ![ZooKeeper Graph](/static/images/zookeepergraph.png)
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to ZooKeeper. Edit conf.d/zk.yaml
 

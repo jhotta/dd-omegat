@@ -10,7 +10,7 @@ Connect Kong to Datadog to:
 * Correlate the performance of Kong with the rest of your applications
 
 
-# Configuration
+# 設定
 
 Configure the Agent to connect to Kong. Edit conf.d/kong.yaml
 

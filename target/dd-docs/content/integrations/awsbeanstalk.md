@@ -11,7 +11,7 @@ AWS Elastic Beanstalk is an easy-to-use service for deploying and scaling web ap
 
 If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws). 
 
-#Configuration
+#設定
 
 ## Monitor Elastic Beanstalk environments with the Datadog agent container
 If you use Docker containers in a Beanstalk environment, and want to monitor your Docker usage in this environment, the containerized Datadog agent is a tool of choice.

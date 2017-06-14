@@ -11,7 +11,7 @@ To start collecting ELB metrics, the only thing you need to do is to set up our 
 
 Learn more about how to monitor ELB performance metrics thanks to [our series of posts](https://www.datadoghq.com/blog/top-elb-health-and-performance-metrics/). We detail the key performance metrics, how to collect them, and how to use Datadog to monitor ELB.
 
-# Configuration
+# 設定
 
 1.  Enable the [Amazon Web Services integration](/integrations/aws).
 1.  Open the [AWS integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services) and ensure the **ELB checkbox** on the left is checked.

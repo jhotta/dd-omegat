@@ -11,7 +11,7 @@ Enable this integration to see custom tags and metrics for your ES clusters in D
 
 `es:ListTags``es:ListDomainNames``es:DescribeElasticsearchDomains`If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws). This integration requires the permissions ,  and  to be fully enabled.
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that ES is checked under metric collection.
 

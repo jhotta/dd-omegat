@@ -17,7 +17,7 @@ Connect Elasticsearch to Datadog in order to:
 
 No installation steps are required for this integration
 
-# Configuration
+# 設定
 
 1.  Edit your conf.d/elastic.yaml file as follows:
 

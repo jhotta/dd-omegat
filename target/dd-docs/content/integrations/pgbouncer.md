@@ -10,7 +10,7 @@ Connect your PGBouncer to Datadog in order to:
 * Be notified about pgbouncer failovers and events.
 
 
-### Configuration
+### 設定
 
 `pgbouncer.yaml.example``pgbouncer.yaml`To configure the PGBouncer integration, copy  to  and make the appropriate changes.
 

@@ -4,9 +4,9 @@ customnav: tracingnav
 
 ### 概要
 
-Datadog's APM allows you to collect performance metrics by tracing your code to determine which parts of your application are slow or inefficient.
+DatadogのAPMを使用すると、コードをトレースしてパフォーマンスメトリックスを収集することができます。これらメトリックスを把握することによりアプリケーションのどの部分が遅く、非効率かを判断することができます。
 
-Tracing data is sent to the Datadog Agent via an HTTP API. We provide some [official libraries](/tracing/#instrument-your-application) that simplify sending metrics to the Datadog Agent, however you may want to interact directly with the API to instrument applications that cannot use the libraries or are written in languages that don't yet have an official Datadog Tracing library.
+トレースデータは、HTTP APIを介してDatadog Agentに送信されます。Datadog Agentへのメトリクス送信を簡素化するためにいくつかの[公式ライブラリ]（/ tracing /＃instrument-your-application）を公開していますが、APIを直接使用してライブラリが使用できないアプリケーションや、公式のDatadog Tracingライブラリが存在していないプログラミング言語で書かれたアプリケーションのメトリクスを送信することができます。
 
 ### API
 
@@ -25,9 +25,9 @@ Tracing data is sent to the Datadog Agent via an HTTP API. We provide some [offi
 <h4 id="traces" class="tracing-api">Traces</h4>
 <div class="row">
   <%= left_side_div %>
-    <h5>Arguments</h5>
+    [fuzzy]引数(A):
     <ul class="arguments">
-      <%= argument('traces', 'A list of traces. Traces are a list of spans as JSON objects containing the span information:
+      <%= argument('traces', 'A list of traces. トレースはスパン情報を含むJSONオブジェクトとしてスパンのリストです：
         <ul>
           <li><code>trace_id</code> - <em>Required.</em> The unique integer (64-bit unsigned) ID of the trace containing this span.</li>
           <li><code>span_id</code> - <em>Required.</em> The span integer (64-bit unsigned) ID.</li>
@@ -44,11 +44,11 @@ Tracing data is sent to the Datadog Agent via an HTTP API. We provide some [offi
       ') %>
     </ul>
 
-    Note: You may send multiple spans within a trace array and each span within a trace should use the same trace_id. You may also send multiple traces.
+    注：複数のスパンを、単一のトレース配列内で送信することができます。トレース配列内の各スパンには同じtrace_idを使用する必要があります。複数のトレースを送信することもできます。
 
-    <h5>Response</h5>
+    <h5>レスポンス</ h5>
 
-    The Agent will return a 200 status code and the text "OK" if the traces were successfully delivered. If delivery fails, a 500 status code and an error message will be returned. Note that successful delivery does <em>not</em> mean the traces are accepted. Traces may be dropped after successful delivery. For more information about your traces, please refer to your agent log.
+    トレースが正常に配信された場合、Agentは200ステータスコードとテキスト「OK」を返します。配信に失敗すると、500のステータスコードとエラーメッセージが返されます。配信が成功した場合でも、トレースが受け付けられていない時もあるので注意してください。トレースは、正常に配信された後にドロップされる可能性があります。トレースの詳細については、エージェントのログを参照してください。
 
   </div>
   <%= right_side_div %>  <h5>Signature</h5>  <code>PUT /v0.3/traces</code>
@@ -67,7 +67,7 @@ Tracing data is sent to the Datadog Agent via an HTTP API. We provide some [offi
 <h4 id="services" class="tracing-api">Services</h4>
 <div class="row">
   <%= left_side_div %>
-    <h5>Arguments</h5>
+    [fuzzy]引数(A):
     <ul class="arguments">
       <%= argument('service', 'A service as a JSON object containing the service name mapped to application and application type information:
         <ul>
@@ -78,9 +78,9 @@ Tracing data is sent to the Datadog Agent via an HTTP API. We provide some [offi
       ') %>
     </ul>
 
-    <h5>Response</h5>
+    <h5>レスポンス</ h5>
 
-    The Agent will return a 200 status code and the text "OK" if the service was successfully delivered. If delivery fails, a 500 status code and an error message will be returned. For more information about your service, please refer to your agent log.
+    サービスが正常に配信された場合、Agentは200ステータスコードとテキスト「OK」を返します。配信に失敗すると、500のステータスコードとエラーメッセージが返されます。サービスの詳細については、エージェントのログを参照してください。
 
   </div>
   <%= right_side_div %>  <h5>Signature</h5>  <code>PUT /v0.3/services</code>

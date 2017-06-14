@@ -4,9 +4,9 @@ customnav: tracingnav
 
 ### インストール
 
-To begin tracing applications written in Go, first [install and configure the Datadog Agent](/tracing#installing-the-agent).
+Goで書かれたアプリケーションのトレースを開始するには、最初に[Datadog Agentのインストールと設定]（/ tracing＃installing-the-agent）を実行します。
 
-Next, install the Go Tracer from the Github repository:
+次に、GithubリポジトリからGo Tracerをインストールします。
 
 ~~~ go get "github.com/DataDog/dd-trace-go/tracer"
 ~~~
@@ -21,15 +21,15 @@ import (  "github.com/DataDog/dd-trace-go/tracer" )
 
 func main {  span := tracer.NewRootSpan("web.request", "my_service", "resource_name")  defer span.Finish()  span.SetMeta("my_tag", "my_value") } ~~~
 
-For another example, see the [](https://github.com/DataDog/dd-trace-go/blob/master/tracer/example_test.go) file in the Go Tracer package
+別の例として、Goトレーサパッケージの[]（https://github.com/DataDog/dd-trace-go/blob/master/tracer/example_test.go）ファイルを参照してください。
 
 
 ### 互換性
 
-Currently, only Go 1.7 is supported. The following Go libraries are supported:[Gin](https://github.com/gin-gonic/gin)[Gorilla Mux](https://github.com/gorilla/mux)[gRPC](https://github.com/grpc/grpc-go)
+現在、Go 1.7のみがサポート対象です。以下のGoライブラリがサポートされています：[Gin](https://github.com/gin-gonic/gin)[Gorilla Mux](https://github.com/gorilla/mux)[gRPC](https://github.com/grpc/grpc-go)
 
 ### 追加情報
 
-The Go integration [source code can be found on Github](https://github.com/DataDog/dd-trace-go).
+Go用のインテグレーションの[ソースコードは、Githubで読むことができます]（https://github.com/DataDog/dd-trace-go）。
 
-You can find additional documentation on [the GoDoc Package page](https://godoc.org/github.com/DataDog/dd-trace-go/tracer).
+[GoDocパッケージのページ]（https://godoc.org/github.com/DataDog/dd-trace-go/tracer）に関する追加のドキュメントがあります。

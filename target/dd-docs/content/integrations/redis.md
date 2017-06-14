@@ -82,7 +82,7 @@ you can select multiple environments and then select “Save these tiles to: a n
 [2]: https://app.datadoghq.com/account/overview
 [3[our series of posts](https://www.datadoghq.com/blog/how-to-monitor-redis-performance-metrics/). We detail the key performance metrics, how to collect them, and how to use Datadog to monitor Redis.
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to the Redis server. Edit conf.d/redisdb.yaml:
 

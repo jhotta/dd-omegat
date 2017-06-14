@@ -17,7 +17,7 @@ Connect Catchpoint and Datadog to:
 
 No installation is required.
 
-### Configuration
+### 設定
 
 To get Catchpoint alerts into your stream, login into the Catchpoint Portal and goto Settings > API.
 

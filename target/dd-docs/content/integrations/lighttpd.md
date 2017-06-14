@@ -16,7 +16,7 @@ Bring Lighttpd metrics to Datadog to:
 
 1.  Make sure that `mod_status` is installed on your Lighttpd server
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to Lighttpd. Edit conf.d/lighttpd.yaml
 

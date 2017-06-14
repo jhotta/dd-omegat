@@ -11,7 +11,7 @@ Connect to Fastly to see key Fastly metrics (like cache coverage and header size
 
 No installation steps required.
 
-# Configuration
+# 設定
 
 Create a Read-only access API Token on Fastly's token management page, get your Service ID from the Dashboard and enter them in the [Fastly integration tile](https://app.datadoghq.com/account/settings#integrations/fastly).
 

@@ -39,7 +39,7 @@ echo -e "\033[0;31mdatadog user - Missing\033[0m"
 
 For more details about creating and managing users in MongoDB, refer to [the MongoDB documentation](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
 
-# Configuration
+# 設定
 
 Configure the Agent to connect to your TokuMX instance using your new Datadog user.
 

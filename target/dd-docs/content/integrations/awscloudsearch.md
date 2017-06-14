@@ -12,7 +12,7 @@ Enable this integration to see in Datadog all your CloudSearch metrics.
 
 If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws). There are no other installation steps that need to be performed.
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that CloudSearch is checked under metric collection.
 

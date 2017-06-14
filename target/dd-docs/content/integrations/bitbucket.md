@@ -45,7 +45,7 @@ Each entry in the integration tile is validated when you enter it. There is noth
 [1]: https://www.datadoghq.com/blog/understand-code-changes-impact-system-performance-bitbucket-datadog/
 [2**Read** access to the repo you want to monitor. This is the user that Datadog will use to collect information on the repository.
 
-# Configuration
+# 設定
 
 1.  Login to the Datadog application and add the [Bitbucket integration here][2].
 2.  Enter the username and password you created above in the Installation section. Click the **Install Integration** button. If the username or password is not correct you will get a error message.

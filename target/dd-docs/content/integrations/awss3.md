@@ -44,7 +44,7 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
 
 	[][1]Enable Requests metrics on your Amazon S3 buckets from the AWS console.
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that S3 is checked under metric collection.
 

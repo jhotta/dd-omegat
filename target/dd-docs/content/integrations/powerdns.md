@@ -10,7 +10,7 @@ Connect your PowerDNS Recursor to Datadog to:
 * Understand query latency
 * Get alerted when something fails or when you're under attack
 
-# Configuration
+# 設定
 
 Configure the Agent to connect to the PowerDNS Recursor. Edit conf.d/powerdns_recursor.yaml
     

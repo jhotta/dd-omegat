@@ -21,7 +21,7 @@ If you haven't already, set up the [Amazon Web Services integration first](/inte
 
     https://app.datadoghq.com/intake/webhook/sns?api_key=<API KEY>
 
-# Configuration
+# 設定
 
 In the Amazon Web Services integration tile, ensure that SNS is checked under metric collection.
 

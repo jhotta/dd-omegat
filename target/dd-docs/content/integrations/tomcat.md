@@ -16,7 +16,7 @@ This check has a limit of 350 metrics per instance. The number of returned metri
 
 Make sure that JMX Remote is enabled on your Tomcat server. For information on JMX , please see [the JMX integration documentation](http://docs.datadoghq.com/integrations/java/).
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to Tomcat. Edit conf.d/tomcat.yaml:
 

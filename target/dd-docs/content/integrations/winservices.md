@@ -7,7 +7,7 @@ Monitor the state of your Windows Services.
 
 ![Windows Service Event](/static/images/windows-service.png)
 
-# Configuration
+# 設定
 
 Configure the Agent using the Agent Manager
 

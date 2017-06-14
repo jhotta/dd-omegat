@@ -10,7 +10,7 @@ Connect Memcached to Datadog in order to:
 
 <%= insert_example_links(conf:"mcache", check:"mcache")%>
 
-# Configuration
+# 設定
 
 1.  Configure the Agent to connect to the Memcached server. Edit conf.d/mcache.yaml:
 

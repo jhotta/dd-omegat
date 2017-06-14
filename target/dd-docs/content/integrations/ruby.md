@@ -47,7 +47,7 @@ statsd.increment('page.views')
 # Record a gauge 50% of the time.
 statsd.gauge('users.online', 123, :sample_rate=>0.5)
 
-# Configuration
+# 設定
 
 There is nothing that you need to do in the Datadog application to configure Ruby.
 
