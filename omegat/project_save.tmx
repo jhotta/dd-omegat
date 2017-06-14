@@ -239,6 +239,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Enable the APM in the Datadog Agent configuration file</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060630Z" creationid="papago" creationdate="20170614T060630Z">
+        <seg>Datadog Agent構成ファイルでAPMを有効にする</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Enable this integration to see in Datadog all your Billing metrics.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103242Z" creationid="papago" creationdate="20170613T102418Z">
@@ -503,6 +511,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Install the latest</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060610Z" creationid="papago" creationdate="20170614T060610Z">
+        <seg>最新のものをインストールする</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Installation</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T110928Z" creationid="papago" creationdate="20170613T102434Z">
@@ -655,6 +671,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Running the agent in Docker</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060652Z" creationid="papago" creationdate="20170614T060652Z">
+        <seg>Docker環境でエージェントを実行する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Service</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113433Z" creationid="papago" creationdate="20170613T113433Z">
@@ -681,8 +705,8 @@
       <tuv lang="EN-US">
         <seg>Similarly, tracing metrics are also sent to the Datadog agent.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T060525Z" creationid="papago" creationdate="20170614T060525Z">
-        <seg>同様に、トレースメトリックもDatadog Agentに送信されます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060557Z" creationid="papago" creationdate="20170614T060525Z">
+        <seg>同様に、トレースメトリックスもDatadog Agentに送信されます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -863,6 +887,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>To enable tracing:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060602Z" creationid="papago" creationdate="20170614T060602Z">
+        <seg>トレースを有効にするには：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>To instrument these libraries, please see [the library documentation](http://pypi.datadoghq.com/trace/docs/#other-libraries)</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
@@ -883,6 +915,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T111907Z" creationid="papago" creationdate="20170613T111907Z">
         <seg>これらのフレームワークからデータを収集する方法については、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#web-frameworks）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To trace applications in Docker containers, you can use the [docker-dd-agent](https://hub.docker.com/r/datadog/docker-dd-agent/) image (tagged version 11.0.5110 or higher)and enable tracing by passing  as an environment variable.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060924Z" creationid="papago" creationdate="20170614T060924Z">
+        <seg>Dockerコンテナ上のアプリケーションをトレースするには、[docker-dd-agent]（https://hub.docker.com/r/datadog/docker-dd-agent/）イメージ（タグ付きバージョン11.0.5110以上）を使用し、環境変数として渡すことによって可能になります。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1123,6 +1163,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T041955Z" creationid="papago" creationdate="20170614T041955Z">
         <seg>[fuzzy]要求(R)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>~~~ Main</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060632Z" creationid="papago" creationdate="20170614T060632Z">
+        <seg>[fuzzy]{0} [主]</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
