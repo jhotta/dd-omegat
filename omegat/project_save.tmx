@@ -767,6 +767,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>This not only provides greater visibility, but allows you to see the relationship between application code and the underlying infrastructure.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060034Z" creationid="papago" creationdate="20170614T060034Z">
+        <seg>このことにより、視認性が向上するだけでなく、アプリケーションコードの状態とそのベースインフラストラクチャの関係を簡単に理解できるようになりました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>This often happens because of a misconfiguration in Docker environments.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054654Z" creationid="papago" creationdate="20170614T054654Z">
