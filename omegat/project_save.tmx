@@ -183,6 +183,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Currently, tracing is only supported by version 5.11.0 (or above) of the Datadog Agent running on Linux and Docker.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060205Z" creationid="papago" creationdate="20170614T060205Z">
+        <seg>現在、トレースは、LinuxおよびDocker環境上で動作するDatadog Agentのバージョン5.11.0（またはそれ以上）でサポートされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Data Retention</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053822Z" creationid="papago" creationdate="20170614T053822Z">
@@ -415,6 +423,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Getting started</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060042Z" creationid="papago" creationdate="20170614T060042Z">
+        <seg>入門</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Here is an example of aws.ec2.cpuutilization with the month_before value shown as a thin, solid line.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T041900Z" creationid="papago" creationdate="20170614T041900Z">
@@ -491,6 +507,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T110928Z" creationid="papago" creationdate="20170613T102434Z">
         <seg>インストール</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Installing the agent</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060211Z" creationid="papago" creationdate="20170614T060211Z">
+        <seg>エージェントのインストール</seg>
       </tuv>
     </tu>
     <tu>
@@ -607,6 +631,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Pro plan members can visit the [APM page of the Datadog app](https://app.datadoghq.com/trace/home) to begin a free 14-day trial.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060112Z" creationid="papago" creationdate="20170614T060112Z">
+        <seg>Proプランのメンバーは、[DatadogアプリのAPMページ]（https://app.datadoghq.com/trace/home）にアクセスして14日間の無料試用を開始できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Represents a logical unit of work in the system.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113243Z" creationid="papago" creationdate="20170613T113243Z">
@@ -675,6 +707,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052945Z" creationid="papago" creationdate="20170614T052932Z">
         <seg>トレースが正常に配信された場合、Agentは200ステータスコードとテキスト「OK」を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Datadog APM is included in our Enterprise plan or as an upgrade to our Pro plan.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060055Z" creationid="papago" creationdate="20170614T060055Z">
+        <seg>Datadog APMは、エンタープライズプランまたはプロプランへのアップグレードとして含まれています。</seg>
       </tuv>
     </tu>
     <tu>
