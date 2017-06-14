@@ -489,8 +489,8 @@
       <tuv lang="EN-US">
         <seg>For other architectures, you can use the source install (coming soon).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054002Z" creationid="papago" creationdate="20170614T053941Z">
-        <seg>他のアーキテクチャーの場合は、ソースインストールを使用することができます（近々正式版を公開します）。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T081040Z" creationid="papago" creationdate="20170614T053941Z">
+        <seg>他のアーキテクチャーを利用している場合は、ソースインストールからインストールすることができます。（近々公開予定）。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1057,8 +1057,8 @@
       <tuv lang="EN-US">
         <seg>Trace agent source code is available on [the Github repo](https://github.com/DataDog/datadog-trace-agent).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054014Z" creationid="papago" creationdate="20170614T054014Z">
-        <seg>トレースエージェントのソースコードは[Github repo]（https://github.com/DataDog/datadog-trace-agent）で利用できます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T081214Z" creationid="papago" creationdate="20170614T054014Z">
+        <seg>トレースエージェントのソースコードは、[Github repo](https://github.com/DataDog/datadog-trace-agent)で閲覧することができます。</seg>
       </tuv>
     </tu>
     <tu>
