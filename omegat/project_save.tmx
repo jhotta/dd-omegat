@@ -167,6 +167,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Configuration</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061452Z" creationid="papago" creationdate="20170614T061452Z">
+        <seg>設定</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Connection refused</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054301Z" creationid="papago" creationdate="20170614T054301Z">
@@ -545,8 +553,8 @@
       <tuv lang="EN-US">
         <seg>Instrument your application</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T061049Z" creationid="papago" creationdate="20170614T061009Z">
-        <seg>アプリケーションへの設定</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061329Z" creationid="papago" creationdate="20170614T061009Z">
+        <seg>アプリケーションの計測</seg>
       </tuv>
     </tu>
     <tu>
@@ -911,6 +919,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>To instrument an application written in a language that does not yet have official library support, please reference the [Tracing API](/tracing/api).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061442Z" creationid="papago" creationdate="20170614T061442Z">
+        <seg>公式ライブラリサポートされていないプログラミング言語で書かれたアプリケーションを計測するには、[Tracing API]（/ tracing / api）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>To instrument these libraries, please see [the library documentation](http://pypi.datadoghq.com/trace/docs/#other-libraries)</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
@@ -921,8 +937,8 @@
       <tuv lang="EN-US">
         <seg>To instrument your application, please select one of the following supported languages.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T061210Z" creationid="papago" creationdate="20170614T061210Z">
-        <seg>アプリケーションを計測するための設定には、以下のサポートされている言語のいずれかを選択してください。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061346Z" creationid="papago" creationdate="20170614T061210Z">
+        <seg>アプリケーションを計測するためには、以下のサポートされている言語のいずれかを選択してください。</seg>
       </tuv>
     </tu>
     <tu>
