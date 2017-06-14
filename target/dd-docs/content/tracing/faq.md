@@ -2,23 +2,23 @@
 customnav: tracingnav
 ---
 
-### 命名
+### 命名規則
 
-* サービス名とリソース名 **小文字、英数字である必要があります**.
-* サービス名とメタデータキーは、 **最大50文字の長さ**に制限されます.
-* メタデータとリソース名は **最大長は5000バイト**に制限されます.
+* サービス名とリソース名は、 **小文字、英数字である必要があります**。
+* サービス名とメタデータキーは、 **最大50文字の長さ**に制限されます。
+* メタデータとリソース名は、 **最大長は5000バイト**に制限されます。
 
-### データ保持
+### データ保持期間
 
-トレースデータは現在約36時間保存されています。
+トレースデータは、約36時間保存されています。
 
-### Heroku
+### Herokuサポート
 
-Herokuサポートは現在、Datadog Heroku Buildpackによって提供されています。詳細については、[Githubのプロジェクト]（https://github.com/DataDog/heroku-buildpack-datadog）を参照してください。
+Herokuサポートは、Datadog Heroku Buildpackによって提供されています。詳細については、[Githubのプロジェクト](https://github.com/DataDog/heroku-buildpack-datadog)を参照してください。
 
-### Agent Source
+### Agentのソースコード
 
-トレースは、LinuxおよびDockerのDatadog Agentでサポートされています。他のアーキテクチャーの場合は、ソースインストールを使用することができます（近々正式版を公開します）。トレースエージェントのソースコードは[Github repo]（https://github.com/DataDog/datadog-trace-agent）で利用できます。
+LinuxおよびDockerのDatadog Agentで、トレースをサポートしています。他のアーキテクチャーを利用している場合は、ソースインストールからインストールすることができます。（近々公開予定）。トレースエージェントのソースコードは、[Github repo](https://github.com/DataDog/datadog-trace-agent)で閲覧することができます。
 
 ### 機能の確認
 
