@@ -95,6 +95,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>&lt;h5&gt;Response&lt;/h5&gt;</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052854Z" creationid="papago" creationdate="20170614T052854Z">
+        <seg>&lt;h5&gt;レスポンス&lt;/ h5&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>A particular query to a service.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113547Z" creationid="papago" creationdate="20170613T113547Z">
@@ -311,6 +319,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>If delivery fails, a 500 status code and an error message will be returned.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052954Z" creationid="papago" creationdate="20170614T052954Z">
+        <seg>配信に失敗すると、500のステータスコードとエラーメッセージが返されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>In order to get the most from tracing, it's important to understand the terms used, the data they represent and how they work together.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112944Z" creationid="papago" creationdate="20170613T112944Z">
@@ -379,6 +395,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112255Z" creationid="papago" creationdate="20170613T112255Z">
         <seg>次に、ddtrace gemをインストールします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that successful delivery does &lt;em&gt;not&lt;/em&gt; mean the traces are accepted.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053258Z" creationid="papago" creationdate="20170614T053258Z">
+        <seg>配信が成功した場合でも、トレースが受け付けられていない時もあるので注意してください。</seg>
       </tuv>
     </tu>
     <tu>
@@ -459,6 +483,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113316Z" creationid="papago" creationdate="20170613T113316Z">
         <seg>スパンはサービスおよびオプションでリソースに関連付けられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Agent will return a 200 status code and the text "OK" if the traces were successfully delivered.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052945Z" creationid="papago" creationdate="20170614T052932Z">
+        <seg>トレースが正常に配信された場合、Agentは200ステータスコードとテキスト「OK」を返します。</seg>
       </tuv>
     </tu>
     <tu>
@@ -619,6 +651,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112154Z" creationid="papago" creationdate="20170613T112154Z">
         <seg>[traceのライブラリのドキュメントページ]（http://pypi.datadoghq.com/trace/docs/）には、追加のドキュメントがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may also send multiple traces.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052845Z" creationid="papago" creationdate="20170614T052845Z">
+        <seg>複数のトレースを送信することもできます。</seg>
       </tuv>
     </tu>
     <tu>
