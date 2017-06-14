@@ -175,6 +175,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Currently, only Go 1.7 is supported.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055152Z" creationid="papago" creationdate="20170614T055152Z">
+        <seg>現在、Go 1.7のみがサポート対象です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Data Retention</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053822Z" creationid="papago" creationdate="20170614T053822Z">
@@ -271,6 +279,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For another example, see the [](https://github.com/DataDog/dd-trace-go/blob/master/tracer/example_test.go) file in the Go Tracer package</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055125Z" creationid="papago" creationdate="20170614T055125Z">
+        <seg>別の例として、Goトレーサパッケージの[]（https://github.com/DataDog/dd-trace-go/blob/master/tracer/example_test.go）ファイルを参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For example, a span can describe the time spent on a distributed call on a separate machine, or the time spent in a small component within a larger operation.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113418Z" creationid="papago" creationdate="20170613T113418Z">
@@ -323,6 +339,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112341Z" creationid="papago" creationdate="20170613T112341Z">
         <seg>その他の例については、[RubyDoc Gem documentation]（http://www.rubydoc.info/gems/ddtrace/#Advanced_usage）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For more info see [the docker-dd-agent documentation](https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T054959Z" creationid="papago" creationdate="20170614T054959Z">
+        <seg>詳細は[docker-dd-agentのドキュメント]（https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm）を参照してください。</seg>
       </tuv>
     </tu>
     <tu>
@@ -511,6 +535,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Next, install the Go Tracer from the Github repository:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055046Z" creationid="papago" creationdate="20170614T055046Z">
+        <seg>次に、GithubリポジトリからGo Tracerをインストールします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Next, install the ddtrace gem:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112255Z" creationid="papago" creationdate="20170613T112255Z">
@@ -639,6 +671,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The Go integration [source code can be found on Github](https://github.com/DataDog/dd-trace-go).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055250Z" creationid="papago" creationdate="20170614T055250Z">
+        <seg>Go用のインテグレーションの[ソースコードは、Githubで読むことができます]（https://github.com/DataDog/dd-trace-go）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The Python library [source code can be found on Github](https://github.com/DataDog/dd-trace-py).</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112106Z" creationid="papago" creationdate="20170613T112106Z">
@@ -687,6 +727,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The following Go libraries are supported:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055158Z" creationid="papago" creationdate="20170614T055158Z">
+        <seg>以下のGoライブラリがサポートされています：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The name of a set of processes that do the same job.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113448Z" creationid="papago" creationdate="20170613T113448Z">
@@ -715,6 +763,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054654Z" creationid="papago" creationdate="20170614T054654Z">
         <seg>この状態は、Docker環境で設定にミスがある場合によく見かけます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To begin tracing applications written in Go, first [install and configure the Datadog Agent](/tracing#installing-the-agent).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T055024Z" creationid="papago" creationdate="20170614T055024Z">
+        <seg>Goで書かれたアプリケーションのトレースを開始するには、最初に[Datadog Agentのインストールと設定]（/ tracing＃installing-the-agent）を実行します。</seg>
       </tuv>
     </tu>
     <tu>
