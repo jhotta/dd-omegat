@@ -17,7 +17,7 @@
       <tuv lang="EN-US">
         <seg>"requests": [</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170613T114756Z" creationid="papago" creationdate="20170613T114756Z">
+      <tuv lang="JA" changeid="papago" changedate="20170614T041945Z" creationid="papago" creationdate="20170614T041945Z">
         <seg>[fuzzy]要求(R)</seg>
       </tuv>
     </tu>
@@ -259,6 +259,22 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114806Z" creationid="papago" creationdate="20170613T114806Z">
         <seg>[fuzzy]今のところ、day_beforeのような関数を使うのは、グラフィカルエディタの対象外ですので、JSONエディタを使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For now, using functions like month_before is out of scope for the graphical editor so you have to use the JSON editor.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T041905Z" creationid="papago" creationdate="20170614T041905Z">
+        <seg>[fuzzy]今のところ、day_beforeのような関数を使うのは、グラフィカルエディタの対象外ですので、JSONエディタを使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here is an example of aws.ec2.cpuutilization with the month_before value shown as a thin, solid line.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T041900Z" creationid="papago" creationdate="20170614T041900Z">
+        <seg>次に、aws.ec2.cpuutilizationの例を示します。この例では、month_before値が細い実線で示されています。</seg>
       </tuv>
     </tu>
     <tu>
@@ -583,10 +599,34 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>summary: The month_before() function allows you to overlay data from the previous month on your current data.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T041832Z" creationid="papago" creationdate="20170614T041832Z">
+        <seg>summary：month_before（）関数を使用すると、前の月のデータを現在のデータにオーバーレイすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>summary: The week_before() function allows you to overlay data from the previous week on your current data.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T041951Z" creationid="papago" creationdate="20170614T041951Z">
+        <seg>[fuzzy]summary：month_before（）関数を使用すると、前の月のデータを現在のデータにオーバーレイすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>tags:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T104612Z" creationid="papago" creationdate="20170613T104612Z">
         <seg>[fuzzy]タグ(T):</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T041955Z" creationid="papago" creationdate="20170614T041955Z">
+        <seg>[fuzzy]要求(R)</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
