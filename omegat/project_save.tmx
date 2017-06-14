@@ -457,8 +457,8 @@
       <tuv lang="EN-US">
         <seg>For more information, please reference [the project on Github](https://github.com/DataDog/heroku-buildpack-datadog)</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053918Z" creationid="papago" creationdate="20170614T053918Z">
-        <seg>詳細については、[Githubのプロジェクト]（https://github.com/DataDog/heroku-buildpack-datadog）を参照してください。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T081245Z" creationid="papago" creationdate="20170614T053918Z">
+        <seg>詳細については、[Githubのプロジェクト](https://github.com/DataDog/heroku-buildpack-datadog)を参照してください。</seg>
       </tuv>
     </tu>
     <tu>
