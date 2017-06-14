@@ -303,6 +303,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For additional information, please reference [the project README on Github](https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm)</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060956Z" creationid="papago" creationdate="20170614T060956Z">
+        <seg>詳細については、[Githubのプロジェクト内のREADME]（https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For another example, see the [](https://github.com/DataDog/dd-trace-go/blob/master/tracer/example_test.go) file in the Go Tracer package</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T055125Z" creationid="papago" creationdate="20170614T055125Z">
@@ -531,6 +539,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T060211Z" creationid="papago" creationdate="20170614T060211Z">
         <seg>エージェントのインストール</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Instrument your application</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061049Z" creationid="papago" creationdate="20170614T061009Z">
+        <seg>アプリケーションへの設定</seg>
       </tuv>
     </tu>
     <tu>
@@ -899,6 +915,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112022Z" creationid="papago" creationdate="20170613T112022Z">
         <seg>これらのライブラリを設定するには、[traceのライブラリのドキュメント]（http://pypi.datadoghq.com/trace/docs/#other-libraries）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To instrument your application, please select one of the following supported languages.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061210Z" creationid="papago" creationdate="20170614T061210Z">
+        <seg>アプリケーションを計測するための設定には、以下のサポートされている言語のいずれかを選択してください。</seg>
       </tuv>
     </tu>
     <tu>
