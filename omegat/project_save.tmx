@@ -167,6 +167,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Agent Source</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080622Z" creationid="papago" creationdate="20170614T080622Z">
+        <seg>Agentのソースコード</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102340Z" creationid="papago" creationdate="20170613T102340Z">
@@ -519,10 +527,18 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Heroku</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080450Z" creationid="papago" creationdate="20170614T080450Z">
+        <seg>Herokuサポート</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Heroku support is currently provided by the Datadog Heroku Buildpack.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053911Z" creationid="papago" creationdate="20170614T053911Z">
-        <seg>Herokuサポートは現在、Datadog Heroku Buildpackによって提供されています。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080508Z" creationid="papago" creationdate="20170614T053911Z">
+        <seg>Herokuサポートは、Datadog Heroku Buildpackによって提供されています。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1049,8 +1065,8 @@
       <tuv lang="EN-US">
         <seg>Trace data is currently being stored for about 36 hours.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053902Z" creationid="papago" creationdate="20170614T053902Z">
-        <seg>トレースデータは現在約36時間保存されています。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080414Z" creationid="papago" creationdate="20170614T053902Z">
+        <seg>トレースデータは、約36時間保存されています。</seg>
       </tuv>
     </tu>
     <tu>
