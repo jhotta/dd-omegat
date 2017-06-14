@@ -143,6 +143,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Additional resources</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061713Z" creationid="papago" creationdate="20170614T061713Z">
+        <seg>その他のリソース</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Additionally, some configuration options may be set as environment variables.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061600Z" creationid="papago" creationdate="20170614T061600Z">
+        <seg>さらに、いくつかの構成オプションを環境変数として設定することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Amazon Billing allows you to track your AWS infrastructure billing forecasts and costs.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T102340Z" creationid="papago" creationdate="20170613T102340Z">
@@ -311,6 +327,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For additional help from Datadog staff and other Datadog community members, join the [*apm* channel](https://datadoghq.slack.com/messages/apm) in our Datadog Slack.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061717Z" creationid="papago" creationdate="20170614T061717Z">
+        <seg>Datadogのスタッフや他のDatadogコミュニティのメンバーの助けを借りたい場合は、Datadog Slackの[* apm * channel]（https://datadoghq.slack.com/messages/apm）に参加してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For additional information, please reference [the project README on Github](https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm)</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T060956Z" creationid="papago" creationdate="20170614T060956Z">
@@ -387,6 +411,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054959Z" creationid="papago" creationdate="20170614T054959Z">
         <seg>詳細は[docker-dd-agentのドキュメント]（https://github.com/DataDog/docker-dd-agent/blob/master/README.md#tracing--apm）を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For more information about the Datadog Agent, see the [Getting Started guide](/guides/basic_agent_usage/) or refer to the [ file](https://github.com/DataDog/dd-agent/blob/master/datadog.conf.example).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061708Z" creationid="papago" creationdate="20170614T061708Z">
+        <seg>Datadog Agentの詳細については、[Getting Startedガイド]（/ guides / basic_agent_usage /）を参照するか、[ファイル]（https://github.com/DataDog/dd-agent/blob/master/datadog）を参照してください。 conf.example）。</seg>
       </tuv>
     </tu>
     <tu>
@@ -623,6 +655,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Note that options set as environment variables will override the settings defined in the configuration file.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061621Z" creationid="papago" creationdate="20170614T061621Z">
+        <seg>環境変数として設定されたオプションは、設定ファイルで定義された設定を上書きすることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Note that successful delivery does &lt;em&gt;not&lt;/em&gt; mean the traces are accepted.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T053258Z" creationid="papago" creationdate="20170614T053258Z">
@@ -775,6 +815,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The Datadog Agent uses the  file for both infrastructure monitoring and APM configuration options.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061547Z" creationid="papago" creationdate="20170614T061547Z">
+        <seg>Datadog Agentは、このファイルをインフラストラクチャ監視オプションとAPM設定オプションの両方に使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>The Go integration [source code can be found on Github](https://github.com/DataDog/dd-trace-go).</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T055250Z" creationid="papago" creationdate="20170614T055250Z">
@@ -827,6 +875,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112539Z" creationid="papago" creationdate="20170613T112522Z">
         <seg>ddtraceのライブラリには、[Ruby on Rails]（http://rubyonrails.org/）と[Sinatra]（http://www.sinatrarb.com/）のWebフレームワークのサポートが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default value is .</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061642Z" creationid="papago" creationdate="20170614T061642Z">
+        <seg>デフォルト値</seg>
       </tuv>
     </tu>
     <tu>
@@ -937,8 +993,8 @@
       <tuv lang="EN-US">
         <seg>To instrument your application, please select one of the following supported languages.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T061346Z" creationid="papago" creationdate="20170614T061210Z">
-        <seg>アプリケーションを計測するためには、以下のサポートされている言語のいずれかを選択してください。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061512Z" creationid="papago" creationdate="20170614T061210Z">
+        <seg>アプリケーションを計測するためには、以下のサポートされているプログラミング言語のいずれかを選択してください。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1063,6 +1119,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Visit [http://chat.datadoghq.com](http://chat.datadoghq.com) to join the Slack.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061723Z" creationid="papago" creationdate="20170614T061723Z">
+        <seg>スラックに参加するには、[http://chat.datadoghq.com]（http://chat.datadoghq.com）をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We maintain a list of [community tracing libraries](http://docs.datadoghq.com/libraries/#community-tracing-apm-libraries).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061728Z" creationid="papago" creationdate="20170614T061728Z">
+        <seg>私たちは[コミュニティトレースライブラリ]（http://docs.datadoghq.com/libraries/#community-tracing-apm-libraries）のリストを維持しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>We provide some [official libraries](/tracing/#instrument-your-application) that simplify sending metrics to the Datadog Agent, however you may want to interact directly with the API to instrument applications that cannot use the libraries or are written in languages that don't yet have an official Datadog Tracing library.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052437Z" creationid="papago" creationdate="20170614T052437Z">
@@ -1083,6 +1155,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T060503Z" creationid="papago" creationdate="20170614T060503Z">
         <seg>インフラストラクチャの監視の場合、メトリックスは先ずローカルのDatadog Agentに送信され、その後Datadogのバックエンドに転送されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can also reach our APM team via email at [tracehelp@datadoghq.com](mailto:tracehelp@datadoghq.com).</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061731Z" creationid="papago" creationdate="20170614T061731Z">
+        <seg>[tracehelp@datadoghq.com]（mailto：tracehelp@datadoghq.com）の電子メールでAPMチームに連絡することもできます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1203,6 +1283,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T041955Z" creationid="papago" creationdate="20170614T041955Z">
         <seg>[fuzzy]要求(R)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>| {:.table}</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T061700Z" creationid="papago" creationdate="20170614T061700Z">
+        <seg>[fuzzy]表</seg>
       </tuv>
     </tu>
     <tu>
