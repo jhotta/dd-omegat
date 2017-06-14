@@ -591,6 +591,22 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>agent-1</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T043427Z" creationid="papago" creationdate="20170614T043427Z">
+        <seg>[fuzzy][fuzzy]エージェント</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>agent-3</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T042614Z" creationid="papago" creationdate="20170614T042614Z">
+        <seg>[fuzzy]エージェント</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>instances:</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T104613Z" creationid="papago" creationdate="20170613T104613Z">
