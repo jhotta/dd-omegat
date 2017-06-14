@@ -679,6 +679,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Similarly, tracing metrics are also sent to the Datadog agent.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060525Z" creationid="papago" creationdate="20170614T060525Z">
+        <seg>同様に、トレースメトリックもDatadog Agentに送信されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Span</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113221Z" creationid="papago" creationdate="20170613T113221Z">
@@ -987,6 +995,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T054221Z" creationid="papago" creationdate="20170614T054221Z">
         <seg>トレースが正常に動作していると、表示されたメッセージに次のような内容が表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With our infrastructure monitoring, metrics are sent to the Datadog Agent, which then forwards them to Datadog.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T060503Z" creationid="papago" creationdate="20170614T060503Z">
+        <seg>インフラストラクチャの監視の場合、メトリックスは先ずローカルのDatadog Agentに送信され、その後Datadogのバックエンドに転送されます。</seg>
       </tuv>
     </tu>
     <tu>
