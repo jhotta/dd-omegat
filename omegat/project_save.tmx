@@ -87,6 +87,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>&lt;h5&gt;Arguments&lt;/h5&gt;</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052537Z" creationid="papago" creationdate="20170614T052537Z">
+        <seg>[fuzzy]引数(A):</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>A particular query to a service.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113547Z" creationid="papago" creationdate="20170613T113547Z">
@@ -383,6 +391,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Note: You may send multiple spans within a trace array and each span within a trace should use the same trace_id.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052836Z" creationid="papago" creationdate="20170614T052607Z">
+        <seg>注：複数のスパンを、単一のトレース配列内で送信することができます。トレース配列内の各スパンには同じtrace_idを使用する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>On the [Graphing Primer](http://docs.datadoghq.com/graphing/) page you will find a list of functions you can apply to a graph.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114546Z" creationid="papago" creationdate="20170613T114546Z">
@@ -555,6 +571,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T112949Z" creationid="papago" creationdate="20170613T112949Z">
         <seg>トレース</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Traces are a list of spans as JSON objects containing the span information:</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052548Z" creationid="papago" creationdate="20170614T052548Z">
+        <seg>トレースはスパン情報を含むJSONオブジェクトとしてスパンのリストです：</seg>
       </tuv>
     </tu>
     <tu>
