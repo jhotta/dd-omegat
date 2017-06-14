@@ -271,6 +271,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>For more information about your traces, please refer to your agent log.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053318Z" creationid="papago" creationdate="20170614T053318Z">
+        <seg>トレースの詳細については、エージェントのログを参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>For now, using functions like day_before is out of scope for the graphical editor so you have to use the JSON editor.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T114743Z" creationid="papago" creationdate="20170613T114743Z">
@@ -611,6 +619,14 @@
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052548Z" creationid="papago" creationdate="20170614T052548Z">
         <seg>トレースはスパン情報を含むJSONオブジェクトとしてスパンのリストです：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Traces may be dropped after successful delivery.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T053306Z" creationid="papago" creationdate="20170614T053306Z">
+        <seg>トレースは、正常に配信された後にドロップされる可能性があります。</seg>
       </tuv>
     </tu>
     <tu>
