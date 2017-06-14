@@ -111,6 +111,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080251Z" creationid="papago" creationdate="20170614T080251Z">
+        <seg>。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>&lt;h5&gt;Arguments&lt;/h5&gt;</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170614T052537Z" creationid="papago" creationdate="20170614T052537Z">
@@ -217,8 +225,8 @@
       <tuv lang="EN-US">
         <seg>Data Retention</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053822Z" creationid="papago" creationdate="20170614T053822Z">
-        <seg>データ保持</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080325Z" creationid="papago" creationdate="20170614T053822Z">
+        <seg>データ保持期間</seg>
       </tuv>
     </tu>
     <tu>
@@ -609,8 +617,8 @@
       <tuv lang="EN-US">
         <seg>Metadata and resource names have</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T053800Z" creationid="papago" creationdate="20170614T053800Z">
-        <seg>メタデータとリソース名は</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170614T080313Z" creationid="papago" creationdate="20170614T053800Z">
+        <seg>メタデータとリソース名は、</seg>
       </tuv>
     </tu>
     <tu>
