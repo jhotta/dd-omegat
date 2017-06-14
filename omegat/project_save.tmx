@@ -559,10 +559,26 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Tracing data is sent to the Datadog Agent via an HTTP API.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T051648Z" creationid="papago" creationdate="20170614T051648Z">
+        <seg>トレースデータは、HTTP APIを介してDatadog Agentに送信されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Used to track the time spent by an application processing a single operation.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T113127Z" creationid="papago" creationdate="20170613T113127Z">
         <seg>単一オペレースオプションを処理するためにアプリケーションが費やした時間を追跡するために使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We provide some [official libraries](/tracing/#instrument-your-application) that simplify sending metrics to the Datadog Agent, however you may want to interact directly with the API to instrument applications that cannot use the libraries or are written in languages that don't yet have an official Datadog Tracing library.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T052437Z" creationid="papago" creationdate="20170614T052437Z">
+        <seg>Datadog Agentへのメトリクス送信を簡素化するためにいくつかの[公式ライブラリ]（/ tracing /＃instrument-your-application）を公開していますが、APIを直接使用してライブラリが使用できないアプリケーションや、公式のDatadog Tracingライブラリが存在していないプログラミング言語で書かれたアプリケーションのメトリクスを送信することができます。</seg>
       </tuv>
     </tu>
     <tu>
