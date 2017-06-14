@@ -127,6 +127,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Datadog's APM allows you to collect performance metrics by tracing your code to determine which parts of your application are slow or inefficient.</seg>
+      </tuv>
+      <tuv lang="JA" changeid="papago" changedate="20170614T051640Z" creationid="papago" creationdate="20170614T051640Z">
+        <seg>DatadogのAPMを使用すると、コードをトレースしてパフォーマンスメトリックスを収集することができます。これらメトリックスを把握することによりアプリケーションのどの部分が遅く、非効率かを判断することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Each of the metrics retrieved from AWS will be assigned the same tags that appear in the AWS console, including but not limited to host name, security-groups, and more.</seg>
       </tuv>
       <tuv lang="JA" changeid="papago" changedate="20170613T103702Z" creationid="papago" creationdate="20170613T103500Z">
