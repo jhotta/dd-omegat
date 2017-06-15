@@ -105,8 +105,8 @@
       <tuv lang="EN-US">
         <seg>**must be lowercase, alphanumeric characters**</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170615T074336Z" creationid="papago" creationdate="20170614T053645Z">
-        <seg>**小文字と英数字**である必要があります</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T074617Z" creationid="papago" creationdate="20170614T053645Z">
+        <seg>**小文字と英数字**の範囲内で命名されている必要があります</seg>
       </tuv>
     </tu>
     <tu>
