@@ -1129,8 +1129,8 @@
       <tuv lang="EN-US">
         <seg>Verify this by tailing the logs:</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054125Z" creationid="papago" creationdate="20170614T054125Z">
-        <seg>ログをテーリングしてこれを確認します。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T065233Z" creationid="papago" creationdate="20170614T054125Z">
+        <seg>ログをテール表示してこれを確認します:</seg>
       </tuv>
     </tu>
     <tu>
