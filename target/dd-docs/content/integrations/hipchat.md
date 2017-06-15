@@ -14,7 +14,7 @@ Connect HipChat to Datadog in order to:
 No installation steps are required for this integration
 
 # 設定[Create a new access token](https://www.hipchat.com/admin/api) for Datadog. Only notification level acccess is required.
-1. Copy your key and enter it in the [HipChat integration tile](https://app.datadoghq.com/account/settings#integrations/hipchat).
+1. Copy your key and enter it in the [HipChat integration tile](https://app.datadoghq.com/account/settings#integrations/hipchat)。
 1. Enter the room names you wish to allow access to from Datadog. Tick the checkbox if you want to be notified for every comment, in all configured rooms. If the checkbox is left unchecked, you will need to use the @hipchat-chat_name syntax.
 1. Save your configuration
 

@@ -46,7 +46,7 @@ Prints a report of the metrics, events, service checks, service metadata and war
 
 ##### `run_check(config, agent_config=None, mocks=None, force_reload=False)`
 
-Parameters: {:.func-p}**config** (*dictionary*) – A check configuration dictionary containing an array of `instances`. For example:
+Parameters: {:.func-p}**config** (*dictionary*) – A check configuration dictionary containing an array of `instances`。For example:
 
 []~~~ {  'instances':   {  'name': 'simple_config',  'url': 'http://httpbin.org',  }   }
 ~~~ {:.func-code}**agent_config** (*dictionary*) – A customized Datadog agent configuration.**mocks** (*dictionary*) – A dictionary keyed by method name (string) with values of method. For example:
@@ -70,7 +70,7 @@ Parameters: {:.func-p}**repeat** (*integer*) – The number of times the check 
 Parameters: {:.func-p}**metric_name** (*string*) – The name of the metric.**value** (*variable*) – The value for the metric.**tags** (*list of strings*) – The tags associated with the metric.**count** (*integer*) – The number of candidate metrics the assertion should test for. Typical values are:
   * `None`: will not test for the count
   * `1`: tests for exactly one metric
-  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate metrics the assertion should test for.**hostname** (*string*) – The name of the host associated with the metric.**device_name** (*string*) – The name of the device associated with the metric.**metric_type** (*string*) – The type of metric to test for. If set, it must be one of `gauge`, `counter`, `rate`, or `count` as defined by the [checks metric types](https://github.com/DataDog/dd-agent/blob/master/checks/metric_types.py).
+  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate metrics the assertion should test for.**hostname** (*string*) – The name of the host associated with the metric.**device_name** (*string*) – The name of the device associated with the metric.**metric_type** (*string*) – The type of metric to test for. If set, it must be one of `gauge`, `counter`, `rate`, or `count` as defined by the [checks metric types](https://github.com/DataDog/dd-agent/blob/master/checks/metric_types.py)。
 
 ##### `assertMetricTagPrefix(metric_name, tag_prefix, count=None, at_least=1)`
 
@@ -109,7 +109,7 @@ Parameters: {:.func-p}**service_check_name** (*string*) – The name of the serv
 Parameters: {:.func-p}**msg_text** (*string*) – The event message text.**count** (*integer*) – The number of candidate metrics the assertion should test for. Typical values are:
   * `None`: will not test for the count
   * `1`: tests for exactly one metric
-  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate metrics the assertion should test for.**exact_match** (*boolean*) – When true, the event message text must equal `msg_text`. When false, the event message text must contain `msg_text`.**tags** (*list of strings*) – The tags associated with the event.**kwargs** – Keyword arguments can be used to match additional event attributes.
+  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate metrics the assertion should test for.**exact_match** (*boolean*) – When true, the event message text must equal `msg_text`。When false, the event message text must contain `msg_text`。**tags** (*list of strings*) – The tags associated with the event.**kwargs** – Keyword arguments can be used to match additional event attributes.
 
 #### Warning Method
 
@@ -118,7 +118,7 @@ Parameters: {:.func-p}**msg_text** (*string*) – The event message text.**count
 Parameters: {:.func-p}**warning** (*string*) – The warning message text.**count** (*integer*) – The number of candidate warnings the assertion should test for. Typical values are:
   * `None`: will not test for the count
   * `1`: tests for exactly one warning
-  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate warnings the assertion should test for.**exact_match** (*boolean*) – When true, the warning message text must equal `warning`. When false, the event message text must contain `warning`.
+  * `0`: tests for no matches (works as a negation)**at_least** (*integer*) – The minimum number of candidate warnings the assertion should test for.**exact_match** (*boolean*) – When true, the warning message text must equal `warning`。When false, the event message text must contain `warning`。
 
 #### Helper Methods
 

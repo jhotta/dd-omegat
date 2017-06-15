@@ -67,11 +67,11 @@ That brings you to the "SAML Single Sign On Configuration" page where you can:
 ## Datadog Service Provider Details
 {: #ddspdetails}
 
-* Datadog supports the **HTTP-POST** binding for **SAML2**: `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`.
+* Datadog supports the **HTTP-POST** binding for **SAML2**: `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`。
 * Datadog will specify `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` for the Format of the **NameIDPolicy** in Assertion Requests.
 * Assertions must be signed.
 * Assertions can be encrypted, but unencrypted assertions will be accepted.
-* Datadog’s SP Metadata can be found at [https://app.datadoghq.com/account/saml/metadata.xml][7].
+* Datadog’s SP Metadata can be found at [https://app.datadoghq.com/account/saml/metadata.xml][7]。
 
    [7]: https://app.datadoghq.com/account/saml/metadata.xml
 
@@ -79,10 +79,10 @@ That brings you to the "SAML Single Sign On Configuration" page where you can:
 {: #settingattributes}
 
 * Attributes may be included with the Assertion. Datadog looks for 3 Attributes in the AttributeStatement:**eduPersonPrincipalName**: If specified, the eduPersonPrincipalName must correspond to the user’s Datadog username. The username is usually the user’s email address.**sn**: This is optional, and should be set to the user’s surname.**givenName**: This is optional, and should be set to the user’s first, or given name.
-* Datadog expects that Attributes use the NameFormat `urn:oasis:names:tc:SAML:2.0:attrname-format:uri` or `urn:oasis:names:tc:SAML:2.0:attrname-format:basic`. The name used for each attribute will depend on the NameFormat that your IdP uses.
+* Datadog expects that Attributes use the NameFormat `urn:oasis:names:tc:SAML:2.0:attrname-format:uri` or `urn:oasis:names:tc:SAML:2.0:attrname-format:basic`。The name used for each attribute will depend on the NameFormat that your IdP uses.
 * If your IdP is configured to use the NameFormat `urn:oasis:names:tc:SAML:2.0:attrname-format:uri`:**eduPersonPrincipalName**: The IdP should set `urn:oid:1.3.6.1.4.1.5923.1.1.1.6` as the Name of the Attribute**sn**: The IdP should set `urn:oid:2.5.4.4` as the Name of the Attribute**givenName**: The IdP should set `urn:oid:2.5.4.42` as the Name of the Attribute
 * If your IdP is configured to use the NameFormat `urn:oasis:names:tc:SAML:2.0:attrname-format:basic`:**eduPersonPrincipalName**: The IdP should set `urn:mace:dir:attribute-def:eduPersonPrincipalName` as the Name of the Attribute**sn**: The IdP should set `urn:mace:dir:attribute-def:sn` as the Name of the Attribute**givenName**: The IdP should set `urn:mace:dir:attribute-def:givenName` as the Name of the Attribute
-* If **eduPersonPrincipalName** exists in the AttributeStatement, the value of this attribute will be used for the username. If **eduPersonPrincipalName** is not included in the AttributeStatement, the username will be taken from the NameID in the Subject. The NameID must use the Format `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+* If **eduPersonPrincipalName** exists in the AttributeStatement, the value of this attribute will be used for the username. If **eduPersonPrincipalName** is not included in the AttributeStatement, the username will be taken from the NameID in the Subject. The NameID must use the Format `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 * If **sn** and **givenName** are provided, they will be used to update the user’s name in their Datadog profile.
 
 ## Specific SAML IdP

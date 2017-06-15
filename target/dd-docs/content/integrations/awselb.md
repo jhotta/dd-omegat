@@ -13,7 +13,7 @@ Learn more about how to monitor ELB performance metrics thanks to [our series of
 
 # 設定
 
-1.  Enable the [Amazon Web Services integration](/integrations/aws).
+1.  Enable the [Amazon Web Services integration](/integrations/aws)。
 1.  Open the [AWS integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services) and ensure the **ELB checkbox** on the left is checked.
 
 # メトリックス

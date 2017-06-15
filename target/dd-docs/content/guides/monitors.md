@@ -91,7 +91,7 @@ Navigate to the [Create Monitors](https://app.datadoghq.com/monitors#/create) pa
 
    A common use-case for the monitor message is to include a step-by-step way  to resolve the problem. For example if you are monitoring a database then you  might want to include steps for failing over to a standby node. All in all,  you should attempt to give as much context to the monitor as possible.
 
-4. Optionally enable **monitor renotification**. This option is useful to remind  your team that a problem is not solved until the monitor is marked as  resolved. If enabled, you can configure an escalation message to be sent  anytime the monitor renotifies. The original message will be included as  well.***Note:*** *To avoid notification storms we now group notifications with the same monitor ID and alert type in 20 second buckets. The first two notifications in the group within a 20 second bucket will be sent as normal. All other notifications within that 20 seconds will be sent as a single message listing all of them after the first two.*
+4. Optionally enable **monitor renotification**。This option is useful to remind  your team that a problem is not solved until the monitor is marked as  resolved. If enabled, you can configure an escalation message to be sent  anytime the monitor renotifies. The original message will be included as  well.***Note:*** *To avoid notification storms we now group notifications with the same monitor ID and alert type in 20 second buckets. The first two notifications in the group within a 20 second bucket will be sent as normal. All other notifications within that 20 seconds will be sent as a single message listing all of them after the first two.*
 
 
 ## Scheduling Downtime
@@ -168,8 +168,8 @@ When you don't need to search monitor titles and bodies for specific text, your 
 * Checking attributes from different fields will AND the values, e.g. `status:Alert type:Metric` (the lack of an operator between the two search terms implies AND)
 * Checking attributes within the same field will often OR the values, e.g. `status:(Alert OR Warn)`, but there are some exceptions. For example, checking multiple scopes or service tags ANDs them.
 * Some fields do not allow you to select multiple values, e.g. when you tick a metric or service check, the other metrics/checks disappear from the list until you untick your selection.
-* The Triggered checkbox under the Status field means `status:(Alert OR Warn OR "No Data")`, not `status:Triggered`. Triggered is not a valid monitor status.
-* The Muted checkbox appears under the Status field, but Muted is actually its own field; checking it adds `muted:true` to your query, not `status:muted`.
+* The Triggered checkbox under the Status field means `status:(Alert OR Warn OR "No Data")`, not `status:Triggered`。Triggered is not a valid monitor status.
+* The Muted checkbox appears under the Status field, but Muted is actually its own field; checking it adds `muted:true` to your query, not `status:muted`。
 * The Metric/Check field is always called `metric` in the query, e.g. selecting the check `http.can_connect` adds `metric:http.can_connect` to your query.
 
 For fields that have an arbitrary (i.e. large) number of values across all monitors—Service tag, Scope, Metric/Check, Notification—use the field-specific search bars to find the value you're looking for.

@@ -69,7 +69,7 @@ Acknowledge and close OpsGenie alerts from OpsGenie. When you do this, the assoc
 [4]: /static/images/where-is-dd-key.png
 [5]: /static/images/opsgenie-add-api-key.png
 [6]: https://app.datadoghq.com/account/settings
-[7**"Datadog Integration Key"** field, and enter the **"Datadog Integration Name"**. ![][7]
+[7**"Datadog Integration Key"** field, and enter the **"Datadog Integration Name"**。 ![][7]
 
 
 

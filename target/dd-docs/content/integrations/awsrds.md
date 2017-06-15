@@ -178,9 +178,9 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
 
   If you haven't already, set up the [Amazon Web Services integration first](/integrations/aws).**Enhanced RDS Integration**
 
-  1.  Enable Enhanced Monitoring for your RDS instance. This can either be done during instance creation or afterwards by choosing **Modify** under **Instance Actions**. We recommend choosing 15 for Monitoring Granularity.  ![][4]
-  2.  From the IAM Management Console, click on **Encryption Keys**. Click the **Create Key** button.
-  3.  Enter an Alias for the key, such as `lambda-datadog-key`.
+  1.  Enable Enhanced Monitoring for your RDS instance. This can either be done during instance creation or afterwards by choosing **Modify** under **Instance Actions**。We recommend choosing 15 for Monitoring Granularity.  ![][4]
+  2.  From the IAM Management Console, click on **Encryption Keys**。Click the **Create Key** button.
+  3.  Enter an Alias for the key, such as `lambda-datadog-key`。
   4.  Add the appropriate administrators and then users for the key. Ensure that you select yourself at least as a user.
   5.  Encrypt the key you just created by using the [AWS CLI][5]:
 
@@ -189,10 +189,10 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
       [][6]The KMS key name should be replaced by the alias of the key you just created. The datadog api and app keys should be replaced by the api and app keys found here.
 
       The output of this command will include two parts: a ciphertext blob followed by the key ID that starts with something similar to **arn:aws:kms**.
-  6.  From the IAM Management Console, create a new role. Enter a name for the role, such as `lambda-datadog-post-execution`.
+  6.  From the IAM Management Console, create a new role. Enter a name for the role, such as `lambda-datadog-post-execution`。
   7.  Select **AWS Lambda** from the AWS Service Roles list. You do not need to attach any policies at this time. Press the appropriate buttons to complete the role creation.
   8.  Click on the role you just created. Expand the Inline Policies section and click the link to create a policy. Choose **Custom Policy** and press the button to continue.
-  9.  Enter a policy name, such as `lambda-datadog-policy`. For Policy Document, enter the following, replacing &lt;ENCRYPTION_KEY ARN> with the ARN of the Encryption Key:
+  9.  Enter a policy name, such as `lambda-datadog-policy`。For Policy Document, enter the following, replacing &lt;ENCRYPTION_KEY ARN> with the ARN of the Encryption Key:
 
       [fuzzy]要求(R)
       "Version": "2012-10-17",
@@ -213,9 +213,9 @@ Each of the metrics retrieved from AWS will be assigned the same tags that appea
   11. On the Select blueprint screen, select the datadog-process-rds-metrics blueprint.
   12. Choose `RDSOSMetrics` from the **Log Group** dropdown.
   13. Enter anything for the Filter Name and click Next.
-  13. Enter a name for your function, such as `lambda-datadog-post-function`.
+  13. Enter a name for your function, such as `lambda-datadog-post-function`。
   14. In the Lambda function code area, replace `<KMS_ENCRYPTED_KEYS>` with the ciphertext blob part of the CLI command output above.
-  15. Under Lambda function handler and role, choose the role you created above. Click **Next**.
+  15. Under Lambda function handler and role, choose the role you created above. Click **Next**。
   16. Choose the **Enable Now** radio button.
   17. Click the **Create Function** button.**Native Database Integration**
 

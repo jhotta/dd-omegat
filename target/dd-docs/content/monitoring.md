@@ -7,7 +7,7 @@ Monitoring in Datadog refers to the ability to notify your team when conditions 
 ## Glossary
 {: #glossary}
 
-Here is a quick overview of the different terms used in this guide.**Status**: Each check run submits a status of OK, WARNING or CRITICAL.**Check**: Emits one or more statuses.**Monitor**: Sends notifications based on a sequence of check statuses, metric  threshold or other alerting conditions.**Monitor type**: [host](#host)-, [metric](#metric)-, [integration](#integration)-, [process](#process)-, [network](#network)-, [event](#event)-based, and [custom](#custom). See side navigation to drill into a specific type.**Tags**: Configurable labels that can be applied to each metric and host. See the [Tagging](/guides/tagging) page for more details.
+Here is a quick overview of the different terms used in this guide.**Status**: Each check run submits a status of OK, WARNING or CRITICAL.**Check**: Emits one or more statuses.**Monitor**: Sends notifications based on a sequence of check statuses, metric  threshold or other alerting conditions.**Monitor type**: [host](#host)-, [metric](#metric)-, [integration](#integration)-, [process](#process)-, [network](#network)-, [event](#event)-based, and [custom](#custom)。See side navigation to drill into a specific type.**Tags**: Configurable labels that can be applied to each metric and host. See the [Tagging](/guides/tagging) page for more details.
 
 
 
@@ -181,7 +181,7 @@ Refer to the [Guide to Agent Checks](/guides/agent_checks/) for detailed informa
 
    You can optionally **notify on no data** after a configurable timeframe. You  must choose at least 2 minutes for your timeframe.
 
-4. Configure your **notification options**. Refer to the  [Notifications](#notifications) section of this guide for a detailed  walkthrough of the common notification options.
+4. Configure your **notification options**。Refer to the  [Notifications](#notifications) section of this guide for a detailed  walkthrough of the common notification options.
 
 ## Monitor Notifications
 {: #notifications}
@@ -196,7 +196,7 @@ Notifications are a key component of any monitor. You want to make sure the righ
 
    A common use-case for the monitor message is to include a step-by-step way  to resolve the problem. For example if you are monitoring a database then you  might want to include steps for failing over to a standby node. All in all,  you should attempt to give as much context to the monitor as possible.
 
-4. Optionally enable **monitor renotification**. This option is useful to remind  your team that a problem is not solved until the monitor is marked as  resolved. If enabled, you can configure an escalation message to be sent  anytime the monitor renotifies. The original message will be included as  well.
+4. Optionally enable **monitor renotification**。This option is useful to remind  your team that a problem is not solved until the monitor is marked as  resolved. If enabled, you can configure an escalation message to be sent  anytime the monitor renotifies. The original message will be included as  well.
 
 
 ### Message template variables

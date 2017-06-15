@@ -720,7 +720,7 @@ You can send the request to support@datadoghq.com and we will add it to our feat
 * If you have HipChat, Slack, Webhooks, Pagerduty or VictorOps you can use:
     * `@hipchat-[room-name]` or `@slack-[room-name]` – posts the event or graph to that chat room.
     * `@webhook` – alerts or triggers whatever is attached to that webhook. Check out [our blogpost on Webhooks][events-1]!
-    * `@pagerduty` – sends an alert to Pagerduty. You can also use `@pagerduty-acknowledge` and `@pagerduty-resolve`.
+    * `@pagerduty` – sends an alert to Pagerduty. You can also use `@pagerduty-acknowledge` and `@pagerduty-resolve`。
 
 #### Searching Events Help
 
@@ -842,7 +842,7 @@ Often, you set cron jobs that trigger some meaningful script that you want to mo
 * Traffic is always initiated by the agent to Datadog. No sessions are ever initiated from Datadog back to the agent.
 * All traffic is sent over SSL.
 * All communication to Datadog is via HTTPS.
-* The full license agreement can be found [here][integrations-2].
+* The full license agreement can be found [here][integrations-2]。
 
 #### I’d like to tweak an integration or write up a new one. Do you accept pull requests?
 {: #integration-edit}
@@ -883,9 +883,9 @@ Unfortunately, we do not allow adding historical data at this time.
 
 This depends on the medium you use to send metrics.
 
-* For an Agent Check, see this [link][metrics-4].
-* For DogStatsD, see this [link][metrics-5].
-* For the API, see this [link][metrics-6].
+* For an Agent Check, see this [link][metrics-4]。
+* For DogStatsD, see this [link][metrics-5]。
+* For the API, see this [link][metrics-6]。
 
 
 #### Is there a way I can get metric reports?
@@ -951,8 +951,8 @@ For example, let's say you break down used memory by host, you'll get one time s
 * Traffic is always initiated by the agent to Datadog. No sessions are ever initiated from Datadog back to the agent.
 * All traffic is sent over SSL.
 * All communication to Datadog is via HTTPS.
-* The full license agreement can be found [here][other-2].
-* The agent is entirely open source and can be found [here][other-3].
+* The full license agreement can be found [here][other-2]。
+* The agent is entirely open source and can be found [here][other-3]。
 * Some installations (for example, installing the agent on CentOS 5), will request your password. The password is needed because it's installing packages - Datadog does not retain it in anyway. You can also use the step-by-step directions if you prefer to see exactly what the script is doing.
 
 #### I have a feature request. How can I submit it?

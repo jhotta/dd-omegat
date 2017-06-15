@@ -27,7 +27,7 @@ To install this integration, you will first need to generate a Zendesk API Token
 To complete the integration, enter your information in [Datadog](https://app.datadoghq.com):
 
 1. Visit the [Zendesk integration tile](https://app.datadoghq.com/account/settings#integrations/zendesk) or navigate to it by clicking Integrations in the left side menu, then clicking the Zendesk integration tile. Then click on the *Configuration* tab.
-1. Enter your Zendesk domain. This is the text that appears before zendesk.com. e.g. If your Zendesk is located at https://*my-company*.zendesk.com, your domain will be *my-company*.
+1. Enter your Zendesk domain. This is the text that appears before zendesk.com. e.g. If your Zendesk is located at https://*my-company*.zendesk.com, your domain will be *my-company*。
 1. Enter your Zendesk username.
 1. Paste the Zendesk API Token you received in step 5 above.
 1. Click the Install Integration button.

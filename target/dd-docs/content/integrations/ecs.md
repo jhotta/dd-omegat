@@ -18,7 +18,7 @@ You may either configure the task using the [AWS CLI tools](https://aws.amazon.c
 
 #### AWS CLI
 
-1. Download [dd-agent-ecs.json](/static/dd-agent-ecs.json).
+1. Download [dd-agent-ecs.json](/static/dd-agent-ecs.json)。
 1. Edit dd-agent-ecs.json and update it with the [API_KEY](https://app.datadoghq.com/account/settings#api) for your account.
 1. Execute the following command:  aws ecs register-task-definition --cli-input-json file://path/to/dd-agent-ecs.json
 
@@ -26,19 +26,19 @@ You may either configure the task using the [AWS CLI tools](https://aws.amazon.c
 
 1. Log in to your AWS Console and navigate to the EC2 Container Service section.
 1. Click on the cluster you wish to add Datadog to.
-1. Click on **Task Definitions** on the left side and click the button **Create new Task Definition**.
-1. Enter a **Task Definition Name**, such as ```dd-agent-task```.
+1. Click on **Task Definitions** on the left side and click the button **Create new Task Definition**。
+1. Enter a **Task Definition Name**, such as ```dd-agent-task```。
 1. Click on the **Add volume** link.
-1. For **Name** enter ```docker_sock```. For **Source Path**, enter ```/var/run/docker.sock```. Click **Add**.
-1. Add another volume with the name ```proc``` and source path of ```/proc/```.
-1. Add another volume with the name ```cgroup``` and source path of ```/cgroup/```.
+1. For **Name** enter ```docker_sock```。For **Source Path**, enter ```/var/run/docker.sock```。Click **Add**。
+1. Add another volume with the name ```proc``` and source path of ```/proc/```。
+1. Add another volume with the name ```cgroup``` and source path of ```/cgroup/```。
 1. Click the large **Add container** button.
-1. For **Container name** enter ```dd-agent```.
-1. For **Image** enter ```datadog/docker-dd-agent:latest```.
-1. For **Maximum memory** enter ```128```.
-1. Scroll down to the **Advanced container configuration** section and enter ```10``` in **CPU units**.
+1. For **Container name** enter ```dd-agent```。
+1. For **Image** enter ```datadog/docker-dd-agent:latest```。
+1. For **Maximum memory** enter ```128```。
+1. Scroll down to the **Advanced container configuration** section and enter ```10``` in **CPU units**。
 1. For **Env Variables**, add a **Key** of ```API_KEY``` and enter your Datadog API Key in the value. *If you feel more comfortable storing secrets like this in s3, take a [look at the ECS Configuration guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html#ecs-config-s3).*
-1. Add another Environment Variable for any tags you want to add using the key ```TAGS```.
+1. Add another Environment Variable for any tags you want to add using the key ```TAGS```。
 1. Scroll down to the **Storage and Logging** section.
 1. In **Mount points** select the **docker_sock** source volume and enter ```/var/run/docker.sock``` in the Container path. Leave the **Read only** checkbox un-checked.
 1. Add another mount point for **proc** and enter ```/host/proc/``` in the Container path. Check the **Read only** checkbox.
@@ -48,13 +48,13 @@ You may either configure the task using the [AWS CLI tools](https://aws.amazon.c
 
 ```ecs:StartTask```If you are modifying the IAM Policy you created for your cluster, you may only need to add one Action: .
 
-1. Using the Identity and Access Management (IAM) console, create a new role called ```dd-agent-ecs```.
-1. Select **Amazon EC2 Role for EC2 Container Service**. On the next screen do not check any checkboxes and click **Next Step**.
-1. Click **Create Role**.
+1. Using the Identity and Access Management (IAM) console, create a new role called ```dd-agent-ecs```。
+1. Select **Amazon EC2 Role for EC2 Container Service**。On the next screen do not check any checkboxes and click **Next Step**。
+1. Click **Create Role**。
 1. Click on the newly created role.
 1. Expand the **Inline Policies** section. Click the link to create a new inline policy.
 1. Choose **Custom Policy** and press the button.
-1. For **Policy Name** enter ```dd-agent-policy```. Copy the following text into the **Policy Document**:
+1. For **Policy Name** enter ```dd-agent-policy```。Copy the following text into the **Policy Document**:
 
 
        [[][]]{  "Version": "2012-10-17",  "Statement":   {  "Effect": "Allow",  "Action":   "ecs:RegisterContainerInstance",  "ecs:DeregisterContainerInstance",  "ecs:DiscoverPollEndpoint",  "ecs:Submit*",  "ecs:Poll",  "ecs:StartTask",  "ecs:StartTelemetrySession"  ,  "Resource":   "*"    }    } {:.language-xml}
@@ -68,7 +68,7 @@ Ideally you want the Datadog agent to load on one container on each EC2 instance
 
 1. Log in to the AWS console and navigate to the EC2 section.
 1. Create a new instance by clicking the **Launch Instance** button.
-1. Click on Community AMIs. Visit [this page to see a list of current ECS optimized instances](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html). Choose the appropriate AMI for your region and copy the ID into the search box. Choose the AMI that comes up as a result of the search.
+1. Click on Community AMIs. Visit [this page to see a list of current ECS optimized instances](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)。Choose the appropriate AMI for your region and copy the ID into the search box. Choose the AMI that comes up as a result of the search.
 1. Follow the prompts as you normally would when setting up an instance.
 1. On the third dialog, select the IAM role you created above.
 1. Expand the Advanced Details section and copy the following script into the User Data section. Change cluster name to your cluster's name and task definition to the name you gave your task definition.

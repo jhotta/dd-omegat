@@ -417,8 +417,8 @@ Note: The GovCloud and China regions do not currently support IAM role delegatio
 
 2.  `DatadogAWSIntegrationRole`Create a new role in the IAM Console. Name it anything you like, such as .
 3.  From the selection, choose Role for Cross-Account Access.
-4.  Click the Select button for **Allows IAM users from a 3rd party AWS account to access this account**.
-5.  For Account ID, enter `464622532012` (Datadog's account ID). This means that you will grant Datadog and Datadog only read access to your AWS data. For External ID, enter the one generated on our website. Make sure you leave **Require MFA** disabled. *For more information about the External ID, refer to [this document in the IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)*.
+4.  Click the Select button for **Allows IAM users from a 3rd party AWS account to access this account**。
+5.  For Account ID, enter `464622532012` (Datadog's account ID). This means that you will grant Datadog and Datadog only read access to your AWS data. For External ID, enter the one generated on our website. Make sure you leave **Require MFA** disabled. *For more information about the External ID, refer to [this document in the IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)*。
 6.  Select the policy you created above.
 7.  Review what you selected and click the **Create Role** button.
 
@@ -426,19 +426,19 @@ Note: The GovCloud and China regions do not currently support IAM role delegatio
 
 ![logo](/static/images/integrations-aws-secretentry.png)
 
-1.  Open the [AWS Integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services).
+1.  Open the [AWS Integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services)。
 2.  Select the **Role Delegation** tab.
 3.  Enter your AWS Account ID **without dashes**, e.g. 123456789012, not 1234-5678-9012. Your Account ID can be found in the ARN of the newly created role. Then enter the name of the role you just created. Finally enter the External ID you specified above.
 4.  Choose the services you want to collect metrics for on the left side of the dialog. You can optionally add tags to all hosts and metrics. Also if you want to only monitor a subset of EC2 instances on AWS, tag them and specify the tag in the limit textbox here.
-5.  Click **Install Integration**.
+5.  Click **Install Integration**。
 
 ## Configuration for China and GovCloud
 
-1.  Open the [AWS Integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services).
+1.  Open the [AWS Integration tile](https://app.datadoghq.com/account/settings#integrations/amazon_web_services)。
 2.  Select the **Access Keys (GovCloud or China Only)** tab.
 3.  Enter your AWS Access Key and AWS Secret Key. Note: only access and secret keys for China and GovCloud are accepted.
 4.  Choose the services you want to collect metrics for on the left side of the dialog. You can optionally add tags to all hosts and metrics. Also if you want to only monitor a subset of EC2 instances on AWS, tag them and specify the tag in the limit textbox here.
-5.  Click **Install Integration**.
+5.  Click **Install Integration**。
 
 
 # メトリックス

@@ -10,7 +10,7 @@ newhlevel: true
 
 `Manage Jenkins -> Manage Plugins`This plugin can be installed from the [Update Center](https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins) (found at ) in your Jenkins installation. 
 
-1.  Select the `Available` tab, search for `Datadog` and look for `Datadog Plugin`. 
+1.  Select the `Available` tab, search for `Datadog` and look for `Datadog Plugin`。 
 1.  Once you find it, check the checkbox next to it, and install via your preference by using one of the two install buttons at the bottom of the screen. 
 1.  Check to see that the plugin has been successfully installed by searching for `Datadog Plugin` on the `Installed` tab. If the plugin has been successfully installed, then continue on to the configuration step, described below.`Datadog Plugin``Check Now``Manage Jenkins -> Manage Plugins`**Note**: If you do not see the version of  that you are expecting, make sure you have run  from the  screen.
 

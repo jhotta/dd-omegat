@@ -47,10 +47,10 @@ Each entry in the integration tile is validated when you enter it. There is noth
 
 # 設定
 
-1.  Login to the Datadog application and add the [Bitbucket integration here][2].
+1.  Login to the Datadog application and add the [Bitbucket integration here][2]。
 2.  Enter the username and password you created above in the Installation section. Click the **Install Integration** button. If the username or password is not correct you will get a error message.
 3.  Open the Bitbucket integration again and enter the full name of the repository you want to monitor. If the url for your repository is https://bitbucket.org/groupname/reponame, then enter ```groupname/reponame``` in the Repo full name textbox.
-4.  Decide what type of events you would like to collect and click **Update Configuration**.
+4.  Decide what type of events you would like to collect and click **Update Configuration**。
 
 # Validation
 

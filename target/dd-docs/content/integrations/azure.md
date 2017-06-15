@@ -377,7 +377,7 @@ First, login to the Azure account you want to integrate with Datadog__For Azure 
 ~~~
 
 + Grant the Service Principal the "Reader" role for the subscription you are interested in monitoring.
-+ Use the `Object Id` returned from the previous command to fill in `{object-Id}`. `{subscription-Id}` is the azure subscription you would like to monitor, and is listed as `ID` in `azure account show` or through the portal
++ Use the `Object Id` returned from the previous command to fill in `{object-Id}`。 `{subscription-Id}` is the azure subscription you would like to monitor, and is listed as `ID` in `azure account show` or through the portal
 
 ~~~ azure role assignment create --objectId {object-Id} -o Reader -c /subscriptions/{subscription-Id}/
 ~~~__For Azure CLI < 1.0__

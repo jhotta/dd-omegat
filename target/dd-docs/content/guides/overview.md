@@ -22,7 +22,7 @@ So, you've just finished [installing](/guides/basic_agent_usage/) the Datadog Ag
 * All machines show up in the infrastructure overview
 * Here you can see the tags applied to each machine; as they're assigned to perform certain roles, tagging allows you to indicate machines have a certain purpose
 * We do as much as possible to automatically categorize your servers for you, to create structure in your infrastructure with as little work as possible (unlike explicitly creating all your clusters). Thus if a new machine is tagged, you can immediately see the stats for that machine based on what was previously set up for that tag.
-* For more on tagging, please see <a target="_blank" href="/faq/#tagging">here</a>.
+* For more on tagging, please see <a target="_blank" href="/faq/#tagging">here</a>。
 
 ## Host Map
 {: #hostmap}

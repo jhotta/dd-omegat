@@ -102,7 +102,7 @@ instances:
 
 ## Configuration Options
 
-* `unix_socket_path` - (Optional) - Can be used instead of `host` and `port`.
+* `unix_socket_path` - (Optional) - Can be used instead of `host` and `port`。
 * `db`, `password`, and `socket_timeout` - (Optional) - Additional connection options.
 * `warn_on_missing_keys` - (Optional) - Display a warning in the info page if the keys we're tracking are missing.
 * `slowlog-max-len` - (Optional) - Maximum number of entries to fetch from the slow query log. By default, the check will  read this value from the redis config. If it's above 128, it will default to 128 due to potential increased latency  to retrieve more than 128 slowlog entries every 15 seconds. If you need to get more entries from the slow query logs  set the value here. Warning: It may impact the performance of your redis instance

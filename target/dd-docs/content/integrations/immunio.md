@@ -16,8 +16,8 @@ IMMUNIO monitors your applications to detect and defend against all of the follo
 
 # インストール
 
-1.  Login to [your IMMUNIO account](http://www.immun.io/).
-1.  Navigate to the [integrations setup page](https://dashboard.immun.io/#/settings/integrations). ![Integration Setup Page](/static/images/immuniosetup1.png)
+1.  Login to [your IMMUNIO account](http://www.immun.io/)。
+1.  Navigate to the [integrations setup page](https://dashboard.immun.io/#/settings/integrations)。 ![Integration Setup Page](/static/images/immuniosetup1.png)
 1.  Click "Add an API Key". ![Add API Key](/static/images/immuniosetup2.png)
 1.  Add your API key.
 

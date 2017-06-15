@@ -18,8 +18,8 @@ We've written [a gem](https://rubygems.org/gems/datadog-sdk-testing) and a set o
 
 Once the required Ruby gems have been installed by Bundler, you can easily create a [Python](https://www.python.org/) environment:
 
-1. Run `rake setup_env`. This will install a Python virtual environment along with all the components necessary for integration development.
-2. Run `source venv/bin/activate` to activate the installed Python virtual environment. To exit the virtual environment, run `deactivate`. You can learn more about the Python virtual environment on the [Virtualenv documentation](https://virtualenv.pypa.io/en/stable/).
+1. Run `rake setup_env`。This will install a Python virtual environment along with all the components necessary for integration development.
+2. Run `source venv/bin/activate` to activate the installed Python virtual environment. To exit the virtual environment, run `deactivate`。You can learn more about the Python virtual environment on the [Virtualenv documentation](https://virtualenv.pypa.io/en/stable/)。
 
 ### Building an integration
 
@@ -90,7 +90,7 @@ For example:
 
 ##### `manifest.json`
 
-This JSON file provides metadata about your integration and should include:****: Provide a valid email address where you can be contacted regarding this integration.****: The version of this manifest file.****: The maximum version of the Datadog agent that is compatible with your integration. We do our best to maintain integration stability within major versions, so you should leave this at the number generated for you. If your integration breaks with a new release of the Datadog agent, please set this number and [submit an issue on the Datadog Agent project](https://github.com/DataDog/dd-agent/blob/master/CONTRIBUTING.md#submitting-issues).****: The minimum version of the Datadog agent that is compatible with your integration.****: The name of your integration.****: Provide a short description of your integration.****: As a community contributed integration, this should be set to "contrib". Only set this to another value if directed to do so by Datadog staff.****: The current version of your integration.
+This JSON file provides metadata about your integration and should include:****: Provide a valid email address where you can be contacted regarding this integration.****: The version of this manifest file.****: The maximum version of the Datadog agent that is compatible with your integration. We do our best to maintain integration stability within major versions, so you should leave this at the number generated for you. If your integration breaks with a new release of the Datadog agent, please set this number and [submit an issue on the Datadog Agent project](https://github.com/DataDog/dd-agent/blob/master/CONTRIBUTING.md#submitting-issues)。****: The minimum version of the Datadog agent that is compatible with your integration.****: The name of your integration.****: Provide a short description of your integration.****: As a community contributed integration, this should be set to "contrib". Only set this to another value if directed to do so by Datadog staff.****: The current version of your integration.
 
 You can reference one of the existing integrations for an example of the manifest file.
 
@@ -179,5 +179,5 @@ Once you have completed the development of your integration, submit a [pull requ
 
 In our experience building integrations, we've also faced a number of challenges. As your write your tests, here are a few things to consider:
 
-* Test clusters. Testing single instances of your software is often easier, but tests are more useful when run against setups that are representative of real-world uses. For example, MongoDB is typically used with sharding and replica set features, so [our tests reflect that](https://github.com/DataDog/integrations-core/tree/master/mongo/ci).
-* Consider generating calculated metrics in addition to raw metrics. For example, many databases will have slow, but less frequently run queries. So it's often useful to look at percentiles. For example, our MySQL integration includes a calculated metric for the [95th percentile query execution time](https://github.com/DataDog/integrations-core/blob/master/mysql/check.py#L1169).
+* Test clusters. Testing single instances of your software is often easier, but tests are more useful when run against setups that are representative of real-world uses. For example, MongoDB is typically used with sharding and replica set features, so [our tests reflect that](https://github.com/DataDog/integrations-core/tree/master/mongo/ci)。
+* Consider generating calculated metrics in addition to raw metrics. For example, many databases will have slow, but less frequently run queries. So it's often useful to look at percentiles. For example, our MySQL integration includes a calculated metric for the [95th percentile query execution time](https://github.com/DataDog/integrations-core/blob/master/mysql/check.py#L1169)。

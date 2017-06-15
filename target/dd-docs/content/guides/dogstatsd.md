@@ -148,7 +148,7 @@ If you want to send metrics to DogStatsD in your own way, here is the format of 
 
 Here's breakdown of the fields:
 
-- `metric.name` should be a String with no colons, bars or @ characters and fit our [naming policy](http://docs.datadoghq.com/faq/#api).
+- `metric.name` should be a String with no colons, bars or @ characters and fit our [naming policy](http://docs.datadoghq.com/faq/#api)。
 - `value` should be a number
 - type should be `c` for Counter, `g` for Gauge, `h` for Histogram, `ms` for  Timer or `s` for Set.
 - sample rate is optional and should be a float between 0 and 1 inclusive.
