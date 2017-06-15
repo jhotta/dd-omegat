@@ -953,8 +953,8 @@
       <tuv lang="EN-US">
         <seg>This often happens because of a misconfiguration in Docker environments.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054654Z" creationid="papago" creationdate="20170614T054654Z">
-        <seg>この状態は、Docker環境で設定にミスがある場合によく見かけます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T072516Z" creationid="papago" creationdate="20170614T054654Z">
+        <seg>このレコード行は、Docker環境で設定にミスがある場合に頻繁に見かけます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1241,8 +1241,8 @@
       <tuv lang="EN-US">
         <seg>Your application is able to connect to the Agent (by default it submits to localhost).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054802Z" creationid="papago" creationdate="20170614T054802Z">
-        <seg>アプリケーションはエージェントに接続できる必要があります（デフォルトでは、localhostに送信されます）。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T072611Z" creationid="papago" creationdate="20170614T054802Z">
+        <seg>トレースはDocker環境もサポートしていますが、以下の状態を確認する必要があります：</seg>
       </tuv>
     </tu>
     <tu>
