@@ -946,8 +946,8 @@ tracer.configure（hostname = "172.17.0.1"）</seg>
       <tuv lang="EN-US">
         <seg>This not only provides greater visibility, but allows you to see the relationship between application code and the underlying infrastructure.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T060034Z" creationid="papago" creationdate="20170614T060034Z">
-        <seg>このことにより、視認性が向上するだけでなく、アプリケーションコードの状態とそのベースインフラストラクチャの関係を簡単に理解できるようになりました。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T102140Z" creationid="papago" creationdate="20170614T060034Z">
+        <seg>APMツールの統合により、視認性が向上するだけでなく、アプリケーションコードの状態とそのベースインフラストラクチャの関係を簡単に理解できるようになりました。</seg>
       </tuv>
     </tu>
     <tu>
