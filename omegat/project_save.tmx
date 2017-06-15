@@ -1129,8 +1129,8 @@
       <tuv lang="EN-US">
         <seg>Verify this by tailing the logs:</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170615T065233Z" creationid="papago" creationdate="20170614T054125Z">
-        <seg>ログをテール表示してこれを確認します:</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T065320Z" creationid="papago" creationdate="20170614T054125Z">
+        <seg>ログをtail コマンドで表示してを内容を確認します:</seg>
       </tuv>
     </tu>
     <tu>
@@ -1169,8 +1169,8 @@
       <tuv lang="EN-US">
         <seg>When tracing is working properly you will see flushed payload messages similar to the following:</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054221Z" creationid="papago" creationdate="20170614T054221Z">
-        <seg>トレースが正常に動作していると、表示されたメッセージに次のような内容が表示されます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T065536Z" creationid="papago" creationdate="20170614T054221Z">
+        <seg>トレースが正常に動作していると、tailコマンドで表示した内容に次のような内容が表示されます。</seg>
       </tuv>
     </tu>
     <tu>
