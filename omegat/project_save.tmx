@@ -321,8 +321,8 @@
       <tuv lang="EN-US">
         <seg>For Docker, you will likely need to specify the host or ip address.</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054827Z" creationid="papago" creationdate="20170614T054827Z">
-        <seg>Docker環境の場合は、ホストまたはIPアドレスを指定する必要があります。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T072808Z" creationid="papago" creationdate="20170614T054827Z">
+        <seg>従って、Docker環境の場合は、ホストまたはIPアドレスを指定する必要があります。</seg>
       </tuv>
     </tu>
     <tu>
@@ -385,8 +385,9 @@
       <tuv lang="EN-US">
         <seg>For example: tracer.configure(hostname="172.17.0.1")</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054837Z" creationid="papago" creationdate="20170614T054837Z">
-        <seg>例：tracer.configure（hostname = "172.17.0.1"）</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T072828Z" creationid="papago" creationdate="20170614T054837Z">
+        <seg>例：
+tracer.configure（hostname = "172.17.0.1"）</seg>
       </tuv>
     </tu>
     <tu>
@@ -881,8 +882,8 @@
       <tuv lang="EN-US">
         <seg>The agent accepts requests by binding to 0.0.0.0 (or the appropriate IP address).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170614T054905Z" creationid="papago" creationdate="20170614T054905Z">
-        <seg>エージェントは、0.0.0.0（または適切なIPアドレス）にバインドして要求を受け入れます。</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T073221Z" creationid="papago" creationdate="20170614T054905Z">
+        <seg>Datadog Agentは、0.0.0.0（または適切なIPアドレス）にて、リクエストを待ち受けます。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1241,8 +1242,9 @@
       <tuv lang="EN-US">
         <seg>Your application is able to connect to the Agent (by default it submits to localhost).</seg>
       </tuv>
-      <tuv lang="JA" changeid="papago" changedate="20170615T072611Z" creationid="papago" creationdate="20170614T054802Z">
-        <seg>トレースはDocker環境もサポートしていますが、以下の状態を確認する必要があります：</seg>
+      <tuv lang="JA" changeid="papago" changedate="20170615T072741Z" creationid="papago" creationdate="20170614T054802Z">
+        <seg>アプリケーションは、Agentに接続できる必要があります（デフォルトでは、ローカルのコンテナ内にAgent
+が存在して接続する設定になっています）。</seg>
       </tuv>
     </tu>
     <tu>
